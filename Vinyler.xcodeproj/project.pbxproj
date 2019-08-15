@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019A0515144331EBFA144D0E /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */; };
 		813E834522E441430057F0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E834422E441430057F0E6 /* AppDelegate.swift */; };
 		813E834C22E441450057F0E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 813E834B22E441450057F0E6 /* Assets.xcassets */; };
 		813E834F22E441450057F0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813E834D22E441450057F0E6 /* LaunchScreen.storyboard */; };
@@ -16,7 +17,7 @@
 		813E837022E446CE0057F0E6 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E836F22E446CE0057F0E6 /* UIButton+Style.swift */; };
 		813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837122E449310057F0E6 /* UIColor+Style.swift */; };
 		813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837422E450D30057F0E6 /* DiscogsAPI.swift */; };
-		813E837722E45CEC0057F0E6 /* GetResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837622E45CEC0057F0E6 /* GetResults.swift */; };
+		813E837722E45CEC0057F0E6 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837622E45CEC0057F0E6 /* Results.swift */; };
 		813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837822E467090057F0E6 /* UIFont+Style.swift */; };
 		813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837A22E4676F0057F0E6 /* UILabel+Style.swift */; };
 		813E837D22E468420057F0E6 /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837C22E468410057F0E6 /* Release.swift */; };
@@ -24,6 +25,13 @@
 		813E838122E46C550057F0E6 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E838022E46C550057F0E6 /* Videos.swift */; };
 		813E838322E46D2D0057F0E6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E838222E46D2D0057F0E6 /* Image.swift */; };
 		813E838522E46E260057F0E6 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E838422E46E260057F0E6 /* Format.swift */; };
+		814B06A323040D3A0062906D /* String+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B06A223040D3A0062906D /* String+Assets.swift */; };
+		814B06A823055C220062906D /* UIView+Exntension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B06A723055C220062906D /* UIView+Exntension.swift */; };
+		814B06AB230584680062906D /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B06AA230584680062906D /* NavigationControllerDelegate.swift */; };
+		814B06AD2305849A0062906D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B06AC230584990062906D /* NavigationController.swift */; };
+		814B06B0230584D50062906D /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814B06AF230584D50062906D /* ScanViewController.swift */; };
+		817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B25D523059434003DF85D /* UIImage+Assets.swift */; };
+		8C6BFEB69BC3E9F1326AD777 /* Pods_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32571D62A13127324DF8781 /* Pods_VinylerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		315203D63A8B5303502E48B6 /* Pods-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		813E834122E441430057F0E6 /* Vinyler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vinyler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813E834422E441430057F0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		813E834B22E441450057F0E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +60,7 @@
 		813E836F22E446CE0057F0E6 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
 		813E837122E449310057F0E6 /* UIColor+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Style.swift"; sourceTree = "<group>"; };
 		813E837422E450D30057F0E6 /* DiscogsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsAPI.swift; sourceTree = "<group>"; };
-		813E837622E45CEC0057F0E6 /* GetResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetResults.swift; sourceTree = "<group>"; };
+		813E837622E45CEC0057F0E6 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		813E837822E467090057F0E6 /* UIFont+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Style.swift"; sourceTree = "<group>"; };
 		813E837A22E4676F0057F0E6 /* UILabel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Style.swift"; sourceTree = "<group>"; };
 		813E837C22E468410057F0E6 /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
@@ -58,6 +68,16 @@
 		813E838022E46C550057F0E6 /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		813E838222E46D2D0057F0E6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		813E838422E46E260057F0E6 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		814B06A223040D3A0062906D /* String+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Assets.swift"; sourceTree = "<group>"; };
+		814B06A723055C220062906D /* UIView+Exntension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Exntension.swift"; sourceTree = "<group>"; };
+		814B06AA230584680062906D /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
+		814B06AC230584990062906D /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		814B06AF230584D50062906D /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		817B25D523059434003DF85D /* UIImage+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Assets.swift"; sourceTree = "<group>"; };
+		C8275AC734974299FF0D7ED3 /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
+		D32571D62A13127324DF8781 /* Pods_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6E2DC820F73F37FC86C5F5E /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				019A0515144331EBFA144D0E /* Pods_Vinyler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C6BFEB69BC3E9F1326AD777 /* Pods_VinylerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +106,8 @@
 				813E834322E441430057F0E6 /* Vinyler */,
 				813E835822E441450057F0E6 /* VinylerTests */,
 				813E834222E441430057F0E6 /* Products */,
+				CD87E881C4C1DBBAFD0975B8 /* Pods */,
+				B837D4AC3C048E57A73820CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +123,8 @@
 		813E834322E441430057F0E6 /* Vinyler */ = {
 			isa = PBXGroup;
 			children = (
+				814B06A42304197F0062906D /* Extensions */,
+				814B06A123040CFC0062906D /* Assets */,
 				813E836A22E443C10057F0E6 /* Sources */,
 				813E836422E441660057F0E6 /* Resources */,
 				813E835022E441450057F0E6 /* Info.plist */,
@@ -119,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				813E834D22E441450057F0E6 /* LaunchScreen.storyboard */,
-				813E834B22E441450057F0E6 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -127,7 +152,7 @@
 		813E836922E443870057F0E6 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				813E837622E45CEC0057F0E6 /* GetResults.swift */,
+				813E837622E45CEC0057F0E6 /* Results.swift */,
 				813E837C22E468410057F0E6 /* Release.swift */,
 				813E837E22E46BAA0057F0E6 /* TrackList.swift */,
 				813E838022E46C550057F0E6 /* Videos.swift */,
@@ -153,6 +178,8 @@
 		813E836B22E444560057F0E6 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				814B06AE230584C80062906D /* Scan */,
+				814B06A9230584620062906D /* Navigation */,
 				813E836C22E444750057F0E6 /* Main */,
 			);
 			path = Display;
@@ -193,6 +220,61 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		814B06A123040CFC0062906D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				813E834B22E441450057F0E6 /* Assets.xcassets */,
+				814B06A223040D3A0062906D /* String+Assets.swift */,
+				817B25D523059434003DF85D /* UIImage+Assets.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		814B06A42304197F0062906D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				814B06A723055C220062906D /* UIView+Exntension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		814B06A9230584620062906D /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				814B06AA230584680062906D /* NavigationControllerDelegate.swift */,
+				814B06AC230584990062906D /* NavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		814B06AE230584C80062906D /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				814B06AF230584D50062906D /* ScanViewController.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		B837D4AC3C048E57A73820CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */,
+				D32571D62A13127324DF8781 /* Pods_VinylerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD87E881C4C1DBBAFD0975B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C8275AC734974299FF0D7ED3 /* Pods-Vinyler.debug.xcconfig */,
+				E6E2DC820F73F37FC86C5F5E /* Pods-Vinyler.release.xcconfig */,
+				315203D63A8B5303502E48B6 /* Pods-VinylerTests.debug.xcconfig */,
+				5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,9 +282,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 813E835E22E441450057F0E6 /* Build configuration list for PBXNativeTarget "Vinyler" */;
 			buildPhases = (
+				F3391726AAFE9CCDF5EA88B6 /* [CP] Check Pods Manifest.lock */,
 				813E833D22E441430057F0E6 /* Sources */,
 				813E833E22E441430057F0E6 /* Frameworks */,
 				813E833F22E441430057F0E6 /* Resources */,
+				6F13A34E715252633D801D40 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,6 +301,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 813E836122E441450057F0E6 /* Build configuration list for PBXNativeTarget "VinylerTests" */;
 			buildPhases = (
+				68906E7667303C899A96A56E /* [CP] Check Pods Manifest.lock */,
 				813E835122E441450057F0E6 /* Sources */,
 				813E835222E441450057F0E6 /* Frameworks */,
 				813E835322E441450057F0E6 /* Resources */,
@@ -288,23 +373,100 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		68906E7667303C899A96A56E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinylerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F13A34E715252633D801D40 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3391726AAFE9CCDF5EA88B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vinyler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		813E833D22E441430057F0E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
+				814B06A823055C220062906D /* UIView+Exntension.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
+				817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */,
 				813E837022E446CE0057F0E6 /* UIButton+Style.swift in Sources */,
-				813E837722E45CEC0057F0E6 /* GetResults.swift in Sources */,
+				813E837722E45CEC0057F0E6 /* Results.swift in Sources */,
 				813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */,
 				813E838322E46D2D0057F0E6 /* Image.swift in Sources */,
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
+				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
+				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
+				814B06AB230584680062906D /* NavigationControllerDelegate.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
 				813E836822E441910057F0E6 /* MainViewModel.swift in Sources */,
 			);
@@ -458,6 +620,7 @@
 		};
 		813E835F22E441450057F0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8275AC734974299FF0D7ED3 /* Pods-Vinyler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -477,6 +640,7 @@
 		};
 		813E836022E441450057F0E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6E2DC820F73F37FC86C5F5E /* Pods-Vinyler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -496,6 +660,7 @@
 		};
 		813E836222E441450057F0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 315203D63A8B5303502E48B6 /* Pods-VinylerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -517,6 +682,7 @@
 		};
 		813E836322E441450057F0E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

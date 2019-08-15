@@ -7,77 +7,60 @@
 //
 
 import Foundation
+import RxSwift
 
-enum Discogs {
-    
+enum RequestError: Error {
+    case invalidUrl
+    case noResults
+    case unavailable
 }
-
-//enum Error: Error {
-//    case invalidUrl
-//    case noResults
-//    case unavailable
-//}
 
 class DiscogsAPI {
     
     private let baseURL = "https://api.discogs.com"
+    let disposeBag = DisposeBag()
     
-    func search(query: String, completion: @escaping ([GetResult]?) -> ()) {
-//        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-//            return Observable.error(DiscogsError.invalidUrl)
-//        }
-//        let path = base + "/database/search?q=" + query + "&type=release&format=Vinyl"
-//        let searchResults: Observable<SearchResults> = request(path: path)
-//        return searchResults.map { $0.results }
+    func search(query: String) -> Observable<[Result]> {
+        
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+             return Observable.error(RequestError.invalidUrl)
+        }
         
         let path = baseURL + "/database/search?q=" + query + "&type=release&format=Vinyl"
-        let url: URL = URL(string: path)!
+        let result: Observable<Results> = request(path: path)
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-                
-            if let error = error {
-                print(error.localizedDescription)
-                completion(nil)
-            } else if let data = data {
-                let vinylList = try? JSONDecoder().decode(GetResults.self, from: data)
-                
-                if let vinylList = vinylList {
-                    completion(vinylList.results)
-                }
-                
-                print("results : \(String(describing: vinylList?.results))")
-                print("data : \(data)")
-                
-//                let getResults: <GetResults.self> = request(path: path)
-//                return getResults.map { $0.results }
-            }
-        }.resume()
+        return result.map { $0.results }
+
     }
     
-//    private func request<T: Codable>(path: String) -> <T> {
-//        guard let url = URL(string: path) else {
-//            return Observable.error(DiscogsError.invalidUrl)
-//        }
-//        var request = URLRequest(url: url)
-//        request.setValue("Discogs key=\(key), secret=\(secret)", forHTTPHeaderField: "Authorization")
-//        request.setValue("application/vnd.discogs.v2.plaintext+json", forHTTPHeaderField: "Accept")
-//        return URLSession.shared.rx.data(request: request).retry(3).flatMap { data -> Observable<T> in
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let release = try decoder.decode(T.self, from: data)
-//                return Observable.just(release)
-//            } catch {
-//                return Observable.error(DiscogsError.noResults)
-//            }
-//            }.catchError { error in
-//                let error = error as NSError
-//                if error.code == -1009 {
-//                    return Observable.error(DiscogsError.unavailable)
-//                }
-//                return Observable.error(error)
-//        }
-//    }
+    private func request<T: Codable>(path: String) -> Observable<T> {
+        
+        guard let url = URL(string: path) else {
+            return Observable.error(RequestError.invalidUrl)
+        }
+        
+        var request = URLRequest(url: url)
+        request.setValue("Discogs key=\(key), secret=\(secret)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/vnd.discogs.v2.plaintext+json", forHTTPHeaderField: "Accept")
+        
+        return URLSession.shared.rx.data(request: request)
+            .flatMap { data -> Observable<T> in
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let release = /*try JSONDecoder().decode(T.self, from: data)*/ try decoder.decode(T.self, from: data)
+                    print("release : \(release)")
+                    return Observable.just(release)
+                    
+                } catch {
+                    return Observable.error(RequestError.noResults)
+                }
+            }.catchError { error in
+                let error = error as Error
+                print("search error : \(error.localizedDescription)")
+                return Observable.error(error)
+            }
+        }
     
 }
 

@@ -1,5 +1,5 @@
 //
-//  GetResults.swift
+//  Results.swift
 //  Vinyler
 //
 //  Created by 민송경 on 21/07/2019.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct GetResults: Codable {
-    let results: [GetResult]
+struct Results: Codable {
+    let results: [Result]
 }
 
-struct GetResult: Codable {
+struct Result: Codable {
     let resourceUrl: String
     let format: [String]
     let labels: [String]

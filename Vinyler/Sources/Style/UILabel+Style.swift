@@ -11,14 +11,14 @@ import UIKit
 extension UILabel {
     
     static var block: UILabel {
-        let label = UILabel()
+        let label =  UILabel(forAutoLayout: ())
         label.font = .block
         label.textColor = .dark
         return label
     }
     
     static var header: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .header
         label.textColor = .dark
         label.numberOfLines = 0
@@ -34,7 +34,7 @@ extension UILabel {
 //    }
     
     static var headerLight: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .header
         label.textColor = .gray
         
@@ -43,7 +43,7 @@ extension UILabel {
     }
     
     static var header2: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .header2
         label.textColor = .dark
         label.numberOfLines = 0
@@ -51,7 +51,7 @@ extension UILabel {
     }
     
     static var subheader: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .subheader
         label.textColor = .dark
         label.numberOfLines = 0
@@ -59,7 +59,7 @@ extension UILabel {
     }
     
     static var subheaderDark: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .subheader
         label.textColor = .dark
         label.numberOfLines = 0
@@ -67,7 +67,7 @@ extension UILabel {
     }
     
     static var body: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .body
         label.textColor = .dark
         label.numberOfLines = 0
@@ -75,21 +75,21 @@ extension UILabel {
     }
     
     static var bodyLight: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .body
         label.textColor = .gray
         return label
     }
     
     static var format: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .metadata
         label.textColor = .white
         return label
     }
     
     static var position: UILabel {
-        let label = UILabel()
+        let label = UILabel(forAutoLayout: ())
         label.font = .position
         label.textColor = .dark
         return label
