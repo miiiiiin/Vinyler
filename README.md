@@ -1,2 +1,5 @@
 # Vinyler
 # Vinyler
+
+# Architecture
+MVVM
