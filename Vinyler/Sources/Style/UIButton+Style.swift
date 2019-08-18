@@ -84,25 +84,16 @@ extension UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.back, for: .normal)
         button.tintColor = .dark
-        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-        return button
-    }
-    
-    static var info: UIButton {
-        let button = UIButton(forAutoLayout: ())
-        button.setImage(#imageLiteral(resourceName: "info"), for: .normal)
-        button.tintColor = .dark
-        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
     
     static var more: UIButton {
         let button = UIButton(forAutoLayout: ())
-        button.setImage(.more, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "more"), for: .normal)
         button.tintColor = .dark
-        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
