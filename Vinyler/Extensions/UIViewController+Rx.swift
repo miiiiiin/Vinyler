@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+public extension Reactive where Base: UIViewController {
+    
+    public var viewDidLoad: ControlEvent<Void> {
+        let event = methodInvoked(#selector(Base.viewDidLoad)).mapVoid()
+        return ControlEvent(events: event)
+    }
+    
+    public var viewDidAppear: ControlEvent<Void> {
+        let event = methodInvoked(#selector(Base.viewDidAppear)).mapVoid()
+        return ControlEvent(events: event)
+    }
+}

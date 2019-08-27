@@ -20,7 +20,6 @@ class ScanViewController: UIViewController {
     let cameraPermission = UILabel.header
     private let disposeBag = DisposeBag()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,17 +51,17 @@ class ScanViewController: UIViewController {
 //                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.session.stopRunning()
             })
-            .flatMap { code -> Observable<String> in
-                if let codeString = code?.stringValue {
-                    return Observable.just(codeString)
+            .flatMap { barcode -> Observable<String> in
+                if let barcodeString = barcode?.stringValue {
+                    return Observable.just(barcodeString) //"5060124900964"
                 } else {
                     return Observable.error(RequestError.noResults)
                 }
             }
             
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] code in
-                let loadingVC = LoadingViewController(code: code)
+            .subscribe(onNext: { [weak self] barcode in
+                let loadingVC = LoadingViewController(barcode: barcode)
                 let nav = NavigationController(rootViewController: loadingVC)
                 nav.transitioningDelegate = self
                 self?.present(nav, animated: true)
@@ -115,7 +114,6 @@ class ScanViewController: UIViewController {
         let targetView = CameraTargetView(forAutoLayout: ())
         
         [preview, targetView, cameraPermission, helpLabel].forEach(root.addSubview)
-        
         [back, helpLabel].forEach(preview.addSubview)
         
         back.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor, constant: 33).isActive = true

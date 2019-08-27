@@ -7,3 +7,22 @@
 //
 
 import Foundation
+import UIKit
+
+class AlbumViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    init(release: Release) {
+        super.init(nibName: nil, bundle: nil)
+        
+        print(release)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
+}

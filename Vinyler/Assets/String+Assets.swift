@@ -53,7 +53,7 @@ extension String {
     static let connectionErrorTitle = "404"
     static let connectionErrorMessage = NSLocalizedString("Oops, looks like\nyou’re offline.\nWould you like to %@", comment: "")
     static let retry = NSLocalizedString("try again?", comment: "")
-    static let noResultsErrorTitle = "(⊙.☉)7"
+    static let noResultsErrorTitle = "Sorry there's no result"
     static let noResultsErrorMessage = NSLocalizedString("Sorry, we couldn’t find\nwhat you’re\nlooking for.", comment: "")
     static let genericErrorTitle = NSLocalizedString("Ooops!", comment: "")
     static let genericErrorMessage = NSLocalizedString("Unfortunately, something went wrong. Please try again.", comment: "")

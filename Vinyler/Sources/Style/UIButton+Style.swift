@@ -73,7 +73,7 @@ extension UIButton {
     
     static var cancel: UIButton {
         let button = UIButton(forAutoLayout: ())
-        button.setBackgroundImage(.cancel, for: .normal)
+        button.setBackgroundImage(#imageLiteral(resourceName: "cancel"), for: .normal)
         button.tintColor = .dark
         button.widthAnchor.constraint(equalToConstant: 77).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
