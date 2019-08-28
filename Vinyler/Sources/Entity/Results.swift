@@ -15,9 +15,11 @@ struct Results: Codable {
 struct Result: Codable {
     let resourceUrl: String
     let format: [String]
-    let labels: [String]
+    let label: [String]
     let title: String
     let thumb: String
     let country: String
     let year: String?
+    let uri: String?
 }
+

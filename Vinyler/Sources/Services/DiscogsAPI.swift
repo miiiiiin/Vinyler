@@ -28,7 +28,6 @@ class DiscogsAPI {
         
         let path = baseURL + "/database/search?q=" + query + "&type=release&format=Vinyl"
         let result: Observable<Results> = request(path: path)
-        
         return result.map { $0.results }
 
     }
@@ -51,20 +50,19 @@ class DiscogsAPI {
         request.setValue("Discogs key=\(key), secret=\(secret)", forHTTPHeaderField: "Authorization")
         request.setValue("application/vnd.discogs.v2.plaintext+json", forHTTPHeaderField: "Accept")
         
-        return URLSession.shared.rx.data(request: request)
-            .flatMap { data -> Observable<T> in
+        return URLSession.shared.rx.data(request: request).flatMap { data -> Observable<T> in
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let release = /*try JSONDecoder().decode(T.self, from: data)*/ try decoder.decode(T.self, from: data)
+                    let release = try decoder.decode(T.self, from: data) /*try JSONDecoder().decode(T.self, from: data)*/
                     print("release : \(release)")
-                    return Observable.just(release)
                     
+                    return Observable.just(release)
                 } catch {
                     return Observable.error(RequestError.noResults)
                 }
             }.catchError { error in
-                let error = error as Error
+                let error = error as NSError
                 print("search error : \(error.localizedDescription)")
                 return Observable.error(error)
             }

@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
     
     override func loadView() {
         let root = UIView.background
+        root.backgroundColor = UIColor(red: 255/255, green: 208/255, blue: 53/255, alpha: 1.0)
         
         [moreButton, greetingLabel, scanLabel, cameraButton].forEach(root.addSubview)
         greetingLabel.text = String.hello
