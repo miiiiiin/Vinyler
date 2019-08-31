@@ -8,24 +8,164 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+import StoreKit
 
 class AlbumViewController: UIViewController {
     
+    private let closeButton = UIButton.close
+    private let moreButton = UIButton.more
+    private let artistLabel = UILabel.subheader
+    private let titleLabel = UILabel.subheader
+    private var albumImageView = UIImageView(forAutoLayout: ())
+    private let vinylImageView = UIImageView(forAutoLayout: ())
+    private let dateLabel = UILabel.bodyLight
+//    private let formatsCollectionView = FormatsCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let descriptionTitleLabel = UILabel.header2
+    private let descriptionLabel = UILabel.body
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
         
-        print(release)
+        titleLabel.text = release.title
+        artistLabel.text = release.artistsSort.uppercased()
         
-//        Release(id: 862641, title: "Serotone", artistsSort: "Matt O\'Brien", lowestPrice: Optional(3.33), notesPlaintext: Optional("Stickered plastic sleeve. This is the 1st pressing in clear vinyl.\r\n\r\nThe 2nd pressing is in transparent orange vinyl.\r\nThe 3rd pressing in transparent electric <a href=http://www.discogs.com/release/2123933>blue vinyl</a>.\r\nA 4th pressing is in <a href=\"http://www.discogs.com/release/862641\">black vinyl</a>.\r\n\r\nB: Remix and additional production at Studio 56.\r\n\r\nA: 33 rpm. B: 45 rpm.\r\n"), images: [Vinyler.Image(type: Vinyler.ImageType.primary), Vinyler.Image(type: Vinyler.ImageType.secondary), Vinyler.Image(type: Vinyler.ImageType.secondary)], tracklist: [Vinyler.TrackList(duration: "12:00", position: "A", title: "Serotone (Version)"), Vinyler.TrackList(duration: "8:37", position: "B", title: "Serotone (Radio Slave\'s Panorama Garage Remix)")], releasedFormatted: Optional("18 Dec 2006"), formats: [Vinyler.Format(name: "Vinyl", descriptions: ["12\"", "33 ⅓ RPM", "45 RPM"])])
-
+        if let releaseDate = release.releasedFormatted {
+            dateLabel.text = String(format: .releasedOn, releaseDate)
+        }
         
+        if let price = release.lowestPrice {
+            let priceString = "$ \(price)"
+            
+        } else {
+            print("not available")
+        }
+        
+        descriptionTitleLabel.text = .description
+        
+        if let notes = release.notes {
+            descriptionLabel.set(bodyText: notes)
+        }
+        
+        vinylImageView.image = #imageLiteral(resourceName: "vinyl")
+        vinylImageView.isHidden = true
+        
+        albumImageView.image = #imageLiteral(resourceName: "placeholder")
+        albumImageView.contentMode = .scaleAspectFill
+        
+        let imageDriver: Driver<UIImage?>
+        
+        let primaryImage = release.images.filter { $0.type == .primary }.first
+        let anyImage = release.images.first
+        let image = primaryImage ?? anyImage
+        if let imageUrlString = image?.resourceUrl,
+            let imageUrl = URL(string: imageUrlString) {
+            let request = URLRequest(url: imageUrl)
+            imageDriver = URLSession.shared.rx.data(request: request).map(UIImage.init).asDriver(onErrorJustReturn: nil)
+        } else {
+            imageDriver = Driver.just(nil)
+        }
+        
+        imageDriver.do(onNext: { [weak self] _ in
+            self?.vinylImageView.isHidden = false
+            
+        }).filter { $0 != nil }
+        .drive(albumImageView.rx.image)
+        .disposed(by: disposeBag)
+        
+        closeButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.navigationController?.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        
+        
+        let formatDescription = release.formats.reduce([]) { result, format -> [String] in
+            
+            var array = result
+            array.append(contentsOf: format.descriptions)
+            return array
+        }
+        
+        vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi/2)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.vinylImageView.transform = .identity
+        }) { completed in
+            if completed {
+                SKStoreReviewController.requestReview()
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
+    }
+    
+    override func loadView() {
+        let root = UIScrollView(frame: UIScreen.main.bounds)
+        root.backgroundColor = .white
+        let contentView = UIView(forAutoLayout: ())
+        root.addSubview(contentView)
+        
+        let albumWithVinyl = UIView(forAutoLayout: ())
+        
+        [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
+        
+        NSLayoutConstraint.activate([
+            albumImageView.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
+            albumImageView.topAnchor.constraint(equalTo: albumWithVinyl.topAnchor),
+            albumImageView.bottomAnchor.constraint(equalTo: albumWithVinyl.bottomAnchor),
+            albumImageView.heightAnchor.constraint(equalTo: albumImageView.widthAnchor),
+            vinylImageView.trailingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: 43),
+            vinylImageView.topAnchor.constraint(equalTo: albumImageView.topAnchor),
+            vinylImageView.trailingAnchor.constraint(equalTo: albumWithVinyl.trailingAnchor),
+            vinylImageView.bottomAnchor.constraint(equalTo: albumImageView.bottomAnchor),
+            vinylImageView.widthAnchor.constraint(equalTo: vinylImageView.heightAnchor)
+        ])
+        
+        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
+        contentView.pinToSuperview()
+        
+        NSLayoutConstraint.activate([
+        
+            contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
+            closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 30),
+            closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            moreButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
+            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -23),
+            artistLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 33),
+            artistLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
+            artistLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
+            titleLabel.topAnchor.constraint(equalTo: artistLabel.bottomAnchor, constant: 6),
+            titleLabel.leadingAnchor.constraint(equalTo: artistLabel.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: artistLabel.trailingAnchor),
+            albumWithVinyl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 44),
+            albumWithVinyl.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            albumWithVinyl.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            albumWithVinyl.bottomAnchor.constraint(equalTo: dateLabel.topAnchor),
+            
+            dateLabel.topAnchor.constraint(equalTo: albumWithVinyl.bottomAnchor, constant: 50),
+            dateLabel.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
+            descriptionTitleLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 33),
+            descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 22),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44)
+            
+        ])
+        
+        self.view = root
     }
 }

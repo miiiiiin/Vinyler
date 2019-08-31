@@ -14,6 +14,6 @@ enum ImageType: String, Codable {
 }
 
 struct Image: Codable {
-//    let resourceUrl: String
+    let resourceUrl: String
     let type: ImageType
 }
