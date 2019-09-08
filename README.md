@@ -1,5 +1,3 @@
 # Vinyler
-# Vinyler
-
 # Architecture
-MVVM
+MVC
