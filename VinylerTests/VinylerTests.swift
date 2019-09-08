@@ -6,8 +6,8 @@
 //  Copyright © 2019 songkyung min. All rights reserved.
 //
 
-import XCTest
 @testable import Vinyler
+import XCTest
 
 class VinylerTests: XCTestCase {
 

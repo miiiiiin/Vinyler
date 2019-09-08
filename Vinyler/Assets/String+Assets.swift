@@ -9,7 +9,7 @@
 import Foundation
 
 extension String {
-    
+
     static let hello = NSLocalizedString("Hello.", comment: "")
     static let scan = NSLocalizedString("Click the camera button\nand scan the barcode of vinyl", comment: "")
     static let or = NSLocalizedString("or", comment: "")
@@ -64,5 +64,3 @@ extension String {
     static let artist = NSLocalizedString("Artist", comment: "")
     static let members = NSLocalizedString("Members:", comment: "")
 }
-
-

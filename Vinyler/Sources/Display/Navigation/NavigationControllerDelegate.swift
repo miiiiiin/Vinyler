@@ -9,7 +9,7 @@
 import UIKit
 
 class NavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
-    
+
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if fromVC.isKind(of: MainViewController.self),
             toVC.isKind(of: ScanViewController.self) {
@@ -20,5 +20,5 @@ class NavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
         }
         return nil
     }
-    
+
 }

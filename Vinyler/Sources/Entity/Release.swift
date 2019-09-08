@@ -21,7 +21,7 @@ struct Release: Codable {
     let uri: String?
     let status: String
     var videos: [Videos]?
-    
+
 //    var mainArtistResourceUrl: String {
 //        return artists.first.map { $0.resourceUrl } ?? ""
 //    }

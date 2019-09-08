@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
+
     convenience init(forAutoLayout: ()) {
         self.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     static var background: UIView {
         let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .white
         return view
     }
-    
+
     func pinToSuperview(withInsets insets: UIEdgeInsets = .zero) {
         guard let superview = superview else {
             fatalError("Can't set constraints to a view which has no superview")
@@ -31,14 +31,14 @@ extension UIView {
         trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: insets.right).isActive = true
         bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: insets.bottom).isActive = true
     }
-    
+
     func pin(to view: UIView, withInsets insets: UIEdgeInsets = .zero) {
         leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left).isActive = true
         topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top).isActive = true
         trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: insets.right).isActive = true
         bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: insets.bottom).isActive = true
     }
-    
+
     func centerInSuperview() {
         guard let superview = superview else {
             fatalError("Can't set constraints to a view which has no superview")

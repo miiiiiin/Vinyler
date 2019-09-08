@@ -22,4 +22,3 @@ struct Result: Codable {
     let year: String?
     let uri: String?
 }
-

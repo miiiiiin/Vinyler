@@ -11,4 +11,3 @@ import Foundation
 struct Videos: Codable {
     let uri: String?
 }
-

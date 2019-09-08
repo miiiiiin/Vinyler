@@ -9,27 +9,27 @@
 import UIKit
 
 extension UIFont {
-    
+
     static func regularFont(with size: CGFloat) -> UIFont? {
         return UIFont(name: "AvenirNext-Regular", size: size)
     }
-    
+
     static func demiBoldFont(with size: CGFloat) -> UIFont? {
         return UIFont(name: "AvenirNext-DemiBold", size: size)
     }
-    
+
     static func boldFont(with size: CGFloat) -> UIFont? {
         return UIFont(name: "AvenirNext-Bold", size: size)
     }
-    
+
     static func mediumFont(with size: CGFloat) -> UIFont? {
         return UIFont(name: "AvenirNext-Medium", size: size)
     }
-    
+
     static func timesFont(with size: CGFloat) -> UIFont? {
         return UIFont(name: "TimesNewRomanPSMT", size: size)
     }
-    
+
     static var block = UIFont.demiBoldFont(with: 40)
     static var header = UIFont.regularFont(with: 24)
     static var headerBold = UIFont.demiBoldFont(with: 24)

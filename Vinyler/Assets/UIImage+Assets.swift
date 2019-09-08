@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-    
+
     static let camera = UIImage(named: "camera")
     static let close = UIImage(named: "close")
     static let disclosure = UIImage(named: "disclosure")

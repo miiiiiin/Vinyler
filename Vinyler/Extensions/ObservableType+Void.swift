@@ -10,9 +10,8 @@ import RxSwift
 
 //create extension function for converting observable<[any]> to observable<void>
 extension ObservableType {
-    
+
     func mapVoid() -> Observable<Void> {
         return map { _ in () }
     }
 }
-

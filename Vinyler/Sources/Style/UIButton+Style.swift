@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIButton {
- 
+
 //    static var back: UIButton {
 //        let button = UIButton()
 //        button.setImage(#imageLiteral(resourceName: "back"), for: .normal)
@@ -52,7 +52,7 @@ extension UIButton {
 //        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
 //        return button
 //    }
-    
+
     static var camera: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
@@ -61,7 +61,7 @@ extension UIButton {
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
-    
+
     static var close: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.close, for: .normal)
@@ -70,7 +70,7 @@ extension UIButton {
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
-    
+
     static var cancel: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setBackgroundImage(#imageLiteral(resourceName: "cancel"), for: .normal)
@@ -79,7 +79,7 @@ extension UIButton {
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
-    
+
     static var back: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.back, for: .normal)
@@ -88,7 +88,7 @@ extension UIButton {
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
-    
+
     static var more: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(#imageLiteral(resourceName: "more"), for: .normal)
