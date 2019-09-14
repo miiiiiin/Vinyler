@@ -94,9 +94,8 @@ class AlbumViewController: UIViewController {
                     let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
                     self?.navigationController?.pushViewController(loadingVC, animated: true)
                 case .tracklist:
-                    return
-//                    let tracklistViewController = TracklistViewController(release: release, image: imageDriver)
-//                    //                    self?.navigationController?.pushViewController(tracklistViewController, animated: true)
+                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
+                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
                 }
             }).disposed(by: disposeBag)
 

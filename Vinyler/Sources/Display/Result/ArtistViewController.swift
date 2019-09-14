@@ -18,7 +18,7 @@ class ArtistViewController: UIViewController {
     private let artistNameLabel = UILabel.header
     private let artistImageView = UIImageView(forAutoLayout: ())
     private let membersLabel = UILabel.bodyLight
-    private let descriptionLabel = UILabel.bodyLight
+    private let descriptionLabel = UILabel.body
     private var artistImageViewRatio: NSLayoutConstraint?
     
     private let disposeBag = DisposeBag()
@@ -34,7 +34,7 @@ class ArtistViewController: UIViewController {
             membersLabel.set(bodyText: membersString, boldPart: .members)
         }
         
-        descriptionLabel.set(bodyText: artist.profileText ?? "")
+        descriptionLabel.set(bodyText: artist.profilePlaintext)
         
         artistImageView.image = #imageLiteral(resourceName: "placeholder")
         artistImageView.contentMode = .scaleAspectFill
@@ -89,20 +89,21 @@ class ArtistViewController: UIViewController {
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
             backButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33),
-            backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
             artistTypeLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 35),
             artistTypeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
-            artistTypeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 22),
+            artistTypeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
             artistNameLabel.topAnchor.constraint(equalTo: artistTypeLabel.bottomAnchor, constant: 10),
             artistNameLabel.leadingAnchor.constraint(equalTo: artistTypeLabel.leadingAnchor),
             artistNameLabel.trailingAnchor.constraint(equalTo: artistTypeLabel.trailingAnchor),
             artistImageView.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor, constant: 44),
             artistImageView.leadingAnchor.constraint(equalTo: artistNameLabel.leadingAnchor),
-            artistImageView.trailingAnchor.constraint(equalTo: artistNameLabel.trailingAnchor),
+            artistImageView.trailingAnchor.constraint(equalTo: artistNameLabel.trailingAnchor, constant: -22),
             membersLabel.topAnchor.constraint(equalTo: artistImageView.bottomAnchor, constant: 22),
             membersLabel.leadingAnchor.constraint(equalTo: artistImageView.leadingAnchor),
             membersLabel.trailingAnchor.constraint(equalTo: artistImageView.trailingAnchor),
-            descriptionLabel.topAnchor.constraint(equalTo: membersLabel.bottomAnchor, constant: 22),
+            descriptionLabel.topAnchor.constraint(equalTo: membersLabel.bottomAnchor, constant: 20),
+            descriptionLabel.leadingAnchor.constraint(equalTo: membersLabel.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44)
         ])
@@ -110,6 +111,6 @@ class ArtistViewController: UIViewController {
         self.view = root
         
         membersLabel.numberOfLines = 0
-        
+        descriptionLabel.numberOfLines = 0
     }
 }

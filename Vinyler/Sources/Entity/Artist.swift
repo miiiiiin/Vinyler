@@ -10,7 +10,7 @@ import Foundation
 
 struct Artist: Codable {
     let name: String
-    let profileText: String?
+    let profilePlaintext: String
     let members: [ArtistDetail]?
     let images: [Image]
     
