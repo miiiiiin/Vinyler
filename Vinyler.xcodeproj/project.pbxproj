@@ -44,6 +44,16 @@
 		81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F46D7B231A7263002CAC44 /* FormatsCollectionView.swift */; };
 		8C6BFEB69BC3E9F1326AD777 /* Pods_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32571D62A13127324DF8781 /* Pods_VinylerTests.framework */; };
 		FAA41DE923251549008BA317 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FAA41DE823251549008BA317 /* .swiftlint.yml */; };
+		FAD03CC4232CF9C30067E2D9 /* ActionSheetOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CC3232CF9C30067E2D9 /* ActionSheetOption.swift */; };
+		FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CC5232CFA880067E2D9 /* CustomActionSheetViewController.swift */; };
+		FAD03CC9232CFAE60067E2D9 /* DynamicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */; };
+		FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CCA232CFBA50067E2D9 /* CustomActionSheetHeader.swift */; };
+		FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CCC232CFE310067E2D9 /* CustomActionSheetCell.swift */; };
+		FAD03CD0232D048D0067E2D9 /* Observable+Nil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CCF232D048D0067E2D9 /* Observable+Nil.swift */; };
+		FAD03CD2232D08EC0067E2D9 /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CD1232D08EC0067E2D9 /* ArtistViewController.swift */; };
+		FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CD3232D0D5B0067E2D9 /* Artist.swift */; };
+		FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CD5232D0E460067E2D9 /* ArtistDetail.swift */; };
+		FAD03CD8232D61CC0067E2D9 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +112,16 @@
 		DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E2DC820F73F37FC86C5F5E /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
 		FAA41DE823251549008BA317 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FAD03CC3232CF9C30067E2D9 /* ActionSheetOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetOption.swift; sourceTree = "<group>"; };
+		FAD03CC5232CFA880067E2D9 /* CustomActionSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetViewController.swift; sourceTree = "<group>"; };
+		FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTableView.swift; sourceTree = "<group>"; };
+		FAD03CCA232CFBA50067E2D9 /* CustomActionSheetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetHeader.swift; sourceTree = "<group>"; };
+		FAD03CCC232CFE310067E2D9 /* CustomActionSheetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionSheetCell.swift; sourceTree = "<group>"; };
+		FAD03CCF232D048D0067E2D9 /* Observable+Nil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Nil.swift"; sourceTree = "<group>"; };
+		FAD03CD1232D08EC0067E2D9 /* ArtistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
+		FAD03CD3232D0D5B0067E2D9 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		FAD03CD5232D0E460067E2D9 /* ArtistDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetail.swift; sourceTree = "<group>"; };
+		FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +168,8 @@
 		813E834322E441430057F0E6 /* Vinyler */ = {
 			isa = PBXGroup;
 			children = (
+				FAD03CCE232D04870067E2D9 /* Helpers */,
+				FAD03CC2232CF9B00067E2D9 /* ActionSheet */,
 				817B25E223097BA6003DF85D /* Views */,
 				817B25DD230978E5003DF85D /* Animations */,
 				814B06A42304197F0062906D /* Extensions */,
@@ -185,6 +207,8 @@
 				813E838022E46C550057F0E6 /* Videos.swift */,
 				813E838222E46D2D0057F0E6 /* Image.swift */,
 				813E838422E46E260057F0E6 /* Format.swift */,
+				FAD03CD3232D0D5B0067E2D9 /* Artist.swift */,
+				FAD03CD5232D0E460067E2D9 /* ArtistDetail.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -268,6 +292,7 @@
 				817B262D23151881003DF85D /* UIViewController+Rx.swift */,
 				817B262F23152389003DF85D /* ObservableType+Void.swift */,
 				817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */,
+				FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				817B25E323097BB4003DF85D /* ActivityIndicatorView.swift */,
+				FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				817B262B2315166B003DF85D /* AlbumViewController.swift */,
+				FAD03CD1232D08EC0067E2D9 /* ArtistViewController.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -341,6 +368,25 @@
 				5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FAD03CC2232CF9B00067E2D9 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				FAD03CC3232CF9C30067E2D9 /* ActionSheetOption.swift */,
+				FAD03CC5232CFA880067E2D9 /* CustomActionSheetViewController.swift */,
+				FAD03CCA232CFBA50067E2D9 /* CustomActionSheetHeader.swift */,
+				FAD03CCC232CFE310067E2D9 /* CustomActionSheetCell.swift */,
+			);
+			path = ActionSheet;
+			sourceTree = "<group>";
+		};
+		FAD03CCE232D04870067E2D9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FAD03CCF232D048D0067E2D9 /* Observable+Nil.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -538,15 +584,23 @@
 			files = (
 				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
+				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
+				FAD03CC4232CF9C30067E2D9 /* ActionSheetOption.swift in Sources */,
 				814B06A823055C220062906D /* UIView+Exntension.swift in Sources */,
+				FAD03CD0232D048D0067E2D9 /* Observable+Nil.swift in Sources */,
 				817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */,
+				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
+				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
+				FAD03CC9232CFAE60067E2D9 /* DynamicTableView.swift in Sources */,
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
 				817B262E23151881003DF85D /* UIViewController+Rx.swift in Sources */,
+				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,
+				FAD03CD2232D08EC0067E2D9 /* ArtistViewController.swift in Sources */,
 				817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */,
 				817B25DC23097108003DF85D /* CameraTargetView.swift in Sources */,
 				813E837022E446CE0057F0E6 /* UIButton+Style.swift in Sources */,
@@ -554,11 +608,13 @@
 				813E837722E45CEC0057F0E6 /* Results.swift in Sources */,
 				813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */,
 				813E838322E46D2D0057F0E6 /* Image.swift in Sources */,
+				FAD03CD8232D61CC0067E2D9 /* Extension+UIImageView.swift in Sources */,
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
+				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,

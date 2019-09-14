@@ -115,6 +115,27 @@ class LoadingViewController: UIViewController {
         return Observable.error(error)//.merge(close, retry)
     }
 
+    
+    init(artistResourceUrl: String) {
+        super.init(nibName: nil, bundle: nil)
+        
+        let discogs = DiscogsAPI()
+        let fetchRelease = discogs.fetchRelease(artistResourceUrl)
+        
+        handleObservable(observable: fetchRelease).flatMap { [weak self] artist -> ControlEvent<Void> in
+            
+            let artistVC = ArtistViewController(artist: Artist)
+            self?.navigationController?.pushViewController(artistVC, animated: true)
+            
+            return artistVC.rx.viewDidAppear
+            
+        }.subscribe(onNext: { [weak self] in
+            guard let `self` = self, let index = self.navigationController?.viewControllers.index(of: self) else  { return }
+            
+            self.navigationController?.viewControllers.remove(at: index)
+        }).disposed(by: disposeBag)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

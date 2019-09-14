@@ -98,6 +98,23 @@ class AlbumViewController: UIViewController {
 //                }
 //            })
 //            .disposed(by: bag)
+        
+        moreButton.rx.tap
+            .map { [ActionSheetOption.artistDetails, .tracklist] }
+            .flatMap(presentCustomActionSheet)
+            .subscribe(onNext: { [weak self] option in
+                switch option {
+                    
+                case .artistDetails:
+                    let loadingVC = LoadingViewController(barcode: "1111")
+                    self?.navigationController?.pushViewController(loadingVC, animated: true)
+                case .tracklist:
+                    return
+//                    let tracklistVC =
+                    
+                    
+                }
+            }).disposed(by: disposeBag)
 
         let formatDescription = release.formats.reduce([]) { result, format -> [String] in
 
