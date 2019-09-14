@@ -120,11 +120,11 @@ class LoadingViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         let discogs = DiscogsAPI()
-        let fetchRelease = discogs.fetchRelease(artistResourceUrl)
+        let fetchRelease = discogs.fetchArtist(path: artistResourceUrl)
         
         handleObservable(observable: fetchRelease).flatMap { [weak self] artist -> ControlEvent<Void> in
             
-            let artistVC = ArtistViewController(artist: Artist)
+            let artistVC = ArtistViewController(artist: artist)
             self?.navigationController?.pushViewController(artistVC, animated: true)
             
             return artistVC.rx.viewDidAppear

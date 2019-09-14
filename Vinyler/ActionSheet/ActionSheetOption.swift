@@ -27,9 +27,9 @@ enum ActionSheetOption {
         switch self {
             
         case .artistDetails:
-            return #imageLiteral(resourceName: "loader")
-        case .tracklist:
             return #imageLiteral(resourceName: "myVinyls")
+        case .tracklist:
+            return #imageLiteral(resourceName: "list")
         }
     }
     

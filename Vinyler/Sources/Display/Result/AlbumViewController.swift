@@ -83,21 +83,6 @@ class AlbumViewController: UIViewController {
         closeButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.navigationController?.dismiss(animated: true)
         }).disposed(by: disposeBag)
-
-//        moreButton.rx.tap
-//            .map { [ActionSheetOption.artistDetails, .tracklist] }
-//            .flatMap(presentCustomActionSheet)
-//            .subscribe(onNext: { [weak self] option in
-//                switch option {
-//                case .artistDetails:
-//                    let loadingViewController = LoadingViewController(artistResourceUrl: release.mainArtistResourceUrl)
-//                    self?.navigationController?.pushViewController(loadingViewController, animated: true)
-//                case.tracklist:
-//                    let tracklistViewController = TracklistViewController(release: release, image: imageDriver)
-//                    self?.navigationController?.pushViewController(tracklistViewController, animated: true)
-//                }
-//            })
-//            .disposed(by: bag)
         
         moreButton.rx.tap
             .map { [ActionSheetOption.artistDetails, .tracklist] }
@@ -106,13 +91,12 @@ class AlbumViewController: UIViewController {
                 switch option {
                     
                 case .artistDetails:
-                    let loadingVC = LoadingViewController(barcode: "1111")
+                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
                     self?.navigationController?.pushViewController(loadingVC, animated: true)
                 case .tracklist:
                     return
-//                    let tracklistVC =
-                    
-                    
+//                    let tracklistViewController = TracklistViewController(release: release, image: imageDriver)
+//                    //                    self?.navigationController?.pushViewController(tracklistViewController, animated: true)
                 }
             }).disposed(by: disposeBag)
 
@@ -123,10 +107,9 @@ class AlbumViewController: UIViewController {
             return array
         }
 
-//        Observable.just([FormatsSection(items: formatDescriptions)]).bind(to: formatsCollectionView.rx.sections).disposed(by: bag)
+//        Observable.just([FormatsSection(items: formatDescriptions)]).bind(to: formatsCollectionView.rx.sections).disposed(by: disposeBag)
 
         vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi / 2)
-
     }
 
     override func viewDidAppear(_ animated: Bool) {

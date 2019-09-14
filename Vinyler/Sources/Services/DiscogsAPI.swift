@@ -36,9 +36,9 @@ class DiscogsAPI {
         return request(path: path)
     }
 
-//    func fetchArtist(path: String) -> Observable<Artist> {
-//        return request(path: path)
-//    }
+    func fetchArtist(path: String) -> Observable<Artist> {
+        return request(path: path)
+    }
 
     private func request<T: Codable>(path: String) -> Observable<T> {
 

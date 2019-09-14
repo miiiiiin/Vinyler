@@ -12,7 +12,7 @@ import RxCocoa
 
 class CustomActionSheetViewController: UIViewController {
     
-    fileprivate let tableView = DynamicTableView(forAutoLayout: ())
+    fileprivate let tableView = DynamicTableView(forAutoLayout: ()) //선언된 클래스 내에서만 접근 가능한 private과 달리 소속 소스 파일 내에서만 접근 가능
     fileprivate let header = CustomActionSheetHeader(forAutoLayout: ())
     
     private let disposeBag = DisposeBag()
@@ -44,12 +44,12 @@ class CustomActionSheetViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             header.widthAnchor.constraint(equalTo: tableView.widthAnchor)
         ])
         
         root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .white
         tableView.rowHeight = 70
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         tableView.separatorColor = .lightGray
@@ -76,7 +76,7 @@ extension UIViewController {
     func presentCustomActionSheet(with options: [ActionSheetOption]) -> Observable<ActionSheetOption> {
         
         let actionSheet = CustomActionSheetViewController(options: options)
-        actionSheet.modalPresentationStyle = .pageSheet //.overCurrentContext
+        actionSheet.modalPresentationStyle = .overCurrentContext
         present(actionSheet, animated: true, completion: nil)
         
         let close: Observable<ActionSheetOption?> = actionSheet.header.closeButton.rx.tap.map { nil }

@@ -168,11 +168,6 @@
 		813E834322E441430057F0E6 /* Vinyler */ = {
 			isa = PBXGroup;
 			children = (
-				FAD03CCE232D04870067E2D9 /* Helpers */,
-				FAD03CC2232CF9B00067E2D9 /* ActionSheet */,
-				817B25E223097BA6003DF85D /* Views */,
-				817B25DD230978E5003DF85D /* Animations */,
-				814B06A42304197F0062906D /* Extensions */,
 				814B06A123040CFC0062906D /* Assets */,
 				813E836A22E443C10057F0E6 /* Sources */,
 				813E836422E441660057F0E6 /* Resources */,
@@ -216,6 +211,11 @@
 		813E836A22E443C10057F0E6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				817B25DD230978E5003DF85D /* Animations */,
+				814B06A42304197F0062906D /* Extensions */,
+				817B25E223097BA6003DF85D /* Views */,
+				FAD03CC2232CF9B00067E2D9 /* ActionSheet */,
+				FAD03CCE232D04870067E2D9 /* Helpers */,
 				81F46D7A231A724F002CAC44 /* Details */,
 				813E834422E441430057F0E6 /* AppDelegate.swift */,
 				813E837322E450A20057F0E6 /* Services */,
@@ -294,7 +294,8 @@
 				817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */,
 				FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = ../Extensions;
 			sourceTree = "<group>";
 		};
 		814B06A9230584620062906D /* Navigation */ = {
@@ -321,7 +322,8 @@
 			children = (
 				817B25DE230978EE003DF85D /* PresentLoadingAnimationController.swift */,
 			);
-			path = Animations;
+			name = Animations;
+			path = ../Animations;
 			sourceTree = "<group>";
 		};
 		817B25E223097BA6003DF85D /* Views */ = {
@@ -330,7 +332,8 @@
 				817B25E323097BB4003DF85D /* ActivityIndicatorView.swift */,
 				FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */,
 			);
-			path = Views;
+			name = Views;
+			path = ../Views;
 			sourceTree = "<group>";
 		};
 		817B262A23151653003DF85D /* Result */ = {
@@ -378,7 +381,8 @@
 				FAD03CCA232CFBA50067E2D9 /* CustomActionSheetHeader.swift */,
 				FAD03CCC232CFE310067E2D9 /* CustomActionSheetCell.swift */,
 			);
-			path = ActionSheet;
+			name = ActionSheet;
+			path = ../ActionSheet;
 			sourceTree = "<group>";
 		};
 		FAD03CCE232D04870067E2D9 /* Helpers */ = {
@@ -386,7 +390,8 @@
 			children = (
 				FAD03CCF232D048D0067E2D9 /* Observable+Nil.swift */,
 			);
-			path = Helpers;
+			name = Helpers;
+			path = ../Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -23,13 +23,9 @@ class ArtistViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    
-    
-    
-    
     init(artist: Artist) {
         super.init(nibName: nil, bundle: nil)
-        artistTypeLabel.text = artist.type
+        artistTypeLabel.text = artist.type.uppercased()
         artistNameLabel.text = artist.name
        
         let memebersArray = artist.members?.filter { $0.active == true }.map { $0.name }
@@ -82,13 +78,13 @@ class ArtistViewController: UIViewController {
     
     override func loadView() {
         let root = UIScrollView(frame: UIScreen.main.bounds)
-        root.backgroundColor = .clear
+        root.backgroundColor = .white
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(contentView)
         
         [backButton, artistTypeLabel, artistNameLabel, artistImageView, membersLabel, descriptionLabel].forEach(contentView.addSubview)
         
-//        contentView.pinToSuperview()
+        contentView.pinToSuperview()
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
