@@ -22,6 +22,7 @@ class AlbumViewController: UIViewController {
     private let vinylImageView = UIImageView(forAutoLayout: ())
     private let dateLabel = UILabel.bodyLight
     private let formatsCollectionView = FormatsCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private let disclosureButton = DisclosureButton(forAutoLayout: ())
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
     private let disposeBag = DisposeBag()
@@ -34,6 +35,8 @@ class AlbumViewController: UIViewController {
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
 
+        print("release: \(release)")
+        
         titleLabel.text = release.title
         artistLabel.text = release.artistsSort.uppercased()
 
@@ -43,9 +46,10 @@ class AlbumViewController: UIViewController {
 
         if let price = release.lowestPrice {
             let priceString = "$ \(price)"
-
+            let sellsForString = String(format: .sellsFor, priceString)
+                       disclosureButton.titleLbl.set(bodyText: sellsForString, boldPart: priceString, oneLine: true)
         } else {
-            print("not available")
+            disclosureButton.titleLbl.text = .notAvailable
         }
 
         descriptionTitleLabel.text = .description
@@ -100,14 +104,21 @@ class AlbumViewController: UIViewController {
             }).disposed(by: disposeBag)
 
         let formatDescription = release.formats.reduce([]) { result, format -> [String] in
-
             var array = result
             array.append(contentsOf: format.descriptions)
             return array
         }
+        
+        print("formatdescript : \(formatDescription)")
 
-//        Observable.just([FormatsSection(items: formatDescriptions)]).bind(to: formatsCollectionView.rx.sections).disposed(by: disposeBag)
-
+        Observable.just([FormatsSection(items: formatDescription)]).bind(to: formatsCollectionView.rx.sections).disposed(by: disposeBag)
+        
+        disclosureButton.rx.tap.subscribe(onNext: {
+               if let url = URL(string: "https://www.discogs.com/sell/release/\(release.id)") {
+                   UIApplication.shared.open(url, options: [:])
+               }
+           }).disposed(by: disposeBag)
+        
         vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi / 2)
     }
 
@@ -149,16 +160,15 @@ class AlbumViewController: UIViewController {
             vinylImageView.widthAnchor.constraint(equalTo: vinylImageView.heightAnchor)
         ])
 
-        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
+        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
         contentView.pinToSuperview()
 
         NSLayoutConstraint.activate([
-
             contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
-            closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 30),
-            closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33),
+            closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
             moreButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
-            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
+            moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13),
             artistLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 33),
             artistLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
             artistLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
@@ -168,17 +178,21 @@ class AlbumViewController: UIViewController {
             albumWithVinyl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 44),
             albumWithVinyl.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             albumWithVinyl.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            albumWithVinyl.bottomAnchor.constraint(equalTo: dateLabel.topAnchor),
-
-            dateLabel.topAnchor.constraint(equalTo: albumWithVinyl.bottomAnchor, constant: 50),
+            dateLabel.topAnchor.constraint(equalTo: albumWithVinyl.bottomAnchor, constant: 33),
             dateLabel.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
-            descriptionTitleLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            descriptionTitleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 33),
+            formatsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            formatsCollectionView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 33),
+            formatsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            formatsCollectionView.heightAnchor.constraint(equalToConstant: 29),
+            disclosureButton.topAnchor.constraint(equalTo: formatsCollectionView.bottomAnchor, constant: 11),
+            disclosureButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            disclosureButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionTitleLabel.leadingAnchor.constraint(equalTo: disclosureButton.leadingAnchor),
+            descriptionTitleLabel.topAnchor.constraint(equalTo: disclosureButton.bottomAnchor, constant: 33),
             descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 22),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44)
-
         ])
 
         self.view = root

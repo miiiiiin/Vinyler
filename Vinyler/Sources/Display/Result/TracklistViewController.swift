@@ -18,7 +18,7 @@ class TracklistViewController: UIViewController {
     let titleLabel = UILabel.header
     let artistLabel = UILabel.subheader
     let tracklistLabel = UILabel.header2
-//    let separator
+    let separator = UIView.separator
     let tableView = UITableView(forAutoLayout: ())
     
     private let disposeBag = DisposeBag()
@@ -47,7 +47,7 @@ class TracklistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView?.layoutIfNeeded()
     }
     
     override func loadView() {
@@ -59,13 +59,13 @@ class TracklistViewController: UIViewController {
         tableView.pinToSuperview()
         
         let header = UIView(forAutoLayout: ())
+//        header.backgroundColor = .red
         
-        [backButton, titleLabel, artistLabel, tracklistLabel].forEach(header.addSubview)
+        [backButton, titleLabel, artistLabel, tracklistLabel, separator].forEach(header.addSubview)
         
         NSLayoutConstraint.activate([
-        
             header.widthAnchor.constraint(equalToConstant: root.frame.width),
-            backButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 30),
+            backButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 33),
             backButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 35),
             artistLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 33),
             artistLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 44),
@@ -75,16 +75,23 @@ class TracklistViewController: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: artistLabel.trailingAnchor),
             tracklistLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
             tracklistLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            separator.topAnchor.constraint(equalTo: tracklistLabel.bottomAnchor, constant: 15),
+            separator.leadingAnchor.constraint(equalTo: tracklistLabel.leadingAnchor),
+            separator.trailingAnchor.constraint(equalTo: header.trailingAnchor),
+            separator.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
+            separator.bottomAnchor.constraint(equalTo: header.bottomAnchor)
         ])
         
         tableView.tableHeaderView = header
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorColor = .lightGray
         tableView.rowHeight = 70
         tableView.backgroundColor = nil
         
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.clipsToBounds = true
-        backgroundImageView.alpha = 0.5
-        visualView.effect = UIBlurEffect(style: .prominent)
+        backgroundImageView.alpha = 0.9
+        visualView.effect = UIBlurEffect(style: .extraLight)
         
         self.view = root
     }

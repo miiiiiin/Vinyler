@@ -6,11 +6,12 @@ target 'Vinyler' do
   use_frameworks!
 
   # Pods for Vinyler
-    pod 'RxSwift',    '~> 4.0'
-    pod 'RxCocoa',    '~> 4.0'
+    pod 'RxSwift', '~> 5'
+    pod 'RxCocoa', '~> 5'
+    pod 'RxDataSources', '~> 4.0'
     pod 'SwiftLint'
+    
   target 'VinylerTests' do
-    inherit! :search_paths
     # Pods for testing
   end
 

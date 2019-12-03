@@ -63,4 +63,6 @@ extension String {
     static let band = NSLocalizedString("Band", comment: "")
     static let artist = NSLocalizedString("Artist", comment: "")
     static let members = NSLocalizedString("Members:", comment: "")
+    static let notAvailable = NSLocalizedString("Not available for sale on Discogs", comment: "")
+    
 }

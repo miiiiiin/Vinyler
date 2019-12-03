@@ -50,7 +50,4 @@ class TrackCell: UITableViewCell {
         durationLabel.numberOfLines = 1
         
     }
-    
-    
-    
 }

@@ -46,4 +46,11 @@ extension UIView {
         centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
         centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
     }
+    
+    static var separator: UIView {
+        let view = UIView(forAutoLayout: ())
+        view.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale).isActive = true
+        view.backgroundColor = .lightGray
+        return view
+    }
 }

@@ -27,5 +27,4 @@ extension UITapGestureRecognizer {
             return NSLocationInRange(indexOfCharacter, range)
         }.first?.1
     }
-
 }

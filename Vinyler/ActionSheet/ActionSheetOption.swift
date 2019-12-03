@@ -25,12 +25,10 @@ enum ActionSheetOption {
     
     var iconImage: UIImage? {
         switch self {
-            
         case .artistDetails:
             return #imageLiteral(resourceName: "myVinyls")
         case .tracklist:
             return #imageLiteral(resourceName: "list")
         }
     }
-    
 }
