@@ -48,6 +48,5 @@ class TrackCell: UITableViewCell {
         backgroundColor = .clear
         titleLabel.numberOfLines = 1
         durationLabel.numberOfLines = 1
-        
     }
 }

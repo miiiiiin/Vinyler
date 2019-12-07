@@ -189,7 +189,6 @@ class AlbumViewController: UIViewController {
                    descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
                    descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44)
                ])
-
         self.view = root
     }
 }

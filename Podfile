@@ -10,6 +10,8 @@ target 'Vinyler' do
     pod 'RxCocoa', '~> 5'
     pod 'RxDataSources', '~> 4.0'
     pod 'SwiftLint'
+    pod 'lottie-ios'
+    pod 'Windless', '~> 0.1.5'
     
   target 'VinylerTests' do
     # Pods for testing

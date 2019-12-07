@@ -66,7 +66,7 @@ class DiscogsAPI {
                 print("search error : \(error.localizedDescription)")
                 return Observable.error(error)
         }
-        }
+    }
 
 }
 

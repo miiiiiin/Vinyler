@@ -12,7 +12,6 @@
 		813E834F22E441450057F0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813E834D22E441450057F0E6 /* LaunchScreen.storyboard */; };
 		813E835A22E441450057F0E6 /* VinylerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E835922E441450057F0E6 /* VinylerTests.swift */; };
 		813E836622E441830057F0E6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E836522E441830057F0E6 /* MainViewController.swift */; };
-		813E836822E441910057F0E6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E836722E441910057F0E6 /* MainViewModel.swift */; };
 		813E837022E446CE0057F0E6 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E836F22E446CE0057F0E6 /* UIButton+Style.swift */; };
 		813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837122E449310057F0E6 /* UIColor+Style.swift */; };
 		813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837422E450D30057F0E6 /* DiscogsAPI.swift */; };
@@ -86,7 +85,6 @@
 		813E835922E441450057F0E6 /* VinylerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylerTests.swift; sourceTree = "<group>"; };
 		813E835B22E441450057F0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813E836522E441830057F0E6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		813E836722E441910057F0E6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		813E836F22E446CE0057F0E6 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
 		813E837122E449310057F0E6 /* UIColor+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Style.swift"; sourceTree = "<group>"; };
 		813E837422E450D30057F0E6 /* DiscogsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsAPI.swift; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				813E836522E441830057F0E6 /* MainViewController.swift */,
-				813E836722E441910057F0E6 /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -678,7 +675,6 @@
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
-				813E836822E441910057F0E6 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
