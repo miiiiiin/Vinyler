@@ -143,23 +143,22 @@ class AlbumViewController: UIViewController {
         [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
 
        NSLayoutConstraint.activate([
-                   albumImageView.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
-                   albumImageView.topAnchor.constraint(equalTo: albumWithVinyl.topAnchor),
-                   albumImageView.bottomAnchor.constraint(equalTo: albumWithVinyl.bottomAnchor),
-                   albumImageView.heightAnchor.constraint(equalTo: albumImageView.widthAnchor),
-                   vinylImageView.trailingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: 43),
-                   vinylImageView.topAnchor.constraint(equalTo: albumImageView.topAnchor),
-                   vinylImageView.trailingAnchor.constraint(equalTo: albumWithVinyl.trailingAnchor),
-                   vinylImageView.bottomAnchor.constraint(equalTo: albumImageView.bottomAnchor),
-                   vinylImageView.widthAnchor.constraint(equalTo: vinylImageView.widthAnchor)
+                albumImageView.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
+                albumImageView.topAnchor.constraint(equalTo: albumWithVinyl.topAnchor),
+                albumImageView.bottomAnchor.constraint(equalTo: albumWithVinyl.bottomAnchor),
+                albumImageView.heightAnchor.constraint(equalTo: albumImageView.widthAnchor),
+                vinylImageView.trailingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: 43),
+                vinylImageView.topAnchor.constraint(equalTo: albumImageView.topAnchor),
+                vinylImageView.trailingAnchor.constraint(equalTo: albumWithVinyl.trailingAnchor),
+                vinylImageView.bottomAnchor.constraint(equalTo: albumImageView.bottomAnchor),
+                vinylImageView.widthAnchor.constraint(equalTo: albumImageView.widthAnchor)
                ])
                
                [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
                
                contentView.pinToSuperview()
         
-               
-               NSLayoutConstraint.activate([
+            NSLayoutConstraint.activate([
                    contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
                    closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33),
                    closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),

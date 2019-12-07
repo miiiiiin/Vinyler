@@ -9,19 +9,17 @@
 import Foundation
 import UIKit
 
-class FormatCell: UITableViewCell {
+class FormatCell: UICollectionViewCell {
     
     let titleLbl = UILabel.format
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-          super.init(style: style, reuseIdentifier: reuseIdentifier)
-          
+    override init(frame: CGRect) {
+          super.init(frame: frame)
           setUp()
       }
       
       required init?(coder aDecoder: NSCoder) {
           super.init(coder: aDecoder)
-          
           setUp()
       }
     
@@ -29,7 +27,7 @@ class FormatCell: UITableViewCell {
         self.addSubview(titleLbl)
         heightAnchor.constraint(equalToConstant: 29).isActive = true
                titleLbl.pinToSuperview(withInsets: UIEdgeInsets(top: 0, left: 11, bottom: 0, right: -11))
-                backgroundColor = .cyan
-               layer.cornerRadius = 11
+                backgroundColor = .coral
+               layer.cornerRadius = 13
     }
 }
