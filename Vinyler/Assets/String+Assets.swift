@@ -12,8 +12,7 @@ extension String {
 
     static let hello = NSLocalizedString("Hello.", comment: "")
     static let scan = NSLocalizedString("Click the camera button\nand scan the barcode of vinyl", comment: "")
-    static let or = NSLocalizedString("or", comment: "")
-    static let search = NSLocalizedString("search album\nby code or title.", comment: "")
+    static let search = NSLocalizedString(" search by code or title ", comment: "")
     static let cameraPermission = NSLocalizedString("Please allow camera access to be able to scan vinyls.", comment: "")
     static let sellsFor = NSLocalizedString("From %@ on Discogs", comment: "")
     static let shipping = NSLocalizedString("shipping", comment: "")
@@ -66,3 +65,4 @@ extension String {
     static let notAvailable = NSLocalizedString("Not available for sale on Discogs", comment: "")
     
 }
+

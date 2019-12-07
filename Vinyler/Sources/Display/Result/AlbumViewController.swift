@@ -6,7 +6,6 @@
 //  Copyright © 2019 songkyung min. All rights reserved.
 //
 
-import Foundation
 import RxCocoa
 import RxSwift
 import StoreKit
@@ -26,11 +25,6 @@ class AlbumViewController: UIViewController {
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
     private let disposeBag = DisposeBag()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
@@ -163,6 +157,7 @@ class AlbumViewController: UIViewController {
                [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
                
                contentView.pinToSuperview()
+        
                
                NSLayoutConstraint.activate([
                    contentView.widthAnchor.constraint(equalTo: root.widthAnchor),

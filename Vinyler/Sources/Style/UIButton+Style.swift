@@ -53,6 +53,20 @@ extension UIButton {
 //        return button
 //    }
 
+    static var search: UIButton {
+        let button = UIButton(forAutoLayout: ())
+        button.backgroundColor = .coral
+        button.titleLabel?.textColor = .white
+        button.setTitle(.search, for: .normal)
+        button.layer.cornerRadius = 20
+        button.titleLabel?.font = .header
+        button.layer.shadowRadius = 8/2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2).cgColor
+        button.layer.shadowOpacity = 0.8
+        return button
+    }
+    
     static var camera: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(#imageLiteral(resourceName: "camera"), for: .normal)

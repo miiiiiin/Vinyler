@@ -39,6 +39,20 @@ class LoadingViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
 
+    init(resourceUrl: String) {
+          super.init(nibName: nil, bundle: nil)
+          
+          let discogs = DiscogsAPI()
+          
+        let fetchRelease = discogs.fetchRelease(resourceUrl)
+          
+          handleObservable(observable: fetchRelease).subscribe(onNext: { [weak self] release in
+              let albumViewController = AlbumViewController(release: release)
+              self?.navigationController?.popViewController(animated: false)
+              self?.navigationController?.pushViewController(albumViewController, animated: true)
+          }).disposed(by: disposeBag)
+      }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

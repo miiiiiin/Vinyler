@@ -43,6 +43,7 @@
 		817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */; };
 		81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F46D7B231A7263002CAC44 /* FormatsCollectionView.swift */; };
 		981A919E85FE6C375A964820 /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2E72566D0C5B604C39F948 /* Pods_Vinyler_VinylerTests.framework */; };
+		FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050CF7239BFAA70067D32C /* SearchCell.swift */; };
 		FA09D5392396B966006F37BD /* FormatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D5382396B966006F37BD /* FormatCell.swift */; };
 		FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */; };
 		FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53D239BF1D3006F37BD /* SearchViewController.swift */; };
@@ -119,6 +120,7 @@
 		C8275AC734974299FF0D7ED3 /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
 		DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E2DC820F73F37FC86C5F5E /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
+		FA050CF7239BFAA70067D32C /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		FA09D5382396B966006F37BD /* FormatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCell.swift; sourceTree = "<group>"; };
 		FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
 		FA09D53D239BF1D3006F37BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			children = (
 				FA6C3B18232D8B55000E1C87 /* TrackCell.swift */,
 				FA09D5382396B966006F37BD /* FormatCell.swift */,
+				FA050CF7239BFAA70067D32C /* SearchCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
+				FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
 				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
 				FAD03CC4232CF9C30067E2D9 /* ActionSheetOption.swift in Sources */,
