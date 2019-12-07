@@ -59,7 +59,6 @@ class MainViewController: UIViewController {
         greetingLabel.text = String.hello
         scanLabel.set(headerText: .scan)
 
-
         let scanCenter = scanLabel.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -50)
         scanCenter.priority = .defaultLow
         NSLayoutConstraint.activate([
@@ -69,13 +68,15 @@ class MainViewController: UIViewController {
             cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor),
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
 
-            greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 100),
+            greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 90),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
             scanLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 22),
-            scanLabel.leadingAnchor.constraint(equalTo: moreButton.leadingAnchor),
+//            scanLabel.leadingAnchor.constraint(equalTo: moreButton.leadingAnchor),
+            scanLabel.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             scanCenter,
-            searchButton.topAnchor.constraint(equalTo: scanLabel.bottomAnchor, constant: 3),
-            searchButton.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
+            searchButton.topAnchor.constraint(equalTo: scanLabel.bottomAnchor, constant: 20),
+            searchButton.centerXAnchor.constraint(equalTo: root.centerXAnchor)
+//            searchButton.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor)
         ])
         
         self.view = root
