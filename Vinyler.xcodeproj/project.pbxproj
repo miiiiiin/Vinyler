@@ -45,6 +45,8 @@
 		981A919E85FE6C375A964820 /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2E72566D0C5B604C39F948 /* Pods_Vinyler_VinylerTests.framework */; };
 		FA09D5392396B966006F37BD /* FormatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D5382396B966006F37BD /* FormatCell.swift */; };
 		FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */; };
+		FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53D239BF1D3006F37BD /* SearchViewController.swift */; };
+		FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */; };
 		FA6C3B16232D841D000E1C87 /* TracklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C3B15232D841D000E1C87 /* TracklistViewController.swift */; };
 		FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C3B18232D8B55000E1C87 /* TrackCell.swift */; };
 		FAA41DE923251549008BA317 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FAA41DE823251549008BA317 /* .swiftlint.yml */; };
@@ -119,6 +121,8 @@
 		E6E2DC820F73F37FC86C5F5E /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
 		FA09D5382396B966006F37BD /* FormatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCell.swift; sourceTree = "<group>"; };
 		FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
+		FA09D53D239BF1D3006F37BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Style.swift"; sourceTree = "<group>"; };
 		FA6C3B15232D841D000E1C87 /* TracklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistViewController.swift; sourceTree = "<group>"; };
 		FA6C3B18232D8B55000E1C87 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		FAA41DE823251549008BA317 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 		813E836B22E444560057F0E6 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				FA09D53C239BF1C6006F37BD /* Search */,
 				817B262A23151653003DF85D /* Result */,
 				814B06AE230584C80062906D /* Scan */,
 				814B06A9230584620062906D /* Navigation */,
@@ -265,6 +270,7 @@
 				813E837122E449310057F0E6 /* UIColor+Style.swift */,
 				813E837822E467090057F0E6 /* UIFont+Style.swift */,
 				813E837A22E4676F0057F0E6 /* UILabel+Style.swift */,
+				FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -378,6 +384,14 @@
 				9B594B4CFE110D6B8F758267 /* Pods-Vinyler-VinylerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA09D53C239BF1C6006F37BD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				FA09D53D239BF1D3006F37BD /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		FA6C3B17232D8B4E000E1C87 /* Cells */ = {
@@ -650,6 +664,8 @@
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
+				FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */,
+				FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
