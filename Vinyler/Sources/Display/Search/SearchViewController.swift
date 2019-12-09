@@ -36,23 +36,26 @@ class SearchViewController: UITableViewController {
                    inputField.heightAnchor.constraint(equalToConstant: 44)
                ])
         
-        tableView.tableHeaderView = header
-               tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+                tableView.tableHeaderView = header
+                tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
                
-               tableView.tableHeaderView?.layoutIfNeeded()
-               tableView.separatorInset = UIEdgeInsets(top: 0, left: 22, bottom: 0, right: 0)
-               tableView.separatorColor = .gray
-               tableView.rowHeight = 176
-               tableView.delegate = nil
-               tableView.dataSource = nil
+                tableView.tableHeaderView?.layoutIfNeeded()
+//               tableView.separatorInset = UIEdgeInsets(top: 0, left: 22, bottom: 0, right: 0)
+                tableView.separatorInset = .zero
+                tableView.layoutMargins = .zero
+                tableView.separatorStyle = .singleLine
+                tableView.separatorColor = .veryLightPink
+                tableView.rowHeight = 176
+                tableView.delegate = nil
+                tableView.dataSource = nil
                
-               inputField.placeholder = .searchPlaceholder
+                inputField.placeholder = .searchPlaceholder
+        
+                tableView.register(SearchCell.self, forCellReuseIdentifier: "SearchResultCell")
                
-               tableView.register(SearchCell.self, forCellReuseIdentifier: "SearchResultCell")
+                let discogs = DiscogsAPI()
                
-               let discogs = DiscogsAPI()
-               
-               inputField.rx.controlEvent(.editingDidEndOnExit)
+                inputField.rx.controlEvent(.editingDidEndOnExit)
                    .withLatestFrom(inputField.rx.text.orEmpty)
                    .asDriver(onErrorJustReturn: "")
                    .distinctUntilChanged()
@@ -68,7 +71,7 @@ class SearchViewController: UITableViewController {
                        cell.update(with: result)
                    }.disposed(by: disposeBag)
                
-               tableView.rx.modelSelected(Result.self).subscribe(onNext: { [weak self] searchResult in
+                tableView.rx.modelSelected(Result.self).subscribe(onNext: { [weak self] searchResult in
                 let loadingViewController = LoadingViewController(resourceUrl: searchResult.resourceUrl)
                    let navigationController = UINavigationController(rootViewController: loadingViewController)
                    navigationController.isNavigationBarHidden = true

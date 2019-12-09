@@ -83,8 +83,11 @@ class TracklistViewController: UIViewController {
         ])
         
         tableView.tableHeaderView = header
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        tableView.separatorColor = .lightGray
+//        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.layoutMargins = .zero
+        tableView.separatorInset = .zero
+        tableView.separatorColor = .veryLightPink
+        tableView.separatorStyle = .singleLine
         tableView.rowHeight = 70
         tableView.backgroundColor = nil
         
