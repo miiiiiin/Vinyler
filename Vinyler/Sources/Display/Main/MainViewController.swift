@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 import RxCocoa
 import RxSwift
-import UIKit
+import Lottie
 
 class MainViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class MainViewController: UIViewController {
     let scanLabel = UILabel.header
     let searchButton = UIButton.search
     let cameraButton = UIButton.camera
+    let animationView = AnimationView.animationView
+    
     private let navigationControllerDelegate = NavigationControllerDelegate()
 
     private let bag = DisposeBag()
@@ -33,6 +36,7 @@ class MainViewController: UIViewController {
     }
 
     private func setUp() {
+        self.showAnim()
         cameraButton.rx.tap.subscribe(onNext: { [weak self] in
             let scanVC = ScanViewController()
             self?.navigationController?.pushViewController(scanVC, animated: true)
@@ -50,12 +54,17 @@ class MainViewController: UIViewController {
 //            self?.navigationController?.pushViewController(InfoViewController(), animated: true)
 //        }).disposed(by: bag)
     }
+    
+    private func showAnim() {
+        animationView.loopMode = .loop
+        animationView.play()
+    }
 
     override func loadView() {
         let root = UIView.background
-        root.backgroundColor = UIColor(red: 255 / 255, green: 208 / 255, blue: 53 / 255, alpha: 1.0)
+        root.backgroundColor = UIColor(red: 255/255, green: 208/255, blue: 53/255, alpha: 1.0)
 
-        [moreButton, greetingLabel, scanLabel, searchButton, cameraButton].forEach(root.addSubview)
+        [moreButton, greetingLabel, scanLabel, searchButton, animationView, cameraButton].forEach(root.addSubview)
         greetingLabel.text = String.hello
         scanLabel.set(headerText: .scan)
 
@@ -66,6 +75,8 @@ class MainViewController: UIViewController {
             moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
             cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor),
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor),
+            animationView.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 70),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
             scanLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 22),

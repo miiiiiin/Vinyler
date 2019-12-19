@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		019A0515144331EBFA144D0E /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */; };
+		7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */; };
+		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
 		813E834522E441430057F0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E834422E441430057F0E6 /* AppDelegate.swift */; };
 		813E834F22E441450057F0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813E834D22E441450057F0E6 /* LaunchScreen.storyboard */; };
 		813E835A22E441450057F0E6 /* VinylerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E835922E441450057F0E6 /* VinylerTests.swift */; };
@@ -77,6 +79,8 @@
 		315203D63A8B5303502E48B6 /* Pods-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D2E72566D0C5B604C39F948 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Style.swift"; sourceTree = "<group>"; };
+		7DEDB63223AB23F1007287B8 /* fluttering.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fluttering.json; sourceTree = "<group>"; };
 		813E834122E441430057F0E6 /* Vinyler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vinyler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		813E834422E441430057F0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		813E834E22E441450057F0E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				813E837822E467090057F0E6 /* UIFont+Style.swift */,
 				813E837A22E4676F0057F0E6 /* UILabel+Style.swift */,
 				FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */,
+				7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				817B26312315379B003DF85D /* Assets.xcassets */,
 				814B06A223040D3A0062906D /* String+Assets.swift */,
 				817B25D523059434003DF85D /* UIImage+Assets.swift */,
+				7DEDB63223AB23F1007287B8 /* fluttering.json */,
 				813E834D22E441450057F0E6 /* LaunchScreen.storyboard */,
 			);
 			path = Assets;
@@ -512,6 +518,7 @@
 			files = (
 				FAA41DE923251549008BA317 /* .swiftlint.yml in Resources */,
 				817B26322315379C003DF85D /* Assets.xcassets in Resources */,
+				7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */,
 				813E834F22E441450057F0E6 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +678,7 @@
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
+				7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */,
 				814B06AB230584680062906D /* NavigationControllerDelegate.swift in Sources */,
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
