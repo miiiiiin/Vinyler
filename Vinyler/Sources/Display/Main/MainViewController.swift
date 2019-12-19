@@ -66,14 +66,14 @@ class MainViewController: UIViewController {
             moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
             cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor),
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
-
-            greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 90),
+            greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 70),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
             scanLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 22),
             scanLabel.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             scanCenter,
             searchButton.topAnchor.constraint(equalTo: scanLabel.bottomAnchor, constant: 20),
-            searchButton.centerXAnchor.constraint(equalTo: root.centerXAnchor)
+            searchButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
+            searchButton.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -30)
         ])
         
         self.view = root
