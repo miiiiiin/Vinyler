@@ -73,9 +73,9 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             moreButton.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor, constant: 33),
             moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
-            cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor),
+            cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
-            animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor),
+            animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
             animationView.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 70),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
