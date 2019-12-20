@@ -29,7 +29,7 @@ class AlbumViewController: UIViewController {
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
 
-        print("release: \(release.formats)")
+        print("release: \(release)")
         
         titleLabel.text = release.title
         artistLabel.text = release.artistsSort.uppercased()
@@ -38,10 +38,9 @@ class AlbumViewController: UIViewController {
             dateLabel.text = String(format: .releasedOn, releaseDate)
         }
 
-        if let price = release.lowestPrice {
-            let priceString = "$ \(price)"
-            let sellsForString = String(format: .sellsFor, priceString)
-                       disclosureButton.titleLbl.set(bodyText: sellsForString, boldPart: priceString, oneLine: true)
+        if let video = release.videos {
+            let sellsForString = String(format: .watchOnYoutube)
+                       disclosureButton.titleLbl.set(bodyText: sellsForString, boldPart: sellsForString, oneLine: true)
         } else {
             disclosureButton.titleLbl.text = .notAvailable
         }
@@ -102,15 +101,14 @@ class AlbumViewController: UIViewController {
             array.append(contentsOf: format.descriptions)
             return array
         }
-        
-        print("formatdescript : \(formatDescription)")
 
         Observable.just([FormatsSection(items: formatDescription)]).bind(to: formatsCollectionView.rx.sections).disposed(by: disposeBag)
         
         disclosureButton.rx.tap.subscribe(onNext: {
-               if let url = URL(string: "https://www.discogs.com/sell/release/\(release.id)") {
-                   UIApplication.shared.open(url, options: [:])
-               }
+            if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
+                UIApplication.shared.open(url, options: [:])
+            }
+            
            }).disposed(by: disposeBag)
         
         vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi / 2)

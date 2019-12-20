@@ -55,7 +55,7 @@ class DiscogsAPI {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let release = try decoder.decode(T.self, from: data) /*try JSONDecoder().decode(T.self, from: data)*/
-                    print("release : \(release)")
+//                    print("release : \(release)")
 
                     return Observable.just(release)
                 } catch {
