@@ -22,6 +22,7 @@ class AlbumViewController: UIViewController {
     private let dateLabel = UILabel.bodyLight
     private let formatsCollectionView = FormatsCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private let disclosureButton = DisclosureButton(forAutoLayout: ())
+    private let playerImageView = UIImageView(forAutoLayout: ())
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
     private let disposeBag = DisposeBag()
@@ -56,6 +57,8 @@ class AlbumViewController: UIViewController {
 
         albumImageView.image = #imageLiteral(resourceName: "placeholder")
         albumImageView.contentMode = .scaleAspectFill
+        
+        playerImageView.image = #imageLiteral(resourceName: "icons8-play-button-48")
 
         let imageDriver: Driver<UIImage?>
 
@@ -152,16 +155,16 @@ class AlbumViewController: UIViewController {
                 vinylImageView.widthAnchor.constraint(equalTo: albumImageView.widthAnchor)
                ])
                
-               [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
+               [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
                
                contentView.pinToSuperview()
         
             NSLayoutConstraint.activate([
                    contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
                    closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33),
-                   closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
+                   closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 33),
                    moreButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
-                   moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13),
+                   moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
                    artistLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 33),
                    artistLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
                    artistLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
@@ -179,7 +182,9 @@ class AlbumViewController: UIViewController {
                    formatsCollectionView.heightAnchor.constraint(equalToConstant: 29),
                    disclosureButton.topAnchor.constraint(equalTo: formatsCollectionView.bottomAnchor, constant: 11),
                    disclosureButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-                   disclosureButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                   disclosureButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -44),
+                   playerImageView.topAnchor.constraint(equalTo: disclosureButton.topAnchor, constant: 5),
+                   playerImageView.leftAnchor.constraint(equalTo: disclosureButton.rightAnchor, constant: -44),
                    descriptionTitleLabel.leadingAnchor.constraint(equalTo: disclosureButton.leadingAnchor),
                    descriptionTitleLabel.topAnchor.constraint(equalTo: disclosureButton.bottomAnchor, constant: 33),
                    descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),

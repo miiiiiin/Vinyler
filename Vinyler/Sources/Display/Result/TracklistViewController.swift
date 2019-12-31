@@ -59,7 +59,6 @@ class TracklistViewController: UIViewController {
         tableView.pinToSuperview()
         
         let header = UIView(forAutoLayout: ())
-//        header.backgroundColor = .red
         
         [backButton, titleLabel, artistLabel, tracklistLabel, separator].forEach(header.addSubview)
         

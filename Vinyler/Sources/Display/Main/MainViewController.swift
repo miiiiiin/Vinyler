@@ -34,9 +34,14 @@ class MainViewController: UIViewController {
         super.init(coder: aDecoder)
         setUp()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.showAnim()
+    }
 
     private func setUp() {
-        self.showAnim()
         cameraButton.rx.tap.subscribe(onNext: { [weak self] in
             let scanVC = ScanViewController()
             self?.navigationController?.pushViewController(scanVC, animated: true)
