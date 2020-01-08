@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Windless
 import RxSwift
 import RxCocoa
 
@@ -26,15 +27,15 @@ class SearchViewController: UITableViewController {
         [backBtn, inputField].forEach(header.addSubview)
         
         NSLayoutConstraint.activate([
-                   header.widthAnchor.constraint(equalToConstant: view.frame.width),
-                   backBtn.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 33),
-                   backBtn.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 35),
-                   backBtn.bottomAnchor.constraint(equalTo: header.bottomAnchor),
-                   inputField.leadingAnchor.constraint(equalTo: backBtn.trailingAnchor, constant: 24),
-                   inputField.centerYAnchor.constraint(equalTo: backBtn.centerYAnchor),
-                   inputField.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -22),
-                   inputField.heightAnchor.constraint(equalToConstant: 44)
-               ])
+           header.widthAnchor.constraint(equalToConstant: view.frame.width),
+           backBtn.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 33),
+           backBtn.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 35),
+           backBtn.bottomAnchor.constraint(equalTo: header.bottomAnchor),
+           inputField.leadingAnchor.constraint(equalTo: backBtn.trailingAnchor, constant: 24),
+           inputField.centerYAnchor.constraint(equalTo: backBtn.centerYAnchor),
+           inputField.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -22),
+           inputField.heightAnchor.constraint(equalToConstant: 44)
+       ])
         
                 tableView.tableHeaderView = header
                 tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
@@ -52,7 +53,6 @@ class SearchViewController: UITableViewController {
                 inputField.placeholder = .searchPlaceholder
         
                 tableView.register(SearchCell.self, forCellReuseIdentifier: "SearchResultCell")
-               
                 let discogs = DiscogsAPI()
                
                 inputField.rx.controlEvent(.editingDidEndOnExit)
@@ -68,7 +68,8 @@ class SearchViewController: UITableViewController {
                                .asDriver(onErrorJustReturn: [])
                        }
                    }.drive(tableView.rx.items(cellIdentifier: "SearchResultCell", cellType: SearchCell.self)) { (_, result, cell) in
-                       cell.update(with: result)
+                        cell.update(with: result)
+                        cell.windless.end()
                    }.disposed(by: disposeBag)
                
                 tableView.rx.modelSelected(Result.self).subscribe(onNext: { [weak self] searchResult in
@@ -82,6 +83,7 @@ class SearchViewController: UITableViewController {
                    self?.inputField.resignFirstResponder()
                    self?.navigationController?.popViewController(animated: true)
                }).disposed(by: disposeBag)
+        
 //            tableView.rx.didScroll.skip(1).subscribe(onNext: { [weak self] in
 //                   self?.inputField.resignFirstResponder()
 //               }).disposed(by: disposeBag)

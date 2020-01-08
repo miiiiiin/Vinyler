@@ -14,6 +14,7 @@ extension AnimationView {
         anim.translatesAutoresizingMaskIntoConstraints = false
         anim.frame.size = CGSize(width: 50, height: 50)
         anim.sizeToFit()
+        anim.backgroundBehavior = .pauseAndRestore
         anim.animation = Animation.named("fluttering")
         return anim
     }()

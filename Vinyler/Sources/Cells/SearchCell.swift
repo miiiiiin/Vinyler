@@ -9,9 +9,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Windless
 
 class SearchCell: UITableViewCell {
-    
     private let albumImageView = UIImageView(forAutoLayout: ())
     private let titleLbl = UILabel.subheader
     private let releaseDetailsLbl = UILabel.body
@@ -41,9 +41,7 @@ class SearchCell: UITableViewCell {
         
         releaseDetailsLbl.text = releaseDetailStr
         formatsLabel.text = searchResult.format.joined(separator: ", ")
-        
     }
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,7 +55,18 @@ class SearchCell: UITableViewCell {
     
     private func setUp() {
         [albumImageView, titleLbl, releaseDetailsLbl, formatsLabel].forEach(addSubview)
-               albumImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44).isActive = true
+       
+        self.contentView.windless
+            .setupWindlessableViews([albumImageView, titleLbl, releaseDetailsLbl, formatsLabel])
+            .apply {
+                $0.beginTime = 0
+                $0.duration = 4
+                $0.animationLayerOpacity = 0.5
+                $0.animationBackgroundColor = .veryLightPink
+                $0.animationLayerColor = .lightGray
+            }
+            .start()
+        albumImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44).isActive = true
                albumImageView.topAnchor.constraint(equalTo: topAnchor, constant: 33).isActive = true
                albumImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
                albumImageView.heightAnchor.constraint(equalTo: albumImageView.widthAnchor).isActive = true
@@ -76,9 +85,7 @@ class SearchCell: UITableViewCell {
                albumImageView.clipsToBounds = true
     }
     
-    
     override func prepareForReuse() {
-           albumImageView.image = .placeholder
+        albumImageView.image = .placeholder
     }
-    
 }
