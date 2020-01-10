@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		019A0515144331EBFA144D0E /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */; };
+		7DB537EA23C8161F00BAA6C5 /* IntroductionViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */; };
 		7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */; };
 		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
 		813E834522E441430057F0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E834422E441430057F0E6 /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		315203D63A8B5303502E48B6 /* Pods-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D2E72566D0C5B604C39F948 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
 		7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Style.swift"; sourceTree = "<group>"; };
 		7DEDB63223AB23F1007287B8 /* fluttering.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fluttering.json; sourceTree = "<group>"; };
 		813E834122E441430057F0E6 /* Vinyler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vinyler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				813E836522E441830057F0E6 /* MainViewController.swift */,
+				7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
 				817B262E23151881003DF85D /* UIViewController+Rx.swift in Sources */,
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
+				7DB537EA23C8161F00BAA6C5 /* IntroductionViewcontroller.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,

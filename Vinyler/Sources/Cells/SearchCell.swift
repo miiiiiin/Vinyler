@@ -56,7 +56,7 @@ class SearchCell: UITableViewCell {
     private func setUp() {
         [albumImageView, titleLbl, releaseDetailsLbl, formatsLabel].forEach(addSubview)
        
-        self.contentView.windless
+        self.windless
             .setupWindlessableViews([albumImageView, titleLbl, releaseDetailsLbl, formatsLabel])
             .apply {
                 $0.beginTime = 0
@@ -66,6 +66,7 @@ class SearchCell: UITableViewCell {
                 $0.animationLayerColor = .lightGray
             }
             .start()
+        
         albumImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44).isActive = true
                albumImageView.topAnchor.constraint(equalTo: topAnchor, constant: 33).isActive = true
                albumImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

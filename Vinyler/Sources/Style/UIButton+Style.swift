@@ -9,15 +9,7 @@
 import UIKit
 
 extension UIButton {
-
-//    static var back: UIButton {
-//        let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "back"), for: .normal)
-//        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-//        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-//        return button
-//    }
-//
+    
 //    static var camera: UIButton {
 //        let button = UIButton()
 //        button.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
@@ -97,8 +89,8 @@ extension UIButton {
     static var back: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.back, for: .normal)
-        button.tintColor = .dark
-        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        button.tintColor = .gray
+        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }

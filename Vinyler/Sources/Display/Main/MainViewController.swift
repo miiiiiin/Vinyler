@@ -52,12 +52,9 @@ class MainViewController: UIViewController {
              let searchViewController = SearchViewController()
                               self?.navigationController?.pushViewController(searchViewController, animated: true)
             }).disposed(by: bag)
- 
-
-//        moreButton.rx.tap.subscribe(onNext: { [weak self] in
-//
-//            self?.navigationController?.pushViewController(InfoViewController(), animated: true)
-//        }).disposed(by: bag)
+        
+        moreButton.rx.tap.subscribe({ [weak self] _ in     self?.navigationController?.pushViewController(IntroductionViewcontroller(), animated: true)
+        }).disposed(by: bag)
     }
     
     private func showAnim() {
