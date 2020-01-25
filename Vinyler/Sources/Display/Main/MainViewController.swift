@@ -43,12 +43,11 @@ class MainViewController: UIViewController {
              let searchViewController = SearchViewController()
                               self?.navigationController?.pushViewController(searchViewController, animated: true)
             }).disposed(by: bag)
+        
  
 
-//        moreButton.rx.tap.subscribe(onNext: { [weak self] in
-//
-//            self?.navigationController?.pushViewController(InfoViewController(), animated: true)
-//        }).disposed(by: bag)
+        moreButton.rx.tap.subscribe(onNext: { [weak self] in        self?.navigationController?.pushViewController(InfoViewController(), animated: true)
+        }).disposed(by: bag)
     }
 
     override func loadView() {
@@ -66,8 +65,7 @@ class MainViewController: UIViewController {
             moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
             cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor),
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
-
-            greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 90),
+        greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 90),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
             scanLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 22),
             scanLabel.centerXAnchor.constraint(equalTo: root.centerXAnchor),

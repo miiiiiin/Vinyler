@@ -41,7 +41,6 @@ class SearchCell: UITableViewCell {
         
         releaseDetailsLbl.text = releaseDetailStr
         formatsLabel.text = searchResult.format.joined(separator: ", ")
-        
     }
     
     

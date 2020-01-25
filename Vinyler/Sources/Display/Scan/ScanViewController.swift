@@ -29,14 +29,11 @@ class ScanViewController: UIViewController {
 
     private func setUpSession() {
 
-//        if let device = AVCaptureDevice.default(for: .video), let input = try? AVCaptureDeviceInput(device: device) {
-//            session.addInput(input)
-//        }
-
         guard let captureDevice = AVCaptureDevice.default(for: .video), let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-//        if let input = try? AVCaptureDeviceInput(device: captureDevice) {
+       
+        if let input = try? AVCaptureDeviceInput(device: captureDevice) {
             session.addInput(input)
-//        }
+        }
 
         let metadataOutput = AVCaptureMetadataOutput()
         session.addOutput(metadataOutput)
@@ -48,12 +45,12 @@ class ScanViewController: UIViewController {
         metadataOutput.rx.didOutput.map { metadata in
             return metadata.compactMap { $0 as? AVMetadataMachineReadableCodeObject }.first
         }.do(onNext: { [weak self] _ in
-//                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 self?.session.stopRunning()
             })
             .flatMap { barcode -> Observable<String> in
                 if let barcodeString = barcode?.stringValue {
-                    return Observable.just(barcodeString) //"5060124900964"
+                    return Observable.just(barcodeString)
                 } else {
                     return Observable.error(RequestError.noResults)
                 }
