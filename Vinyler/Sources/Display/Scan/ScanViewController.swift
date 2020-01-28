@@ -14,7 +14,7 @@ import UIKit
 
 class ScanViewController: UIViewController {
 
-    private let back = UIButton.back
+    private let back = UIButton.scanBack
     private let session = AVCaptureSession()
     let helpLabel = UILabel.header
     let cameraPermission = UILabel.header

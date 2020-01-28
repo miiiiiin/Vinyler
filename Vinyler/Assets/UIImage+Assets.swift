@@ -13,6 +13,7 @@ extension UIImage {
     static let close = UIImage(named: "close")
     static let disclosure = UIImage(named: "disclosure")
     static let back = UIImage(named: "back")
+    static let scanBack = UIImage(named: "scanBack")
     static let info = UIImage(named: "info")
     static let vinyl = UIImage(named: "vinyl")
     static let realisticVinyl = UIImage(named: "realisticVinyl")

@@ -163,7 +163,7 @@ class AlbumViewController: UIViewController {
                    closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33),
                    closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35),
                    moreButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
-                   moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -3),
+                   moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -23),
                    artistLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 33),
                    artistLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
                    artistLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),

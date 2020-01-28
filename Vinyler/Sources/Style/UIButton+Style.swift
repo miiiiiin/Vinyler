@@ -94,6 +94,14 @@ extension UIButton {
         return button
     }
 
+    static var scanBack: UIButton {
+           let button = UIButton(forAutoLayout: ())
+           button.setImage(.scanBack, for: .normal)
+           button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+           button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+           return button
+       }
+    
     static var back: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.back, for: .normal)
