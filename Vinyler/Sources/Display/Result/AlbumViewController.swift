@@ -29,9 +29,6 @@ class AlbumViewController: UIViewController {
 
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
-
-        print("release: \(release)")
-        
         titleLabel.text = release.title
         artistLabel.text = release.artistsSort.uppercased()
 
