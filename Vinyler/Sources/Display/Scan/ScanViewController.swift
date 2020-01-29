@@ -14,7 +14,7 @@ import UIKit
 
 class ScanViewController: UIViewController {
 
-    private let back = UIButton.back
+    private let back = UIButton.scanBack
     private let session = AVCaptureSession()
     let helpLabel = UILabel.header
     let cameraPermission = UILabel.header
@@ -22,50 +22,50 @@ class ScanViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setUpSession()
-        setUpEvent()
+       
+        self.setUpSession()
+        self.setUpEvent()
     }
 
     private func setUpSession() {
-
-//        if let device = AVCaptureDevice.default(for: .video), let input = try? AVCaptureDeviceInput(device: device) {
-//            session.addInput(input)
-//        }
-
         guard let captureDevice = AVCaptureDevice.default(for: .video), let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-//        if let input = try? AVCaptureDeviceInput(device: captureDevice) {
-            session.addInput(input)
-//        }
 
-        let metadataOutput = AVCaptureMetadataOutput()
-        session.addOutput(metadataOutput)
-
-        if metadataOutput.availableMetadataObjectTypes.contains(.ean13) {
-            metadataOutput.metadataObjectTypes = [.ean13]
+        if session.inputs.isEmpty {
+            self.session.addInput(input)
         }
 
-        metadataOutput.rx.didOutput.map { metadata in
-            return metadata.compactMap { $0 as? AVMetadataMachineReadableCodeObject }.first
-        }.do(onNext: { [weak self] _ in
-//                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                self?.session.stopRunning()
-            })
-            .flatMap { barcode -> Observable<String> in
-                if let barcodeString = barcode?.stringValue {
-                    return Observable.just(barcodeString) //"5060124900964"
-                } else {
-                    return Observable.error(RequestError.noResults)
-                }
-            }
+        let metadataOutput = AVCaptureMetadataOutput()
 
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] barcode in
-                let loadingVC = LoadingViewController(barcode: barcode)
-                let nav = NavigationController(rootViewController: loadingVC)
-                nav.transitioningDelegate = self
-                self?.present(nav, animated: true)
-            }).disposed(by: disposeBag)
+        if session.outputs.isEmpty {
+            self.session.addOutput(metadataOutput)
+        }
+        
+        if metadataOutput.availableMetadataObjectTypes.contains (.ean13) {
+            metadataOutput.metadataObjectTypes = [.ean13]
+        }
+        
+//        DispatchQueue.main.async {
+            metadataOutput.rx.didOutput.map { metadata in
+                return metadata.compactMap { $0 as? AVMetadataMachineReadableCodeObject }.first
+            }.do(onNext: { [weak self] _ in
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    self?.session.stopRunning()
+                })
+                .flatMap { barcode -> Observable<String> in
+                    if let barcodeString = barcode?.stringValue {
+                        return Observable.just(barcodeString)
+                    } else {
+                        return Observable.error(RequestError.noResults)
+                    }
+                }
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] barcode in
+                    let loadingVC = LoadingViewController(barcode: barcode)
+                    let nav = NavigationController(rootViewController: loadingVC)
+                    nav.transitioningDelegate = self
+                    self?.present(nav, animated: true)
+                }).disposed(by: self.disposeBag)
+//        }
     }
 
     private func setUpEvent() {
@@ -76,16 +76,16 @@ class ScanViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        DispatchQueue.global().async { [weak self] in
+            self?.session.startRunning()
+        }
 
         switch AVCaptureDevice.authorizationStatus(for: .video) {
 
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { [weak self] bool in
-                if bool {
-                    DispatchQueue.main.async {
-                        self?.setUpSession()
-                    }
-                } else {
+                if !bool {
                     self?.cameraPermission.isHidden = false
                 }
             }
@@ -98,13 +98,6 @@ class ScanViewController: UIViewController {
         case .authorized:
             self.helpLabel.isHidden = false
             self.session.startRunning()
-        }
-
-        if session.isRunning == false {
-            DispatchQueue.global().async { [weak self] in
-//                self?.session.startRunning()
-                self?.setUpSession()
-            }
         }
     }
 

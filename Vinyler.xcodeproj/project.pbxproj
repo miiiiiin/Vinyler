@@ -50,6 +50,9 @@
 		FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */; };
 		FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53D239BF1D3006F37BD /* SearchViewController.swift */; };
 		FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */; };
+		FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BC2E323DC15C2000CFD9D /* AppInfoViewController.swift */; };
+		FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */; };
+		FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */; };
 		FA6C3B16232D841D000E1C87 /* TracklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C3B15232D841D000E1C87 /* TracklistViewController.swift */; };
 		FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C3B18232D8B55000E1C87 /* TrackCell.swift */; };
 		FAA41DE923251549008BA317 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FAA41DE823251549008BA317 /* .swiftlint.yml */; };
@@ -129,6 +132,9 @@
 		FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
 		FA09D53D239BF1D3006F37BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Style.swift"; sourceTree = "<group>"; };
+		FA5BC2E323DC15C2000CFD9D /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		FA6C3B15232D841D000E1C87 /* TracklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistViewController.swift; sourceTree = "<group>"; };
 		FA6C3B18232D8B55000E1C87 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		FAA41DE823251549008BA317 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -256,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				813E836522E441830057F0E6 /* MainViewController.swift */,
-				7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */,
+				FA5BC2E323DC15C2000CFD9D /* AppInfoViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				817B262F23152389003DF85D /* ObservableType+Void.swift */,
 				817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */,
 				FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */,
+				FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -348,6 +355,7 @@
 			children = (
 				817B25E323097BB4003DF85D /* ActivityIndicatorView.swift */,
 				FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */,
+				FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */,
 			);
 			name = Views;
 			path = ../Views;
@@ -649,6 +657,7 @@
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
+				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
 				FAD03CC9232CFAE60067E2D9 /* DynamicTableView.swift in Sources */,
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
@@ -671,8 +680,10 @@
 				813E838322E46D2D0057F0E6 /* Image.swift in Sources */,
 				FAD03CD8232D61CC0067E2D9 /* Extension+UIImageView.swift in Sources */,
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
+				FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */,
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
+				FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,

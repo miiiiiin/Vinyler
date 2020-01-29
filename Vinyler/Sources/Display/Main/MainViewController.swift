@@ -53,7 +53,9 @@ class MainViewController: UIViewController {
                               self?.navigationController?.pushViewController(searchViewController, animated: true)
             }).disposed(by: bag)
         
-        moreButton.rx.tap.subscribe({ [weak self] _ in     self?.navigationController?.pushViewController(IntroductionViewcontroller(), animated: true)
+ 
+
+        moreButton.rx.tap.subscribe(onNext: { [weak self] in        self?.navigationController?.pushViewController(AppInfoViewController(), animated: true)
         }).disposed(by: bag)
     }
     
@@ -77,9 +79,7 @@ class MainViewController: UIViewController {
             moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
             cameraButton.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
-            animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
-            animationView.centerXAnchor.constraint(equalTo: root.centerXAnchor),
-            greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 70),
+        greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 90),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
             scanLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 22),
             scanLabel.centerXAnchor.constraint(equalTo: root.centerXAnchor),

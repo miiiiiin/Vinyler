@@ -21,7 +21,7 @@ extension String {
     static let noResultsMessage = NSLocalizedString("Sorry, we couldn't find a match.", comment: "")
     static let ok = NSLocalizedString("Ok", comment: "")
     static let searchPlaceholder = NSLocalizedString("Search album code or title", comment: "")
-    static let thanks = NSLocalizedString("Thanks for using Vinyl", comment: "")
+    static let thanks = NSLocalizedString("Thanks for using Vinyler", comment: "")
     static let about = NSLocalizedString("Vinyl is my passion project which I decided to do because, as a vinyl collector, I needed it.\nIt uses %@ database to help you digging for vinyl records.", comment: "")
     static let discogs = "Discogs"
     static let privacyTitle = NSLocalizedString("I care about your privacy", comment: "")
@@ -42,6 +42,7 @@ extension String {
     static let appIcon = NSLocalizedString("App icon by %@.", comment: "")
     static let alexanderKahlkopf = "Alexander Kahlkopf"
     static let emailErrorTitle = "¯\\_(ツ)_/¯"
+    static let welcome = "Welcome"
     static let emailErrorMessage = NSLocalizedString("Unfortunately, there was an error. Please try again.", comment: "")
     static let dismiss = NSLocalizedString("Dismiss", comment: "")
     static let copyToClipboard = NSLocalizedString("Copy email address", comment: "")
