@@ -47,9 +47,9 @@ extension UIButton {
 
     static var search: UIButton {
         let button = UIButton(forAutoLayout: ())
-        button.backgroundColor = .coral
-        button.titleLabel?.textColor = .white
+        button.backgroundColor = .purplishDarkBlue
         button.setTitle(.search, for: .normal)
+        button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 20
         button.titleLabel?.font = .header
         button.layer.shadowRadius = 8/2

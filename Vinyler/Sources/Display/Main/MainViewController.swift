@@ -66,7 +66,7 @@ class MainViewController: UIViewController {
 
     override func loadView() {
         let root = UIView.background
-        root.backgroundColor = UIColor(red: 255/255, green: 208/255, blue: 53/255, alpha: 1.0)
+        root.backgroundColor = .coldDarkBlue
 
         [moreButton, greetingLabel, scanLabel, searchButton, animationView, cameraButton].forEach(root.addSubview)
         greetingLabel.text = String.hello
@@ -88,6 +88,7 @@ class MainViewController: UIViewController {
             scanCenter,
             searchButton.topAnchor.constraint(equalTo: scanLabel.bottomAnchor, constant: 20),
             searchButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
+            searchButton.widthAnchor.constraint(equalToConstant: 300),
             searchButton.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -30)
         ])
         

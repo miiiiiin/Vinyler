@@ -13,14 +13,14 @@ extension UILabel {
     static var block: UILabel {
         let label = UILabel(forAutoLayout: ())
         label.font = .block
-        label.textColor = .dark
+        label.textColor = .white//.dark
         return label
     }
 
     static var header: UILabel {
         let label = UILabel(forAutoLayout: ())
         label.font = .header
-        label.textColor = .dark
+        label.textColor = .white//.dark
         label.numberOfLines = 0
         return label
     }
