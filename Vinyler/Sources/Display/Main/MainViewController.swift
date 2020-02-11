@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     let searchButton = UIButton.search
     let cameraButton = UIButton.camera
     let animationView = AnimationView.animationView
+    let vinylAnimationView = AnimationView.vinylAnimationView
     
     private let navigationControllerDelegate = NavigationControllerDelegate()
 
@@ -62,16 +63,19 @@ class MainViewController: UIViewController {
     private func showAnim() {
         animationView.loopMode = .loop
         animationView.play()
+        vinylAnimationView.loopMode = .loop
+        vinylAnimationView.play()
     }
 
     override func loadView() {
         let root = UIView.background
         root.backgroundColor = .coldDarkBlue
 
-        [moreButton, greetingLabel, scanLabel, searchButton, animationView, cameraButton].forEach(root.addSubview)
+        [moreButton, greetingLabel, scanLabel, searchButton, animationView, vinylAnimationView, cameraButton].forEach(root.addSubview)
         greetingLabel.text = String.hello
         scanLabel.set(headerText: .scan)
-
+        cameraButton.isHidden = true
+        
         let scanCenter = scanLabel.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -50)
         scanCenter.priority = .defaultLow
         NSLayoutConstraint.activate([
@@ -81,6 +85,10 @@ class MainViewController: UIViewController {
             cameraButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
             animationView.centerXAnchor.constraint(equalTo: root.centerXAnchor),
+            vinylAnimationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
+            vinylAnimationView.centerXAnchor.constraint(equalTo: root.centerXAnchor),
+            vinylAnimationView.heightAnchor.constraint(equalTo: cameraButton.heightAnchor),
+            vinylAnimationView.widthAnchor.constraint(equalTo: cameraButton.widthAnchor),
             greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: cameraButton.bottomAnchor, constant: 90),
             greetingLabel.leadingAnchor.constraint(equalTo: scanLabel.leadingAnchor),
             scanLabel.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 22),

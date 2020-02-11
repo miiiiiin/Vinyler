@@ -18,4 +18,14 @@ extension AnimationView {
         anim.animation = Animation.named("fluttering")
         return anim
     }()
+    
+    static var vinylAnimationView: AnimationView = {
+        let anim = AnimationView(forAutoLayout: ())
+        anim.translatesAutoresizingMaskIntoConstraints = false
+        anim.frame.size = CGSize(width: 50, height: 50)
+        anim.sizeToFit()
+        anim.backgroundBehavior = .pauseAndRestore
+        anim.animation = Animation.named("loading")
+        return anim
+    }()
 }
