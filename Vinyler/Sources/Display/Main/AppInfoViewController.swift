@@ -16,13 +16,11 @@ class AppInfoViewController: UIViewController {
     let greetingLbl = UILabel.block
     let introduceBlock = CustomTextView(forAutoLayout: ())
     let openSourceBlock = CustomTextView(forAutoLayout: ())
+    let resourcesBlock = CustomTextView(forAutoLayout: ())
     private let disposeBag = DisposeBag()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
 //        introduceBlock.bodyLbl.didTap(oneOf: [.discogs])
 //            .subscribe(onNext: { _ in
@@ -71,10 +69,10 @@ class AppInfoViewController: UIViewController {
         stackView.spacing = 33
         root.addSubview(contentView)
         contentView.pinToSuperview()
-    contentView.widthAnchor.constraint(equalTo: root.widthAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: root.widthAnchor).isActive = true
         
         [backBtn, stackView].forEach(contentView.addSubview)
-            [greetingLbl, introduceBlock, openSourceBlock, ].forEach(stackView.addArrangedSubview)
+            [greetingLbl, introduceBlock, openSourceBlock, resourcesBlock].forEach(stackView.addArrangedSubview)
             
             backBtn.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33).isActive = true
             backBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35).isActive = true
@@ -85,11 +83,15 @@ class AppInfoViewController: UIViewController {
             
             self.view = root
             
-            greetingLbl.text = .welcome
-            introduceBlock.titleLbl.text = .thanks
-            let thanksBody = String(format: .about, String.discogs)
+//            greetingLbl.text = .welcome
+            introduceBlock.titleLbl.text = .introduce
+            let thanksBody = String(format: .introduceDetail, String.discogs)
 //            introduceBlock.bodyLbl.set(bodyText: thanksBody, underlineParts: [.discogs])
-            openSourceBlock.titleLbl.text = .privacyTitle
-            let privacyBody = String(format: .privacyMessage, String.privacyMessageHighlighted, String.email)
+            openSourceBlock.titleLbl.text = .openSource
+            let openSourceBody = String(format: .privacyMessage, String.privacyMessageHighlighted, String.email)
+        
+            resourcesBlock.titleLbl.text = .resource
+            let resourceBody = String(format: .privacyMessage, String.privacyMessageHighlighted, String.email)
+        
     }
 }
