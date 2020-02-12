@@ -22,10 +22,12 @@ extension AnimationView {
     static var vinylAnimationView: AnimationView = {
         let anim = AnimationView(forAutoLayout: ())
         anim.translatesAutoresizingMaskIntoConstraints = false
-        anim.frame.size = CGSize(width: 50, height: 50)
+        anim.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.264).isActive = true
+        anim.heightAnchor.constraint(equalTo: anim.widthAnchor).isActive = true
         anim.sizeToFit()
         anim.backgroundBehavior = .pauseAndRestore
         anim.animation = Animation.named("loading")
+        anim.isUserInteractionEnabled = true
         return anim
     }()
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Windless
 import RxSwift
 import RxCocoa
 
@@ -69,7 +68,7 @@ class SearchViewController: UITableViewController {
                        }
                    }.drive(tableView.rx.items(cellIdentifier: "SearchResultCell", cellType: SearchCell.self)) { (_, result, cell) in
                         cell.update(with: result)
-                        cell.windless.end()
+//                        cell.windless.end()
                    }.disposed(by: disposeBag)
                
                 tableView.rx.modelSelected(Result.self).subscribe(onNext: { [weak self] searchResult in

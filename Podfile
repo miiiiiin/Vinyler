@@ -11,6 +11,7 @@ target 'Vinyler' do
     pod 'RxDataSources', '~> 4.0'
     pod 'SwiftLint'
     pod 'lottie-ios'
+    pod "RxGesture"
     
   target 'VinylerTests' do
     # Pods for testing
