@@ -47,6 +47,7 @@ class TracklistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        backButton.tintColor = .black
         tableView.tableHeaderView?.layoutIfNeeded()
     }
     

@@ -22,6 +22,7 @@ class AppInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        backBtn.tintColor = .black
 //        introduceBlock.bodyLbl.didTap(oneOf: [.discogs])
 //            .subscribe(onNext: { _ in
 //                guard let url = URL(string: "https://www.discogs.com") else { return }

@@ -12,7 +12,7 @@ extension UIImage {
     static let camera = UIImage(named: "camera")
     static let close = UIImage(named: "close")
     static let disclosure = UIImage(named: "disclosure")
-    static let back = UIImage(named: "back")
+    static let back = UIImage(named: "back")?.withRenderingMode(.alwaysTemplate)
     static let scanBack = UIImage(named: "scanBack")
     static let info = UIImage(named: "info")
     static let vinyl = UIImage(named: "vinyl")
@@ -21,5 +21,5 @@ extension UIImage {
     static let cancel = UIImage(named: "cancel")
     static let artist = UIImage(named: "artist")
     static let list = UIImage(named: "list")
-    static let more = UIImage(named: "more")
+    static let more = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
 }

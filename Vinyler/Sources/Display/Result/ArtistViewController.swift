@@ -81,6 +81,8 @@ class ArtistViewController: UIViewController {
         root.backgroundColor = .white
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(contentView)
+       
+        backButton.tintColor = .black
         
         [backButton, artistTypeLabel, artistNameLabel, artistImageView, membersLabel, descriptionLabel].forEach(contentView.addSubview)
         

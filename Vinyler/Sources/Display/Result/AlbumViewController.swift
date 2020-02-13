@@ -136,8 +136,9 @@ class AlbumViewController: UIViewController {
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(contentView)
 
+        moreButton.tintColor = .black
         let albumWithVinyl = UIView(forAutoLayout: ())
-
+    
         [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
 
        NSLayoutConstraint.activate([

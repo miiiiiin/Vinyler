@@ -97,7 +97,7 @@ extension UIButton {
     static var back: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.back, for: .normal)
-        button.tintColor = .gray
+        button.tintColor = .white
         button.widthAnchor.constraint(equalToConstant: 32).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
@@ -105,8 +105,8 @@ extension UIButton {
 
     static var more: UIButton {
         let button = UIButton(forAutoLayout: ())
-        button.setImage(#imageLiteral(resourceName: "more"), for: .normal)
-        button.tintColor = .dark
+        button.setImage(.more, for: .normal)
+        button.tintColor = .white
         button.widthAnchor.constraint(equalToConstant: 30).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
