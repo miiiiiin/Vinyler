@@ -92,7 +92,7 @@ class MainViewController: UIViewController {
             searchButton.topAnchor.constraint(equalTo: scanLabel.bottomAnchor, constant: 20),
             searchButton.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             searchButton.widthAnchor.constraint(equalToConstant: 300),
-            searchButton.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -30)
+            searchButton.bottomAnchor.constraint(equalTo: root.bottomAnchor, constant: -40)
         ])
         
         self.view = root

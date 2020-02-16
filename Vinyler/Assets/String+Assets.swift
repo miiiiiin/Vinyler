@@ -11,7 +11,7 @@ import Foundation
 extension String {
 
     static let hello = NSLocalizedString("Hello.", comment: "")
-    static let scan = NSLocalizedString("Click the camera button\nand scan the barcode of vinyl", comment: "")
+    static let scan = NSLocalizedString("Touch the vinyl above and\nscan the barcode.", comment: "")
     static let search = NSLocalizedString("  search by code or title  ", comment: "")
     static let cameraPermission = NSLocalizedString("Please allow camera access to be able to scan vinyls.", comment: "")
     static let watchOnYoutube = NSLocalizedString("Go Watch On Youtube", comment: "")
