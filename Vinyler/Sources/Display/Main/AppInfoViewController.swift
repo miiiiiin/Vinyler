@@ -22,8 +22,6 @@ class AppInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backBtn.tintColor = .black
-        
         introduceBlock.bodyLbl.tapped(oneOf: [.inspiredFrom])
             .subscribe(onNext: { _ in
                 guard let url = URL(string: "https://apps.apple.com/us/developer/ivan-blagajic/id1433818197") else { return }

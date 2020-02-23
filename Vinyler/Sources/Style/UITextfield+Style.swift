@@ -15,7 +15,7 @@ extension UITextField {
         textField.clearButtonMode = .whileEditing
         textField.borderStyle = .none
         textField.font = UIFont.body
-        textField.textColor = .dark
+        textField.textColor = style.Colors.tint
         textField.tintColor = .gray
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none

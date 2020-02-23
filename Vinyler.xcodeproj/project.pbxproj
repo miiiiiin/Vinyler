@@ -50,6 +50,7 @@
 		FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */; };
 		FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53D239BF1D3006F37BD /* SearchViewController.swift */; };
 		FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */; };
+		FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA177E9624028ABB00AF1BF6 /* DefaultStyle.swift */; };
 		FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BC2E323DC15C2000CFD9D /* AppInfoViewController.swift */; };
 		FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */; };
 		FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */; };
@@ -133,6 +134,7 @@
 		FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
 		FA09D53D239BF1D3006F37BD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+Style.swift"; sourceTree = "<group>"; };
+		FA177E9624028ABB00AF1BF6 /* DefaultStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyle.swift; sourceTree = "<group>"; };
 		FA5BC2E323DC15C2000CFD9D /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				813E837A22E4676F0057F0E6 /* UILabel+Style.swift */,
 				FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */,
 				7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */,
+				FA177E9624028ABB00AF1BF6 /* DefaultStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */,
 				FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
+				FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,

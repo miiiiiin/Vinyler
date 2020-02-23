@@ -23,7 +23,7 @@ extension String {
     static let introduceDetail = NSLocalizedString("Vinyler is an app for searching vinyl with barcode scanning. It's inspired by %@. and I inform you that this doesn't collect any user information. also it doesn't made for any profits", comment: "")
     static let discogs = "Discogs"
     static let resource = "Resources"
-    static let openSourceDetail = NSLocalizedString("It uses %@ API.\n you can see all the open source infos visiting %@", comment: "")
+    static let openSourceDetail = NSLocalizedString("It uses %@ API.\nyou can see all the open source infos visiting %@", comment: "")
     static let githubLink = NSLocalizedString("here", comment: "")
     static let resourceDetail = NSLocalizedString("all Icons by %@ and %@", comment: "")
     static let flatIcon = "FlatIcon"

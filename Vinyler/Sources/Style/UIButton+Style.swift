@@ -9,41 +9,6 @@
 import UIKit
 
 extension UIButton {
-    
-//    static var camera: UIButton {
-//        let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
-//        button.tintColor = .mintBlue
-//        button.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2).isActive = true
-//        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-//        return button
-//    }
-//
-//    static var close: UIButton {
-//        let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
-//        button.tintColor = .dark
-//        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-//        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-//        return button
-//    }
-//
-//    static var list: UIButton {
-//        let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
-//        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-//        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-//        return button
-//    }
-//
-//    static var myVinyl: UIButton {
-//        let button = UIButton()
-//        button.setImage(#imageLiteral(resourceName: "myVinyls"), for: .normal)
-//        button.tintColor = .mintBlue
-//        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
-//        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-//        return button
-//    }
 
     static var search: UIButton {
         let button = UIButton(forAutoLayout: ())
@@ -58,20 +23,11 @@ extension UIButton {
         button.layer.shadowOpacity = 0.8
         return button
     }
-    
-    static var camera: UIButton {
-        let button = UIButton(forAutoLayout: ())
-        button.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
-        button.tintColor = .gray
-        button.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.264).isActive = true
-        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
-        return button
-    }
 
     static var close: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.close, for: .normal)
-        button.tintColor = .dark
+        button.tintColor = style.Colors.tint
         button.widthAnchor.constraint(equalToConstant: 44).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
@@ -97,9 +53,9 @@ extension UIButton {
     static var back: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.back, for: .normal)
-        button.tintColor = .white
         button.widthAnchor.constraint(equalToConstant: 32).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+        button.tintColor = style.Colors.tint
         return button
     }
 
