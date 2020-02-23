@@ -126,7 +126,7 @@ class ScanViewController: UIViewController {
         back.tintColor = .white
         helpLabel.textColor = .white
         
-        preview.backgroundColor = .gray
+        preview.backgroundColor = .white
         targetView.backgroundColor = .clear
         targetView.layer.shadowColor = UIColor.dark.cgColor
         targetView.layer.shadowOffset = CGSize(width: 1, height: 1)

@@ -9,8 +9,6 @@
 import Foundation
 
 extension String {
-
-    static let hello = NSLocalizedString("Hello.", comment: "")
     static let scan = NSLocalizedString("Touch the vinyl above and\nscan the barcode.", comment: "")
     static let search = NSLocalizedString("  search by code or title  ", comment: "")
     static let cameraPermission = NSLocalizedString("Please allow camera access to be able to scan vinyls.", comment: "")
@@ -18,39 +16,23 @@ extension String {
     static let tracklist = NSLocalizedString("Tracklist", comment: "")
     static let description = NSLocalizedString("Description", comment: "")
     static let noResultsTitle = NSLocalizedString("No Results", comment: "")
-    static let noResultsMessage = NSLocalizedString("Sorry, we couldn't find a match.", comment: "")
-    static let ok = NSLocalizedString("Ok", comment: "")
-    static let searchPlaceholder = NSLocalizedString("Search album code or title", comment: "")
+    static let noResultsMessage = NSLocalizedString("Sorry, we couldn't find it.", comment: "")
+    static let searchPlaceholder = NSLocalizedString("Search by code or title", comment: "")
     static let introduce = NSLocalizedString("Introduce", comment: "")
-    static let introduceDetail = NSLocalizedString("detail", comment: "")
-//    static let about = NSLocalizedString("Vinyl is my passion project which I decided to do because, as a vinyl collector, I needed it.\nIt uses %@ database to help you digging for vinyl records.", comment: "")
+    static let inspiredFrom = NSLocalizedString("Ivan Blagajic's Vinyl", comment: "")
+    static let introduceDetail = NSLocalizedString("Vinyler is an app for searching vinyl with barcode scanning. It's inspired by %@. and I inform you that this doesn't collect any user information. also it doesn't made for any profits", comment: "")
     static let discogs = "Discogs"
     static let resource = "Resources"
-    static let privacyTitle = NSLocalizedString("I care about your privacy", comment: "")
-    static let privacyMessage = NSLocalizedString("I’m proud to say that the %@\nThis is why, if you find any issues, crashes or just want to send feedback, I kindly ask you to do that by sending an email to %@.", comment: "")
-    static let privacyMessageHighlighted = NSLocalizedString("app doesn’t collect any user information or use any 3rd party services that do so.", comment: "")
-    static let email = "vinylapp@protonmail.com"
-    static let instructionsTitle = NSLocalizedString("How to use", comment: "")
-    static let instructionsMessage = NSLocalizedString("You can find a specific vinyl release in 2 different ways: newer releases usually have barcodes on the cover which you can scan, while you can search the older ones by entering the %@ or album/artist name. I recommend using the %@ since it’ll identify the exact release you're looking for.", comment: "")
-    static let github = "GitHub"
-    static let catalogNumber = NSLocalizedString("catalog number", comment: "")
-    static let openSourceTitle = NSLocalizedString("Vinyl is open source", comment: "")
-    static let openSourceMessage = NSLocalizedString("Since transparency is one of my core beliefs, the app is open source: %@.", comment: "")
-    static let credits = NSLocalizedString("Credits", comment: "")
-    static let vinylIcon = NSLocalizedString("Vinyl loader and back icons by %@.", comment: "")
-    static let freepik = "Freepik"
-    static let cameraIcon = NSLocalizedString("Camera icon by %@.", comment: "")
-    static let smashicons = "Smashicons"
-    static let appIcon = NSLocalizedString("App icon by %@.", comment: "")
-    static let alexanderKahlkopf = "Alexander Kahlkopf"
-    static let emailErrorTitle = "¯\\_(ツ)_/¯"
+    static let openSourceDetail = NSLocalizedString("It uses %@ API.\n you can see all the open source infos visiting %@", comment: "")
+    static let githubLink = NSLocalizedString("here", comment: "")
+    static let resourceDetail = NSLocalizedString("all Icons by %@ and %@", comment: "")
+    static let flatIcon = "FlatIcon"
+    static let icons8 = "icons8"
+    static let thanks = NSLocalizedString("Thanks", comment: "")
+    static let thanksDetail = NSLocalizedString("Thanks for using it and hope you enjoy!", comment: "")
+    
     static let welcome = "Welcome"
-    static let emailErrorMessage = NSLocalizedString("Unfortunately, there was an error. Please try again.", comment: "")
     static let dismiss = NSLocalizedString("Dismiss", comment: "")
-    static let copyToClipboard = NSLocalizedString("Copy email address", comment: "")
-    static let emailSuccessTitle = "ヽ(^o^)丿"
-    static let emailSuccessMessage = NSLocalizedString("You're awesome, thanks for reaching out!", comment: "")
-    static let emailSuccessDismiss = NSLocalizedString("Awww, you're awesome too!", comment: "")
     static let connectionErrorTitle = "404"
     static let connectionErrorMessage = NSLocalizedString("Oops, looks like\nyou’re offline.\nWould you like to %@", comment: "")
     static let retry = NSLocalizedString("try again?", comment: "")

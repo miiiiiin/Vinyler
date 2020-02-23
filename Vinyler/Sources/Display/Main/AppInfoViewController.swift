@@ -13,49 +13,45 @@ import UIKit
 class AppInfoViewController: UIViewController {
     
     let backBtn = UIButton.back
-    let greetingLbl = UILabel.block
     let introduceBlock = CustomTextView(forAutoLayout: ())
     let openSourceBlock = CustomTextView(forAutoLayout: ())
     let resourcesBlock = CustomTextView(forAutoLayout: ())
+    let thanksBlock = CustomTextView(forAutoLayout: ())
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         backBtn.tintColor = .black
-//        introduceBlock.bodyLbl.didTap(oneOf: [.discogs])
-//            .subscribe(onNext: { _ in
-//                guard let url = URL(string: "https://www.discogs.com") else { return }
-//                UIApplication.shared.open(url, options: [:])
-//            }).disposed(by: disposeBag)
-//
-//        openSourceBlock.bodyLbl.didTap(oneOf: [.email])
-//            .flatMap { [weak self] _ -> Observable<MFMailComposeResult> in
-//                guard MFMailComposeViewController.canSendMail() else {
-//                    return Observable.just(.failed)
-//                }
-//                let mailComposeViewController = MFMailComposeViewController()
-//                mailComposeViewController.setToRecipients([.email])
-//                self?.present(mailComposeViewController, animated: true)
-//                return mailComposeViewController.rx.didFinishWithResult.asObservable()
-//            }.subscribe(onNext: { [weak self] result in
-//                switch result {
-//                case .cancelled,
-//                     .failed:
-//                    self?.dismiss(animated: true) { [weak self] in
-//                        self?.showSendMailErrorAlert()
-//                    }
-//                case .saved,
-//                     .sent:
-//                    self?.dismiss(animated: true) { [weak self] in
-//                        self?.showSendMailSuccessAlert()
-//                    }
-//                }
-//            }).disposed(by: disposeBag)
-//
-//        let tapGithub = (openSourceBlock.bodyLbl.didTap(oneOf: [.github]) as AnyObject)
-//            .map { _ in return URL(string: "https://github.com/miiiiiin/Vinyler") }
-//
+        
+        introduceBlock.bodyLbl.tapped(oneOf: [.inspiredFrom])
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: "https://apps.apple.com/us/developer/ivan-blagajic/id1433818197") else { return }
+                UIApplication.shared.open(url, options: [:])
+            }).disposed(by: disposeBag)
+        
+        let tapHere = openSourceBlock.bodyLbl.tapped(oneOf: [.githubLink])
+            .map { _ in
+                return URL(string: "https://github.com/miiiiiin/Vinyler/blob/master/Podfile")}
+        
+        let tapResource = resourcesBlock.bodyLbl.tapped(oneOf: [.flatIcon, .icons8])
+            .map { tapped -> URL? in
+                switch tapped {
+                case .flatIcon:
+                    return Resources.flatIcon.url
+                case .icons8:
+                    return Resources.icons8.url
+                default:
+                    return nil
+                }
+        }
+        
+        Observable.merge(tapResource, tapHere)
+            .subscribe(onNext: { url in
+                guard let url = url else { return }
+                UIApplication.shared.open(url, options: [:])
+            }).disposed(by: disposeBag)
+        
         backBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }).disposed(by: disposeBag)
@@ -73,7 +69,7 @@ class AppInfoViewController: UIViewController {
         contentView.widthAnchor.constraint(equalTo: root.widthAnchor).isActive = true
         
         [backBtn, stackView].forEach(contentView.addSubview)
-            [greetingLbl, introduceBlock, openSourceBlock, resourcesBlock].forEach(stackView.addArrangedSubview)
+            [introduceBlock, openSourceBlock, resourcesBlock, thanksBlock].forEach(stackView.addArrangedSubview)
             
             backBtn.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33).isActive = true
             backBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 35).isActive = true
@@ -84,15 +80,34 @@ class AppInfoViewController: UIViewController {
             
             self.view = root
             
-//            greetingLbl.text = .welcome
             introduceBlock.titleLbl.text = .introduce
-            let thanksBody = String(format: .introduceDetail, String.discogs)
-//            introduceBlock.bodyLbl.set(bodyText: thanksBody, underlineParts: [.discogs])
+            let introduceBody = String(format: .introduceDetail, String.inspiredFrom)
+            introduceBlock.bodyLbl.set(bodyText: introduceBody, underlineParts: [.inspiredFrom])
+        
             openSourceBlock.titleLbl.text = .openSource
-            let openSourceBody = String(format: .privacyMessage, String.privacyMessageHighlighted, String.email)
+            let openSourceBody = String(format: .openSourceDetail, String.discogs, String.githubLink)
+            openSourceBlock.bodyLbl.set(bodyText: openSourceBody, underlineParts: [.githubLink])
         
             resourcesBlock.titleLbl.text = .resource
-            let resourceBody = String(format: .privacyMessage, String.privacyMessageHighlighted, String.email)
+            let resourceBody = String(format: .resourceDetail, String.flatIcon, String.icons8)
+            resourcesBlock.bodyLbl.set(bodyText: resourceBody, underlineParts: [.flatIcon, .icons8])
         
+            thanksBlock.titleLbl.text = .thanks
+            let thanksBody = String(format: .thanksDetail)
+            thanksBlock.bodyLbl.set(bodyText: thanksBody)
+    }
+}
+
+enum Resources {
+    case flatIcon
+    case icons8
+    
+    var url: URL? {
+        switch self {
+        case .flatIcon:
+            return URL(string: "https://www.flaticon.com/")
+        case .icons8:
+            return URL(string: "https://icons8.com/")
+        }
     }
 }
