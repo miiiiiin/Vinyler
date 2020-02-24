@@ -127,14 +127,25 @@ class AlbumViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
+    
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
 
     override func loadView() {
         let root = UIScrollView(frame: UIScreen.main.bounds)
-        root.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            root.backgroundColor = .systemBackground
+        } else {
+            root.backgroundColor = .white
+        }
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(contentView)
-
-        moreButton.tintColor = .black
+        
+        self.setTextColors(labels: [artistLabel, titleLabel, descriptionTitleLabel, descriptionLabel])
+        
         let albumWithVinyl = UIView(forAutoLayout: ())
     
         [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
@@ -150,7 +161,9 @@ class AlbumViewController: UIViewController {
                 vinylImageView.bottomAnchor.constraint(equalTo: albumImageView.bottomAnchor),
                 vinylImageView.widthAnchor.constraint(equalTo: albumImageView.widthAnchor)
                ])
-               
+        
+                closeButton.tintColor = style.Colors.tint
+        
                [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
                
                contentView.pinToSuperview()

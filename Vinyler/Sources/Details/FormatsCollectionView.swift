@@ -64,11 +64,8 @@ extension Reactive where Base: FormatsCollectionView {
         let dataSource = RxCollectionViewSectionedReloadDataSource<FormatsSection>(configureCell: { (_, collectionVw, indexPath, formatDescription) -> UICollectionViewCell in
             let cell = collectionVw.dequeueReusableCell(withReuseIdentifier: formatCellReuseId, for: indexPath)
             
-            print("formatcell : \(cell), \(cell as? FormatCell)")
-            
             if let format = cell as? FormatCell {
                 format.titleLbl.text = formatDescription
-                print("format22222: \(format.titleLbl.text)")
             }
             return cell
         })

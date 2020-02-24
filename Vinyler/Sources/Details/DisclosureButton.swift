@@ -25,6 +25,7 @@ class DisclosureButton: UIControl {
     }
     
     private func setup() {
+        titleLbl.textColor = style.Colors.tint
         let disclosureImageView = UIImageView(forAutoLayout: ())
         let bottomSeparator = UIView.separator
         

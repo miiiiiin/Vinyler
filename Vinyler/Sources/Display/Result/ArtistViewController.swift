@@ -76,11 +76,23 @@ class ArtistViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
     override func loadView() {
         let root = UIScrollView(frame: UIScreen.main.bounds)
-        root.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            root.backgroundColor = .systemBackground
+        } else {
+            root.backgroundColor = .white
+        }
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(contentView)
+        
+        self.setTextColors(labels: [artistTypeLabel, artistNameLabel, membersLabel, descriptionLabel])
         
         [backButton, artistTypeLabel, artistNameLabel, artistImageView, membersLabel, descriptionLabel].forEach(contentView.addSubview)
         

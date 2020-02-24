@@ -71,6 +71,8 @@ class MainViewController: UIViewController {
         let root = UIView.background
         root.backgroundColor = .coldDarkBlue
         
+        moreButton.tintColor = .white
+        
         [moreButton, scanLabel, searchButton, animationView, vinylAnimationView].forEach(root.addSubview)
         scanLabel.set(headerText: .scan)
         

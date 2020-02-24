@@ -83,9 +83,9 @@ class SearchViewController: UITableViewController {
                    self?.navigationController?.popViewController(animated: true)
                }).disposed(by: disposeBag)
         
-//            tableView.rx.didScroll.skip(1).subscribe(onNext: { [weak self] in
-//                   self?.inputField.resignFirstResponder()
-//               }).disposed(by: disposeBag)
+            tableView.rx.didScroll.skip(1).subscribe(onNext: { [weak self] in
+                   self?.inputField.resignFirstResponder()
+               }).disposed(by: disposeBag)
                
                inputField.becomeFirstResponder()
         }

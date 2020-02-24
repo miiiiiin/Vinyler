@@ -42,6 +42,12 @@ class SearchCell: UITableViewCell {
         formatsLabel.text = searchResult.format.joined(separator: ", ")
     }
     
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUp()
@@ -53,6 +59,9 @@ class SearchCell: UITableViewCell {
     }
     
     private func setUp() {
+        
+        self.setTextColors(labels: [titleLbl, releaseDetailsLbl])
+        
         [albumImageView, titleLbl, releaseDetailsLbl, formatsLabel].forEach(addSubview)
        
             //        (self.windless

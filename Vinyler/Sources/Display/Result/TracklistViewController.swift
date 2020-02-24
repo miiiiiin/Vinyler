@@ -50,6 +50,12 @@ class TracklistViewController: UIViewController {
     tableView.tableHeaderView?.layoutIfNeeded()
     }
     
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
     override func loadView() {
         let root = UIView.background
         
@@ -59,6 +65,8 @@ class TracklistViewController: UIViewController {
         tableView.pinToSuperview()
         
         let header = UIView(forAutoLayout: ())
+        
+        self.setTextColors(labels: [titleLabel, artistLabel, tracklistLabel])
         
         [backButton, titleLabel, artistLabel, tracklistLabel, separator].forEach(header.addSubview)
         
@@ -88,11 +96,15 @@ class TracklistViewController: UIViewController {
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
         tableView.rowHeight = 70
-        tableView.backgroundColor = nil
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+        } else {
+            tableView.backgroundColor = nil
+        }
         
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.clipsToBounds = true
-        backgroundImageView.alpha = 0.9
+        backgroundImageView.alpha = 0.8
         visualView.effect = UIBlurEffect(style: .extraLight)
         
         self.view = root

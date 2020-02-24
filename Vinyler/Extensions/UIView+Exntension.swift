@@ -18,7 +18,11 @@ extension UIView {
 
     static var background: UIView {
         let view = UIView(frame: UIScreen.main.bounds)
-        view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
         return view
     }
 

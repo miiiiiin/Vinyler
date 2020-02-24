@@ -57,7 +57,11 @@ class AppInfoViewController: UIViewController {
     
     override func loadView() {
         let root = UIScrollView(frame: UIScreen.main.bounds)
-        root.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            root.backgroundColor = .systemBackground
+        } else {
+            root.backgroundColor = .white
+        }
         let contentView = UIView(forAutoLayout: ())
         let stackView = UIStackView(forAutoLayout: ())
         stackView.axis = .vertical

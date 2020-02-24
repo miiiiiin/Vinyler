@@ -48,8 +48,16 @@ class CustomActionSheetViewController: UIViewController {
             header.widthAnchor.constraint(equalTo: tableView.widthAnchor)
         ])
         
-        root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
-        tableView.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+        } else {
+            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        }
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = .systemBackground
+        } else {
+            tableView.backgroundColor = .white
+        }
         tableView.rowHeight = 70
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         tableView.separatorColor = .lightGray

@@ -28,7 +28,16 @@ class TrackCell: UITableViewCell {
         setUp()
     }
     
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
     private func setUp() {
+        
+        self.setTextColors(labels: [positionLabel, titleLabel, durationLabel])
+        
         [positionLabel, titleLabel, durationLabel].forEach(addSubview)
         
         NSLayoutConstraint.activate([

@@ -38,6 +38,13 @@ class LoadingViewController: UIViewController {
             self?.navigationController?.pushViewController(albumVC, animated: true)
         }).disposed(by: disposeBag)
     }
+    
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
 
     init(resourceUrl: String) {
           super.init(nibName: nil, bundle: nil)
@@ -102,6 +109,8 @@ class LoadingViewController: UIViewController {
 
         errorTitleLabel.text = errorTitle
         errorMessageLabel.set(headerText: errorMessage)
+        
+        self.setTextColors(labels: [errorTitleLabel, errorMessageLabel])
 
 //        let tapGestureRecognizer = UITapGestureRecognizer()
 //
@@ -154,7 +163,7 @@ class LoadingViewController: UIViewController {
         super.viewDidLoad()
 
         activityIndicatorView.image = #imageLiteral(resourceName: "loader2")
-        activityIndicatorView.tintColor = .gray
+        activityIndicatorView.tintColor = style.Colors.tint
         cancelButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true)
         }).disposed(by: disposeBag)

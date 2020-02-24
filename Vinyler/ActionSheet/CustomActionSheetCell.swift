@@ -26,7 +26,12 @@ class CustomActionSheetCell: UITableViewCell {
     
     func update(option: ActionSheetOption) {
         label.text = option.title
-        iconImageView.image = option.iconImage        
+        label.textColor = style.Colors.tint
+        
+        if #available(iOS 13.0, *) {
+            option.iconImage?.withTintColor(style.Colors.tint)
+        }
+        iconImageView.image = option.iconImage
     }
     
     private func setUp() {

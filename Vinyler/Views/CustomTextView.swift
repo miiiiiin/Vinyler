@@ -25,6 +25,11 @@ class CustomTextView: UIView {
     }
     
     private func setUpLayout() {
+        
+        titleLbl.textColor = style.Colors.tint
+        bodyLbl.textColor = style.Colors.tint
+        
+        
         [titleLbl, bodyLbl].forEach(addSubview(_:))
         titleLbl.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLbl.topAnchor.constraint(equalTo: topAnchor).isActive = true
