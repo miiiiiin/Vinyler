@@ -118,7 +118,7 @@ class ScanViewController: UIViewController {
         
         self.view = root
         
-        helpLabel.set(headerText: .scan)
+        helpLabel.set(headerText: .tryScan)
         cameraPermission.text = .cameraPermission
         cameraPermission.textColor = .white
         cameraPermission.isHidden = true

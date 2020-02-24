@@ -39,8 +39,6 @@ class AlbumViewController: UIViewController {
         if let video = release.videos {
             let sellsForString = String(format: .watchOnYoutube)
                        disclosureButton.titleLbl.set(bodyText: sellsForString, boldPart: sellsForString, oneLine: true)
-        } else {
-            disclosureButton.titleLbl.text = .notAvailable
         }
 
         descriptionTitleLabel.text = .description
