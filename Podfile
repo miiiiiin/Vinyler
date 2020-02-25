@@ -12,6 +12,7 @@ target 'Vinyler' do
     pod 'SwiftLint'
     pod 'lottie-ios'
     pod "RxGesture"
+    pod 'FloatingPanel'    
     
   target 'VinylerTests' do
     # Pods for testing
