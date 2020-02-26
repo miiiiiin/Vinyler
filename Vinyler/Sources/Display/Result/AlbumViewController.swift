@@ -37,8 +37,12 @@ class AlbumViewController: UIViewController {
         }
 
         if let video = release.videos {
-            let sellsForString = String(format: .watchOnYoutube)
-                       disclosureButton.titleLbl.set(bodyText: sellsForString, boldPart: sellsForString, oneLine: true)
+            let videoString = String(format: .watchOnYoutube)
+                       disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
+        } else {
+            disclosureButton.isHidden = true
+            let noInfoString = String(format: .noInfoVideo)
+            disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
         }
 
         descriptionTitleLabel.text = .description
@@ -173,7 +177,7 @@ class AlbumViewController: UIViewController {
                    closeButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 33),
                    closeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 33),
                    moreButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
-                   moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -23),
+                   moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
                    artistLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 33),
                    artistLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 44),
                    artistLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),

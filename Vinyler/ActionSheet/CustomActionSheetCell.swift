@@ -38,14 +38,15 @@ class CustomActionSheetCell: UITableViewCell {
         
         [label, iconImageView].forEach(addSubview)
         
-        NSLayoutConstraint.activate([            iconImageView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 28),
-            iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+        NSLayoutConstraint.activate([
+            iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 22),
+            label.leftAnchor.constraint(equalTo: iconImageView.rightAnchor, constant: 28),
             iconImageView.centerYAnchor.constraint(equalTo: label.centerYAnchor),
             label.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
         backgroundColor = .clear
-        iconImageView.tintColor = .dark
+        iconImageView.tintColor = style.Colors.tint
         selectionStyle = .blue
     }
     
