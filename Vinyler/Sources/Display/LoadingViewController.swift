@@ -66,7 +66,7 @@ class LoadingViewController: UIViewController {
 
     private func handleObservable<T>(observable: Observable<T>) -> Observable<T> {
 
-        return rx.viewDidLoad.flatMap { observable.timeout(30, scheduler: MainScheduler.instance)
+        return rx.viewDidLoad.flatMap { observable.timeout(10, scheduler: MainScheduler.instance)
         }.catchError { error in
                 guard let rxError = error as? RxError else {
                     return Observable.error(error)
@@ -124,17 +124,17 @@ class LoadingViewController: UIViewController {
             self?.errorMessageLabel.isHidden = false
         }
 
-//        let close = cancelButton.rx.tap.flatMap { _ -> Observable<Void> in Observable.error(error)}
+        let close = cancelButton.rx.tap.flatMap { _ -> Observable<Void> in Observable.error(error)}
 
-//        let retry = tapGestureRecognizer.rx.event.map { $0.didTap(oneOf: [.retry]) }.flatMap { _ in Observable.just(()) }
-//            .do(onNext: {
-//                UIView.animate(withDuration: 0.3) { [weak self] in
-//                    self?.cancelButton.alpha = 0
-//                    self?.activityIndicatorView.alpha = 1
-//                    self?.errorTitleLabel.isHidden = true
-//                    self?.errorMessageLabel.isHidden = true
-//                }
-//            }).delay(0.5, scheduler: MainScheduler.instance)
+        let retry = tapGestureRecognizer.rx.event.map { $0.didTap(oneOf: [.retry]) }.flatMap { _ in Observable.just(()) }
+            .do(onNext: {
+                UIView.animate(withDuration: 0.3) { [weak self] in
+                    self?.cancelButton.alpha = 0
+                    self?.activityIndicatorView.alpha = 1
+                    self?.errorTitleLabel.isHidden = true
+                    self?.errorMessageLabel.isHidden = true
+                }
+            }).delay(0.5, scheduler: MainScheduler.instance)
         return Observable.error(error)//.merge(close, retry)
     }
 
