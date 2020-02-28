@@ -112,10 +112,10 @@ class LoadingViewController: UIViewController {
         
         self.setTextColors(labels: [errorTitleLabel, errorMessageLabel])
 
-//        let tapGestureRecognizer = UITapGestureRecognizer()
-//
-//        errorMessageLabel.addGestureRecognizer(tapGestureRecognizer)
-//        errorMessageLabel.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer()
+
+        errorMessageLabel.addGestureRecognizer(tapGestureRecognizer)
+        errorMessageLabel.isUserInteractionEnabled = true
 
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.cancelButton.alpha = 1
@@ -137,7 +137,6 @@ class LoadingViewController: UIViewController {
             }).delay(0.5, scheduler: MainScheduler.instance)
         return Observable.error(error)//.merge(close, retry)
     }
-
     
     init(artistResourceUrl: String) {
         super.init(nibName: nil, bundle: nil)
@@ -189,7 +188,6 @@ class LoadingViewController: UIViewController {
         activityIndicatorCenterY.isActive = true
         stackView.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44).isActive = true
         activityAndClose.heightAnchor.constraint(equalToConstant: 99).isActive = true
-        cancelButton.topAnchor.constraint(equalTo: activityAndClose.topAnchor, constant: 22).isActive = true
         cancelButton.bottomAnchor.constraint(equalTo: activityAndClose.bottomAnchor).isActive = true
         cancelButton.centerXAnchor.constraint(equalTo: activityAndClose.centerXAnchor).isActive = true
         activityIndicatorView.pin(to: cancelButton)
