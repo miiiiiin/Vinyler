@@ -182,6 +182,7 @@ class LoadingViewController: UIViewController {
         errorMessageLabel.isHidden = true
 
         root.addSubview(stackView)
+        self.modalPresentationStyle = .fullScreen
 
         stackView.centerXAnchor.constraint(equalTo: root.centerXAnchor).isActive = true
         activityIndicatorCenterY = stackView.centerYAnchor.constraint(equalTo: root.centerYAnchor)

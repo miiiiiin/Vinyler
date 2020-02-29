@@ -119,13 +119,13 @@ class AlbumViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.vinylImageView.transform = .identity
-        }) { completed in
-            if completed {
-                SKStoreReviewController.requestReview()
-            }
-        }
+//        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+//            self?.vinylImageView.transform = .identity
+//        }) { completed in
+//            if completed {
+//                SKStoreReviewController.requestReview()
+//            }
+//        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -147,6 +147,7 @@ class AlbumViewController: UIViewController {
         }
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(contentView)
+        self.modalPresentationStyle = .fullScreen
         
         self.setTextColors(labels: [artistLabel, titleLabel, descriptionTitleLabel, descriptionLabel])
         
