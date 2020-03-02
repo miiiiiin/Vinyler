@@ -38,11 +38,13 @@ platform :ios do
     submit_for_review: true,
     force: true,
     automatic_release: false,
-    skip_binary_upload: true,
+    skip_binary_upload: false,
     metadata_path: "./metadata",
     app_version: "1.0",
+    ignore_language_directory_validation: true,
+    skip_metadata: true,
+    skip_screenshots: true,
     skip_app_version_update: false,
-    skip_metadata: false,
     submission_information: {
       add_id_info_limits_tracking: true,
       add_id_info_serves_ads: true,
@@ -76,7 +78,7 @@ end
 lane :release do
   build_app(scheme: "Vinyler",
             workspace: "Vinyler.xcworkspace",
-            include_bitcode: true)
+            include_bitcode: false)
 end
 
 
