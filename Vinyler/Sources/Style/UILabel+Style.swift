@@ -9,6 +9,13 @@
 import UIKit
 
 extension UILabel {
+    
+    static var header: UILabel {
+        let label = UILabel(forAutoLayout: ())
+        label.textColor = .purple
+        label.font = .regularFont(with: 30)
+        return label
+    }
 
     static var block: UILabel {
         let label = UILabel(forAutoLayout: ())
@@ -17,13 +24,13 @@ extension UILabel {
         return label
     }
 
-    static var header: UILabel {
-        let label = UILabel(forAutoLayout: ())
-        label.font = .header
-        label.textColor = .white//.dark
-        label.numberOfLines = 0
-        return label
-    }
+//    static var header: UILabel {
+//        let label = UILabel(forAutoLayout: ())
+//        label.font = .header
+//        label.textColor = .white//.dark
+//        label.numberOfLines = 0
+//        return label
+//    }
 
 //    static var copyableHeader: CopyableLabel {
 //        let label = CopyableLabel()
