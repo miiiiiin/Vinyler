@@ -12,7 +12,7 @@ extension UILabel {
     
     static var header: UILabel {
         let label = UILabel(forAutoLayout: ())
-        label.textColor = .purple
+        label.textColor = .purpleish
         label.font = .regularFont(with: 30)
         return label
     }

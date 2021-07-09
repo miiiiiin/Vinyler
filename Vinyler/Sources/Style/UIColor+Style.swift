@@ -16,4 +16,6 @@ extension UIColor {
     static let veryLightPink = UIColor(displayP3Red: 230.0/255, green: 230.0/255, blue: 230.0/255, alpha: 1.0)
     static let coldDarkBlue =  UIColor(red: 6.0 / 255.0, green: 17.0 / 255.0, blue: 44.0 / 255.0, alpha: 1.0)
     static let purplishDarkBlue =  UIColor(red: 26.0 / 255.0, green: 23.0 / 255.0, blue: 75.0 / 255.0, alpha: 1.0)
+    
+    static let purpleish = UIColor(red: 188.0 / 255.0, green: 111.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
 }
