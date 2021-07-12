@@ -35,15 +35,16 @@ class SettingsViewController: UITableViewController {
         tableView.tableHeaderView = headerView
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SettingsCell")
-        
+        tableView.register(SettingsHeaderView.self, forHeaderFooterViewReuseIdentifier: "SettingsHeaderView")
         
         configureDataSource()
-        
     }
     
     func configureDataSource() {
-     
-        let dataSource = RxTableViewSectionedReloadDataSource<SettingsSection> { (_, tv, indexPath, cellType) -> UITableViewCell in
+        
+        let dataSource = RxTableViewSectionedReloadDataSource<SettingsSection>(configureCell: {
+            _, tv, indexPath, cellType in
+            
             let cell = tv.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
             
             cell.textLabel?.text = cellType.title
@@ -57,7 +58,9 @@ class SettingsViewController: UITableViewController {
             }
             
             return cell
-        }
+        }, titleForHeaderInSection: { dataSource, sectionIndex -> String? in
+            return dataSource.sectionModels[sectionIndex].title
+        })
         
         
 //        Observable.just([
@@ -67,7 +70,9 @@ class SettingsViewController: UITableViewController {
 //        ]).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: bag)
         
         Observable.just([
-            SettingsSection(items: [.general, .instructions, .privacy], title: "about")
+            SettingsSection(items: [.general, .instructions, .privacy], title: "about"),
+            SettingsSection(items: [.rate, .share], title: "etc"),
+            SettingsSection(items: [.version], title: "version")            
         ])
         .bind(to: tableView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
