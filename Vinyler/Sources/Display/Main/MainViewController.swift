@@ -57,9 +57,9 @@ class MainViewController: UIViewController {
         }).disposed(by: bag)
         
         moreButton.rx.tap.subscribe(onNext: { [weak self] in
-//            self?.navigationController?.pushViewController(AppInfoViewController(), animated: true)
+            self?.navigationController?.pushViewController(AppInfoViewController(), animated: true)
             
-            self?.navigationController?.pushViewController(SettingsViewController(), animated: true)
+//            self?.navigationController?.pushViewController(SettingsViewController(), animated: true)
         }).disposed(by: bag)
     }
     

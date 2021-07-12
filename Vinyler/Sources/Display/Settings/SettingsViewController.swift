@@ -62,17 +62,11 @@ class SettingsViewController: UITableViewController {
             return dataSource.sectionModels[sectionIndex].title
         })
         
-        
-//        Observable.just([
-//            SettingsSection(items: [.general, .instructions, .privacy], title: .about),
-//            SettingsSection(items: [.rate, .share], title: .enjoyUsing),
-//            SettingsSection(items: [.credits, .version], title: .other)
-//        ]).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: bag)
-        
         Observable.just([
             SettingsSection(items: [.general, .instructions, .privacy], title: "about"),
             SettingsSection(items: [.rate, .share], title: "etc"),
-            SettingsSection(items: [.version], title: "version")            
+            SettingsSection(items: [.version], title: "version")
+            
         ])
         .bind(to: tableView.rx.items(dataSource: dataSource))
         .disposed(by: disposeBag)
