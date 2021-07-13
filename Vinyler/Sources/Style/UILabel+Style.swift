@@ -87,7 +87,14 @@ extension UILabel {
         label.textColor = .gray
         return label
     }
-
+    
+    static var metadata: UILabel {
+        let label = UILabel(forAutoLayout: ())
+        label.font = .body//.metadata
+        label.textColor = .gray
+        return label
+    }
+    
     static var format: UILabel {
         let label = UILabel(forAutoLayout: ())
         label.font = .metadata

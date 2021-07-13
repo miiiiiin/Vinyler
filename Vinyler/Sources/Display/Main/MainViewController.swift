@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
             .disposed(by: bag)
         
         searchButton.rx.tap.subscribe(onNext: { [weak self] in
-            let searchViewController = SearchViewController()
+            let searchViewController = SearchViewController(collectionViewLayout: UICollectionViewLayout())
             self?.navigationController?.pushViewController(searchViewController, animated: true)
         }).disposed(by: bag)
         

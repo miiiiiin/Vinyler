@@ -14,6 +14,8 @@
 		3870353F269C8D740049777F /* SettingsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870353E269C8D740049777F /* SettingsCellType.swift */; };
 		38703543269C8E3A0049777F /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38703542269C8E3A0049777F /* Section.swift */; };
 		38703547269C921A0049777F /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38703546269C921A0049777F /* SettingsHeaderView.swift */; };
+		38703580269DCCE00049777F /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870357F269DCCE00049777F /* UIView+Layout.swift */; };
+		38703584269DCECF0049777F /* Extension+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38703583269DCECF0049777F /* Extension+CGFloat.swift */; };
 		7DE9D78923F27F9B007A9CC3 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9D78823F27F9B007A9CC3 /* loading.json */; };
 		7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */; };
 		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
@@ -94,6 +96,8 @@
 		3870353E269C8D740049777F /* SettingsCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellType.swift; sourceTree = "<group>"; };
 		38703542269C8E3A0049777F /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		38703546269C921A0049777F /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		3870357F269DCCE00049777F /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		38703583269DCECF0049777F /* Extension+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CGFloat.swift"; sourceTree = "<group>"; };
 		5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D2E72566D0C5B604C39F948 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				FA09D53F239BF26E006F37BD /* UITextfield+Style.swift */,
 				7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */,
 				FA177E9624028ABB00AF1BF6 /* DefaultStyle.swift */,
+				3870357F269DCCE00049777F /* UIView+Layout.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */,
 				FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */,
 				FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */,
+				38703583269DCECF0049777F /* Extension+CGFloat.swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -698,6 +704,7 @@
 				817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */,
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */,
+				38703580269DCCE00049777F /* UIView+Layout.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
 				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
@@ -725,6 +732,7 @@
 				FAD03CD8232D61CC0067E2D9 /* Extension+UIImageView.swift in Sources */,
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
 				FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */,
+				38703584269DCECF0049777F /* Extension+CGFloat.swift in Sources */,
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
 				FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */,

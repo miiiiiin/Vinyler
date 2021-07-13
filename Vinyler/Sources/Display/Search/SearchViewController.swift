@@ -9,6 +9,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
+
+typealias SearchResultSection = Section<Results>
 
 class SearchViewController: UICollectionViewController {
     
@@ -33,7 +36,14 @@ class SearchViewController: UICollectionViewController {
 //            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
 //            .asDriver(onErrorJustReturn: "")
 //            .filter { !$0.isEmpty }
-//            .flatMapLatest { query -> Driver<[UISearchResultsUpdating]>}
+//            .flatMapLatest { query -> Driver<[SearchResultSection]> in
+//                let discogs = DiscogsAPI()
+//                return discogs.search(query: query)
+//                .startWith([])
+//                .asDriver(onErrorJustReturn: [])
+//            }
+//            .drive() //fixme
+//            .disposed(by: disposeBag)
         
         
         collectionView.rx.willBeginDragging.subscribe(onNext: {
@@ -42,9 +52,15 @@ class SearchViewController: UICollectionViewController {
     }
 }
 
+
 //extension Reactive where Base: SearchViewController {
-//    
-//    
+//
+//    func sections(_ sections: Observable<[SearchResultSection]>) -> Disposable {
+//        
+//        
+//        
+//    }
+//
 //}
 
 //class SearchViewController: UITableViewController {
