@@ -35,13 +35,34 @@ class SearchCell: UICollectionViewCell {
         
         releaseTitleLabel.pinToSuperview(anchors: [.top, .right], withInsets: UIEdgeInsets(top: .margin, left: 0, bottom: 0, right: -16))
         
+        infoLabel.pinToSuperview(anchors: [.bottom, .right], withInsets: UIEdgeInsets(top: 0, left: 0, bottom: -6, right: -16))
         
+        
+        infoLabel.setContentHuggingPriority(.required, for: .vertical)
+        
+        let width = UIScreen.main.bounds.width - 2 * 2 * .margin
+
         NSLayoutConstraint.activate([
             albumImageView.widthAnchor.constraint(equalTo: albumImageView.heightAnchor),
             releaseTitleLabel.leadingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: .margin),
+            
+            infoLabel.topAnchor.constraint(equalTo: releaseTitleLabel.bottomAnchor, constant: 5),
+            infoLabel.leadingAnchor.constraint(equalTo: releaseTitleLabel.leadingAnchor),
+            
         ])
         
         
+//        infoLabel.leadingAnchor.constraint(equalTo: releaseTitleLabel.leadingAnchor).isActive = true
+//        infoLabel.setContentHuggingPriority(.required, for: .vertical)
+//        let width = UIScreen.main.bounds.width - 2 * 2 * .margin
+//        contentView.widthAnchor.constraint(equalToConstant: width).isActive = true
+//        contentView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+//
+//        releaseTitleLabel.numberOfLines = 3
+//        contentView.backgroundColor = .white
+//        contentView.layer.cornerRadius = 11
+//        contentView.clipsToBounds = true
+//        setShadow()
         
     }
 }
