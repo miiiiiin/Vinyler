@@ -17,12 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow()
-//        let rootViewController = MainViewController()
 
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        
-        let rootViewController = HomeViewController()
+        let rootViewController = MainViewController()
+//        let rootViewController = HomeViewController()
         let nav = NavigationController(rootViewController: rootViewController)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

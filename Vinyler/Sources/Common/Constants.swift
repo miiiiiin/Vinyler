@@ -12,5 +12,6 @@ struct Constants {
     
     struct GoogleAds {
         static let adKey = "ca-app-pub-7531107538676056/5845073332"
+        static let testKey = "ca-app-pub-3940256099942544/2934735716"
     }
 }

@@ -26,12 +26,8 @@ class AlbumViewController: UIViewController {
     private let playerImageView = UIImageView(forAutoLayout: ())
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
+    private var bannerView: GADBannerView!
     private let disposeBag = DisposeBag()
-    
-    lazy var bannerView: GADBannerView = {
-        let view = GADBannerView(forAutoLayout: ())
-        return view
-    }()
     
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
@@ -161,6 +157,14 @@ class AlbumViewController: UIViewController {
     
         [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
 
+        let adSize = GADAdSizeFromCGSize(CGSize(width: UIScreen.main.bounds.width, height: 44))
+        bannerView =  GADBannerView(adSize: adSize)
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.adUnitID = Constants.GoogleAds.testKey
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        
        NSLayoutConstraint.activate([
                 albumImageView.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
                 albumImageView.topAnchor.constraint(equalTo: albumWithVinyl.topAnchor),
@@ -175,7 +179,7 @@ class AlbumViewController: UIViewController {
         
                 closeButton.tintColor = style.Colors.tint
         
-               [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel].forEach(contentView.addSubview)
+               [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
                
                contentView.pinToSuperview()
         
@@ -210,8 +214,24 @@ class AlbumViewController: UIViewController {
                    descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),
                    descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 22),
                    descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
-                   descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44)
+                   descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44),
+                
+                    bannerView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+                    bannerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                    bannerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                    bannerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
                ])
         self.view = root
+    }
+}
+
+extension AlbumViewController: GADBannerViewDelegate {
+    // MARK: - Delegate
+
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 0.1) {
+            bannerView.alpha = 1
+        }
     }
 }
