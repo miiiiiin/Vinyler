@@ -12,15 +12,17 @@ extension UILabel {
     
     static var header: UILabel {
         let label = UILabel(forAutoLayout: ())
-        label.textColor = .purple
-        label.font = .regularFont(with: 30)
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.font = .regularFont(with: 20)
         return label
     }
 
     static var block: UILabel {
         let label = UILabel(forAutoLayout: ())
         label.font = .block
-        label.textColor = .white//.dark
+        label.textColor = .dark
         return label
     }
 

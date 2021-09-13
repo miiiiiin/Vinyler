@@ -74,6 +74,8 @@ class MainViewController: UIViewController {
         moreButton.tintColor = .white
         
         [moreButton, scanLabel, searchButton, animationView, vinylAnimationView].forEach(root.addSubview)
+        
+        scanLabel.textAlignment = .center
         scanLabel.set(headerText: .scan)
         
         let scanCenter = scanLabel.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -50)

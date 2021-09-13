@@ -10,13 +10,13 @@ import UIKit
 
 extension UIFont {
 
-//    static func regularFont(with size: CGFloat) -> UIFont? {
-//        return UIFont(name: "AvenirNext-Regular", size: size)
-//    }
-
     static func regularFont(with size: CGFloat) -> UIFont? {
-        return UIFont(name: "Holtwood One SC", size: size)
+        return UIFont(name: "AvenirNext-Regular", size: size)
     }
+
+//    static func regularFont(with size: CGFloat) -> UIFont? {
+//        return UIFont(name: "Holtwood One SC", size: size)
+//    }
     
     static func demiBoldFont(with size: CGFloat) -> UIFont? {
         return UIFont(name: "AvenirNext-DemiBold", size: size)
