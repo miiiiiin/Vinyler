@@ -10,6 +10,7 @@
 		019A0515144331EBFA144D0E /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCC866E10DA6EA884978EC5 /* Pods_Vinyler.framework */; };
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
+		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
 		7DE9D78923F27F9B007A9CC3 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9D78823F27F9B007A9CC3 /* loading.json */; };
 		7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */; };
 		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
@@ -88,6 +89,7 @@
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		5CF20C7E1C4352D369D2B52B /* Pods-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-VinylerTests/Pods-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D2E72566D0C5B604C39F948 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
 		7DE9D78823F27F9B007A9CC3 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Style.swift"; sourceTree = "<group>"; };
@@ -177,6 +179,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D18847726EEFFEB00AE8815 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7D18847826EEFFF100AE8815 /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		7D4872BF23E1190F000D6D49 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 		813E836A22E443C10057F0E6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7D18847726EEFFEB00AE8815 /* Common */,
 				FA6C3B17232D8B4E000E1C87 /* Cells */,
 				817B25DD230978E5003DF85D /* Animations */,
 				814B06A42304197F0062906D /* Extensions */,
@@ -721,6 +732,7 @@
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
+				7D18847926EEFFF100AE8815 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

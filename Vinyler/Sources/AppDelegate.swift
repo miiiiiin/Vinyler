@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
 //        let rootViewController = MainViewController()
+
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         
         let rootViewController = HomeViewController()

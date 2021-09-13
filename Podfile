@@ -12,7 +12,8 @@ target 'Vinyler' do
     pod 'SwiftLint'
     pod 'lottie-ios'
     pod "RxGesture"
-    
+    pod 'Google-Mobile-Ads-SDK'
+   
   target 'VinylerTests' do
     # Pods for testing
   end

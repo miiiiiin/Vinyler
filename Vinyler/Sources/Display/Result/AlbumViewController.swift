@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import StoreKit
 import UIKit
+import GoogleMobileAds
 
 class AlbumViewController: UIViewController {
 
@@ -26,7 +27,12 @@ class AlbumViewController: UIViewController {
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
     private let disposeBag = DisposeBag()
-
+    
+    lazy var bannerView: GADBannerView = {
+        let view = GADBannerView(forAutoLayout: ())
+        return view
+    }()
+    
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
         titleLabel.text = release.title
