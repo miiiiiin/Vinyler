@@ -11,7 +11,23 @@ import Foundation
 struct Constants {
     
     struct GoogleAds {
-        static let adKey = "ca-app-pub-7531107538676056/5845073332"
-        static let testKey = "ca-app-pub-3940256099942544/2934735716"
+        static var adKey: String {
+            (Bundle.main.infoDictionary?["AD_MOB_KEY"] as? String ?? "")
+        }
+
+        static var testAdKey: String {
+            (Bundle.main.infoDictionary?["AD_MOB_TEST_KEY"] as? String ?? "")
+        }
+    }
+    
+    struct Discogs {
+        
+        static var discogKey: String {
+            (Bundle.main.infoDictionary?["DISCOG_KEY"] as? String ?? "")
+        }
+        
+        static var discogSecret: String {
+            (Bundle.main.infoDictionary?["DISCOG_SECRET"] as? String ?? "")
+        }
     }
 }

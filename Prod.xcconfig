@@ -1,0 +1,15 @@
+//
+//  Prod.xcconfig
+//  Vinyler
+//
+//  Created by Running Raccoon on 2021/09/17.
+//  Copyright © 2021 songkyung min. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+AD_MOB_KEY = ca-app-pub-7531107538676056/5845073332
+AD_MOB_TEST_KEY = ca-app-pub-3940256099942544/2934735716
+DISCOG_KEY = "nkzSqEWNIhLJfxQKBjlX"
+DISCOG_SECRET = "amLsRZszbLodywDtLxyeNtSVwozddAHs"

@@ -47,7 +47,7 @@ class DiscogsAPI {
         }
 
         var request = URLRequest(url: url)
-        request.setValue("Discogs key=\(key), secret=\(secret)", forHTTPHeaderField: "Authorization")
+        request.setValue("Discogs key=\(Constants.Discogs.discogKey), secret=\(Constants.Discogs.discogSecret)", forHTTPHeaderField: "Authorization")
         request.setValue("application/vnd.discogs.v2.plaintext+json", forHTTPHeaderField: "Accept")
 
         return URLSession.shared.rx.data(request: request).flatMap { data -> Observable<T> in
@@ -67,10 +67,4 @@ class DiscogsAPI {
                 return Observable.error(error)
         }
     }
-
-}
-
-extension DiscogsAPI {
-    var key: String { return "nkzSqEWNIhLJfxQKBjlX" }
-    var secret: String { return "amLsRZszbLodywDtLxyeNtSVwozddAHs" }
 }
