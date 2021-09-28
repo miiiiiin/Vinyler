@@ -5,29 +5,39 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.012741">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.00027">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: sync_code_signing" time="54.891932">
+      <testcase classname="fastlane.lanes" name="1: update_fastlane" time="0.2006">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: produce" time="202.931709">
+      <testcase classname="fastlane.lanes" name="2: get_certificates" time="12.053755">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: build_app" time="229.834056">
+      <testcase classname="fastlane.lanes" name="3: get_provisioning_profile" time="34.510038">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: deliver" time="93.668545">
+      <testcase classname="fastlane.lanes" name="4: build_app" time="107.753194">
         
-          <failure message="/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:253:in `block in execute_action'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:227:in `chdir'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:227:in `execute_action'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:37:in `block (2 levels) in parsing_binding'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/lane_manager.rb:56:in `cruise_lane'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/commands_generator.rb:108:in `block (2 levels) in run'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/command.rb:178:in `call'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/command.rb:153:in `run'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/runner.rb:476:in `run_active_command'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:76:in `run!'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/commander-fastlane-4.4.6/lib/commander/delegates.rb:15:in `run!'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/commands_generator.rb:349:in `run'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/commands_generator.rb:41:in `start'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/fastlane/lib/fastlane/cli_tools_distributor.rb:119:in `take_off'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/gems/fastlane-2.142.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/bin/fastlane:23:in `load'&#10;/usr/local/Cellar/fastlane/2.142.0/libexec/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Could not upload binary to App Store Connect. Check out the error above" />
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: upload_to_app_store" time="116.028742">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: deliver" time="213.689208">
+        
+          <failure message="/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'&#10;Fastfile:79:in `block (2 levels) in parsing_binding'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/lane.rb:33:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/runner.rb:45:in `execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/lane_manager.rb:47:in `cruise_lane'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/command_line_handler.rb:36:in `handle'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/commands_generator.rb:109:in `block (2 levels) in run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:117:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/commands_generator.rb:353:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/commands_generator.rb:42:in `start'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/fastlane/lib/fastlane/cli_tools_distributor.rb:122:in `take_off'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.195.0/bin/fastlane:23:in `&lt;top (required)&gt;'&#10;/usr/local/bin/fastlane:23:in `load'&#10;/usr/local/bin/fastlane:23:in `&lt;main&gt;'&#10;&#10;Error uploading ipa file: &#10; [Transporter Error Output]: ERROR ITMS-90189: Redundant Binary Upload. You've already uploaded a build with build number '1' for version number '2.0'. Make sure you increment the build string before you upload your app to App Store Connect. Learn more in Xcode Help (http://help.apple.com/xcode/mac/current/#/devba7f53ad4).&#10;[Transporter Error Output]: Return status of iTunes Transporter was 1: ERROR ITMS-90189: Redundant Binary Upload. You've already uploaded a build with build number '1' for version number '2.0'. Make sure you increment the build string before you upload your app to App Store Connect. Learn more in Xcode Help (http://help.apple.com/xcode/mac/current/#/devba7f53ad4).&#10;[Transporter Error Output]: The call to the iTMSTransporter completed with a non-zero exit status: 1. This indicates a failure." />
         
       </testcase>
     
