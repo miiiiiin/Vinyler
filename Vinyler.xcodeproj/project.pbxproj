@@ -196,6 +196,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		7D259342273BAE5A00006823 /* Refactoring */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Refactoring;
+			sourceTree = "<group>";
+		};
 		7D4872BF23E1190F000D6D49 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +237,7 @@
 		813E834322E441430057F0E6 /* Vinyler */ = {
 			isa = PBXGroup;
 			children = (
+				7D259342273BAE5A00006823 /* Refactoring */,
 				814B06A123040CFC0062906D /* Assets */,
 				813E836A22E443C10057F0E6 /* Sources */,
 				813E835022E441450057F0E6 /* Info.plist */,

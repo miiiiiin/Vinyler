@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
+import SnapKit
 
 class HomeViewController: UIViewController {
     
