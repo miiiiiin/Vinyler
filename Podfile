@@ -13,7 +13,10 @@ target 'Vinyler' do
     pod 'lottie-ios'
     pod "RxGesture"
     pod 'Google-Mobile-Ads-SDK'
-    pod 'SnapKit'   
+    pod 'SnapKit'  
+
+  # ReactorKit
+    pod 'ReactorKit' 
 
   target 'VinylerTests' do
     # Pods for testing
