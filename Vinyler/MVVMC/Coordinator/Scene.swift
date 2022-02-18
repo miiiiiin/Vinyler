@@ -13,17 +13,17 @@ protocol TargetScene {
 }
 
 enum Scene {
-    
+    case home(HomeViewModel)
     
 }
 
 extension Scene: TargetScene {
     var transition: SceneTransitionType {
-//        switch self {
-//
-//        }
+        switch self {
+        case .home(let viewModel):
+            var vc = HomeViewController()
+            vc.bind(to: viewModel)
+            return .root(vc)
+        }
     }
-    
-    
-    
 }

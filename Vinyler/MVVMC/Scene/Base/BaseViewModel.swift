@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol BaseViewModelInput {
-    var dismissAction: CocoaAction { get }
+//    var dismissAction: CocoaAction { get }
     
 }
 
@@ -31,11 +31,11 @@ class BaseViewModel: BaseViewModelInput, BaseViewModelOutput, BaseViewModelType 
     var baseInput: BaseViewModelInput { return self }
     var baseOutput: BaseViewModelOutput { return self }
     
-    lazy var dismissAction: CocoaAction = {
-        CocoaAction { [unowned self] _ in
-            return self.sceneCoordinator.dismiss(animated: true).asObservable().map { _ in }
-        }
-    }()
+//    lazy var dismissAction: CocoaAction = {
+//        CocoaAction { [unowned self] _ in
+//            return self.sceneCoordinator.dismiss(animated: true).asObservable().map { _ in }
+//        }
+//    }()
     
     let sceneCoordinator: SceneCoordinatorType
     

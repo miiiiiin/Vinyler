@@ -20,11 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        let rootViewController = MainViewController()
-//        let rootViewController = HomeViewController()
-        let nav = NavigationController(rootViewController: rootViewController)
-        window?.rootViewController = nav
+//        let rootViewController = MainViewController()
+//        let rootViewController = SplashViewController()
+//        let nav = NavigationController(rootViewController: rootViewController)
+
         window?.makeKeyAndVisible()
+        
+        
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        let viewModel = HomeViewModel(sceneCoordinator: sceneCoordinator)
+        sceneCoordinator.transition(to: Scene.home(viewModel))
 
         return true
     }

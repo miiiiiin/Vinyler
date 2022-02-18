@@ -15,6 +15,8 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
+        setUpconstraints()
     }
     
     func setUpUI() {
