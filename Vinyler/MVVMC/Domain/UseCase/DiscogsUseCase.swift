@@ -10,21 +10,21 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-//final class DiscogsUseCase: DiscogsRepository {
-    
-    // MARK: - Private
-    
-//    private let network: ItchaNetworking
-//    private let disposeBag: DisposeBag
-//
-//    init(network: ItchaNetworking = ItchaNetworking()) {
-//        self.network = network
-//        self.disposeBag = DisposeBag()
-//    }
-    
-//    func getSearchList(request: String) -> Observable<Result> {
-//
-//    }
+protocol DiscogsUseCase {
+    func executeSearchList(query: String) -> Single<Result<Results, Error>>
     
     
-//}
+}
+
+final class DiscogsResultUseCase: DiscogsUseCase {
+    
+    private let repository: DiscogsRepositoryType
+    
+    init(repository: DiscogsRepositoryType) {
+        self.repository = repository
+    }
+    
+    func executeSearchList(query: String) -> Single<Result<Results, Error>>{
+        return repository.getSearchList(query: query)
+    }
+}

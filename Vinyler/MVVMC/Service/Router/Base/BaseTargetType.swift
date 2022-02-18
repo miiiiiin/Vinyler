@@ -19,7 +19,7 @@ extension BaseTargetType {
     }
     
     var method: Moya.Method {
-        return .post
+        return .get
     }
     
     var sampleData: Data {
@@ -27,8 +27,7 @@ extension BaseTargetType {
     }
     
     var headers: [String : String]? {
-        let httpHeaders: [String: String] = ["Content-type" : "application/vnd.discogs.v2.plaintext+json", "Authorization": "Discogs key=\(Constants.Discogs.discogKey), secret=\(Constants.Discogs.discogSecret)"]
-//        httpHeaders["User-Agent"] = String(UIDevice.iPhoneModel() + " \(String.osVersion)")
+        let httpHeaders: [String: String] = ["Accept": "application/vnd.discogs.v2.plaintext+json", "Authorization": "Discogs key=\(Constants.Discogs.discogKey), secret=\(Constants.Discogs.discogSecret)"]
         return httpHeaders
     }
     

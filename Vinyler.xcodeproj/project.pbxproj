@@ -13,6 +13,9 @@
 		528E57AC1784E10A0C713CDC /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F7778688118478CCA8242 /* Pods_Vinyler.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
 		7D6BFAA326F4208900BAF902 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7D6BFAA226F4208900BAF902 /* Prod.xcconfig */; };
+		7DB4853927BF93330002BE0C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853827BF93330002BE0C /* NetworkService.swift */; };
+		7DB4853B27BF94B90002BE0C /* DiscogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */; };
+		7DB4853D27BF9D090002BE0C /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853C27BF9D090002BE0C /* BaseRequest.swift */; };
 		7DC0301527BF2AAA00162157 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301427BF2AAA00162157 /* SceneCoordinatorType.swift */; };
 		7DC0301727BF2B0100162157 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301627BF2B0100162157 /* SceneTransitionType.swift */; };
 		7DC0301927BF2B1500162157 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301827BF2B1500162157 /* Scene.swift */; };
@@ -28,7 +31,8 @@
 		7DC0303A27BF379C00162157 /* DiscogsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0303927BF379C00162157 /* DiscogsRepository.swift */; };
 		7DC0303E27BF385200162157 /* DiscogsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0303D27BF385200162157 /* DiscogsRouter.swift */; };
 		7DC0304127BF38CD00162157 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0304027BF38CD00162157 /* BaseTargetType.swift */; };
-		7DC0304427BF3B1F00162157 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0304327BF3B1F00162157 /* NetworkService.swift */; };
+		7DC0304427BF3B1F00162157 /* NetworkService2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0304327BF3B1F00162157 /* NetworkService2.swift */; };
+		7DC0304727BF6CE700162157 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0304627BF6CE600162157 /* Extensions+String.swift */; };
 		7DE9D78923F27F9B007A9CC3 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9D78823F27F9B007A9CC3 /* loading.json */; };
 		7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */; };
 		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
@@ -106,6 +110,9 @@
 		7026E12EE92B8A43AC4C90B0 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7D6BFAA226F4208900BAF902 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
+		7DB4853827BF93330002BE0C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogAPI.swift; sourceTree = "<group>"; };
+		7DB4853C27BF9D090002BE0C /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
 		7DC0301427BF2AAA00162157 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		7DC0301627BF2B0100162157 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
@@ -122,7 +129,8 @@
 		7DC0303927BF379C00162157 /* DiscogsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsRepository.swift; sourceTree = "<group>"; };
 		7DC0303D27BF385200162157 /* DiscogsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsRouter.swift; sourceTree = "<group>"; };
 		7DC0304027BF38CD00162157 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
-		7DC0304327BF3B1F00162157 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7DC0304327BF3B1F00162157 /* NetworkService2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService2.swift; sourceTree = "<group>"; };
+		7DC0304627BF6CE600162157 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		7DE9D78823F27F9B007A9CC3 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Style.swift"; sourceTree = "<group>"; };
 		7DEDB63223AB23F1007287B8 /* fluttering.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fluttering.json; sourceTree = "<group>"; };
@@ -239,6 +247,7 @@
 		7DC0301227BF2A5D00162157 /* MVVMC */ = {
 			isa = PBXGroup;
 			children = (
+				7DC0304527BF6CE000162157 /* Extensions */,
 				7DC0303127BF349100162157 /* Domain */,
 				7DC0302C27BF2FDE00162157 /* Helper */,
 				7DC0302527BF2EA800162157 /* Rx */,
@@ -373,7 +382,10 @@
 		7DC0303B27BF383B00162157 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				7DC0304327BF3B1F00162157 /* NetworkService.swift */,
+				7DC0304327BF3B1F00162157 /* NetworkService2.swift */,
+				7DB4853827BF93330002BE0C /* NetworkService.swift */,
+				7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */,
+				7DB4853C27BF9D090002BE0C /* BaseRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -393,6 +405,14 @@
 				7DC0304027BF38CD00162157 /* BaseTargetType.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		7DC0304527BF6CE000162157 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0304627BF6CE600162157 /* Extensions+String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		813E833822E441430057F0E6 = {
@@ -873,6 +893,7 @@
 			files = (
 				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
 				7DC0303627BF34F300162157 /* DiscogsRepositoryType.swift in Sources */,
+				7DB4853D27BF9D090002BE0C /* BaseRequest.swift in Sources */,
 				FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
 				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
@@ -891,7 +912,7 @@
 				7DC0301727BF2B0100162157 /* SceneTransitionType.swift in Sources */,
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
-				7DC0304427BF3B1F00162157 /* NetworkService.swift in Sources */,
+				7DC0304427BF3B1F00162157 /* NetworkService2.swift in Sources */,
 				817B262E23151881003DF85D /* UIViewController+Rx.swift in Sources */,
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
@@ -929,10 +950,13 @@
 				FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
 				FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */,
+				7DB4853927BF93330002BE0C /* NetworkService.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				7DC0302427BF2D9D00162157 /* SceneCoordinator.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
+				7DC0304727BF6CE700162157 /* Extensions+String.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
+				7DB4853B27BF94B90002BE0C /* DiscogAPI.swift in Sources */,
 				7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */,
 				814B06AB230584680062906D /* NavigationControllerDelegate.swift in Sources */,
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,

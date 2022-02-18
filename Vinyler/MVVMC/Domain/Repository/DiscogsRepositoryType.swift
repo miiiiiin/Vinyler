@@ -9,9 +9,5 @@
 import RxSwift
 
 protocol DiscogsRepositoryType {
-//    func getCardList(request: GetCardListRequest) -> Observable<Result<GetCardListResponse, Itcha.NetworkError>>
-    
-//    func getSearchList(request: String) -> Observable<Result>
-    
-    
+    func getSearchList(query: String) -> Single<Result<Results, Error>>
 }

@@ -32,6 +32,15 @@ class HomeViewController: BaseViewController, ViewModelBindableType {
     // MARK: - Bind
     
     func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        output.searchList
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { items in
+                debugPrint("items check: \(items)")
+            })
+            .disposed(by: disposeBag)
         
     }
 }
