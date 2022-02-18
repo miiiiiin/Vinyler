@@ -15,6 +15,8 @@ target 'Vinyler' do
     pod 'Google-Mobile-Ads-SDK'
     pod 'SnapKit'   
     pod 'Action'
+    pod 'Moya/RxSwift', '~> 14.0'
+
   target 'VinylerTests' do
     # Pods for testing
   end

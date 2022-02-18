@@ -23,6 +23,12 @@
 		7DC0302B27BF2FB400162157 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0302A27BF2FB400162157 /* HomeViewController.swift */; };
 		7DC0302E27BF2FE300162157 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0302D27BF2FE300162157 /* ViewModelBindableType.swift */; };
 		7DC0303027BF302B00162157 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0302F27BF302B00162157 /* HomeViewModel.swift */; };
+		7DC0303627BF34F300162157 /* DiscogsRepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0303527BF34F200162157 /* DiscogsRepositoryType.swift */; };
+		7DC0303827BF35E800162157 /* DiscogsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0303727BF35E800162157 /* DiscogsUseCase.swift */; };
+		7DC0303A27BF379C00162157 /* DiscogsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0303927BF379C00162157 /* DiscogsRepository.swift */; };
+		7DC0303E27BF385200162157 /* DiscogsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0303D27BF385200162157 /* DiscogsRouter.swift */; };
+		7DC0304127BF38CD00162157 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0304027BF38CD00162157 /* BaseTargetType.swift */; };
+		7DC0304427BF3B1F00162157 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0304327BF3B1F00162157 /* NetworkService.swift */; };
 		7DE9D78923F27F9B007A9CC3 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9D78823F27F9B007A9CC3 /* loading.json */; };
 		7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */; };
 		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
@@ -111,6 +117,12 @@
 		7DC0302A27BF2FB400162157 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7DC0302D27BF2FE300162157 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		7DC0302F27BF302B00162157 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7DC0303527BF34F200162157 /* DiscogsRepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsRepositoryType.swift; sourceTree = "<group>"; };
+		7DC0303727BF35E800162157 /* DiscogsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsUseCase.swift; sourceTree = "<group>"; };
+		7DC0303927BF379C00162157 /* DiscogsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsRepository.swift; sourceTree = "<group>"; };
+		7DC0303D27BF385200162157 /* DiscogsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsRouter.swift; sourceTree = "<group>"; };
+		7DC0304027BF38CD00162157 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		7DC0304327BF3B1F00162157 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7DE9D78823F27F9B007A9CC3 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		7DEDB63023AB1633007287B8 /* AnimationView+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Style.swift"; sourceTree = "<group>"; };
 		7DEDB63223AB23F1007287B8 /* fluttering.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fluttering.json; sourceTree = "<group>"; };
@@ -227,11 +239,12 @@
 		7DC0301227BF2A5D00162157 /* MVVMC */ = {
 			isa = PBXGroup;
 			children = (
+				7DC0303127BF349100162157 /* Domain */,
 				7DC0302C27BF2FDE00162157 /* Helper */,
 				7DC0302527BF2EA800162157 /* Rx */,
 				7DC0301D27BF2B8200162157 /* Utils */,
 				7DC0301C27BF2B7400162157 /* Scene */,
-				7DC0301B27BF2B6D00162157 /* Networking */,
+				7DC0301B27BF2B6D00162157 /* Service */,
 				7DC0301A27BF2B6500162157 /* Common */,
 				7DC0301327BF2A6900162157 /* Coordinator */,
 			);
@@ -256,11 +269,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		7DC0301B27BF2B6D00162157 /* Networking */ = {
+		7DC0301B27BF2B6D00162157 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7DC0303C27BF384500162157 /* Router */,
+				7DC0303B27BF383B00162157 /* Networking */,
 			);
-			path = Networking;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		7DC0301C27BF2B7400162157 /* Scene */ = {
@@ -319,6 +334,65 @@
 				7DC0302D27BF2FE300162157 /* ViewModelBindableType.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		7DC0303127BF349100162157 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0303427BF34C700162157 /* UseCase */,
+				7DC0303327BF349A00162157 /* Repository */,
+				7DC0303227BF349500162157 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		7DC0303227BF349500162157 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		7DC0303327BF349A00162157 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0303527BF34F200162157 /* DiscogsRepositoryType.swift */,
+				7DC0303927BF379C00162157 /* DiscogsRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		7DC0303427BF34C700162157 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0303727BF35E800162157 /* DiscogsUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		7DC0303B27BF383B00162157 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0304327BF3B1F00162157 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7DC0303C27BF384500162157 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0304227BF39D900162157 /* Base */,
+				7DC0303D27BF385200162157 /* DiscogsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		7DC0304227BF39D900162157 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7DC0304027BF38CD00162157 /* BaseTargetType.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		813E833822E441430057F0E6 = {
@@ -798,6 +872,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
+				7DC0303627BF34F300162157 /* DiscogsRepositoryType.swift in Sources */,
 				FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
 				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
@@ -816,9 +891,11 @@
 				7DC0301727BF2B0100162157 /* SceneTransitionType.swift in Sources */,
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
+				7DC0304427BF3B1F00162157 /* NetworkService.swift in Sources */,
 				817B262E23151881003DF85D /* UIViewController+Rx.swift in Sources */,
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
+				7DC0303E27BF385200162157 /* DiscogsRouter.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
 				387035212698B6A60049777F /* SplashViewController.swift in Sources */,
 				7DC0302027BF2BBA00162157 /* BaseViewModel.swift in Sources */,
@@ -832,6 +909,7 @@
 				817B25E423097BB4003DF85D /* ActivityIndicatorView.swift in Sources */,
 				FA09D5392396B966006F37BD /* FormatCell.swift in Sources */,
 				7DC0302B27BF2FB400162157 /* HomeViewController.swift in Sources */,
+				7DC0303827BF35E800162157 /* DiscogsUseCase.swift in Sources */,
 				813E837722E45CEC0057F0E6 /* Results.swift in Sources */,
 				813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */,
 				813E838322E46D2D0057F0E6 /* Image.swift in Sources */,
@@ -847,6 +925,7 @@
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
 				FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */,
+				7DC0303A27BF379C00162157 /* DiscogsRepository.swift in Sources */,
 				FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
 				FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */,
@@ -861,6 +940,7 @@
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
 				7D18847926EEFFF100AE8815 /* Constants.swift in Sources */,
 				7DC0303027BF302B00162157 /* HomeViewModel.swift in Sources */,
+				7DC0304127BF38CD00162157 /* BaseTargetType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
