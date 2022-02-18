@@ -14,7 +14,7 @@ target 'Vinyler' do
     pod "RxGesture"
     pod 'Google-Mobile-Ads-SDK'
     pod 'SnapKit'   
-
+    pod 'Action'
   target 'VinylerTests' do
     # Pods for testing
   end
