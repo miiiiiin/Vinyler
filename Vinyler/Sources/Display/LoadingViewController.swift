@@ -27,7 +27,7 @@ class LoadingViewController: UIViewController {
         let fetchRelease = discogs.search(query: barcode)
             .flatMap { searchResults -> Observable<Release> in
                 guard let firstUrl = searchResults.first?.resourceUrl else {
-                    return Observable.error(RequestError.noResults)
+                    return Observable.error(DiscogsError.noResults)
                 }
                 return discogs.fetchRelease(firstUrl)
             }
@@ -90,7 +90,7 @@ class LoadingViewController: UIViewController {
         var errorTitle: String
         var errorMessage: String
 
-        if let networkError = error as? RequestError {
+        if let networkError = error as? DiscogsError {
             switch networkError {
             case .invalidUrl:
                 errorTitle = .genericErrorTitle

@@ -58,7 +58,7 @@ class SearchViewController: UITableViewController {
            .withLatestFrom(inputField.rx.text.orEmpty)
            .asDriver(onErrorJustReturn: "")
            .distinctUntilChanged()
-           .flatMapLatest { query -> Driver<[Result]> in
+           .flatMapLatest { query -> Driver<[SearchResult]> in
                if query.isEmpty {
                    return Driver.just([])
                } else {
@@ -71,7 +71,7 @@ class SearchViewController: UITableViewController {
 //                        cell.windless.end()
            }.disposed(by: disposeBag)
            
-        tableView.rx.modelSelected(Result.self).subscribe(onNext: { [weak self] searchResult in
+        tableView.rx.modelSelected(SearchResult.self).subscribe(onNext: { [weak self] searchResult in
             let loadingViewController = LoadingViewController(resourceUrl: searchResult.resourceUrl)
                let navigationController = UINavigationController(rootViewController: loadingViewController)
                navigationController.isNavigationBarHidden = true

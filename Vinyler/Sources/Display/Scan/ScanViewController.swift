@@ -54,7 +54,7 @@ class ScanViewController: UIViewController {
                 if let barcodeString = barcode?.stringValue {
                     return Observable.just(barcodeString)
                 } else {
-                    return Observable.error(RequestError.noResults)
+                    return Observable.error(DiscogsError.noResults)
                 }
         }
         .observeOn(MainScheduler.instance)

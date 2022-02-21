@@ -21,20 +21,20 @@ class DiscogsAPI {
              return Observable.error(DiscogsError.invalidUrl)
         }
 //
-//        let path = baseURL + "/database/search?q=" + query + "&type=release&format=Vinyl"
-//        let result: Observable<Results> = request(path: path)
-//        return result.map { $0.results }
+        let path = baseURL + "/database/search?q=" + query + "&type=release&format=Vinyl"
+        let result: Observable<Results> = request(path: path)
+        return result.map { $0.results }
         
-        let discogsUseCase = DiscogsResultUseCase(repository: DiscogsRepository())
+//        let discogsUseCase = DiscogsResultUseCase(repository: DiscogsRepository())
+//
+//        let results = discogsUseCase.executeSearchList(query: "w")
+//            .map { $0.results }
+//            .map { items -> [SearchResult] in
+//                debugPrint("items count: \(items)")
+//                return items
+//            }
         
-        let results = discogsUseCase.executeSearchList(query: "w")
-            .map { $0.results }
-            .map { items -> [SearchResult] in
-                debugPrint("items count: \(items)")
-                return items
-            }
-        
-        return results
+//        return results
 
     }
 

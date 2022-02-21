@@ -42,8 +42,10 @@ class HomeViewModel: BaseViewModel, HomeViewModelInput, HomeViewModelOutput, Hom
 //                return result
 //            }
         
-        let d = discogsUseCase.executeSearchList(query: "w")
-            .flatMap { result -> Observable<> in
+        
+        searchList = discogsUseCase.executeSearchList(query: "w")
+            .asObservable()
+            .flatMap { result -> Observable<Results> in
                 switch result {
                 case let .success(response):
                     return .just(response)
@@ -52,6 +54,9 @@ class HomeViewModel: BaseViewModel, HomeViewModelInput, HomeViewModelOutput, Hom
                     return .empty()
                 }
             }
+        
+        
+        
 //            .map { result -> Observable<Results> in
 //                debugPrint("search list results: \(result)")
 //

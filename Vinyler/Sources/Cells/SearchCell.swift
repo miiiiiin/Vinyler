@@ -17,7 +17,7 @@ class SearchCell: UITableViewCell {
     private let formatsLabel = UILabel.bodyLight
     private var disposeBag = DisposeBag()
     
-    func update(with searchResult: Result) {
+    func update(with searchResult: SearchResult) {
         disposeBag = DisposeBag()
 //        albumImageView.image =
         

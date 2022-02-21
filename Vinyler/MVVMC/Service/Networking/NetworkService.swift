@@ -84,12 +84,18 @@ final class NetworkService: NetworkServiceType {
 //            return .just(.failure(DiscogsError.invalidUrl))
 //        }
         
+        debugPrint("get request: \(request.endpoint.path), \(T.self)")
+        
         return URLSession.shared.rx.data(request: request.toUrlRequest())
             .map { data -> Result<T, Error> in
+                
+                debugPrint("decode check: \(try JSONDecoder().decode(T.self, from: data))")
+                
                 do {
                     let response = try JSONDecoder().decode(T.self, from: data)
                     return .success(response)
                 } catch {
+                    debugPrint("failure drror")
                     return .failure(DiscogsError.unavailable)
                 }
             }
