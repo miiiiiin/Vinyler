@@ -9,5 +9,6 @@
 import RxSwift
 
 protocol DiscogsRepositoryType {
-    func getSearchList(query: String) -> Single<Result<Results, Error>>
+//    func getSearchList(query: String) -> Single<Result<Results, Error>>
+    func getSearchList(query: String) -> Observable<Results>
 }

@@ -25,10 +25,20 @@ protocol NetworkServiceType {
     
     //    func get<T: Decodable>(path: String, responseType: T.Type) -> Single<Result<T, Error>>
     
-    func get<T: Decodable>(request: Request, responseType: T.Type) -> Single<Result<T, Error>>
+    
+    func request<T: Codable>(request: Request) -> Observable<T>
+//    func request<T: Codable>(request: Request) -> Single<Result<T, Error>>//Observable<T>
+    
+//    func get<T: Decodable>(request: Request, responseType: T.Type) -> Single<Result<T, Error>>
 }
 
 final class NetworkService: NetworkServiceType {
+    
+    private let urlSession: URLSession
+    
+    init(urlSession: URLSession = URLSession(configuration: .default)) {
+        self.urlSession = urlSession
+    }
    
     
 //    func get<T>(path: String, responseType: T.Type) -> Single<Result<T, Error>> where T : Decodable {
@@ -77,32 +87,95 @@ final class NetworkService: NetworkServiceType {
         
 //
 //    }
+  
     
-    func get<T: Decodable>(request: Request, responseType: T.Type) -> Single<Result<T, Error>> {
+    
+//    func request<T: Codable>(request: Request) -> Single<Result<T, Error>> {
+//
+//        debugPrint("get request: \(request.toUrlRequest()), \(request.endpoint.path), \(T.self)")
+//
+//        return urlSession.rx.data(request: request.toUrlRequest())
+//            .map { data in
+////                try JSONDecoder().decode(T.self, from: data)
+//                debugPrint("decode check: \(try JSONDecoder().decode(T.self, from: data))")
+////
+//                do {
+//                    let response = try JSONDecoder().decode(T.self, from: data)
+//                    return .success(response)
+//                } catch {
+//                    debugPrint("failure drror")
+//                    return .failure(DiscogsError.unavailable)
+//                }
+//            }
+//            .observeOn(MainScheduler.asyncInstance)
+//            .asSingle()
+//    }
+    
+    
+    func request<T: Codable>(request: Request) -> Observable<T> {
         
-//        guard let url = URL(string: "\(DiscogAPI.baseURL)\(endpoint.path)") else {
-//            return .just(.failure(DiscogsError.invalidUrl))
-//        }
+        debugPrint("get request: \(request.toUrlRequest()), \(request.endpoint.path), \(T.self)")
         
-        debugPrint("get request: \(request.endpoint.path), \(T.self)")
+        let tourl = request.toUrlRequest()
         
-        return URLSession.shared.rx.data(request: request.toUrlRequest())
-            .map { data -> Result<T, Error> in
-                
-                debugPrint("decode check: \(try JSONDecoder().decode(T.self, from: data))")
+        debugPrint("check request:  \(tourl), \(tourl.allHTTPHeaderFields), \(tourl.headers)")
+//
+//        return urlSession.rx.data(request: request.toUrlRequest())
+//            .map { data in
+//                try JSONDecoder().decode(T.self, from: data)
+//            }
+//            .observeOn(MainScheduler.asyncInstance)
+        
+        let headerFields = tourl.allHTTPHeaderFields
+        
+        return urlSession.rx.data(request: tourl)
+            .flatMap { data -> Observable<T> in
                 
                 do {
-                    let response = try JSONDecoder().decode(T.self, from: data)
-                    return .success(response)
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    
+                    let response = try decoder.decode(T.self, from: data)
+                    return .just(response)
                 } catch {
-                    debugPrint("failure drror")
-                    return .failure(DiscogsError.unavailable)
+                    return .error(DiscogsError.noResults)
                 }
+                
+            }.catchError { error in
+                let error = error as Error
+                debugPrint("request error: \(error.localizedDescription)")
+                return .error(error)
             }
-            .observeOn(MainScheduler.asyncInstance)
-            .asSingle()
-            
+        
     }
+    
+    
+    
+//    func get<T: Decodable>(request: Request, responseType: T.Type) -> Single<Result<T, Error>> {
+//
+////        guard let url = URL(string: "\(DiscogAPI.baseURL)\(endpoint.path)") else {
+////            return .just(.failure(DiscogsError.invalidUrl))
+////        }
+//
+//        debugPrint("get request: \(request.endpoint.path), \(T.self)")
+//
+//        return urlSession.rx.data(request: request.toUrlRequest())
+//            .map { data -> Result<T, Error> in
+//
+//                debugPrint("decode check: \(try JSONDecoder().decode(T.self, from: data))")
+//
+//                do {
+//                    let response = try JSONDecoder().decode(T.self, from: data)
+//                    return .success(response)
+//                } catch {
+//                    debugPrint("failure drror")
+//                    return .failure(DiscogsError.unavailable)
+//                }
+//            }
+//            .observeOn(MainScheduler.asyncInstance)
+//            .asSingle()
+//
+//    }
     
     
 }

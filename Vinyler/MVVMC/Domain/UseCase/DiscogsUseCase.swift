@@ -11,7 +11,8 @@ import RxSwift
 import RxCocoa
 
 protocol DiscogsUseCase {
-    func executeSearchList(query: String) -> Single<Result<Results, Error>>
+//    func executeSearchList(query: String) -> Single<Result<Results, Error>>
+    func executeSearchList(query: String) -> Observable<Results>
     
     
 }
@@ -24,7 +25,11 @@ final class DiscogsResultUseCase: DiscogsUseCase {
         self.repository = repository
     }
     
-    func executeSearchList(query: String) -> Single<Result<Results, Error>>{
+//    func executeSearchList(query: String) -> Single<Result<Results, Error>>{
+//        return repository.getSearchList(query: query)
+//    }
+    
+    func executeSearchList(query: String) -> Observable<Results> {
         return repository.getSearchList(query: query)
     }
 }

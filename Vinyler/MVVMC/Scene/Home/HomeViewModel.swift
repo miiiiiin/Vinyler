@@ -43,17 +43,19 @@ class HomeViewModel: BaseViewModel, HomeViewModelInput, HomeViewModelOutput, Hom
 //            }
         
         
+//        searchList = discogsUseCase.executeSearchList(query: "w")
+//            .asObservable()
+//            .flatMap { result -> Observable<Results> in
+//                switch result {
+//                case let .success(response):
+//                    return .just(response)
+//
+//                case let .failure(error):
+//                    return .empty()
+//                }
+//            }
+        
         searchList = discogsUseCase.executeSearchList(query: "w")
-            .asObservable()
-            .flatMap { result -> Observable<Results> in
-                switch result {
-                case let .success(response):
-                    return .just(response)
-                    
-                case let .failure(error):
-                    return .empty()
-                }
-            }
         
         
         

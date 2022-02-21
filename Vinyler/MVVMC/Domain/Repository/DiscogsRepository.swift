@@ -17,7 +17,7 @@ final class DiscogsRepository: DiscogsRepositoryType {
         self.networkService = networkService
     }
     
-    func getSearchList(query: String) -> Single<Result<Results, Error>> {
+//    func getSearchList(query: String) -> Single<Result<Results, Error>> {
       
 //        return networkService.request(to: DiscogsRouter.searchList(query: query))
 //            .map { try $0.map(Results.self) }
@@ -27,9 +27,17 @@ final class DiscogsRepository: DiscogsRepositoryType {
 //
 //        return networkService.get(request: request, responseType: Results.Type)
         
-        let request = BaseRequest(endpoint: .search(query: query), params: [:])
+//        let request = BaseRequest(endpoint: .search(query: query), params: [:])
         
-        return networkService.get(request: request, responseType: Results.self)
+//        return networkService.get(request: request, responseType: Results.self)
+        
+//        return networkService.request(request: request)
+//
+//    }
+    
+    func getSearchList(query: String) -> Observable<Results> {
+        let request = BaseRequest(endpoint: .search(query: query))
+        return networkService.request(request: request)
     }
     
 }

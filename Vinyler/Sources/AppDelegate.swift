@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-//
+////
         let sceneCoordinator = SceneCoordinator(window: window!)
         let viewModel = HomeViewModel(sceneCoordinator: sceneCoordinator)
         sceneCoordinator.transition(to: Scene.home(viewModel))
