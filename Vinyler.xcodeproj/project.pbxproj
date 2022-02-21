@@ -16,6 +16,7 @@
 		7DB4853927BF93330002BE0C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853827BF93330002BE0C /* NetworkService.swift */; };
 		7DB4853B27BF94B90002BE0C /* DiscogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */; };
 		7DB4853D27BF9D090002BE0C /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853C27BF9D090002BE0C /* BaseRequest.swift */; };
+		7DBBE67E27C35B560040D123 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBBE67D27C35B560040D123 /* NetworkServiceMock.swift */; };
 		7DC0301527BF2AAA00162157 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301427BF2AAA00162157 /* SceneCoordinatorType.swift */; };
 		7DC0301727BF2B0100162157 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301627BF2B0100162157 /* SceneTransitionType.swift */; };
 		7DC0301927BF2B1500162157 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301827BF2B1500162157 /* Scene.swift */; };
@@ -38,7 +39,6 @@
 		7DEDB63323AB23F2007287B8 /* fluttering.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DEDB63223AB23F1007287B8 /* fluttering.json */; };
 		813E834522E441430057F0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E834422E441430057F0E6 /* AppDelegate.swift */; };
 		813E834F22E441450057F0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 813E834D22E441450057F0E6 /* LaunchScreen.storyboard */; };
-		813E835A22E441450057F0E6 /* VinylerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E835922E441450057F0E6 /* VinylerTests.swift */; };
 		813E836622E441830057F0E6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E836522E441830057F0E6 /* MainViewController.swift */; };
 		813E837022E446CE0057F0E6 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E836F22E446CE0057F0E6 /* UIButton+Style.swift */; };
 		813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E837122E449310057F0E6 /* UIColor+Style.swift */; };
@@ -114,6 +114,7 @@
 		7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogAPI.swift; sourceTree = "<group>"; };
 		7DB4853C27BF9D090002BE0C /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
+		7DBBE67D27C35B560040D123 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
 		7DC0301427BF2AAA00162157 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		7DC0301627BF2B0100162157 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		7DC0301827BF2B1500162157 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		813E834E22E441450057F0E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		813E835022E441450057F0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813E835522E441450057F0E6 /* VinylerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinylerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		813E835922E441450057F0E6 /* VinylerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylerTests.swift; sourceTree = "<group>"; };
 		813E835B22E441450057F0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813E836522E441830057F0E6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		813E836F22E446CE0057F0E6 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
@@ -242,6 +242,28 @@
 				7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		7DBBE67A27C35B2C0040D123 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7DBBE67D27C35B560040D123 /* NetworkServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		7DBBE67B27C35B310040D123 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		7DBBE67C27C35B340040D123 /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stub;
 			sourceTree = "<group>";
 		};
 		7DC0301227BF2A5D00162157 /* MVVMC */ = {
@@ -452,7 +474,9 @@
 		813E835822E441450057F0E6 /* VinylerTests */ = {
 			isa = PBXGroup;
 			children = (
-				813E835922E441450057F0E6 /* VinylerTests.swift */,
+				7DBBE67C27C35B340040D123 /* Stub */,
+				7DBBE67B27C35B310040D123 /* Test */,
+				7DBBE67A27C35B2C0040D123 /* Mocks */,
 				813E835B22E441450057F0E6 /* Info.plist */,
 			);
 			path = VinylerTests;
@@ -741,6 +765,7 @@
 					};
 					813E835422E441450057F0E6 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1310;
 						TestTargetID = 813E834022E441430057F0E6;
 					};
 				};
@@ -972,7 +997,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				813E835A22E441450057F0E6 /* VinylerTests.swift in Sources */,
+				7DBBE67E27C35B560040D123 /* NetworkServiceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1188,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JH6HFBQXT6;
 				INFOPLIST_FILE = VinylerTests/Info.plist;
@@ -1173,6 +1199,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.miin.VinylerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vinyler.app/Vinyler";
@@ -1185,6 +1212,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JH6HFBQXT6;
 				INFOPLIST_FILE = VinylerTests/Info.plist;
