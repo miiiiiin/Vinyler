@@ -17,6 +17,8 @@
 		7DB4853B27BF94B90002BE0C /* DiscogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */; };
 		7DB4853D27BF9D090002BE0C /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853C27BF9D090002BE0C /* BaseRequest.swift */; };
 		7DBBE67E27C35B560040D123 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBBE67D27C35B560040D123 /* NetworkServiceMock.swift */; };
+		7DBBE68027C35DB10040D123 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBBE67F27C35DB10040D123 /* HomeViewModelTests.swift */; };
+		7DBBE68227C35FAA0040D123 /* NetworkServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBBE68127C35FAA0040D123 /* NetworkServiceStub.swift */; };
 		7DC0301527BF2AAA00162157 /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301427BF2AAA00162157 /* SceneCoordinatorType.swift */; };
 		7DC0301727BF2B0100162157 /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301627BF2B0100162157 /* SceneTransitionType.swift */; };
 		7DC0301927BF2B1500162157 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC0301827BF2B1500162157 /* Scene.swift */; };
@@ -115,6 +117,8 @@
 		7DB4853C27BF9D090002BE0C /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
 		7DBBE67D27C35B560040D123 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		7DBBE67F27C35DB10040D123 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		7DBBE68127C35FAA0040D123 /* NetworkServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceStub.swift; sourceTree = "<group>"; };
 		7DC0301427BF2AAA00162157 /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		7DC0301627BF2B0100162157 /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
 		7DC0301827BF2B1500162157 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 		7DBBE67B27C35B310040D123 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				7DBBE67F27C35DB10040D123 /* HomeViewModelTests.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 		7DBBE67C27C35B340040D123 /* Stub */ = {
 			isa = PBXGroup;
 			children = (
+				7DBBE68127C35FAA0040D123 /* NetworkServiceStub.swift */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -998,6 +1004,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DBBE67E27C35B560040D123 /* NetworkServiceMock.swift in Sources */,
+				7DBBE68027C35DB10040D123 /* HomeViewModelTests.swift in Sources */,
+				7DBBE68227C35FAA0040D123 /* NetworkServiceStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

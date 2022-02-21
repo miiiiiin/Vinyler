@@ -19,6 +19,9 @@ target 'Vinyler' do
 
   target 'VinylerTests' do
     # Pods for testing
+    pod 'RxBlocking'
+    pod 'RxTest'
+
   end
 
 end
