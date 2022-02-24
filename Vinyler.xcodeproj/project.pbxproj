@@ -12,6 +12,7 @@
 		477A78CE1F36C0BBCABAA035 /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7026E12EE92B8A43AC4C90B0 /* Pods_Vinyler_VinylerTests.framework */; };
 		528E57AC1784E10A0C713CDC /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F7778688118478CCA8242 /* Pods_Vinyler.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
+		7D68765827C71AB6003FD578 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68765727C71AB6003FD578 /* NetworkServiceTests.swift */; };
 		7D6BFAA326F4208900BAF902 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7D6BFAA226F4208900BAF902 /* Prod.xcconfig */; };
 		7DB4853927BF93330002BE0C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853827BF93330002BE0C /* NetworkService.swift */; };
 		7DB4853B27BF94B90002BE0C /* DiscogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */; };
@@ -111,6 +112,7 @@
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		7026E12EE92B8A43AC4C90B0 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7D68765727C71AB6003FD578 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		7D6BFAA226F4208900BAF902 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		7DB4853827BF93330002BE0C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		7DB4853A27BF94B90002BE0C /* DiscogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogAPI.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				7DBBE67F27C35DB10040D123 /* HomeViewModelTests.swift */,
+				7D68765727C71AB6003FD578 /* NetworkServiceTests.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -1005,6 +1008,7 @@
 			files = (
 				7DBBE67E27C35B560040D123 /* NetworkServiceMock.swift in Sources */,
 				7DBBE68027C35DB10040D123 /* HomeViewModelTests.swift in Sources */,
+				7D68765827C71AB6003FD578 /* NetworkServiceTests.swift in Sources */,
 				7DBBE68227C35FAA0040D123 /* NetworkServiceStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
