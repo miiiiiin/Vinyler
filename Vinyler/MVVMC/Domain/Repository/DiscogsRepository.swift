@@ -21,5 +21,4 @@ final class DiscogsRepository: DiscogsRepositoryType {
         let request = BaseRequest(endpoint: .search(query: query))
         return networkService.request(request: request)
     }
-    
 }

@@ -10,13 +10,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol DiscogsUseCase {
+protocol DiscogsUseCaseType {
     func executeSearchList(query: String) -> Observable<Result<Results, Error>>
     
     
 }
 
-final class DiscogsResultUseCase: DiscogsUseCase {
+final class DiscogsUseCase: DiscogsUseCaseType {
     
     private let repository: DiscogsRepositoryType
     

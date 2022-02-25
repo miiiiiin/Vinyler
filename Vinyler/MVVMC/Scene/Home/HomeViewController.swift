@@ -39,6 +39,10 @@ class HomeViewController: BaseViewController, ViewModelBindableType {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { items in
                 debugPrint("items check: \(items)")
+                
+                sleep(2)
+                
+                input.moveAction.execute(())
             })
             .disposed(by: disposeBag)
         

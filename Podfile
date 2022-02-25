@@ -16,6 +16,7 @@ target 'Vinyler' do
     pod 'SnapKit'   
     pod 'Action'
     pod 'Moya/RxSwift', '~> 14.0'
+    pod 'Then', '~> 2.7.0'
 
   target 'VinylerTests' do
     # Pods for testing

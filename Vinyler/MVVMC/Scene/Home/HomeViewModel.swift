@@ -12,7 +12,7 @@ import RxCocoa
 import CoreMedia
 
 protocol HomeViewModelInput: BaseViewModelInput {
-    
+    var moveAction: CocoaAction { get }
 }
 
 protocol HomeViewModelOutput: BaseViewModelOutput {
@@ -29,11 +29,25 @@ class HomeViewModel: BaseViewModel, HomeViewModelInput, HomeViewModelOutput, Hom
     var input: HomeViewModelInput { return self }
     var output: HomeViewModelOutput { return self }
     
+    
+    // MARK: - Input
+    
+    lazy var moveAction: CocoaAction = {
+        return CocoaAction { [unowned self] _ in
+            let viewModel = SearchByTextViewModel(sceneCoordinator: self.sceneCoordinator)
+            return self.sceneCoordinator.transition(to: Scene.search(viewModel)).map { _ in }
+        }
+    }()
+    
+    // MARK: - Output
+    
     var searchList: Observable<Results>
+    
+    // MARK: - Init
     
     override init(sceneCoordinator: SceneCoordinatorType) {
         
-        let discogsUseCase = DiscogsResultUseCase(repository: DiscogsRepository())
+        let discogsUseCase = DiscogsUseCase(repository: DiscogsRepository())
         
         searchList = discogsUseCase.executeSearchList(query: "w")
             .flatMap { result -> Observable<Results> in

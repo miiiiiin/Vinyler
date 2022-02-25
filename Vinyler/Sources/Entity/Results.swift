@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import RxDataSources
 
-struct Results: Codable {
+struct Results: Codable, Equatable {
     let results: [SearchResult]
 }
 
-struct SearchResult: Codable {
+struct SearchResult: Codable, Equatable {
     let resourceUrl: String
     let format: [String]
     let label: [String]
@@ -21,4 +22,10 @@ struct SearchResult: Codable {
     let country: String
     let year: String?
     let uri: String?
+}
+
+extension SearchResult: IdentifiableType {
+    var identity: String { // FIXME: - ID로 수정 필요
+        return resourceUrl
+    }
 }

@@ -14,6 +14,7 @@ protocol TargetScene {
 
 enum Scene {
     case home(HomeViewModel)
+    case search(SearchByTextViewModel)
     
 }
 
@@ -24,6 +25,11 @@ extension Scene: TargetScene {
             var vc = HomeViewController()
             vc.bind(to: viewModel)
             return .root(vc)
+            
+        case .search(let viewModel):
+            var vc = SearchByTextViewController()
+            vc.bind(to: viewModel)
+            return .present(vc, true)
         }
     }
 }
