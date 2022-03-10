@@ -81,6 +81,8 @@ class SearchByTextViewController: UITableViewController, ViewModelBindableType {
         }
     }
     
+    // MARK: - Bind
+    
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output

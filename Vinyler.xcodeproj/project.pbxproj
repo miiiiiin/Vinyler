@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3811F0F227DA2A4B00076F5B /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811F0F127DA2A4B00076F5B /* Style.swift */; };
+		3811F0F927DA2B4600076F5B /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811F0F827DA2B4600076F5B /* ScanViewController.swift */; };
+		3811F0FF27DA2B6600076F5B /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811F0FE27DA2B6600076F5B /* ScanViewModel.swift */; };
 		387035212698B6A60049777F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* SplashViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
-		477A78CE1F36C0BBCABAA035 /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7026E12EE92B8A43AC4C90B0 /* Pods_Vinyler_VinylerTests.framework */; };
-		528E57AC1784E10A0C713CDC /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F7778688118478CCA8242 /* Pods_Vinyler.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
 		7D19D32927C877F600788BEE /* SearchByTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19D32827C877F600788BEE /* SearchByTextViewController.swift */; };
 		7D19D32B27C8780C00788BEE /* SearchByTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D19D32A27C8780C00788BEE /* SearchByTextViewModel.swift */; };
@@ -76,6 +77,8 @@
 		817B26322315379C003DF85D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817B26312315379B003DF85D /* Assets.xcassets */; };
 		817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */; };
 		81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F46D7B231A7263002CAC44 /* FormatsCollectionView.swift */; };
+		BC30F6B23B112D35A52E940A /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5466CE5180AFB4050D2B9650 /* Pods_Vinyler.framework */; };
+		F3F4BA19FECC0E8CF1BAF6CF /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A6F495DACD6BFCFDDFC9C5 /* Pods_Vinyler_VinylerTests.framework */; };
 		FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050CF7239BFAA70067D32C /* SearchCell.swift */; };
 		FA09D5392396B966006F37BD /* FormatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D5382396B966006F37BD /* FormatCell.swift */; };
 		FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */; };
@@ -111,10 +114,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2AD4A51831F014B8E0BF1DF7 /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
+		34D36A279558E29E9CA83FB4 /* Pods-Vinyler-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3811F0F127DA2A4B00076F5B /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		3811F0F827DA2B4600076F5B /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		3811F0FE27DA2B6600076F5B /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		387035202698B6A60049777F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
-		7026E12EE92B8A43AC4C90B0 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5466CE5180AFB4050D2B9650 /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7D19D32827C877F600788BEE /* SearchByTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByTextViewController.swift; sourceTree = "<group>"; };
 		7D19D32A27C8780C00788BEE /* SearchByTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchByTextViewModel.swift; sourceTree = "<group>"; };
@@ -185,10 +191,10 @@
 		817B26312315379B003DF85D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+UILabel.swift"; sourceTree = "<group>"; };
 		81F46D7B231A7263002CAC44 /* FormatsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatsCollectionView.swift; sourceTree = "<group>"; };
-		928F7778688118478CCA8242 /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9410939A8B0B9D0C8F13D292 /* Pods-Vinyler-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B321B0D5BF84D05A3B5341FD /* Pods-Vinyler-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
-		F21FACD6682F10ACE6F781B7 /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
+		8EC0EF5C94F31F4A6E1FE0CB /* Pods-Vinyler-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
+		A18A6D14560D178AF022FA3B /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
+		D4FBA60694B03CCA0DAAF3C6 /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
+		D9A6F495DACD6BFCFDDFC9C5 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA050CF7239BFAA70067D32C /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		FA09D5382396B966006F37BD /* FormatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCell.swift; sourceTree = "<group>"; };
 		FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
@@ -218,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				528E57AC1784E10A0C713CDC /* Pods_Vinyler.framework in Frameworks */,
+				BC30F6B23B112D35A52E940A /* Pods_Vinyler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,20 +232,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				477A78CE1F36C0BBCABAA035 /* Pods_Vinyler_VinylerTests.framework in Frameworks */,
+				F3F4BA19FECC0E8CF1BAF6CF /* Pods_Vinyler_VinylerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		17FDE5FA214F5274510CA426 /* Frameworks */ = {
+		3811F0F027DA2A4100076F5B /* Style */ = {
 			isa = PBXGroup;
 			children = (
-				928F7778688118478CCA8242 /* Pods_Vinyler.framework */,
-				7026E12EE92B8A43AC4C90B0 /* Pods_Vinyler_VinylerTests.framework */,
+				3811F0F127DA2A4B00076F5B /* Style.swift */,
 			);
-			name = Frameworks;
+			path = Style;
+			sourceTree = "<group>";
+		};
+		3811F0F727DA2B3D00076F5B /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				3811F0F827DA2B4600076F5B /* ScanViewController.swift */,
+				3811F0FE27DA2B6600076F5B /* ScanViewModel.swift */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		7D18847726EEFFEB00AE8815 /* Common */ = {
@@ -320,6 +334,7 @@
 		7DC0301227BF2A5D00162157 /* MVVMC */ = {
 			isa = PBXGroup;
 			children = (
+				3811F0F027DA2A4100076F5B /* Style */,
 				7D19D32C27C882F900788BEE /* Model */,
 				7DC0304527BF6CE000162157 /* Extensions */,
 				7DC0303127BF349100162157 /* Domain */,
@@ -364,8 +379,8 @@
 		7DC0301C27BF2B7400162157 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				3811F0F727DA2B3D00076F5B /* Scan */,
 				7D19D32727C877C300788BEE /* Search */,
-				7DC0302927BF2F8A00162157 /* Scan */,
 				7DC0302827BF2F8400162157 /* Home */,
 				7DC0301E27BF2BB000162157 /* Base */,
 			);
@@ -403,13 +418,6 @@
 				7DC0302F27BF302B00162157 /* HomeViewModel.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		7DC0302927BF2F8A00162157 /* Scan */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Scan;
 			sourceTree = "<group>";
 		};
 		7DC0302C27BF2FDE00162157 /* Helper */ = {
@@ -500,7 +508,7 @@
 				813E834222E441430057F0E6 /* Products */,
 				CD87E881C4C1DBBAFD0975B8 /* Pods */,
 				7D4872BF23E1190F000D6D49 /* Recovered References */,
-				17FDE5FA214F5274510CA426 /* Frameworks */,
+				CC26A01711C8717531BECD24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -710,13 +718,22 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		CC26A01711C8717531BECD24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5466CE5180AFB4050D2B9650 /* Pods_Vinyler.framework */,
+				D9A6F495DACD6BFCFDDFC9C5 /* Pods_Vinyler_VinylerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CD87E881C4C1DBBAFD0975B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F21FACD6682F10ACE6F781B7 /* Pods-Vinyler.debug.xcconfig */,
-				2AD4A51831F014B8E0BF1DF7 /* Pods-Vinyler.release.xcconfig */,
-				9410939A8B0B9D0C8F13D292 /* Pods-Vinyler-VinylerTests.debug.xcconfig */,
-				B321B0D5BF84D05A3B5341FD /* Pods-Vinyler-VinylerTests.release.xcconfig */,
+				A18A6D14560D178AF022FA3B /* Pods-Vinyler.debug.xcconfig */,
+				D4FBA60694B03CCA0DAAF3C6 /* Pods-Vinyler.release.xcconfig */,
+				34D36A279558E29E9CA83FB4 /* Pods-Vinyler-VinylerTests.debug.xcconfig */,
+				8EC0EF5C94F31F4A6E1FE0CB /* Pods-Vinyler-VinylerTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -767,12 +784,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 813E835E22E441450057F0E6 /* Build configuration list for PBXNativeTarget "Vinyler" */;
 			buildPhases = (
-				D60A815494B7C968E665B0C3 /* [CP] Check Pods Manifest.lock */,
+				A8B889F500B8A168743F11AF /* [CP] Check Pods Manifest.lock */,
 				813E833D22E441430057F0E6 /* Sources */,
 				813E833E22E441430057F0E6 /* Frameworks */,
 				813E833F22E441430057F0E6 /* Resources */,
 				FAA41DE7232514E4008BA317 /* ShellScript */,
-				7BE497B3FE1609AAAF9634AF /* [CP] Embed Pods Frameworks */,
+				B3149CD23B721CF7ABB54367 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -787,11 +804,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 813E836122E441450057F0E6 /* Build configuration list for PBXNativeTarget "VinylerTests" */;
 			buildPhases = (
-				3592FA8165B28AB9F8F435F4 /* [CP] Check Pods Manifest.lock */,
+				8F756F333929B3C615409A27 /* [CP] Check Pods Manifest.lock */,
 				813E835122E441450057F0E6 /* Sources */,
 				813E835222E441450057F0E6 /* Frameworks */,
 				813E835322E441450057F0E6 /* Resources */,
-				50155A3E4627F579DE1FC10F /* [CP] Embed Pods Frameworks */,
+				15FE7115280921C6B5ABF0F0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -867,7 +884,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3592FA8165B28AB9F8F435F4 /* [CP] Check Pods Manifest.lock */ = {
+		15FE7115280921C6B5ABF0F0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F756F333929B3C615409A27 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -889,41 +923,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		50155A3E4627F579DE1FC10F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7BE497B3FE1609AAAF9634AF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D60A815494B7C968E665B0C3 /* [CP] Check Pods Manifest.lock */ = {
+		A8B889F500B8A168743F11AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -943,6 +943,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3149CD23B721CF7ABB54367 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FAA41DE7232514E4008BA317 /* ShellScript */ = {
@@ -976,6 +993,7 @@
 				FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */,
 				7D19D32927C877F600788BEE /* SearchByTextViewController.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
+				3811F0F927DA2B4600076F5B /* ScanViewController.swift in Sources */,
 				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
 				FAD03CC4232CF9C30067E2D9 /* ActionSheetOption.swift in Sources */,
 				7DC0302727BF2EAE00162157 /* Extensions+ObservableType.swift in Sources */,
@@ -1000,6 +1018,7 @@
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
 				387035212698B6A60049777F /* SplashViewController.swift in Sources */,
 				7DC0302027BF2BBA00162157 /* BaseViewModel.swift in Sources */,
+				3811F0F227DA2A4B00076F5B /* Style.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,
 				FAD03CD2232D08EC0067E2D9 /* ArtistViewController.swift in Sources */,
 				817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */,
@@ -1030,6 +1049,7 @@
 				FA09D540239BF26E006F37BD /* UITextfield+Style.swift in Sources */,
 				813E836622E441830057F0E6 /* MainViewController.swift in Sources */,
 				FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */,
+				3811F0FF27DA2B6600076F5B /* ScanViewModel.swift in Sources */,
 				7DB4853927BF93330002BE0C /* NetworkService.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				7DC0302427BF2D9D00162157 /* SceneCoordinator.swift in Sources */,
@@ -1202,7 +1222,7 @@
 		};
 		813E835F22E441450057F0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F21FACD6682F10ACE6F781B7 /* Pods-Vinyler.debug.xcconfig */;
+			baseConfigurationReference = A18A6D14560D178AF022FA3B /* Pods-Vinyler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1223,7 +1243,7 @@
 		};
 		813E836022E441450057F0E6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2AD4A51831F014B8E0BF1DF7 /* Pods-Vinyler.release.xcconfig */;
+			baseConfigurationReference = D4FBA60694B03CCA0DAAF3C6 /* Pods-Vinyler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1244,7 +1264,7 @@
 		};
 		813E836222E441450057F0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9410939A8B0B9D0C8F13D292 /* Pods-Vinyler-VinylerTests.debug.xcconfig */;
+			baseConfigurationReference = 34D36A279558E29E9CA83FB4 /* Pods-Vinyler-VinylerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1268,7 +1288,7 @@
 		};
 		813E836322E441450057F0E6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B321B0D5BF84D05A3B5341FD /* Pods-Vinyler-VinylerTests.release.xcconfig */;
+			baseConfigurationReference = 8EC0EF5C94F31F4A6E1FE0CB /* Pods-Vinyler-VinylerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
