@@ -20,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        let rootViewController = MainViewController()
+//        let rootViewController = MainViewController()
 //        let rootViewController = HomeViewController()
+        
+        let rootViewController = CameraViewController()
         let nav = NavigationController(rootViewController: rootViewController)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

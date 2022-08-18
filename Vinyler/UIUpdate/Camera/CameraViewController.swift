@@ -1,9 +1,9 @@
 //
-//  ScanViewController.swift
+//  CameraViewController.swift
 //  Vinyler
 //
-//  Created by 민송경 on 15/08/2019.
-//  Copyright © 2019 songkyung min. All rights reserved.
+//  Created by Songkyung Min on 2022/08/19.
+//  Copyright © 2022 songkyung min. All rights reserved.
 //
 
 import AVFoundation
@@ -11,12 +11,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 import UIKit
-import PanModal
 
-class ScanViewController: UIViewController {
+class CameraViewController: UIViewController {
     
     private let back = UIButton.back
     private let session = AVCaptureSession()
+    
     let helpLabel = UILabel.header
     let cameraPermission = UILabel.header
     private let disposeBag = DisposeBag()
@@ -73,12 +73,14 @@ class ScanViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let dashboardVC = DashboardViewController()
         self.presentPanModal(dashboardVC)
-    
+        
         DispatchQueue.global().async { [weak self] in
             self?.session.startRunning()
         }
@@ -139,11 +141,10 @@ class ScanViewController: UIViewController {
     }
 }
 
-extension ScanViewController: UIViewControllerTransitioningDelegate {
-    
+extension CameraViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let presentingNC = presenting as? UINavigationController,
-            presentingNC.topViewController?.isKind(of: ScanViewController.self) ?? false,
+            presentingNC.topViewController?.isKind(of: CameraViewController.self) ?? false,
             let presentedNC = presented as? UINavigationController,
             presentedNC.viewControllers.first?.isKind(of: LoadingViewController.self) ?? false {
             return PresentLoadingAnimationController()
