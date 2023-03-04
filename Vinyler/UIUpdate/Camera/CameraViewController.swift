@@ -14,7 +14,7 @@ import UIKit
 
 class CameraViewController: UIViewController {
     
-    private let back = UIButton.back
+    let moreButton = UIButton.more
     private let session = AVCaptureSession()
     
     let helpLabel = UILabel.header
@@ -25,7 +25,6 @@ class CameraViewController: UIViewController {
         super.viewDidLoad()
         
         self.setUpSession()
-        self.setUpEvent()
     }
     
     private func setUpSession() {
@@ -67,19 +66,16 @@ class CameraViewController: UIViewController {
         }).disposed(by: self.disposeBag)
     }
     
-    private func setUpEvent() {
-        back.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }).disposed(by: disposeBag)
-    }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
         let dashboardVC = DashboardViewController()
-        self.presentPanModal(dashboardVC)
+        let nav = NavigationController(rootViewController: dashboardVC)
+//        self.presentPanModal(dashboardVC)
+        self.presentPanModal(nav)
         
         DispatchQueue.global().async { [weak self] in
             self?.session.startRunning()
@@ -94,18 +90,18 @@ class CameraViewController: UIViewController {
         } else if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
             self.cameraPermission.isHidden = false
         }
+        
+        moreButton.rx.tap.subscribe(onNext: { [weak self] in        self?.navigationController?.pushViewController(AppInfoViewController(), animated: true)
+        }).disposed(by: self.disposeBag)
     }
     
     override func loadView() {
         let root = UIView.background
         let preview = PreviewView(session: session)
         let targetView = CameraTargetView(forAutoLayout: ())
+//        moreButton.tintColor = .white
+        [preview, targetView, cameraPermission, moreButton, helpLabel].forEach(root.addSubview)
         
-        [preview, targetView, cameraPermission, helpLabel].forEach(root.addSubview)
-        [back, helpLabel].forEach(preview.addSubview)
-        
-        back.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor, constant: 33).isActive = true
-        back.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 35).isActive = true
         preview.topAnchor.constraint(equalTo: root.topAnchor).isActive = true
         preview.leadingAnchor.constraint(equalTo: root.leadingAnchor).isActive = true
         preview.trailingAnchor.constraint(equalTo: root.trailingAnchor).isActive = true
@@ -122,6 +118,12 @@ class CameraViewController: UIViewController {
         helpLabel.leadingAnchor.constraint(equalTo: preview.leadingAnchor, constant: 44).isActive = true
         helpLabel.bottomAnchor.constraint(equalTo: preview.safeAreaLayoutGuide.bottomAnchor, constant: -44).isActive = true
         
+        moreButton.snp.makeConstraints { make in
+            make.top.equalTo(root.safeAreaLayoutGuide.snp.top).offset(24)
+            
+            make.leading.equalToSuperview().offset(24)
+        }
+        
         self.view = root
         
         helpLabel.set(headerText: .tryScan)
@@ -129,7 +131,6 @@ class CameraViewController: UIViewController {
         cameraPermission.textColor = .white
         cameraPermission.isHidden = true
         
-        back.tintColor = .white
         helpLabel.textColor = .white
         
         preview.backgroundColor = .white

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PanModal
 
 class NavigationController: UINavigationController {
 
@@ -30,5 +31,11 @@ class NavigationController: UINavigationController {
     private func setup() {
         delegate = navigationControllerDelegate
         isNavigationBarHidden = true
+    }
+}
+
+extension NavigationController: PanModalPresentable {
+    var panScrollable: UIScrollView? {
+        return nil
     }
 }

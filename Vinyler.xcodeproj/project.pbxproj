@@ -12,6 +12,9 @@
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
 		38CE899028AECAA800D5FB95 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE898F28AECAA800D5FB95 /* CameraViewController.swift */; };
 		38CE899328AECC8A00D5FB95 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE899228AECC8A00D5FB95 /* DashboardViewController.swift */; };
+		38CE899528BE08B900D5FB95 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE899428BE08B900D5FB95 /* SearchController.swift */; };
+		38CE899828BE0BDF00D5FB95 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE899728BE0BDF00D5FB95 /* Section.swift */; };
+		38CE899B28BE0D6700D5FB95 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE899A28BE0D6700D5FB95 /* SearchResultCell.swift */; };
 		6149706C5CEACA891E172F44 /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC5CC2AC06F785D1CA20294 /* Pods_Vinyler_VinylerTests.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
 		7D6BFAA326F4208900BAF902 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7D6BFAA226F4208900BAF902 /* Prod.xcconfig */; };
@@ -90,6 +93,9 @@
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		38CE898F28AECAA800D5FB95 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		38CE899228AECC8A00D5FB95 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		38CE899428BE08B900D5FB95 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		38CE899728BE0BDF00D5FB95 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		38CE899A28BE0D6700D5FB95 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		3FAC9D1BD5141966C9D3F3B2 /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
 		5E98B9F7316A232A66296839 /* Pods-Vinyler-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 		38CE898D28AECA4100D5FB95 /* UIUpdate */ = {
 			isa = PBXGroup;
 			children = (
+				38CE899628BE0BC500D5FB95 /* Utils */,
 				38CE899128AECC7500D5FB95 /* Search */,
 				38CE898E28AECA9E00D5FB95 /* Camera */,
 			);
@@ -203,9 +210,27 @@
 		38CE899128AECC7500D5FB95 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				38CE899928BE0D4000D5FB95 /* Cell */,
 				38CE899228AECC8A00D5FB95 /* DashboardViewController.swift */,
+				38CE899428BE08B900D5FB95 /* SearchController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		38CE899628BE0BC500D5FB95 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				38CE899728BE0BDF00D5FB95 /* Section.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		38CE899928BE0D4000D5FB95 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				38CE899A28BE0D6700D5FB95 /* SearchResultCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3EE0538050FB6B4CB432A539 /* Frameworks */ = {
@@ -720,6 +745,7 @@
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
+				38CE899828BE0BDF00D5FB95 /* Section.swift in Sources */,
 				38CE899028AECAA800D5FB95 /* CameraViewController.swift in Sources */,
 				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
@@ -747,8 +773,10 @@
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
 				FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */,
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
+				38CE899B28BE0D6700D5FB95 /* SearchResultCell.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
 				FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */,
+				38CE899528BE08B900D5FB95 /* SearchController.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
