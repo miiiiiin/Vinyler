@@ -7,4 +7,4 @@ https://apps.apple.com/us/app/vinyler/id1499248169
    * Xcode 11 / Swift 5
    * RxSwift, SwiftLint
 	
-		![](https://github.com/miiiiiin/vinyler/images/appstoreinfo.png)
+![](https://github.com/miiiiiin/Vinyler/tree/master/images/appstoreinfo.png)
