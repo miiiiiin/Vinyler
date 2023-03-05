@@ -15,6 +15,7 @@ import RxGesture
 
 class MainViewController: UIViewController {
     
+    let titleLabel = UILabel.header
     let moreButton = UIButton.more
     let scanLabel = UILabel.header
     let searchButton = UIButton.search
@@ -73,14 +74,18 @@ class MainViewController: UIViewController {
         
         moreButton.tintColor = .white
         
-        [moreButton, scanLabel, searchButton, animationView, vinylAnimationView].forEach(root.addSubview)
+        [titleLabel, moreButton, scanLabel, searchButton, animationView, vinylAnimationView].forEach(root.addSubview)
         
         scanLabel.textAlignment = .center
         scanLabel.set(headerText: .scan)
+        titleLabel.textAlignment = .center
+        titleLabel.set(headerText: .vinyler)
         
         let scanCenter = scanLabel.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -50)
         scanCenter.priority = .defaultLow
         NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: root.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor),
             moreButton.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor, constant: 33),
             moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
             animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),

@@ -14,4 +14,8 @@ extension ObservableType {
     func mapVoid() -> Observable<Void> {
         return map { _ in () }
     }
+    
+    func ignoreAll() -> Observable<Void> {
+        return map { _ in }
+    }
 }

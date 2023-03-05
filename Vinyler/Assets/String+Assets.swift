@@ -9,6 +9,7 @@
 import Foundation
 
 extension String {
+    static let vinyler = NSLocalizedString("Vinyler", comment: "")
     static let scan = NSLocalizedString("Touch the vinyl above and\nscan the barcode.", comment: "")
     static let tryScan = NSLocalizedString("Scan the barcode that   you want to check.", comment: "")
     static let search = NSLocalizedString("  search by code or title  ", comment: "")

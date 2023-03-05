@@ -17,17 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow()
+        window?.rootViewController = UINavigationController()
 
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
 //        let rootViewController = MainViewController()
 //        let rootViewController = HomeViewController()
         
-        let rootViewController = CameraViewController()
-        let nav = NavigationController(rootViewController: rootViewController)
-        window?.rootViewController = nav
+//        let rootViewController = CameraViewController()
+//        let nav = NavigationController(rootViewController: rootViewController)
+//        window?.rootViewController = nav
         window?.makeKeyAndVisible()
 
+        
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        SceneCoordinator.shared = sceneCoordinator
+        sceneCoordinator.transition(to: Scene.main(1))
         return true
     }
 }
