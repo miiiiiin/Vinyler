@@ -6,8 +6,9 @@ target 'Vinyler' do
   use_frameworks!
 
   # Pods for Vinyler#
-	  pod 'Moya',  '~> 15.0'
-		pod 'RxSwift', '~> 6.5'
+# pod 'Moya',  '~> 15.0'
+#		pod 'RxSwift', '~> 6.5'
+		pod 'Moya/RxSwift', '~> 15.0'
 		pod 'RxCocoa', '~> 6.5'
 		pod 'RxDataSources', '~> 5.0'
     pod 'SwiftLint'
