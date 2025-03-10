@@ -3,12 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
+		38DBC2E82D7F2D4700E444A1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2E72D7F2D4700E444A1 /* NetworkService.swift */; };
+		38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */; };
+		38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */; };
+		38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */; };
+		38DBC2F62D7F313D00E444A1 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F52D7F313D00E444A1 /* Extensions+String.swift */; };
 		64B8FA85E82F1095B4AFC54E /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9DC0DBAC559C2DF568322BB /* Pods_Vinyler_VinylerTests.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
 		7D6BFAA326F4208900BAF902 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7D6BFAA226F4208900BAF902 /* Prod.xcconfig */; };
@@ -86,6 +91,11 @@
 /* Begin PBXFileReference section */
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
+		38DBC2E72D7F2D4700E444A1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
+		38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequest.swift; sourceTree = "<group>"; };
+		38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
+		38DBC2F52D7F313D00E444A1 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		6B8975BEA48B065D6048A9AA /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
 		6FA2B50F7D2E7019CA505CC3 /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
 		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -188,6 +198,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		38DBC2E62D7F2D2D00E444A1 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				38DBC2EC2D7F2D8200E444A1 /* Response */,
+				38DBC2EB2D7F2D7D00E444A1 /* Request */,
+				38DBC2EA2D7F2D7400E444A1 /* Error */,
+				38DBC2E72D7F2D4700E444A1 /* NetworkService.swift */,
+				38DBC2E92D7F2D6000E444A1 /* Global */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		38DBC2E92D7F2D6000E444A1 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		38DBC2EA2D7F2D7400E444A1 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		38DBC2EB2D7F2D7D00E444A1 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		38DBC2EC2D7F2D8200E444A1 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		7D18847726EEFFEB00AE8815 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +316,7 @@
 		813E836A22E443C10057F0E6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				38DBC2E62D7F2D2D00E444A1 /* Networking */,
 				7D18847726EEFFEB00AE8815 /* Common */,
 				FA6C3B17232D8B4E000E1C87 /* Cells */,
 				817B25DD230978E5003DF85D /* Animations */,
@@ -358,6 +411,7 @@
 				817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */,
 				FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */,
 				FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */,
+				38DBC2F52D7F313D00E444A1 /* Extensions+String.swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -466,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD03CCF232D048D0067E2D9 /* Observable+Nil.swift */,
+				38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */,
 			);
 			name = Helpers;
 			path = ../Helpers;
@@ -679,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DBC2E82D7F2D4700E444A1 /* NetworkService.swift in Sources */,
 				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
 				FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
@@ -689,6 +745,7 @@
 				817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */,
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */,
+				38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
 				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
@@ -710,6 +767,7 @@
 				FA09D5392396B966006F37BD /* FormatCell.swift in Sources */,
 				813E837722E45CEC0057F0E6 /* Results.swift in Sources */,
 				813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */,
+				38DBC2F62D7F313D00E444A1 /* Extensions+String.swift in Sources */,
 				813E838322E46D2D0057F0E6 /* Image.swift in Sources */,
 				FAD03CD8232D61CC0067E2D9 /* Extension+UIImageView.swift in Sources */,
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
@@ -726,12 +784,14 @@
 				FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
+				38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
 				7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */,
 				814B06AB230584680062906D /* NavigationControllerDelegate.swift in Sources */,
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
+				38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */,
 				7D18847926EEFFF100AE8815 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

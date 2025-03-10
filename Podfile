@@ -5,9 +5,8 @@ target 'Vinyler' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Vinyler
-	# pod 'RxSwift', '~> 5'
-	#  pod 'RxCocoa', '~> 5'
+  # Pods for Vinyler#
+	  pod 'Moya',  '~> 15.0'
 		pod 'RxSwift', '~> 6.5'
 		pod 'RxCocoa', '~> 6.5'
 		pod 'RxDataSources', '~> 5.0'

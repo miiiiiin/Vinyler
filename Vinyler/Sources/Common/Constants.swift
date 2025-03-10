@@ -30,4 +30,8 @@ struct Constants {
             (Bundle.main.infoDictionary?["DISCOG_SECRET"] as? String ?? "")
         }
     }
+    
+    struct API {
+        static let BASE_URL = "http://127.0.0.1:8000"
+    }
 }
