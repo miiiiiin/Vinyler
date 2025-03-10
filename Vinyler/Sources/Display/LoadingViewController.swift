@@ -66,8 +66,8 @@ class LoadingViewController: UIViewController {
 
     private func handleObservable<T>(observable: Observable<T>) -> Observable<T> {
 
-        return rx.viewDidLoad.flatMap { observable.timeout(10, scheduler: MainScheduler.instance)
-        }.catchError { error in
+        return rx.viewDidLoad.flatMap { observable.timeout(.seconds(10), scheduler: MainScheduler.instance)
+        }.catch { error in
                 guard let rxError = error as? RxError else {
                     return Observable.error(error)
                 }
@@ -77,8 +77,8 @@ class LoadingViewController: UIViewController {
                 default:
                     return Observable.error(error)
                 }
-        }.observeOn(MainScheduler.instance)
-            .retryWhen(errorHandler)
+        }.observe(on: MainScheduler.instance)
+            .retry(when: errorHandler)
     }
 
     private func errorHandler(errorObservable: Observable<Error>) -> Observable<Void> {
@@ -134,7 +134,7 @@ class LoadingViewController: UIViewController {
                     self?.errorTitleLabel.isHidden = true
                     self?.errorMessageLabel.isHidden = true
                 }
-            }).delay(0.5, scheduler: MainScheduler.instance)
+            }).delay(.seconds(Int(0.5)), scheduler: MainScheduler.instance)
         return Observable.error(error)//.merge(close, retry)
     }
     
