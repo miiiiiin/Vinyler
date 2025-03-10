@@ -6,12 +6,14 @@ target 'Vinyler' do
   use_frameworks!
 
   # Pods for Vinyler
-    pod 'RxSwift', '~> 5'
-    pod 'RxCocoa', '~> 5'
-    pod 'RxDataSources', '~> 4.0'
+	# pod 'RxSwift', '~> 5'
+	#  pod 'RxCocoa', '~> 5'
+		pod 'RxSwift', '~> 6.5'
+		pod 'RxCocoa', '~> 6.5'
+		pod 'RxDataSources', '~> 5.0'
     pod 'SwiftLint'
     pod 'lottie-ios'
-    pod "RxGesture"
+    pod 'RxGesture', '~> 4.0'
     pod 'Google-Mobile-Ads-SDK'
     pod 'SnapKit'   
 
