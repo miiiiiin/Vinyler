@@ -9,10 +9,10 @@
 import Foundation
 
 struct Results: Codable {
-    let results: [Result]
+    let results: [Result_Item]
 }
 
-struct Result: Codable {
+struct Result_Item: Codable {
     let resourceUrl: String
     let format: [String]
     let label: [String]

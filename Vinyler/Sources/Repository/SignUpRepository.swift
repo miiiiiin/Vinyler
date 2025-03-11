@@ -8,10 +8,7 @@
 
 import Foundation
 
-protocol SignUpRepository {
-    
-}
 
-class SignUpRepositoryImpl: SignUpRepository {
+protocol SignUpRepository {
     
 }

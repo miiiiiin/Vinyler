@@ -11,17 +11,19 @@ import RxSwift
 import Moya
 
 protocol SignUpUseCase {
-    func execute(request: TestRequest) -> Observable<Result>
+    func execute(request: TestRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
 }
 
 class SignUpUseCaseImpl: SignUpUseCase {
     
     private let repository: SignUpRepository
     
-    init(repository: SignUpRepository = SignUpRepositoryImpl()) {
+    init(repository: SignUpRepository) {
             self.repository = repository
     }
-
-    func execute(request: TestRequest) -> Observable<Result> {
+   
+    func execute(request: TestRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+        return repository.execute(request: request)
     }
 }
+
