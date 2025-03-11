@@ -11,22 +11,20 @@ import Foundation
 enum Vinyler {
     public enum NetworkError: Error {
         
-        typealias CustomError = Vinyler.NetworkError
-        
         // MARK: - Database Error -
-        case ERR_DB_NO_DATA
+        case databaseNoData
         
         // MARK: - Send File Error -
-        case ERR_SEND_FILE_FAILED
+        case sendFileFailed
         
         init?(statusCode: Int, message: String?) {
             switch statusCode {
             case 3000:
-                self = .ERR_DB_NO_DATA
+                self = .databaseNoData
             case 2000:
-                self = .ERR_SEND_FILE_FAILED
+                self = .sendFileFailed
             default:
-                self = .ERR_DB_NO_DATA
+                self = .databaseNoData
             }
         }
     }

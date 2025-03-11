@@ -15,7 +15,7 @@ public enum APIEndPoint {
 
 extension APIEndPoint: TargetType {
     public var baseURL: URL {
-        return URL(string: Constants.API.BASE_URL)!
+        return URL(string: Constants.API.baseURL)!
     }
     
     public var path: String {
@@ -37,7 +37,7 @@ extension APIEndPoint: TargetType {
         }
     }
     
-    public func requestTask(_ request: Any) -> Task {
+    public func requestTask(_ request: Encodable) -> Task {
         let requestToJson = JSONSerializer.toJson(request)
         guard let param = requestToJson.jsonStringToDictionary else {
             return .requestPlain
@@ -50,7 +50,7 @@ extension APIEndPoint: TargetType {
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
     
-    public var headers: [String : String]? {
+    public var headers : [String : String]? {
         var httpHeaders: [String : String] = [:]
         httpHeaders = ["Content-type" : "application/json", "AppType": "User"]
         httpHeaders["User-Agent"] = ""
