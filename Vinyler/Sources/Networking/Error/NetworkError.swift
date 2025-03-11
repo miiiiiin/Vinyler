@@ -16,6 +16,7 @@ enum Vinyler {
         
         // MARK: - Send File Error -
         case sendFileFailed
+        case decodingError
         
         init?(statusCode: Int, message: String?) {
             switch statusCode {
@@ -24,7 +25,7 @@ enum Vinyler {
             case 2000:
                 self = .sendFileFailed
             default:
-                self = .databaseNoData
+                self = .decodingError
             }
         }
     }

@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
+		387926422D80776700841CAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926412D80776700841CAF /* SignUpViewController.swift */; };
+		387926442D8077BE00841CAF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926432D8077BE00841CAF /* SignUpViewModel.swift */; };
+		387926462D8077D700841CAF /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926452D8077D700841CAF /* SignUpUseCase.swift */; };
+		3879264D2D80790700841CAF /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879264C2D80790700841CAF /* SceneCoordinatorType.swift */; };
+		387926502D80792400841CAF /* TargetScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879264F2D80792400841CAF /* TargetScene.swift */; };
+		387926522D80793F00841CAF /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926512D80793F00841CAF /* SceneTransitionType.swift */; };
+		387926542D80799200841CAF /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926532D80799200841CAF /* ViewModelBindableType.swift */; };
+		3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */; };
+		387926612D8081DC00841CAF /* UserSignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926602D8081DC00841CAF /* UserSignUpService.swift */; };
 		38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */; };
 		38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */; };
 		38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */; };
@@ -93,6 +102,15 @@
 /* Begin PBXFileReference section */
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
+		387926412D80776700841CAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		387926432D8077BE00841CAF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		387926452D8077D700841CAF /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		3879264C2D80790700841CAF /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		3879264F2D80792400841CAF /* TargetScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetScene.swift; sourceTree = "<group>"; };
+		387926512D80793F00841CAF /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
+		387926532D80799200841CAF /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
+		3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpLoginRepository.swift; sourceTree = "<group>"; };
+		387926602D8081DC00841CAF /* UserSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpService.swift; sourceTree = "<group>"; };
 		38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequest.swift; sourceTree = "<group>"; };
 		38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
@@ -202,6 +220,72 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3879263D2D80770B00841CAF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				387926402D80775500841CAF /* Common */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3879263F2D80774400841CAF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				387926412D80776700841CAF /* SignUpViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		387926402D80775500841CAF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				387926432D8077BE00841CAF /* SignUpViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		387926472D8077E600841CAF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				387926452D8077D700841CAF /* SignUpUseCase.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3879264B2D80790300841CAF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3879264E2D80791D00841CAF /* Scene */,
+				3879264C2D80790700841CAF /* SceneCoordinatorType.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3879264E2D80791D00841CAF /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				3879264F2D80792400841CAF /* TargetScene.swift */,
+				387926512D80793F00841CAF /* SceneTransitionType.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		387926552D807D0500841CAF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		3879265F2D8081AC00841CAF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				387926602D8081DC00841CAF /* UserSignUpService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		38DBC2E62D7F2D2D00E444A1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +333,7 @@
 		38DBC2FB2D7F370700E444A1 /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
+				387926472D8077E600841CAF /* Common */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -329,6 +414,10 @@
 		813E836A22E443C10057F0E6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3879265F2D8081AC00841CAF /* Service */,
+				387926552D807D0500841CAF /* Repository */,
+				3879264B2D80790300841CAF /* Coordinator */,
+				3879263D2D80770B00841CAF /* ViewModel */,
 				38DBC2FB2D7F370700E444A1 /* Usecase */,
 				38DBC2E62D7F2D2D00E444A1 /* Networking */,
 				7D18847726EEFFEB00AE8815 /* Common */,
@@ -352,6 +441,7 @@
 		813E836B22E444560057F0E6 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				3879263F2D80774400841CAF /* Common */,
 				FA09D53C239BF1C6006F37BD /* Search */,
 				817B262A23151653003DF85D /* Result */,
 				814B06AE230584C80062906D /* Scan */,
@@ -535,6 +625,7 @@
 			children = (
 				FAD03CCF232D048D0067E2D9 /* Observable+Nil.swift */,
 				38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */,
+				387926532D80799200841CAF /* ViewModelBindableType.swift */,
 			);
 			name = Helpers;
 			path = ../Helpers;
@@ -754,6 +845,7 @@
 				38DBC2FA2D7F36D600E444A1 /* APIEndPoint.swift in Sources */,
 				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
 				38DBC2FF2D7F381A00E444A1 /* NetworkError.swift in Sources */,
+				387926542D80799200841CAF /* ViewModelBindableType.swift in Sources */,
 				FAD03CC4232CF9C30067E2D9 /* ActionSheetOption.swift in Sources */,
 				814B06A823055C220062906D /* UIView+Exntension.swift in Sources */,
 				FAD03CD0232D048D0067E2D9 /* Observable+Nil.swift in Sources */,
@@ -761,9 +853,12 @@
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */,
 				38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */,
+				387926442D8077BE00841CAF /* SignUpViewModel.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
 				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
+				387926612D8081DC00841CAF /* UserSignUpService.swift in Sources */,
+				387926422D80776700841CAF /* SignUpViewController.swift in Sources */,
 				FAD03CC9232CFAE60067E2D9 /* DynamicTableView.swift in Sources */,
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
@@ -772,8 +867,10 @@
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
 				387035212698B6A60049777F /* HomeViewController.swift in Sources */,
+				387926522D80793F00841CAF /* SceneTransitionType.swift in Sources */,
 				38DBC2F82D7F33F600E444A1 /* APIClient.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,
+				3879264D2D80790700841CAF /* SceneCoordinatorType.swift in Sources */,
 				FAD03CD2232D08EC0067E2D9 /* ArtistViewController.swift in Sources */,
 				817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */,
 				817B25DC23097108003DF85D /* CameraTargetView.swift in Sources */,
@@ -790,7 +887,9 @@
 				FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */,
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
+				3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */,
 				FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */,
+				387926462D8077D700841CAF /* SignUpUseCase.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
@@ -808,6 +907,7 @@
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
 				38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */,
+				387926502D80792400841CAF /* TargetScene.swift in Sources */,
 				7D18847926EEFFF100AE8815 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
