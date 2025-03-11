@@ -1,5 +1,5 @@
 //
-//  SignUpUseCaseImpl.swift
+//  SignUpRepository.swift
 //  Vinyler
 //
 //  Created by Songkyung Min on 3/11/25.
@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol SignUpRepository {
+    
+}
+
+class SignUpRepositoryImpl: SignUpRepository {
+    
+}

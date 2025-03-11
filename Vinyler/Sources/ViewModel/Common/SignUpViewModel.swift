@@ -22,4 +22,13 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
     var input: SignUpViewModelInput { return self }
     var output: SignUpViewModelOutput { return self }
     
+    // MARK: - Private -
+    
+    private let sceneCoordinator: SceneCoordinatorType
+    private let useCase: SignUpUseCase
+    
+    init(sceneCoordinator: SceneCoordinatorType, useCase: SignUpUseCase) {
+        self.sceneCoordinator = sceneCoordinator
+        self.useCase = useCase
+    }
 }

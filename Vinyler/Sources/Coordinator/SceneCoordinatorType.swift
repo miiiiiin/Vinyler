@@ -22,4 +22,3 @@ protocol SceneCoordinatorType {
     @discardableResult
     func dismiss(animated: Bool) -> Completable
 }
-
