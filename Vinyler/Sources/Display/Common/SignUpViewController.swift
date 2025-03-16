@@ -66,6 +66,9 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
         root.backgroundColor = .coldDarkBlue
         self.view = root
         
+        passwordField.textField.isSecureTextEntry = true
+        passwordCheckField.textField.isSecureTextEntry = true
+        
         root.addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.keyboardDismissMode = .interactive
@@ -156,27 +159,26 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
         passwordField.textField.rx.text.orEmpty
             .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .bind(to: input.emailInput)
+            .bind(to: input.passwordInput)
             .disposed(by: disposeBag)
         
         passwordCheckField.textField.rx.text.orEmpty
             .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .bind(to: input.emailInput)
+            .bind(to: input.passwordCheckInput)
             .disposed(by: disposeBag)
         
         nicknameField.textField.rx.text.orEmpty
             .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .bind(to: input.emailInput)
+            .bind(to: input.nicknameInput)
             .disposed(by: disposeBag)
         
         // 버튼 색상 변경 (비활성화 시)
-        output.isEmailTextValid
+        output.isSignUpEnabled
             .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] isEnabled in
-                print("enabled: \(isEnabled)")
                 guard let self = self else { return }
                 self.doneButton.backgroundColor = isEnabled ? .purplishDarkBlue : .inactive
             })

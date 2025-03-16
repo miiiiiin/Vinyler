@@ -21,11 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
 //        let rootViewController = MainViewController()
-        let rootViewController = SignUpViewController()
-        let nav = NavigationController(rootViewController: rootViewController)
-        window?.rootViewController = nav
+//        let rootViewController = SignUpViewController()
+//        let nav = NavigationController(rootViewController: rootViewController)
+//        window?.rootViewController = nav
+        
+        window?.rootViewController = UINavigationController()
         window?.makeKeyAndVisible()
-
+        
+        
+        
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        SceneCoordinator.shared = sceneCoordinator
+        
+        let viewModel = SignUpViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: SignUpUseCaseImpl(repository: UserSignUpService(network: VNNetworking())))
+        sceneCoordinator.transition(to: Scene.signUp(viewModel))
         return true
     }
 }

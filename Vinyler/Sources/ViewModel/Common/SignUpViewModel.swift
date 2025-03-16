@@ -36,14 +36,12 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
     var passwordCheckInput = BehaviorSubject<String>(value: "")
     var nicknameInput = BehaviorSubject<String>(value: "")
     
-    
     // MARK: - Output -
     
     var isPWTextValid = Observable<Bool>.just(false)
     var isCheckTextValid = Observable<Bool>.just(false)
     var isEmailTextValid = Observable<Bool>.just(false)
     var isSignUpEnabled = Observable<Bool>.just(false)
-    
     
     var input: SignUpViewModelInput { return self }
     var output: SignUpViewModelOutput { return self }
@@ -74,16 +72,11 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
                 return text.count > 0 && text.isValidEmail
             }
         
-        
         // 모든 필드가 채워져 있어야 회원가입 버튼 활성화
         self.isSignUpEnabled = Observable
-            .combineLatest(emailInput, passwordInput, passwordCheckInput, nicknameInput)
-            .map { email, password, passwordCheck, nickname in
-                print("email check: \(email)")
-                let isValid = !email.isEmpty && !password.isEmpty && password == passwordCheck && !nickname.isEmpty
-                print("🔹 isSignUpEnabled: \(isValid)")  // ✅ 값 변경 확인
-                return isValid
-                //                return !email.isEmpty && !password.isEmpty && password == passwordCheck && !nickname.isEmpty
+            .combineLatest(emailInput, passwordInput, passwordCheckInput, nicknameInput, isEmailTextValid)
+            .map { email, password, passwordCheck, nickname, emailValid in
+                return !email.isEmpty && !password.isEmpty && password == passwordCheck && !nickname.isEmpty && !emailValid
             }
     }
 }
