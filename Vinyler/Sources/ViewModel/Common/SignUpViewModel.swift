@@ -19,6 +19,9 @@ protocol SignUpViewModelInput {
 
 protocol SignUpViewModelOutput {
     var isSignUpEnabled: Observable<Bool> { get }
+    var isPWTextValid: Observable<Bool> { get }
+    var isCheckTextValid: Observable<Bool> { get }
+    var isEmailTextValid: Observable<Bool> { get }
 }
 
 protocol SignUpViewModelType {
@@ -34,6 +37,11 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
     var nicknameInput = BehaviorSubject<String>(value: "")
     
     
+    // MARK: - Output -
+    
+    var isPWTextValid = Observable<Bool>.just(false)
+    var isCheckTextValid = Observable<Bool>.just(false)
+    var isEmailTextValid = Observable<Bool>.just(false)
     var isSignUpEnabled = Observable<Bool>.just(false)
     
     
@@ -49,18 +57,33 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         
-        self.isSignUpEnabled = Observable.just(false)
+        isPWTextValid = passwordInput.asObservable()
+            .map { text in
+                return text.count >= 6 && text.isPasswordHasNumberAndCharacter()
+            }
+        
+        isCheckTextValid = Observable.combineLatest(passwordInput.asObservable(), passwordCheckInput.asObservable())
+            .map { newText, currentText  in
+                return newText == currentText
+            }
+        
+        // 이메일 유효성 검사
+        isEmailTextValid = emailInput.asObservable()
+            .map { text in
+                if text.isEmpty { return true }
+                return text.count > 0 && text.isValidEmail
+            }
+        
+        
         // 모든 필드가 채워져 있어야 회원가입 버튼 활성화
         self.isSignUpEnabled = Observable
             .combineLatest(emailInput, passwordInput, passwordCheckInput, nicknameInput)
             .map { email, password, passwordCheck, nickname in
                 print("email check: \(email)")
                 let isValid = !email.isEmpty && !password.isEmpty && password == passwordCheck && !nickname.isEmpty
-                                print("🔹 isSignUpEnabled: \(isValid)")  // ✅ 값 변경 확인
-                                return isValid
-//                return !email.isEmpty && !password.isEmpty && password == passwordCheck && !nickname.isEmpty
+                print("🔹 isSignUpEnabled: \(isValid)")  // ✅ 값 변경 확인
+                return isValid
+                //                return !email.isEmpty && !password.isEmpty && password == passwordCheck && !nickname.isEmpty
             }
-            .distinctUntilChanged()
-//            .share(replay: 1, scope: .whileConnected)
     }
 }

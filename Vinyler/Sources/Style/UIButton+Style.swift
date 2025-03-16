@@ -26,7 +26,7 @@ extension UIButton {
     
     static var done: UIButton {
         let button = UIButton(forAutoLayout: ())
-        button.backgroundColor = .purplishDarkBlue
+        button.backgroundColor = .inactive
         button.setTitle(.signUp, for: .normal)
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 20

@@ -26,8 +26,6 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
     }()
     
     private let stackView = UIStackView(forAutoLayout: ())
-    
-    
     private let titleLabel = UILabel.headerBold
     private let emailField = CustomTextFieldView(forAutoLayout: ())
     private let passwordField = CustomTextFieldView(forAutoLayout: ())
@@ -35,11 +33,9 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
     private let nicknameField = CustomTextFieldView(forAutoLayout: ())
     private let doneButton = UIButton.done
     
-    
     // MARK: - ViewModel
     
     var viewModel: SignUpViewModelType!
-    
     
     private let disposeBag = DisposeBag()
     
@@ -151,32 +147,33 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
-        emailField.textField.rx.controlEvent(.editingChanged)
+        emailField.textField.rx.text.orEmpty
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .withLatestFrom(emailField.textField.rx.text.orEmpty)
             .bind(to: input.emailInput)
             .disposed(by: disposeBag)
         
-        passwordField.textField.rx.controlEvent(.editingChanged)
+        passwordField.textField.rx.text.orEmpty
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .withLatestFrom(passwordField.textField.rx.text.orEmpty)
-            .bind(to: input.passwordInput)
+            .bind(to: input.emailInput)
             .disposed(by: disposeBag)
         
-        passwordCheckField.textField.rx.controlEvent(.editingChanged)
+        passwordCheckField.textField.rx.text.orEmpty
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .withLatestFrom(passwordCheckField.textField.rx.text.orEmpty)
-            .bind(to: input.passwordCheckInput)
+            .bind(to: input.emailInput)
             .disposed(by: disposeBag)
         
-        nicknameField.textField.rx.controlEvent(.editingChanged)
+        nicknameField.textField.rx.text.orEmpty
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
-            .withLatestFrom(nicknameField.textField.rx.text.orEmpty)
-            .bind(to: input.nicknameInput)
+            .bind(to: input.emailInput)
             .disposed(by: disposeBag)
         
         // 버튼 색상 변경 (비활성화 시)
-        output.isSignUpEnabled
+        output.isEmailTextValid
+            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] isEnabled in
                 print("enabled: \(isEnabled)")
