@@ -12,7 +12,6 @@ import UIKit
 class CustomTextFieldView: UIView {
     
     let titleLabel = UILabel.subheader
-//    let textField = UITextField.standard
     
     lazy var textField: UITextField = {
         let tf = UITextField(forAutoLayout: ())
@@ -55,7 +54,6 @@ class CustomTextFieldView: UIView {
     }
     
     private func setUpLayout() {
-        textField.borderStyle = .line
         textField.isUserInteractionEnabled = true
         
         titleLabel.textColor = style.Colors.tint

@@ -19,6 +19,9 @@
 		3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */; };
 		387926612D8081DC00841CAF /* UserSignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926602D8081DC00841CAF /* UserSignUpService.swift */; };
 		38ADA6602D86F1DA00411B8B /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */; };
+		38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6612D87273900411B8B /* SceneCoordinator.swift */; };
+		38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */; };
+		38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */; };
 		38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */; };
 		38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */; };
 		38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */; };
@@ -113,6 +116,9 @@
 		3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpLoginRepository.swift; sourceTree = "<group>"; };
 		387926602D8081DC00841CAF /* UserSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpService.swift; sourceTree = "<group>"; };
 		38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		38ADA6612D87273900411B8B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+ObservableType.swift"; sourceTree = "<group>"; };
+		38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequest.swift; sourceTree = "<group>"; };
 		38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
@@ -268,6 +274,7 @@
 			children = (
 				3879264F2D80792400841CAF /* TargetScene.swift */,
 				387926512D80793F00841CAF /* SceneTransitionType.swift */,
+				38ADA6612D87273900411B8B /* SceneCoordinator.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -518,6 +525,8 @@
 				FAD03CD7232D61CC0067E2D9 /* Extension+UIImageView.swift */,
 				FA5BC2E723DC1772000CFD9D /* UITextView+Extension.swift */,
 				38DBC2F52D7F313D00E444A1 /* Extensions+String.swift */,
+				38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */,
+				38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */,
 			);
 			name = Extensions;
 			path = ../Extensions;
@@ -853,6 +862,7 @@
 				814B06A823055C220062906D /* UIView+Exntension.swift in Sources */,
 				FAD03CD0232D048D0067E2D9 /* Observable+Nil.swift in Sources */,
 				817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */,
+				38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */,
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
 				FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */,
 				38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */,
@@ -869,6 +879,7 @@
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
+				38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */,
 				387035212698B6A60049777F /* HomeViewController.swift in Sources */,
 				387926522D80793F00841CAF /* SceneTransitionType.swift in Sources */,
 				38DBC2F82D7F33F600E444A1 /* APIClient.swift in Sources */,
@@ -908,6 +919,7 @@
 				7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */,
 				814B06AB230584680062906D /* NavigationControllerDelegate.swift in Sources */,
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,
+				38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
 				38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */,
