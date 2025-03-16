@@ -18,6 +18,15 @@ extension UILabel {
         label.font = .regularFont(with: 20)
         return label
     }
+    
+    static var headerBold: UILabel {
+        let label = UILabel(forAutoLayout: ())
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.font = .headerBold
+        return label
+    }
 
     static var block: UILabel {
         let label = UILabel(forAutoLayout: ())
