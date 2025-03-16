@@ -18,6 +18,7 @@
 		387926542D80799200841CAF /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926532D80799200841CAF /* ViewModelBindableType.swift */; };
 		3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */; };
 		387926612D8081DC00841CAF /* UserSignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926602D8081DC00841CAF /* UserSignUpService.swift */; };
+		38ADA6602D86F1DA00411B8B /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */; };
 		38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */; };
 		38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */; };
 		38DBC2F42D7F2F9600E444A1 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */; };
@@ -111,6 +112,7 @@
 		387926532D80799200841CAF /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpLoginRepository.swift; sourceTree = "<group>"; };
 		387926602D8081DC00841CAF /* UserSignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpService.swift; sourceTree = "<group>"; };
+		38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequest.swift; sourceTree = "<group>"; };
 		38DBC2F32D7F2F9600E444A1 /* JSONSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				817B25E323097BB4003DF85D /* ActivityIndicatorView.swift */,
 				FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */,
 				FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */,
+				38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */,
 			);
 			name = Views;
 			path = ../Views;
@@ -871,6 +874,7 @@
 				38DBC2F82D7F33F600E444A1 /* APIClient.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,
 				3879264D2D80790700841CAF /* SceneCoordinatorType.swift in Sources */,
+				38ADA6602D86F1DA00411B8B /* CustomTextFieldView.swift in Sources */,
 				FAD03CD2232D08EC0067E2D9 /* ArtistViewController.swift in Sources */,
 				817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */,
 				817B25DC23097108003DF85D /* CameraTargetView.swift in Sources */,
