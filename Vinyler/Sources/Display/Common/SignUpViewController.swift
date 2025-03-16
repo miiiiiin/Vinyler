@@ -65,10 +65,6 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
         
     }
     
-    func bindViewModel() {
-        
-    }
-    
     override func loadView() {
         let root = UIView()
         root.backgroundColor = .coldDarkBlue
@@ -151,4 +147,42 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
             .disposed(by: disposeBag)
     }
     
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        emailField.textField.rx.controlEvent(.editingChanged)
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(emailField.textField.rx.text.orEmpty)
+            .bind(to: input.emailInput)
+            .disposed(by: disposeBag)
+        
+        passwordField.textField.rx.controlEvent(.editingChanged)
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(passwordField.textField.rx.text.orEmpty)
+            .bind(to: input.passwordInput)
+            .disposed(by: disposeBag)
+        
+        passwordCheckField.textField.rx.controlEvent(.editingChanged)
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(passwordCheckField.textField.rx.text.orEmpty)
+            .bind(to: input.passwordCheckInput)
+            .disposed(by: disposeBag)
+        
+        nicknameField.textField.rx.controlEvent(.editingChanged)
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(nicknameField.textField.rx.text.orEmpty)
+            .bind(to: input.nicknameInput)
+            .disposed(by: disposeBag)
+        
+        // 버튼 색상 변경 (비활성화 시)
+        output.isSignUpEnabled
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isEnabled in
+                print("enabled: \(isEnabled)")
+                guard let self = self else { return }
+                self.doneButton.backgroundColor = isEnabled ? .purplishDarkBlue : .inactive
+            })
+            .disposed(by: disposeBag)
+    }
 }
