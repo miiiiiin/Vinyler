@@ -107,7 +107,7 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
         // 이메일 유효성 검사
         isEmailTextValid = emailInput.distinctUntilChanged()
             .map { text in
-                return !text.isEmpty && text.isValidEmail
+                return !text.isEmpty && !text.isValidEmail
             }
         
         // 모든 필드가 채워져 있어야 회원가입 버튼 활성화
