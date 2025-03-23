@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class UserSignUpService: SignUpRepository {
-    
+
     // MARK: - Private -
     
     private let network: VNNetworking
@@ -22,8 +22,8 @@ class UserSignUpService: SignUpRepository {
         self.disposeBag = DisposeBag()
     }
     
-    func execute(request: TestRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
-        return network.request(target: MultiTarget(APIEndPoint.test(request: request)))
+    func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+        return network.request(target: MultiTarget(APIEndPoint.register(request: request)))
             .map { response -> Result<TestResponse, Vinyler.NetworkError> in
                 do {
                     let data = try response.map(TestResponse.self)

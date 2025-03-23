@@ -93,10 +93,9 @@ open class JSONSerializer {
     
     public static func toJson<T: Encodable>(_ object: T, prettify: Bool = false) -> String {
         let encoder = JSONEncoder()
-        if prettify {
-            encoder.outputFormatting = .prettyPrinted
-        }
-        
+        encoder.keyEncodingStrategy = .convertToSnakeCase // JSON 키를 스네이크 케이스로 변환
+        encoder.outputFormatting = prettify ? .prettyPrinted : []
+
         do {
             let jsonData = try encoder.encode(object)
             if let jsonString = String(data: jsonData, encoding: .utf8) {

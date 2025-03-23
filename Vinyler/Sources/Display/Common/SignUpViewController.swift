@@ -31,7 +31,7 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
     private let passwordField = CustomTextFieldView(forAutoLayout: ())
     private let passwordCheckField = CustomTextFieldView(forAutoLayout: ())
     private let nicknameField = CustomTextFieldView(forAutoLayout: ())
-    private let doneButton = UIButton.done
+    private var doneButton = UIButton.done
     
     // MARK: - ViewModel
     
@@ -150,26 +150,22 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
-        emailField.textField.rx.text.orEmpty
-            .distinctUntilChanged()
+emailField.textField.rx.text.orEmpty
             .observe(on: MainScheduler.instance)
             .bind(to: input.emailInput)
             .disposed(by: disposeBag)
         
         passwordField.textField.rx.text.orEmpty
-            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .bind(to: input.passwordInput)
             .disposed(by: disposeBag)
         
         passwordCheckField.textField.rx.text.orEmpty
-            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .bind(to: input.passwordCheckInput)
             .disposed(by: disposeBag)
         
         nicknameField.textField.rx.text.orEmpty
-            .distinctUntilChanged()
             .observe(on: MainScheduler.instance)
             .bind(to: input.nicknameInput)
             .disposed(by: disposeBag)
@@ -183,5 +179,7 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
                 self.doneButton.backgroundColor = isEnabled ? .purplishDarkBlue : .inactive
             })
             .disposed(by: disposeBag)
+        
+        doneButton.rx.action = input.doneAction
     }
 }

@@ -15,7 +15,7 @@ import RxSwift
 
 protocol SignUpRepository {
     
-    func execute(request: TestRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
     
 }
 

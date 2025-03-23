@@ -158,8 +158,8 @@ class AlbumViewController: UIViewController {
         
         [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
         
-        let adSize = GADAdSizeFromCGSize(CGSize(width: UIScreen.main.bounds.width, height: 44))
-        bannerView =  GADBannerView(adSize: adSize)
+        let adSize = GADAdSize(size: CGSize(width: UIScreen.main.bounds.width, height: 44), flags: 0)
+        bannerView = GADBannerView(adSize: adSize)
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         bannerView.adUnitID = Constants.GoogleAds.adKey
         bannerView.rootViewController = self

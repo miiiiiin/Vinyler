@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
 
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
+
 //        let rootViewController = MainViewController()
 //        let rootViewController = SignUpViewController()
 //        let nav = NavigationController(rootViewController: rootViewController)
