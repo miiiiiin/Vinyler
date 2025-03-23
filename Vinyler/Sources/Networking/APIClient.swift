@@ -22,28 +22,42 @@ final class APIClient<Target: TargetType>: MoyaProvider<Target> {
         super.init()
     }
     
-    func request(target: Target) -> Single<Response> {
+    func request(target: Target) -> Single<Result<Response, Vinyler.NetworkError>> {
         
         let requestString = "\(target.method.rawValue), \(target.path), \(target.task)"
         
         return self.rx.request(target)
             .filterSuccessfulStatusCodes()
-            .do(onSuccess: { value in
-                debugPrint("[SUCCESS]: \(requestString), \(value.statusCode)")
-            }, onError: { error in
-                debugPrint("[ERROR]: \(error)")
-                let message = error.localizedDescription
-                
-                if let response = (error as? MoyaError)?.response {
-                    if let jsonObject = try? response.mapJSON(failsOnEmptyData: false) {
-                        let failureMesssage = "[FAILURE]: \(requestString), \(response.statusCode), \(jsonObject)"
-                        debugPrint("[MoyaError]: \(message)\n\(failureMesssage)")
-                    } else if let rawString = String(data: response.data, encoding: .utf8) {
-                        let message = "[FAILURE]: \(requestString), \(response.statusCode), \(rawString)"
-                        debugPrint(message)
-                    }
+            .map { response -> Result<Response, Vinyler.NetworkError> in
+                if (200..<300).contains(response.statusCode) {
+                    debugPrint("[SUCCESS]: \(requestString), \(response.statusCode)")
+                    return .success(response)
+                    
+                } else {
+                    let error = Vinyler.NetworkError.serverError(statusCode: response.statusCode, message: nil)
+                    return .failure(error)
                 }
-            })
+            }.catch { error in
+                debugPrint("[ERROR]: \(error.localizedDescription)")
+                
+                if let moyaError = error as? MoyaError, let response = moyaError.response {
+                    let message = try? response.mapJSON(failsOnEmptyData: false)
+                    let failureMessage = "[FAILURE]: \(requestString), \(response.statusCode), \(message ?? "No Response")"
+                    debugPrint("[MoyaError]: \(failureMessage)")
+                    
+                    do {
+                        let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: response.data)
+                        debugPrint("Extracted message: \(errorResponse.message)")
+                        let error = Vinyler.NetworkError(statusCode: response.statusCode, message: errorResponse.message)
+                        return .just(.failure(error ?? .unknownError))
+                        
+                    } catch {
+                        debugPrint("Failed to decode JSON: \(error)")
+                    }
+                    
+                }
+                
+                return .just(.failure(.unknownError))
+            }
     }
-    
 }

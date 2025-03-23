@@ -22,20 +22,22 @@ class UserSignUpService: SignUpRepository {
         self.disposeBag = DisposeBag()
     }
     
-    func execute(request: TestRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
-        return network.request(target: MultiTarget(APIEndPoint.test(request: request)))
-            .map { response -> Result<TestResponse, Vinyler.NetworkError> in
-                do {
-                    let data = try response.map(TestResponse.self)
-                    return .success(data)
-                } catch {
-                    return .failure(.decodingError)
+    func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+        return network.request(target: MultiTarget(APIEndPoint.register(request: request)))
+            .flatMap { result -> Single<Result<TestResponse, Vinyler.NetworkError>> in
+                switch result {
+                case .success(let response):
+                    if let data = try? response.map(TestResponse.self) {
+                        return .just(.success(data))
+                    } else {
+                        let error = Vinyler.NetworkError.serverError(statusCode: response.statusCode, message: "JSON 디코딩 실패")
+                        return .just(.failure(error))
+                    }
+                case .failure(let error):
+                    return .just(.failure(error))
                 }
             }
             .asObservable()
-            .catch { error in
-                let networkError = error as? Vinyler.NetworkError ?? .databaseNoData
-                return .just(Result<TestResponse, Vinyler.NetworkError>.failure(networkError))
-            }
     }
 }
+

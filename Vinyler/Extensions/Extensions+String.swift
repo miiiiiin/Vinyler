@@ -33,11 +33,10 @@ extension String {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passRegEx)
         return passwordTest.evaluate(with: self)
     }
-        
+    
     var isValidEmail: Bool {
-        let emailRegex = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
+        let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,63}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return  predicate.evaluate(with: self)
+        return predicate.evaluate(with: self)
     }
 }
-

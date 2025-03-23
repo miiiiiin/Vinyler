@@ -8,25 +8,25 @@
 
 import Lottie
 
-extension AnimationView {
-    static var animationView: AnimationView = {
-        let anim = AnimationView(forAutoLayout: ())
+extension LottieAnimationView {
+    static var animationView: LottieAnimationView = {
+        let anim = LottieAnimationView(forAutoLayout: ())
         anim.translatesAutoresizingMaskIntoConstraints = false
         anim.frame.size = CGSize(width: 50, height: 50)
         anim.sizeToFit()
         anim.backgroundBehavior = .pauseAndRestore
-        anim.animation = Animation.named("fluttering")
+        anim.animation = LottieAnimation.named("fluttering")
         return anim
     }()
     
-    static var vinylAnimationView: AnimationView = {
-        let anim = AnimationView(forAutoLayout: ())
+    static var vinylAnimationView: LottieAnimationView = {
+        let anim = LottieAnimationView(forAutoLayout: ())
         anim.translatesAutoresizingMaskIntoConstraints = false
         anim.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.264).isActive = true
         anim.heightAnchor.constraint(equalTo: anim.widthAnchor).isActive = true
         anim.sizeToFit()
         anim.backgroundBehavior = .pauseAndRestore
-        anim.animation = Animation.named("loading")
+        anim.animation = LottieAnimation.named("loading")
         anim.isUserInteractionEnabled = true
         return anim
     }()

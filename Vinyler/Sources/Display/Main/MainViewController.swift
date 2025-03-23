@@ -18,8 +18,8 @@ class MainViewController: UIViewController {
     let moreButton = UIButton.more
     let scanLabel = UILabel.header
     let searchButton = UIButton.search
-    let animationView = AnimationView.animationView
-    let vinylAnimationView = AnimationView.vinylAnimationView
+    let animationView = LottieAnimationView.animationView
+    let vinylAnimationView = LottieAnimationView.vinylAnimationView
     
     private let navigationControllerDelegate = NavigationControllerDelegate()
     
