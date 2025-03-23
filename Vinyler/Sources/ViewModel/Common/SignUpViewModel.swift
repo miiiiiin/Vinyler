@@ -69,7 +69,7 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
                         return .empty()
                         
                     case let .failure(error):
-                        let errorResponse = error.localizedDescription
+                        let errorResponse = error.errorDescription
                         Toast(text: errorResponse).show()
                         return .empty()
                         

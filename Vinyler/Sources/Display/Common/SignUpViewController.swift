@@ -150,7 +150,7 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
-emailField.textField.rx.text.orEmpty
+        emailField.textField.rx.text.orEmpty
             .observe(on: MainScheduler.instance)
             .bind(to: input.emailInput)
             .disposed(by: disposeBag)
