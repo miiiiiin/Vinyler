@@ -21,4 +21,5 @@ protocol SignUpRepository {
 
 protocol LoginRepository {
     
+    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
 }
