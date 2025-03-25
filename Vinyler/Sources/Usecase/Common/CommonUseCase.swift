@@ -1,5 +1,5 @@
 //
-//  SignUpUseCase.swift
+//  CommonUseCase.swift
 //  Vinyler
 //
 //  Created by Songkyung Min on 3/11/25.
@@ -10,20 +10,24 @@ import Foundation
 import RxSwift
 import Moya
 
-protocol SignUpUseCase {
+protocol CommonUseCase {
     func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
 }
 
-class SignUpUseCaseImpl: SignUpUseCase {
+class CommonUseCaseImpl: CommonUseCase {
     
-    private let repository: SignUpRepository
+    private let repository: CommonRepository
     
-    init(repository: SignUpRepository) {
+    init(repository: CommonRepository) {
             self.repository = repository
     }
    
     func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
-        return repository.execute(request: request)
+        return repository.signUp(request: request)
+    }
+    
+    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+        return repository.login(request: request)
     }
 }
 

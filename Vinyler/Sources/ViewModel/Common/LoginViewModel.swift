@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol LoginViewModelInput {
+    var emailInput: BehaviorSubject<String> { get }
+    var passwordInput: BehaviorSubject<String> { get }
 }
 
 protocol LoginViewModelOutput {
+    var isSignUpEnabled: Observable<Bool> { get }
+    var isEmailTextValid: Observable<Bool> { get }
 }
 
 protocol LoginViewModelType {
@@ -21,17 +27,37 @@ protocol LoginViewModelType {
 
 class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, LoginViewModelType {
     
-    
     var input: LoginViewModelInput { return self }
     var output: LoginViewModelOutput { return self }
+    
+    var emailInput = BehaviorSubject<String>(value: "")
+    var passwordInput = BehaviorSubject<String>(value: "")
+    
+    // MARK: - Output -
+    
+    var isEmailTextValid = Observable<Bool>.just(false)
+    var isSignUpEnabled = Observable<Bool>.just(false)
     
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let useCase: SignUpUseCase
+    private let useCase: CommonUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: SignUpUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: CommonUseCase) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
+        
+        // 이메일 유효성 검사
+        isEmailTextValid = emailInput.distinctUntilChanged()
+            .map { text in
+                return !text.isEmpty && !text.isValidEmail
+            }
+        
+        // 모든 필드가 채워져 있어야 회원가입 버튼 활성화
+        self.isSignUpEnabled = Observable
+            .combineLatest(emailInput, passwordInput, isEmailTextValid)
+            .map { email, password, emailValid in
+                return !email.isEmpty && !password.isEmpty  && !emailValid
+            }
     }
 }

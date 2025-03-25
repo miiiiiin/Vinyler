@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import SnapKit
 
-class SignUpViewController: UIViewController, ViewModelBindableType {
+class LoginViewController: UIViewController, ViewModelBindableType {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -28,11 +28,13 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
     private let stackView = UIStackView(forAutoLayout: ())
     private let titleLabel = UILabel.headerBold
     private let emailField = CustomTextFieldView(forAutoLayout: ())
-    private let passwordField = CustomTextFieldView(forAutoLayout: ())
+    private let passwordField =
+    CustomTextFieldView(forAutoLayout: ())
+    private var doneButton = UIButton.done
     
     // MARK: - ViewModel
     
-    var viewModel: SignUpViewModelType!
+    var viewModel: LoginViewModelType!
     
     private let disposeBag = DisposeBag()
     
@@ -79,10 +81,46 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
             contentView.widthAnchor.constraint(equalTo: root.widthAnchor) // 가로 크기 고정
         ])
         
-        titleLabel.text = .signUp
+        titleLabel.text = .login
         emailField.setLabel(str: "이메일", text: "이메일을 입력해주세요")
         passwordField.setLabel(str: "비밀번호", text: "비밀번호를 입력해주세요")
         
+        stackView.axis = .vertical
+        stackView.spacing = 15
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        
+        let textFields = [emailField, passwordField]
+        doneButton.setTitle(.login, for: .normal)
+        
+        textFields.forEach { field in
+            field.setLabelColor(label: .white, text: .white)
+            stackView.addArrangedSubview(field)
+        }
+        
+        [titleLabel, stackView, doneButton].forEach {
+            contentView.addSubview($0)
+        }
+        
+        NSLayoutConstraint.activate([
+            // 제목
+            titleLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 110),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            
+            // StackView
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            
+            // 버튼
+            doneButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+            doneButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            doneButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            doneButton.heightAnchor.constraint(equalToConstant: 50),
+            doneButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
+        ])
     }
     
     private func setupKeyboardHandling() {

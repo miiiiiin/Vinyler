@@ -14,6 +14,7 @@ protocol TargetScene {
 
 enum Scene {
     case signUp(SignUpViewModel)
+    case login(LoginViewModel)
 }
 
 extension Scene: TargetScene {
@@ -21,6 +22,11 @@ extension Scene: TargetScene {
         switch self {
         case let .signUp(viewModel):
             var vc = SignUpViewController()
+            vc.bind(to: viewModel)
+            return .root(vc)
+            
+        case let .login(viewModel):
+            var vc = LoginViewController()
             vc.bind(to: viewModel)
             return .root(vc)
         }

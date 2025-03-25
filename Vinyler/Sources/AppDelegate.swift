@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sceneCoordinator = SceneCoordinator(window: window!)
         SceneCoordinator.shared = sceneCoordinator
         
-        let viewModel = SignUpViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: SignUpUseCaseImpl(repository: UserSignUpService(network: VNNetworking())))
-        sceneCoordinator.transition(to: Scene.signUp(viewModel))
+        let viewModel = LoginViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: CommonUseCaseImpl(repository: CommonService(network: VNNetworking())))
+        sceneCoordinator.transition(to: Scene.login(viewModel))
         return true
     }
 }

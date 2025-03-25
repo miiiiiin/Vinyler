@@ -13,13 +13,10 @@ import RxSwift
  Service를 호출하여 네트워크 요청 수행
  */
 
-protocol SignUpRepository {
+protocol CommonRepository {
     
-    func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    func signUp(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
     
+    func login(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
 }
 
-protocol LoginRepository {
-    
-    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
-}

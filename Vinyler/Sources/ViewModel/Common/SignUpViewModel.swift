@@ -88,9 +88,9 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let useCase: SignUpUseCase
+    private let useCase: CommonUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: SignUpUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: CommonUseCase) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         

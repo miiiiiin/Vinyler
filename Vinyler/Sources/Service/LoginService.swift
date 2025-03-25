@@ -8,8 +8,9 @@
 
 import Foundation
 import RxSwift
+import Moya
 
-class LoginService: LoginRepository {
+class LoginService: Common {
     
     // MARK: - Private -
     
