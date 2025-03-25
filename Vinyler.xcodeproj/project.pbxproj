@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
+		3876F7952D92F069000B29C5 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3876F7942D92F069000B29C5 /* AlbumViewModel.swift */; };
 		387926422D80776700841CAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926412D80776700841CAF /* SignUpViewController.swift */; };
 		387926442D8077BE00841CAF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926432D8077BE00841CAF /* SignUpViewModel.swift */; };
 		387926462D8077D700841CAF /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926452D8077D700841CAF /* SignUpUseCase.swift */; };
@@ -107,6 +108,7 @@
 /* Begin PBXFileReference section */
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
+		3876F7942D92F069000B29C5 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		387926412D80776700841CAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		387926432D8077BE00841CAF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		387926452D8077D700841CAF /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				387926402D80775500841CAF /* Common */,
+				3876F7942D92F069000B29C5 /* AlbumViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				817B25DC23097108003DF85D /* CameraTargetView.swift in Sources */,
 				813E837022E446CE0057F0E6 /* UIButton+Style.swift in Sources */,
 				FA6C3B16232D841D000E1C87 /* TracklistViewController.swift in Sources */,
+				3876F7952D92F069000B29C5 /* AlbumViewModel.swift in Sources */,
 				817B25E423097BB4003DF85D /* ActivityIndicatorView.swift in Sources */,
 				FA09D5392396B966006F37BD /* FormatCell.swift in Sources */,
 				813E837722E45CEC0057F0E6 /* Results.swift in Sources */,

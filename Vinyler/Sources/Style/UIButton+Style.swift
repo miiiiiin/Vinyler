@@ -47,6 +47,15 @@ extension UIButton {
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         return button
     }
+    
+    static var like: UIButton {
+        let button = UIButton(forAutoLayout: ())
+        button.setImage(.emptyHeart, for: .normal)
+        button.tintColor = style.Colors.tint
+        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+        return button
+    }
 
     static var cancel: UIButton {
         let button = UIButton(forAutoLayout: ())

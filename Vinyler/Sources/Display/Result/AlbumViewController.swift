@@ -13,7 +13,11 @@ import UIKit
 import SnapKit
 import GoogleMobileAds
 
-class AlbumViewController: UIViewController {
+class AlbumViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: AlbumViewModelType!
     
     private let closeButton = UIButton.close
     private let moreButton = UIButton.more
@@ -28,6 +32,7 @@ class AlbumViewController: UIViewController {
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
     private var bannerView: GADBannerView!
+    private var likeButton = UIButton.like
     private let disposeBag = DisposeBag()
     
     init(release: Release) {
@@ -166,21 +171,6 @@ class AlbumViewController: UIViewController {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         
-        //        albumImageView.snp.makeConstraints { make in
-        //            make.top.equalTo(albumWithVinyl.snp.top)
-        //            make.leading.equalTo(albumWithVinyl.snp.leading)
-        //            make.trailing.equalTo(albumImageView.snp.trailing).offset(43)
-        //            make.height.equalTo(albumImageView.snp.width)
-        //            make.bottom.equalTo(albumWithVinyl.snp.bottom)
-        //        }
-        //
-        //        vinylImageView.snp.makeConstraints { make in
-        //            make.top.equalTo(albumImageView.snp.top)
-        //            make.trailing.equalTo(albumWithVinyl.snp.trailing)
-        //            make.width.equalTo(albumImageView.snp.width)
-        //            make.bottom.equalTo(albumImageView.snp.bottom)
-        //        }
-        
         NSLayoutConstraint.activate([
             albumImageView.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
             albumImageView.topAnchor.constraint(equalTo: albumWithVinyl.topAnchor),
@@ -195,75 +185,9 @@ class AlbumViewController: UIViewController {
         
         closeButton.tintColor = style.Colors.tint
         
-        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
+        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, likeButton, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
         
         contentView.pinToSuperview()
-        
-        //        contentView.snp.makeConstraints { make in
-        //            make.width.equalTo(root.snp.width)
-        //        }
-        //
-        //        closeButton.snp.makeConstraints { make in
-        //            make.top.equalTo(contentView.snp.topMargin).offset(33)
-        //        }
-        //
-        //        moreButton.snp.makeConstraints { make in
-        //            make.centerY.equalTo(closeButton.snp.centerY)
-        //            make.trailing.equalTo(contentView.snp.trailing).offset(-33)
-        //        }
-        //
-        //        artistLabel.snp.makeConstraints { make in
-        //            make.top.equalTo(closeButton.snp.bottom).offset(33)
-        //            make.leading.equalTo(contentView.snp.leading).offset(44)
-        //            make.trailing.equalTo(contentView.snp.trailing).offset(-22)
-        //        }
-        //
-        //        titleLabel.snp.makeConstraints { make in
-        //            make.top.equalTo(artistLabel.snp.bottom).offset(6)
-        //            make.leading.equalTo(artistLabel.snp.leading)
-        //            make.trailing.equalTo(artistLabel.snp.trailing)
-        //        }
-        //
-        //        albumWithVinyl.snp.makeConstraints { make in
-        //            make.top.equalTo(titleLabel.snp.bottom).offset(44)
-        //            make.leading.equalTo(titleLabel.snp.leading)
-        //            make.trailing.equalTo(titleLabel.snp.trailing)
-        //        }
-        //
-        //        dateLabel.snp.makeConstraints { make in
-        //            make.top.equalTo(albumWithVinyl.snp.bottom).offset(33)
-        //            make.leading.equalTo(albumWithVinyl.snp.leading)
-        //        }
-        //
-        //        formatsCollectionView.snp.makeConstraints { make in
-        //            make.leading.equalTo(contentView.snp.leading)
-        //            make.top.equalTo(dateLabel.snp.bottom).offset(33)
-        //            make.trailing.equalTo(contentView.snp.trailing)
-        //            make.height.equalTo(29)
-        //        }
-        //
-        //        disclosureButton.snp.makeConstraints { make in
-        //            make.top.equalTo(formatsCollectionView.snp.bottom).offset(11)
-        //            make.leading.equalTo(titleLabel.snp.leading)
-        //            make.trailing.equalTo(contentView.snp.trailing).offset(-44)
-        //        }
-        //
-        //        playerImageView.snp.makeConstraints { make in
-        //            make.top.equalTo(disclosureButton.snp.top).offset(5)
-        //            make.left.equalTo(disclosureButton.snp.right).offset(-44)
-        //        }
-        //
-        //        descriptionTitleLabel.snp.makeConstraints { make in
-        //            make.top.equalTo(descriptionTitleLabel.snp.bottom).offset(33)
-        //            make.leading.equalTo(disclosureButton.snp.leading)
-        //        }
-        //
-        //        descriptionLabel.snp.makeConstraints { make in
-        //            make.top.equalTo(descriptionTitleLabel.snp.bottom).offset(22)
-        //            make.leading.equalTo(descriptionTitleLabel.snp.leading)
-        //            make.trailing.equalTo(contentView.snp.trailing).offset(-33)
-        //            make.bottom.equalTo(contentView.snp.bottom).offset(-44)
-        //        }
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
@@ -284,7 +208,7 @@ class AlbumViewController: UIViewController {
             dateLabel.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
             formatsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             formatsCollectionView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 33),
-            formatsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            formatsCollectionView.trailingAnchor.constraint(equalTo: likeButton.leadingAnchor),
             formatsCollectionView.heightAnchor.constraint(equalToConstant: 29),
             disclosureButton.topAnchor.constraint(equalTo: formatsCollectionView.bottomAnchor, constant: 11),
             disclosureButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -310,7 +234,18 @@ class AlbumViewController: UIViewController {
         //            make.trailing.equalTo(contentView.snp.trailing)
         //            make.bottom.equalTo(contentView.snp.bottom)
         //        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.top.equalTo(formatsCollectionView.snp.top)
+            make.trailing.equalTo(disclosureButton.snp.trailing)
+            make.bottom.equalTo(formatsCollectionView.snp.bottom)
+        }
         self.view = root
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
     }
 }
 
