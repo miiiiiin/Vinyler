@@ -16,7 +16,7 @@ protocol LoginViewModelInput {
 }
 
 protocol LoginViewModelOutput {
-    var isSignUpEnabled: Observable<Bool> { get }
+    var isLoginEnabled: Observable<Bool> { get }
     var isEmailTextValid: Observable<Bool> { get }
 }
 
@@ -34,9 +34,9 @@ class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, LoginViewModelT
     var passwordInput = BehaviorSubject<String>(value: "")
     
     // MARK: - Output -
-    
+
     var isEmailTextValid = Observable<Bool>.just(false)
-    var isSignUpEnabled = Observable<Bool>.just(false)
+    var isLoginEnabled = Observable<Bool>.just(false)
     
     // MARK: - Private -
     
@@ -54,7 +54,7 @@ class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, LoginViewModelT
             }
         
         // 모든 필드가 채워져 있어야 회원가입 버튼 활성화
-        self.isSignUpEnabled = Observable
+        self.isLoginEnabled = Observable
             .combineLatest(emailInput, passwordInput, isEmailTextValid)
             .map { email, password, emailValid in
                 return !email.isEmpty && !password.isEmpty  && !emailValid

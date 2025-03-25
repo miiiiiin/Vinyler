@@ -104,7 +104,7 @@ class LoginViewController: UIViewController, ViewModelBindableType {
         
         NSLayoutConstraint.activate([
             // 제목
-            titleLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 110),
+            titleLabel.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -70),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             titleLabel.heightAnchor.constraint(equalToConstant: 50),
@@ -143,6 +143,26 @@ class LoginViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output
+        
+        emailField.textField.rx.text.orEmpty
+            .observe(on: MainScheduler.instance)
+            .bind(to: input.emailInput)
+            .disposed(by: disposeBag)
+        
+        passwordField.textField.rx.text.orEmpty
+            .observe(on: MainScheduler.instance)
+            .bind(to: input.passwordInput)
+            .disposed(by: disposeBag)
+        
+        // 버튼 색상 변경 (비활성화 시)
+        output.isLoginEnabled
+            .distinctUntilChanged()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isEnabled in
+                guard let self = self else { return }
+                self.doneButton.backgroundColor = isEnabled ? .purplishDarkBlue : .inactive
+            })
+            .disposed(by: disposeBag)
         
     }
 }
