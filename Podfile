@@ -19,7 +19,10 @@ target 'Vinyler' do
     pod 'SnapKit'
     pod 'Toaster', '~> 2.3.0'
     pod 'MKProgress', '~> 1.1.0'
-    
+   	pod 'KakaoSDKAuth'
+		pod 'KakaoSDKUser'
+		pod 'KakaoSDKCommon'
+ 
     target 'VinylerTests' do
         # Pods for testing
     end

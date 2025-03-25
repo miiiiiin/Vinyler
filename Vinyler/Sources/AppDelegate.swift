@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMobileAds
+import KakaoSDKCommon
+import KakaoSDKAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
 
+        KakaoSDK.initSDK(appKey: "e381b7502a2619e0b0fe0ce5ec44899d")
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
 //        let rootViewController = MainViewController()
@@ -37,4 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sceneCoordinator.transition(to: Scene.signUp(viewModel))
         return true
     }
+    
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+    ) -> Bool {
+        if let url = userActivity.webpageURL {
+            if AuthApi.isKakaoTalkLoginUrl(url) {
+                return AuthController.handleOpenUrl(url: url)
+            }
+        }
+        return false
+    }
 }
+

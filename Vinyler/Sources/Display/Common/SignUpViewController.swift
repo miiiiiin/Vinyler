@@ -32,6 +32,7 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
     private let passwordCheckField = CustomTextFieldView(forAutoLayout: ())
     private let nicknameField = CustomTextFieldView(forAutoLayout: ())
     private var doneButton = UIButton.done
+    private var kakaoButton = UIButton.kakaoLogin
     
     // MARK: - ViewModel
     
@@ -104,7 +105,7 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
             stackView.addArrangedSubview(field)
         }
         
-        [titleLabel, stackView, doneButton].forEach {
+        [titleLabel, stackView, doneButton, kakaoButton].forEach {
             contentView.addSubview($0)
         }
         
@@ -125,7 +126,15 @@ class SignUpViewController: UIViewController, ViewModelBindableType {
             doneButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             doneButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
             doneButton.heightAnchor.constraint(equalToConstant: 50),
-            doneButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
+//            doneButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            
+            kakaoButton.topAnchor.constraint(equalTo: doneButton.bottomAnchor, constant: 20),
+            kakaoButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            kakaoButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            kakaoButton.heightAnchor.constraint(equalToConstant: 50),
+            kakaoButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            
+            
         ])
     }
     
