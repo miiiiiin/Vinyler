@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         
-        
         let sceneCoordinator = SceneCoordinator(window: window!)
         SceneCoordinator.shared = sceneCoordinator
         

@@ -13,7 +13,11 @@ import RxSwift
 import Lottie
 import RxGesture
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: MainViewModelType!
     
     let moreButton = UIButton.more
     let scanLabel = UILabel.header
@@ -96,5 +100,10 @@ class MainViewController: UIViewController {
         ])
         
         self.view = root
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
     }
 }
