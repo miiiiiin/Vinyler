@@ -9,10 +9,13 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Action
+import Toaster
 
 protocol LoginViewModelInput {
     var emailInput: BehaviorSubject<String> { get }
     var passwordInput: BehaviorSubject<String> { get }
+    var doneAction: CocoaAction { get }
 }
 
 protocol LoginViewModelOutput {
@@ -32,6 +35,31 @@ class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, LoginViewModelT
     
     var emailInput = BehaviorSubject<String>(value: "")
     var passwordInput = BehaviorSubject<String>(value: "")
+    
+    lazy var doneAction: CocoaAction = {
+        CocoaAction { [unowned self] input in
+            let password = try? self.passwordInput.value()
+            let email = try? self.emailInput.value()
+            
+            var request = LoginRequest()
+            request.email = email
+            request.password = password
+            
+            return self.useCase.execute(request: request)
+                .flatMap { result -> Observable<Void> in
+                    switch result {
+                    case let .success(response):
+                        return .empty()
+                        // FIXME
+                        
+                    case let .failure(error):
+                        let errorResponse = error.errorDescription
+                        Toast(text: errorResponse).show()
+                        return .empty()
+                    }
+                }
+        }
+    }()
     
     // MARK: - Output -
 

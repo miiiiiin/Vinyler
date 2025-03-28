@@ -12,6 +12,8 @@ import Moya
 
 protocol CommonUseCase {
     func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    
+    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
 }
 
 class CommonUseCaseImpl: CommonUseCase {
