@@ -20,8 +20,10 @@ extension APIEndPoint: TargetType {
         switch self {
         case .test:
             return URL(string: Constants.API.baseURL)!
-        case .register, .login:
+        case .register:
             return URL(string: Constants.API.baseURL + "/api/v1/user")!
+        case .login:
+            return URL(string: Constants.API.baseURL + "/api/v1/auth")!
         }
     }
     

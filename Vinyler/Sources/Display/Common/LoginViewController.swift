@@ -84,6 +84,7 @@ class LoginViewController: UIViewController, ViewModelBindableType {
         titleLabel.text = .login
         emailField.setLabel(str: "이메일", text: "이메일을 입력해주세요")
         passwordField.setLabel(str: "비밀번호", text: "비밀번호를 입력해주세요")
+        passwordField.textField.isSecureTextEntry = true
         
         stackView.axis = .vertical
         stackView.spacing = 15
@@ -164,5 +165,6 @@ class LoginViewController: UIViewController, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
         
+        doneButton.rx.action = input.doneAction
     }
 }

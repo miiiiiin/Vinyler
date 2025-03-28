@@ -20,7 +20,7 @@ protocol SignUpViewModelInput {
     
     var doneAction: CocoaAction { get }
 }
-
+    
 protocol SignUpViewModelOutput {
     var isSignUpEnabled: Observable<Bool> { get }
     var isPWTextValid: Observable<Bool> { get }
