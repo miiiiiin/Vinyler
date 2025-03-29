@@ -17,6 +17,6 @@ protocol CommonRepository {
     
     func signUp(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
     
-    func login(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    func login(request: LoginRequest) -> Observable<Result<LoginResponse, Vinyler.NetworkError>>
 }
 
