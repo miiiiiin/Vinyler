@@ -21,6 +21,8 @@
 		387926542D80799200841CAF /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926532D80799200841CAF /* ViewModelBindableType.swift */; };
 		3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */; };
 		387926612D8081DC00841CAF /* CommonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387926602D8081DC00841CAF /* CommonService.swift */; };
+		387E38CB2D96E18B003C1920 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E38CA2D96E18B003C1920 /* MainViewModel.swift */; };
+		387E38CF2D96E431003C1920 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387E38CE2D96E431003C1920 /* LoginResponse.swift */; };
 		38ADA6602D86F1DA00411B8B /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */; };
 		38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6612D87273900411B8B /* SceneCoordinator.swift */; };
 		38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */; };
@@ -122,6 +124,8 @@
 		387926532D80799200841CAF /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpLoginRepository.swift; sourceTree = "<group>"; };
 		387926602D8081DC00841CAF /* CommonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonService.swift; sourceTree = "<group>"; };
+		387E38CA2D96E18B003C1920 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		387E38CE2D96E431003C1920 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		38ADA6612D87273900411B8B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+ObservableType.swift"; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 			children = (
 				387926432D8077BE00841CAF /* SignUpViewModel.swift */,
 				3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */,
+				387E38CA2D96E18B003C1920 /* MainViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */,
+				387E38CE2D96E431003C1920 /* LoginResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -953,6 +959,7 @@
 				FA5BC2E823DC1772000CFD9D /* UITextView+Extension.swift in Sources */,
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
+				387E38CF2D96E431003C1920 /* LoginResponse.swift in Sources */,
 				3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */,
 				FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */,
 				387926462D8077D700841CAF /* CommonUseCase.swift in Sources */,
@@ -966,6 +973,7 @@
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				38FB99F82D9025D700993111 /* SignUpRequest.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
+				387E38CB2D96E18B003C1920 /* MainViewModel.swift in Sources */,
 				38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
 				7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */,

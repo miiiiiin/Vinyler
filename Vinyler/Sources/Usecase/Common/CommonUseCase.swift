@@ -13,7 +13,7 @@ import Moya
 protocol CommonUseCase {
     func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
     
-    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    func execute(request: LoginRequest) -> Observable<Result<LoginResponse, Vinyler.NetworkError>>
 }
 
 class CommonUseCaseImpl: CommonUseCase {
@@ -28,7 +28,7 @@ class CommonUseCaseImpl: CommonUseCase {
         return repository.signUp(request: request)
     }
     
-    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+    func execute(request: LoginRequest) -> Observable<Result<LoginResponse, Vinyler.NetworkError>> {
         return repository.login(request: request)
     }
 }

@@ -40,12 +40,12 @@ class CommonService: CommonRepository {
             .asObservable()
     }
     
-    func login(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+    func login(request: LoginRequest) -> Observable<Result<LoginResponse, Vinyler.NetworkError>> {
         return network.request(target: MultiTarget(APIEndPoint.login(request: request)))
-            .flatMap { result -> Single<Result<TestResponse, Vinyler.NetworkError>> in
+            .flatMap { result -> Single<Result<LoginResponse, Vinyler.NetworkError>> in
                 switch result {
                 case .success(let response):
-                    if let data = try? response.map(TestResponse.self) {
+                    if let data = try? response.map(LoginResponse.self) {
                         return .just(.success(data))
                     } else {
                         let error = Vinyler.NetworkError.serverError(statusCode: response.statusCode, message: "JSON 디코딩 실패")
@@ -57,6 +57,5 @@ class CommonService: CommonRepository {
             }
             .asObservable()
     }
-    
 }
 
