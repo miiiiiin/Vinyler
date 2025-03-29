@@ -68,9 +68,23 @@ extension APIEndPoint: TargetType {
     }
     
     public var headers: [String: String]? {
-        return [
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        ]
+        switch self {
+        case .register, .login:
+            return [
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            ]
+            
+        default:
+            if let token = AuthManager.shared.accessToken {
+                return [
+                    "Authorization": "Bearer \(token)",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                ]
+            } else {
+                return nil
+            }
+        }
     }
 }
