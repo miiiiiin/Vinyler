@@ -22,7 +22,7 @@ class VinylService: VinylRepository {
         self.disposeBag = DisposeBag()
     }
     
-    func like(request: LikeRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+    func like(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
         return network.request(target: MultiTarget(APIEndPoint.like(request: request)))
             .flatMap { result -> Single<Result<TestResponse, Vinyler.NetworkError>> in
                 switch result {

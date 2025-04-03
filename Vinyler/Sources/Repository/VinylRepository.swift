@@ -10,5 +10,7 @@ import Foundation
 import RxSwift
 
 protocol VinylRepository {
-    func like(request: LikeRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    func like(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
+    
+    
 }

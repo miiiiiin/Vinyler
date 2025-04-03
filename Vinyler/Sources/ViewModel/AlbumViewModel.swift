@@ -16,6 +16,8 @@ protocol AlbumViewModelInput {
 }
 
 protocol AlbumViewModelOutput {
+    var releaseInfo: Observable<Release> { get }
+    var isLike: Observable<Bool> { get }
 }
 
 protocol AlbumViewModelType {
@@ -52,14 +54,20 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
     }()
     
     
+    var releaseInfo: Observable<Release>
+    var isLike: Observable<Bool> = .just(false)
+    
+    
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, release: Release) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
+        self.releaseInfo = Observable.just(release);
+        
         
     }
 }
