@@ -28,13 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = UINavigationController()
         window?.makeKeyAndVisible()
         
-        
+
         
 //        let sceneCoordinator = SceneCoordinator(window: window!)
 //        SceneCoordinator.shared = sceneCoordinator
 //        
 //        let viewModel = AlbumViewModel(sceneCoordinator: SceneCoordinator.shared)
 //        sceneCoordinator.transition(to: Scene.album(viewModel))
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        SceneCoordinator.shared = sceneCoordinator
+        
+        let viewModel = LoginViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: CommonUseCaseImpl(repository: CommonService(network: VNNetworking())))
+        sceneCoordinator.transition(to: Scene.login(viewModel))
+
         return true
     }
 }
