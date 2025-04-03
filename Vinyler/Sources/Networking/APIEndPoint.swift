@@ -12,6 +12,7 @@ import Moya
 public enum APIEndPoint {
     case test(request: TestRequest)
     case register(request: SignUpRequest)
+    case like(request: LikeRequest)
     case login(request: LoginRequest)
 }
 
@@ -22,6 +23,8 @@ extension APIEndPoint: TargetType {
             return URL(string: Constants.API.baseURL)!
         case .register:
             return URL(string: Constants.API.baseURL + "/api/v1/user")!
+        case .like:
+            return URL(string: Constants.API.baseURL + "/api/v1/vinyls")!
         case .login:
             return URL(string: Constants.API.baseURL + "/api/v1/auth")!
         }
@@ -31,6 +34,7 @@ extension APIEndPoint: TargetType {
         switch self {
         case .test: return "/test"
         case .register: return "/register"
+        case .like: return "/likes"
         case .login: return "/login"
             
         }
@@ -39,6 +43,7 @@ extension APIEndPoint: TargetType {
     public var method: Moya.Method {
         switch self {
         case .test: .post
+        case .like: .post
         case .register, .login: .post
         }
     }
@@ -49,6 +54,7 @@ extension APIEndPoint: TargetType {
             return self.requestTask(request)
         case .register(let request):
             return self.requestTask(request)
+        case .like(let request):
         case .login(let request):
             return self.requestTask(request)
         }

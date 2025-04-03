@@ -33,10 +33,12 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     private let descriptionLabel = UILabel.body
     private var bannerView: GADBannerView!
     private var likeButton = UIButton.like
+    private var releaseInfo: Release!
     private let disposeBag = DisposeBag()
     
     init(release: Release) {
         super.init(nibName: nil, bundle: nil)
+        releaseInfo = release
         titleLabel.text = release.title
         artistLabel.text = release.artistsSort.uppercased()
         
@@ -240,12 +242,20 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             make.trailing.equalTo(disclosureButton.snp.trailing)
             make.bottom.equalTo(formatsCollectionView.snp.bottom)
         }
+        
         self.view = root
     }
     
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output
+        
+        likeButton.rx.tap
+            .asObservable()
+            .withLatestFrom(Observable.just(releaseInfo))
+            .bind(to: input.likeAction.inputs)
+            .disposed(by: disposeBag)
+        
     }
 }
 
