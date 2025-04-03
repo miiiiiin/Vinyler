@@ -210,7 +210,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             dateLabel.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
             formatsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             formatsCollectionView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 33),
-            formatsCollectionView.trailingAnchor.constraint(equalTo: likeButton.leadingAnchor),
+            formatsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             formatsCollectionView.heightAnchor.constraint(equalToConstant: 29),
             disclosureButton.topAnchor.constraint(equalTo: formatsCollectionView.bottomAnchor, constant: 11),
             disclosureButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -238,9 +238,8 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         //        }
         
         likeButton.snp.makeConstraints { make in
-            make.top.equalTo(formatsCollectionView.snp.top)
+            make.centerY.equalTo(dateLabel.snp.centerY)
             make.trailing.equalTo(disclosureButton.snp.trailing)
-            make.bottom.equalTo(formatsCollectionView.snp.bottom)
         }
         
         self.view = root
