@@ -49,6 +49,7 @@ extension APIEndPoint: TargetType {
         case .test: .post
         case .like: .post
         case .register, .login: .post
+        case .getLike: .get
         }
     }
     

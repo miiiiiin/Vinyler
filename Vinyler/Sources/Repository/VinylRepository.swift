@@ -12,5 +12,6 @@ import RxSwift
 protocol VinylRepository {
     func like(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
+    func getLike(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
 }
