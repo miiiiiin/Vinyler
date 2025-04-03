@@ -86,8 +86,8 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             self?.vinylImageView.isHidden = false
             
         }).filter { $0 != nil }
-        .drive(albumImageView.rx.image)
-        .disposed(by: disposeBag)
+            .drive(albumImageView.rx.image)
+            .disposed(by: disposeBag)
         
         closeButton.rx.tap.subscribe(onNext: { [weak self] in
             self?.navigationController?.dismiss(animated: true)
@@ -98,7 +98,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .flatMap(presentCustomActionSheet)
             .subscribe(onNext: { [weak self] option in
                 switch option {
-                
+                    
                 case .artistDetails:
                     let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
                     self?.navigationController?.pushViewController(loadingVC, animated: true)
@@ -129,13 +129,13 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-        //            self?.vinylImageView.transform = .identity
-        //        }) { completed in
-        //            if completed {
-        //                SKStoreReviewController.requestReview()
-        //            }
-        //        }
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            self?.vinylImageView.transform = .identity
+        }) { completed in
+            if completed {
+                SKStoreReviewController.requestReview()
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -210,7 +210,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             dateLabel.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
             formatsCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             formatsCollectionView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 33),
-            formatsCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            formatsCollectionView.trailingAnchor.constraint(equalTo: disclosureButton.trailingAnchor),
             formatsCollectionView.heightAnchor.constraint(equalToConstant: 29),
             disclosureButton.topAnchor.constraint(equalTo: formatsCollectionView.bottomAnchor, constant: 11),
             disclosureButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -250,8 +250,9 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         let output = viewModel.output
         
         likeButton.rx.tap
-            .asObservable()
+            .observe(on: MainScheduler.instance)
             .withLatestFrom(Observable.just(releaseInfo))
+            .unwrap()
             .bind(to: input.likeAction.inputs)
             .disposed(by: disposeBag)
         
