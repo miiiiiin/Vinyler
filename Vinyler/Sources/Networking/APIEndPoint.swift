@@ -55,6 +55,7 @@ extension APIEndPoint: TargetType {
         case .register(let request):
             return self.requestTask(request)
         case .like(let request):
+            return self.requestTask(request)
         case .login(let request):
             return self.requestTask(request)
         }
