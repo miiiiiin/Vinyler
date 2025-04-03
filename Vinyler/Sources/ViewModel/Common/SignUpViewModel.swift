@@ -19,8 +19,9 @@ protocol SignUpViewModelInput {
     var nicknameInput: BehaviorSubject<String> { get }
     
     var doneAction: CocoaAction { get }
+    var loginAction: CocoaAction { get }
 }
-
+    
 protocol SignUpViewModelOutput {
     var isSignUpEnabled: Observable<Bool> { get }
     var isPWTextValid: Observable<Bool> { get }
@@ -47,8 +48,6 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
     
     lazy var doneAction: CocoaAction = {
         CocoaAction { [unowned self] input in
-            //fixme
-            
             let checkedPw = try? self.passwordCheckInput.value()
             let email = try? self.emailInput.value()
             let nickname = try? self.nicknameInput.value()
@@ -64,9 +63,33 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
                 .flatMap { result -> Observable<Void> in
                     switch result {
                     case let .success(response):
-                        // TODO: Login
+                        return self.loginAction.execute()
                         
+                    case let .failure(error):
+                        let errorResponse = error.errorDescription
+                        Toast(text: errorResponse).show()
                         return .empty()
+                        
+                    }
+                }
+        }
+    }()
+    
+    lazy var loginAction: CocoaAction = {
+        CocoaAction { [unowned self] input in
+            let checkedPw = try? self.passwordCheckInput.value()
+            let email = try? self.emailInput.value()
+            
+            var request = LoginRequest()
+            request.email = email
+            request.password = checkedPw
+            
+            return self.useCase.execute(request: request)
+                .flatMap { result -> Observable<Void> in
+                    switch result {
+                    case let .success(response):
+                        let viewModel = MainViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase)
+                        return self.sceneCoordinator.transition(to: Scene.main(viewModel))
                         
                     case let .failure(error):
                         let errorResponse = error.errorDescription
@@ -88,9 +111,9 @@ class SignUpViewModel: SignUpViewModelInput, SignUpViewModelOutput, SignUpViewMo
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let useCase: SignUpUseCase
+    private let useCase: CommonUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: SignUpUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: CommonUseCase) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         

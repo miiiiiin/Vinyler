@@ -12,6 +12,7 @@ import Moya
 public enum APIEndPoint {
     case test(request: TestRequest)
     case register(request: SignUpRequest)
+    case login(request: LoginRequest)
 }
 
 extension APIEndPoint: TargetType {
@@ -21,6 +22,8 @@ extension APIEndPoint: TargetType {
             return URL(string: Constants.API.baseURL)!
         case .register:
             return URL(string: Constants.API.baseURL + "/api/v1/user")!
+        case .login:
+            return URL(string: Constants.API.baseURL + "/api/v1/auth")!
         }
     }
     
@@ -28,6 +31,7 @@ extension APIEndPoint: TargetType {
         switch self {
         case .test: return "/test"
         case .register: return "/register"
+        case .login: return "/login"
             
         }
     }
@@ -35,7 +39,7 @@ extension APIEndPoint: TargetType {
     public var method: Moya.Method {
         switch self {
         case .test: .post
-        case .register: .post
+        case .register, .login: .post
         }
     }
     
@@ -44,6 +48,8 @@ extension APIEndPoint: TargetType {
         case .test(let request):
             return self.requestTask(request)
         case .register(let request):
+            return self.requestTask(request)
+        case .login(let request):
             return self.requestTask(request)
         }
     }
@@ -62,9 +68,23 @@ extension APIEndPoint: TargetType {
     }
     
     public var headers: [String: String]? {
-        return [
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        ]
+        switch self {
+        case .register, .login:
+            return [
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            ]
+            
+        default:
+            if let token = AuthManager.shared.accessToken {
+                return [
+                    "Authorization": "Bearer \(token)",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                ]
+            } else {
+                return nil
+            }
+        }
     }
 }

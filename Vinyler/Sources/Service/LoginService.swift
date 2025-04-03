@@ -1,8 +1,8 @@
 //
-//  UserSignUpService.swift
+//  LoginService.swift
 //  Vinyler
 //
-//  Created by Songkyung Min on 3/11/25.
+//  Created by Songkyung Min on 3/25/25.
 //  Copyright © 2025 songkyung min. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Moya
 
-class UserSignUpService: SignUpRepository {
+class LoginService: Common {
     
     // MARK: - Private -
     
@@ -22,8 +22,8 @@ class UserSignUpService: SignUpRepository {
         self.disposeBag = DisposeBag()
     }
     
-    func execute(request: SignUpRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
-        return network.request(target: MultiTarget(APIEndPoint.register(request: request)))
+    func execute(request: LoginRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+        return network.request(target: MultiTarget(APIEndPoint.login(request: request)))
             .flatMap { result -> Single<Result<TestResponse, Vinyler.NetworkError>> in
                 switch result {
                 case .success(let response):
@@ -39,5 +39,5 @@ class UserSignUpService: SignUpRepository {
             }
             .asObservable()
     }
+    
 }
-
