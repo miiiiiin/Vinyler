@@ -30,6 +30,10 @@
 		38DBC2F82D7F33F600E444A1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F72D7F33F600E444A1 /* APIClient.swift */; };
 		38DBC2FA2D7F36D600E444A1 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F92D7F36D600E444A1 /* APIEndPoint.swift */; };
 		38DBC2FF2D7F381A00E444A1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2FE2D7F381A00E444A1 /* NetworkError.swift */; };
+		38DC17662D9D61630026811D /* VinylUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC17652D9D61630026811D /* VinylUseCase.swift */; };
+		38DC17682D9D61B00026811D /* LikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC17672D9D61B00026811D /* LikeRequest.swift */; };
+		38DC176A2D9D68920026811D /* VinylRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC17692D9D68920026811D /* VinylRepository.swift */; };
+		38DC176C2D9D69250026811D /* VinylService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC176B2D9D69250026811D /* VinylService.swift */; };
 		38FB99F82D9025D700993111 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB99F72D9025D700993111 /* SignUpRequest.swift */; };
 		64B8FA85E82F1095B4AFC54E /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9DC0DBAC559C2DF568322BB /* Pods_Vinyler_VinylerTests.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
@@ -129,6 +133,10 @@
 		38DBC2F72D7F33F600E444A1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		38DBC2F92D7F36D600E444A1 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
 		38DBC2FE2D7F381A00E444A1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		38DC17652D9D61630026811D /* VinylUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylUseCase.swift; sourceTree = "<group>"; };
+		38DC17672D9D61B00026811D /* LikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRequest.swift; sourceTree = "<group>"; };
+		38DC17692D9D68920026811D /* VinylRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylRepository.swift; sourceTree = "<group>"; };
+		38DC176B2D9D69250026811D /* VinylService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylService.swift; sourceTree = "<group>"; };
 		38FB99F72D9025D700993111 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		6B8975BEA48B065D6048A9AA /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
 		6FA2B50F7D2E7019CA505CC3 /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
@@ -288,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				3879265D2D807F0900841CAF /* UserSignUpLoginRepository.swift */,
+				38DC17692D9D68920026811D /* VinylRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				387926602D8081DC00841CAF /* UserSignUpService.swift */,
+				38DC176B2D9D69250026811D /* VinylService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -333,6 +343,7 @@
 			children = (
 				38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */,
 				38FB99F72D9025D700993111 /* SignUpRequest.swift */,
+				38DC17672D9D61B00026811D /* LikeRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -349,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				387926472D8077E600841CAF /* Common */,
+				38DC17652D9D61630026811D /* VinylUseCase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -893,6 +905,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DC176C2D9D69250026811D /* VinylService.swift in Sources */,
 				814B06B0230584D50062906D /* ScanViewController.swift in Sources */,
 				FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */,
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
@@ -911,6 +924,7 @@
 				387926442D8077BE00841CAF /* SignUpViewModel.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
 				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
+				38DC17662D9D61630026811D /* VinylUseCase.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
 				387926612D8081DC00841CAF /* UserSignUpService.swift in Sources */,
 				387926422D80776700841CAF /* SignUpViewController.swift in Sources */,
@@ -927,6 +941,7 @@
 				38DBC2F82D7F33F600E444A1 /* APIClient.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,
 				3879264D2D80790700841CAF /* SceneCoordinatorType.swift in Sources */,
+				38DC176A2D9D68920026811D /* VinylRepository.swift in Sources */,
 				38ADA6602D86F1DA00411B8B /* CustomTextFieldView.swift in Sources */,
 				FAD03CD2232D08EC0067E2D9 /* ArtistViewController.swift in Sources */,
 				817B25D623059434003DF85D /* UIImage+Assets.swift in Sources */,
@@ -968,6 +983,7 @@
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
 				38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */,
 				387926502D80792400841CAF /* TargetScene.swift in Sources */,
+				38DC17682D9D61B00026811D /* LikeRequest.swift in Sources */,
 				7D18847926EEFFF100AE8815 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
