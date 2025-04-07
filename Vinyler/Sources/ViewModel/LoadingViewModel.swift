@@ -16,6 +16,7 @@ protocol LoadingViewModelInput {
 
 protocol LoadingViewModelOutput {
     var release: Observable<Release> { get }
+    var errorEvent: Observable<Error> { get }
 }
 
 protocol LoadingViewModelType {
@@ -38,6 +39,7 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         }
     }()
     
+    // MARK: - Output -
     var release: Observable<Release> = .just(nil)
     
     // MARK: - Private -
@@ -47,6 +49,7 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     private let barcode: String?
     private let resourceUrl: String?
     private let artistResourceUrl: String?
+    private let errorHandlerRelay = PublishRelay<Error>()
     
     init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, barcode: String? = nil,
          resourceUrl: String? = nil,
@@ -59,29 +62,52 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     }
     
     private func fetch() {
-        guard let barcode = barcode else {
-            if let url = resourceUrl {
-                self.release = fetchRelease(from: url)
-            } else if let artistUrl = artistResourceUrl {
-                self.release = fetchArtist(from: artistUrl)
-            }
-            return
-        }
-        
-        self.release = useCase.search(query: barcode)
-            .flatMap { searchResults -> Observable<Release> in
-                guard let firstUrl = searchResults.first?.resourceUrl else {
-                    return Observable.error(RequestError.noResults)
+        if let barcode = barcode {
+            self.release = useCase.search(query: barcode)
+                .flatMap { results -> Observable<Release> in
+                    guard let url = results.first?.resourceUrl else {
+                        return Observable.error(RequestError.noResults)
+                    }
+                    return self.useCase.fetchRelease(path: url)
                 }
-                return useCase.fetchRelease(path: firstUrl)
-            }
+        } else if let url = resourceUrl {
+            self.release = useCase.fetchRelease(path: url)
+        } else if let artistUrl = artistResourceUrl {
+            self.release = useCase.fetchArtist(path: artistUrl)
+        } else {
+            self.release = Observable.error(RequestError.invalidUrl)
+        }
+        return handleObservable(self.release)
     }
     
-    private func fetchRelease(from url: String) {
+    private func fetchRelease(from url: String) -> Observable<Release> {
         useCase.fetchRelease(path: url)
     }
     
-    private func fetchArtist(from url: String) {
+    private func fetchArtist(from url: String) -> Observable<Release> {
         useCase.fetchArtist(path: url)
     }
+    
+    private func handleObservable<T>(_ observable: Observable<T>) -> Observable<T> {
+        return observable
+            .timeout(.seconds(10), scheduler: MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
+            .retry(when: errorHandler)
+            .catch { [weak self] error in
+                self?.errorHandlerRelay.accept(error)
+                return Observable.error(error)
+            }
+    }
+    
+    private func errorHandler(_ errorObservable: Observable<Error>) -> Observable<Void> {
+        return errorObservable.flatMap { [weak self] error -> Observable<Void> in
+            self?.errorHandlerRelay.accept(error)
+            return Observable.error(error)
+        }
+    }
+    
+    var errorEvent: Observable<Error> {
+        return errorHandlerRelay.asObservable()
+    }
+    
 }
