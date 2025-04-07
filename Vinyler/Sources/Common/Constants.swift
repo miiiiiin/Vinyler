@@ -34,4 +34,8 @@ struct Constants {
     struct API {
         static let baseURL = "http://127.0.0.1:8080"
     }
+    
+    struct DiscogsAPI {
+        static let baseURL = "https://api.discogs.com"
+    }
 }

@@ -13,7 +13,7 @@ protocol VinylUseCase {
     
     func search(query: String) -> Observable<[ResultItem]>
     func fetchRelease(path: String) -> Observable<Release>
-    func fetchArtist(path: String) -> Observable<Artist
+    func fetchArtist(path: String) -> Observable<Artist>
                                                     
     func execute(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
@@ -41,10 +41,10 @@ class VinylUseCaseImpl: VinylUseCase {
     }
     
     func fetchRelease(path: String) -> Observable<Release> {
-        return repository.fetchRelease(path)
+        return repository.fetchRelease(path: path)
     }
     
-    func fetchArtist(path: String) {
+    func fetchArtist(path: String) -> Observable<Artist>{
         return repository.fetchArtist(path: path)
     }
 }

@@ -92,18 +92,18 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         let discogs = DiscogsAPI()
         let fetchRelease = discogs.fetchArtist(path: artistResourceUrl)
         
-        handleObservable(observable: fetchRelease).flatMap { [weak self] artist -> ControlEvent<Void> in
-            
-            let artistVC = ArtistViewController(artist: artist)
-            self?.navigationController?.pushViewController(artistVC, animated: true)
-            
-            return artistVC.rx.viewDidAppear
-            
-        }.subscribe(onNext: { [weak self] in
-            guard let `self` = self, let index = self.navigationController?.viewControllers.index(of: self) else  { return }
-            
-            self.navigationController?.viewControllers.remove(at: index)
-        }).disposed(by: disposeBag)
+//        handleObservable(observable: fetchRelease).flatMap { [weak self] artist -> ControlEvent<Void> in
+//            
+//            let artistVC = ArtistViewController(artist: artist)
+//            self?.navigationController?.pushViewController(artistVC, animated: true)
+//            
+//            return artistVC.rx.viewDidAppear
+//            
+//        }.subscribe(onNext: { [weak self] in
+//            guard let `self` = self, let index = self.navigationController?.viewControllers.index(of: self) else  { return }
+//            
+//            self.navigationController?.viewControllers.remove(at: index)
+//        }).disposed(by: disposeBag)
     }
     
     override func viewDidLoad() {

@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Action
 
 protocol LoadingViewModelInput {
     var moveAction: Action<Release, Void> { get }
@@ -16,6 +17,7 @@ protocol LoadingViewModelInput {
 
 protocol LoadingViewModelOutput {
     var release: Observable<Release> { get }
+    var artist: Observable<Artist> { get }
     var errorEvent: Observable<Error> { get }
 }
 
@@ -33,14 +35,22 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     
     lazy var moveAction: Action<Release, Void> = {
         Action<Release, Void> { [unowned self] input in
-            let viewModel = AlbumViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, release: input)
+            //            let viewModel = AlbumViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, release: input)
+            //
+            //            return self.sceneCoordinator.transition(to: Scene.album(viewModel))
             
-            return self.sceneCoordinator.transition(to: Scene.album(viewModel))
+            return .just(())
         }
     }()
     
     // MARK: - Output -
-    var release: Observable<Release> = .just(nil)
+    var release: Observable<Release>
+    var artist: Observable<Artist>
+    
+    var errorEvent: Observable<Error> {
+        return errorHandlerRelay.asObservable()
+    }
+    
     
     // MARK: - Private -
     
@@ -49,7 +59,7 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     private let barcode: String?
     private let resourceUrl: String?
     private let artistResourceUrl: String?
-    private let errorHandlerRelay = PublishRelay<Error>()
+    private let errorHandlerRelay: PublishRelay<Error>
     
     init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, barcode: String? = nil,
          resourceUrl: String? = nil,
@@ -59,6 +69,7 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         self.barcode = barcode
         self.resourceUrl = resourceUrl
         self.artistResourceUrl = artistResourceUrl
+        self.errorHandlerRelay = PublishRelay<Error>()
     }
     
     private func fetch() {
@@ -73,41 +84,44 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         } else if let url = resourceUrl {
             self.release = useCase.fetchRelease(path: url)
         } else if let artistUrl = artistResourceUrl {
-            self.release = useCase.fetchArtist(path: artistUrl)
+            self.artist = useCase.fetchArtist(path: artistUrl)
+//            handleObservable(self.artist)
         } else {
             self.release = Observable.error(RequestError.invalidUrl)
         }
-        return handleObservable(self.release)
+//        handleObservable(self.release)
     }
     
     private func fetchRelease(from url: String) -> Observable<Release> {
         useCase.fetchRelease(path: url)
     }
     
-    private func fetchArtist(from url: String) -> Observable<Release> {
+    private func fetchArtist(from url: String) -> Observable<Artist> {
         useCase.fetchArtist(path: url)
     }
     
     private func handleObservable<T>(_ observable: Observable<T>) -> Observable<T> {
         return observable
             .timeout(.seconds(10), scheduler: MainScheduler.instance)
-            .observe(on: MainScheduler.instance)
-            .retry(when: errorHandler)
+            .retry(when: { [weak self] errorObservable in
+                errorObservable.flatMap { error -> Observable<Void> in
+                    self?.errorHandlerRelay.accept(error)
+                    return Observable.error(error)
+                }
+            })
             .catch { [weak self] error in
                 self?.errorHandlerRelay.accept(error)
                 return Observable.error(error)
             }
+            .observe(on: MainScheduler.instance)
     }
+
     
     private func errorHandler(_ errorObservable: Observable<Error>) -> Observable<Void> {
         return errorObservable.flatMap { [weak self] error -> Observable<Void> in
             self?.errorHandlerRelay.accept(error)
             return Observable.error(error)
         }
-    }
-    
-    var errorEvent: Observable<Error> {
-        return errorHandlerRelay.asObservable()
     }
     
 }

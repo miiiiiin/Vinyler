@@ -71,13 +71,13 @@ class SearchViewController: UITableViewController {
 //                        cell.windless.end()
            }.disposed(by: disposeBag)
            
-        tableView.rx.modelSelected(ResultItem.self).subscribe(onNext: { [weak self] searchResult in
-            let loadingViewController = LoadingViewController(resourceUrl: searchResult.resourceUrl)
-               let navigationController = UINavigationController(rootViewController: loadingViewController)
-               navigationController.isNavigationBarHidden = true
-               self?.present(navigationController, animated: true)
-        })
-        .disposed(by: disposeBag)
+//        tableView.rx.modelSelected(ResultItem.self).subscribe(onNext: { [weak self] searchResult in
+//            let loadingViewController = LoadingViewController(resourceUrl: searchResult.resourceUrl)
+//               let navigationController = UINavigationController(rootViewController: loadingViewController)
+//               navigationController.isNavigationBarHidden = true
+//               self?.present(navigationController, animated: true)
+//        })
+//        .disposed(by: disposeBag)
            
         backBtn.rx.tap.subscribe(onNext: { [weak self] in
            self?.inputField.resignFirstResponder()

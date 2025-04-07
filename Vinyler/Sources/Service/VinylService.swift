@@ -63,12 +63,12 @@ class VinylService: VinylRepository {
              return Observable.error(RequestError.invalidUrl)
         }
 
-        let path = baseURL + "/database/search?q=" + query + "&type=release&format=Vinyl"
+        let path = Constants.DiscogsAPI.baseURL + "/database/search?q=" + query + "&type=release&format=Vinyl"
         let result: Observable<Results> = request(path: path)
         return result.map { $0.results }
     }
     
-    func fetchRelease(_ path: String) -> Observable<Release> {
+    func fetchRelease(path: String) -> Observable<Release> {
         return request(path: path)
     }
     

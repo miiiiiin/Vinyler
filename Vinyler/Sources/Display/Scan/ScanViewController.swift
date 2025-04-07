@@ -59,10 +59,10 @@ class ScanViewController: UIViewController {
         }
         .observeOn(MainScheduler.instance)
         .subscribe(onNext: { [weak self] barcode in
-            let loadingVC = LoadingViewController(barcode: barcode)
-            let nav = NavigationController(rootViewController: loadingVC)
-            nav.transitioningDelegate = self
-            self?.present(nav, animated: true)
+//            let loadingVC = LoadingViewController(barcode: barcode)
+//            let nav = NavigationController(rootViewController: loadingVC)
+//            nav.transitioningDelegate = self
+//            self?.present(nav, animated: true)
         }).disposed(by: self.disposeBag)
     }
     
