@@ -14,9 +14,7 @@ protocol TargetScene {
 
 enum Scene {
     case signUp(SignUpViewModel)
-
-//    case album(AlbumViewModel)
-
+    case album(AlbumViewModel)
     case login(LoginViewModel)
     case main(MainViewModel)
 }
@@ -30,10 +28,11 @@ extension Scene: TargetScene {
             return .root(vc)
             
 
-//        case let .album(viewModel):
-//            var vc = AlbumViewController(release: <#Release#>)
-//            vc.bind(to: viewModel)
-//            return .root(vc)
+        case let .album(viewModel):
+            // FIXME
+            var vc = AlbumViewController(release: viewModel.releaseInfo)
+            vc.bind(to: viewModel)
+            return .root(vc)
 
         case let .login(viewModel):
             var vc = LoginViewController()

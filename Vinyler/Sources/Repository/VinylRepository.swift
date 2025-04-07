@@ -14,4 +14,8 @@ protocol VinylRepository {
     
     func getLike(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
+    func search(query: String) -> Observable<[ResultItem]>    
+    func fetchRelease(path: String) -> Observable<Release>
+    
+    func fetchArtist(path: String) -> Observable<Artist>
 }
