@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 
 protocol VinylUseCase {
-    func execute(request: LikeRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>>
+    func execute(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
+    
+    func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
 }
 
 class VinylUseCaseImpl: VinylUseCase {
@@ -21,7 +23,11 @@ class VinylUseCaseImpl: VinylUseCase {
             self.repository = repository
     }
    
-    func execute(request: LikeRequest) -> Observable<Result<TestResponse, Vinyler.NetworkError>> {
+    func execute(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
         return repository.like(request: request)
+    }
+    
+    func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
+        return repository.getLike(request: request)
     }
 }

@@ -14,6 +14,7 @@ public enum APIEndPoint {
     case register(request: SignUpRequest)
     case like(request: LikeRequest)
     case login(request: LoginRequest)
+    case getLike(request: Int)
 }
 
 extension APIEndPoint: TargetType {
@@ -27,6 +28,8 @@ extension APIEndPoint: TargetType {
             return URL(string: Constants.API.baseURL + "/api/v1/vinyls")!
         case .login:
             return URL(string: Constants.API.baseURL + "/api/v1/auth")!
+        case .getLike:
+            return URL(string: Constants.API.baseURL + "/api/v1/vinyls")!
         }
     }
     
@@ -36,6 +39,7 @@ extension APIEndPoint: TargetType {
         case .register: return "/register"
         case .like: return "/likes"
         case .login: return "/login"
+        case .getLike(let request): return "/\(request)"
             
         }
     }
@@ -45,6 +49,7 @@ extension APIEndPoint: TargetType {
         case .test: .post
         case .like: .post
         case .register, .login: .post
+        case .getLike: .get
         }
     }
     
@@ -55,7 +60,10 @@ extension APIEndPoint: TargetType {
         case .register(let request):
             return self.requestTask(request)
         case .like(let request):
+            return self.requestTask(request)
         case .login(let request):
+            return self.requestTask(request)
+        case .getLike(let request):
             return self.requestTask(request)
         }
     }

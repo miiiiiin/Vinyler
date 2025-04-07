@@ -10,8 +10,12 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class LoadingViewController: UIViewController {
+class LoadingViewController: UIViewController, ViewModelBindableType {
 
+    // MARK: - ViewModel
+    
+    var viewModel: LoadingViewModelType!
+    
     let activityIndicatorView = ActivityIndicatorView()
     var activityIndicatorCenterY = NSLayoutConstraint()
     let errorTitleLabel = UILabel.block
@@ -136,6 +140,13 @@ class LoadingViewController: UIViewController {
                 }
             }).delay(.seconds(Int(0.5)), scheduler: MainScheduler.instance)
         return Observable.error(error)//.merge(close, retry)
+    }
+    
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
     }
     
     init(artistResourceUrl: String) {
