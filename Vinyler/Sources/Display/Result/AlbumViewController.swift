@@ -123,6 +123,10 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         }
     }
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -253,12 +257,14 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         let output = viewModel.output
         
         
-        disclosureButton.rx.tap.subscribe(onNext: {
-            if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
-                UIApplication.shared.open(url, options: [:])
-            }
-            
-        }).disposed(by: disposeBag)
+        disclosureButton.rx.tap
+            .withLatestFrom(output.releaseInfo)
+            .subscribe(onNext: { [weak self] release in
+                if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
+                    UIApplication.shared.open(url, options: [:])
+                }
+            })
+            .disposed(by: disposeBag)
         
         likeButton.rx.tap
             .observe(on: MainScheduler.instance)
@@ -268,7 +274,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .disposed(by: disposeBag)
         
         output.releaseInfo
-            .map{ String(format: .releasedOn, $0.releasedFormatted) }
+            .map{ String(format: .releasedOn, $0.releasedFormatted ?? "") }
             .observe(on: MainScheduler.instance)
             .bind(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
@@ -288,17 +294,18 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         output.releaseInfo
             .map { $0.videos }
             .observe(on: MainScheduler.instance)
-            .subscribe({ [weak self] str in
+            .subscribe(onNext: { [weak self] str in
                 let videoString = String(format: .watchOnYoutube)
-                disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
+                self?.disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
             })
             .disposed(by: disposeBag)
         
         output.releaseInfo
-            .map{ $0.notes }
             .observe(on: MainScheduler.instance)
-            .subscribe({ [weak self] notes in
-                descriptionLabel.set(bodyText: notes)
+            .map{ $0.notes }
+            .unwrap()
+            .subscribe(onNext: { [weak self] notes in
+                self?.descriptionLabel.set(bodyText: notes)
             })
             .disposed(by: disposeBag)
         
@@ -310,20 +317,20 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             self?.navigationController?.dismiss(animated: true)
         }).disposed(by: disposeBag)
         
-        moreButton.rx.tap
-            .map { [ActionSheetOption.artistDetails, .tracklist] }
-            .flatMap(presentCustomActionSheet)
-            .subscribe(onNext: { [weak self] option in
-                switch option {
-                    
-                case .artistDetails:
-                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
-                    self?.navigationController?.pushViewController(loadingVC, animated: true)
-                case .tracklist:
-                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
-                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
-                }
-            }).disposed(by: disposeBag)
+//        moreButton.rx.tap
+//            .map { [ActionSheetOption.artistDetails, .tracklist] }
+//            .flatMap(presentCustomActionSheet)
+//            .subscribe(onNext: { [weak self] option in
+//                switch option {
+//                    
+//                case .artistDetails:
+//                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
+//                    self?.navigationController?.pushViewController(loadingVC, animated: true)
+//                case .tracklist:
+//                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
+//                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
+//                }
+//            }).disposed(by: disposeBag)
         
         output.releaseInfo
             .observe(on: MainScheduler.instance)

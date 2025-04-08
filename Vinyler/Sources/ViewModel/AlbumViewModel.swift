@@ -58,7 +58,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
     
     var releaseInfo: Observable<Release>
     var isLike: Observable<Bool> = .just(false)
-    var albumImage: Driver<UIImage?>
+    var albumImage: Driver<UIImage?> = Driver.just(nil)
     
     
     // MARK: - Private -
@@ -71,13 +71,14 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         self.useCase = useCase
         self.releaseInfo = Observable.just(release)
         
-        setAlbumImage()
+        self.setAlbumImage()
     }
     
     private func setAlbumImage() {
         self.albumImage = self.releaseInfo
+            .asDriver(onErrorDriveWith: .empty())
             .map { release -> URL? in
-                let primaryImage = release.images.filter { $0.type == .primary }.first
+                let primaryImage = release.images.first(where: { $0.type == .primary })
                 let anyImage = release.images.first
                 return URL(string: (primaryImage ?? anyImage)?.resourceUrl ?? "")
             }
@@ -85,7 +86,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                 guard let url = imageURL else {
                     return Driver.just(nil)
                 }
-                let request = URLRequest(url: imageURL)
+                let request = URLRequest(url: url)
                 return URLSession.shared.rx.data(request: request)
                     .map(UIImage.init)
                     .asDriver(onErrorJustReturn: nil)

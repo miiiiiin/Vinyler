@@ -32,7 +32,9 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     
     lazy var albumAction: Action<Release, Void> = {
         Action<Release, Void> { [unowned self] input in
-            return .just(())
+            let viewModel = AlbumViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, release: input)
+            
+            return self.sceneCoordinator.transition(to: Scene.album(viewModel))
         }
     }()
     

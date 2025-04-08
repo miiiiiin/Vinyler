@@ -36,11 +36,15 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
                 return discogs.fetchRelease(firstUrl)
             }
 
-        handleObservable(observable: fetchRelease).subscribe(onNext: { [weak self] release in
-            let albumVC = AlbumViewController(release: release)
-            self?.navigationController?.popViewController(animated: true)
-            self?.navigationController?.pushViewController(albumVC, animated: true)
-        }).disposed(by: disposeBag)
+        handleObservable(observable: fetchRelease)
+//            .subscribe(onNext: { [weak self] release in
+                
+//            let albumVC = AlbumViewController(release: release)
+//            self?.navigationController?.popViewController(animated: true)
+//            self?.navigationController?.pushViewController(albumVC, animated: true)
+//        })
+            .bind(to: viewModel.input.albumAction.inputs)
+            .disposed(by: disposeBag)
     }
     
     private func setTextColors(labels: [UILabel]) {
@@ -57,11 +61,21 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
           
         let fetchRelease = discogs.fetchRelease(resourceUrl)
           
-          handleObservable(observable: fetchRelease).subscribe(onNext: { [weak self] release in
-              let albumViewController = AlbumViewController(release: release)
-              self?.navigationController?.popViewController(animated: false)
-              self?.navigationController?.pushViewController(albumViewController, animated: true)
-          }).disposed(by: disposeBag)
+//          handleObservable(observable: fetchRelease).subscribe(onNext: { [weak self] release in
+//              let albumViewController = AlbumViewController(release: release)
+//              self?.navigationController?.popViewController(animated: false)
+//              self?.navigationController?.pushViewController(albumViewController, animated: true)
+//          }).disposed(by: disposeBag)
+        handleObservable(observable: fetchRelease)
+            .subscribe(onNext: { [weak self] release in
+                
+//            let albumVC = AlbumViewController(release: release)
+            self?.navigationController?.popViewController(animated: true)
+//            self?.navigationController?.pushViewController(albumVC, animated: true)
+                self?.viewModel.input.albumAction.execute(release)
+        })
+//            .bind(to: viewModel.input.albumAction.inputs)
+            .disposed(by: disposeBag)
       }
     
     required init?(coder aDecoder: NSCoder) {
