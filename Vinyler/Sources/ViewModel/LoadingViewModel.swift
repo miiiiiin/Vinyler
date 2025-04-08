@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import RxSwift
+import Action
 
 protocol LoadingViewModelInput {
+    var albumAction: Action<Release, Void> { get }
+    var artistAction: Action<Artist, Void> { get }
 }
 
 protocol LoadingViewModelOutput {
@@ -24,10 +28,24 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     var input: LoadingViewModelInput { return self }
     var output: LoadingViewModelOutput { return self }
     
+    // MARK: - Input -
+    
+    lazy var albumAction: Action<Release, Void> = {
+        Action<Release, Void> { [unowned self] input in
+            return .just(())
+        }
+    }()
+    
+    lazy var artistAction: Action<Artist, Void> = {
+        Action<Artist, Void> { [unowned self] input in
+            return .just(())
+        }
+    }()
+    
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let useCase: CommonUseCase
+    private let useCase: VinylUseCase
     
     init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase) {
         self.sceneCoordinator = sceneCoordinator
