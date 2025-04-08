@@ -17,6 +17,7 @@ enum Scene {
     case album(AlbumViewModel)
     case login(LoginViewModel)
     case main(MainViewModel)
+    case loading(LoadingViewModel)
 }
 
 extension Scene: TargetScene {
@@ -42,6 +43,10 @@ extension Scene: TargetScene {
             vc.bind(to: viewModel)
             return .push(vc)
 
+        case let .loading(viewModel):
+            var vc = LoadingViewController()
+            vc.bind(to: viewModel)
+            return .present(vc)
         }
     }
 }

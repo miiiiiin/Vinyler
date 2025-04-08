@@ -16,6 +16,7 @@ protocol LoadingViewModelInput {
 }
 
 protocol LoadingViewModelOutput {
+    var resourceUrl: Observable<String?> { get }
 }
 
 protocol LoadingViewModelType {
@@ -44,14 +45,17 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         }
     }()
     
+    var resourceUrl: Observable<String?>
+    
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, barcode: String?, resourceUrl: String?, artistResourceUrl: String?) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
+        self.resourceUrl = .just(resourceUrl)
         
     }
 }
