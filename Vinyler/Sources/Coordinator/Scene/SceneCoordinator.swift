@@ -156,7 +156,7 @@ class SceneCoordinator: NSObject, SceneCoordinatorType {
             //completable을 직접 생성하는 형식으로 구현
             if let presentingViewController = currentViewController.presentingViewController {
                 currentViewController.dismiss(animated: animated) {
-                    self.currentViewController = SceneCoordinator.actualViewController(for: presentingViewController)
+                    currentViewController = SceneCoordinator.actualViewController(for: presentingViewController)
                     completable(.completed)
                 }
             }

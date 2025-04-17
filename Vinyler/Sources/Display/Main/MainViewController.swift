@@ -21,7 +21,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
     
     let moreButton = UIButton.more
     let scanLabel = UILabel.header
-    var searchButton = UIButton.search
+    let searchButton = UIButton.search
     let animationView = LottieAnimationView.animationView
     let vinylAnimationView = LottieAnimationView.vinylAnimationView
     
@@ -46,6 +46,19 @@ class MainViewController: UIViewController, ViewModelBindableType {
     }
     
     private func setUp() {
+        vinylAnimationView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in
+                
+                let scanVC = ScanViewController()
+                self.navigationController?.pushViewController(scanVC, animated: true)
+            })
+            .disposed(by: bag)
+        
+        searchButton.rx.tap.subscribe(onNext: { [weak self] in
+            let searchViewController = SearchViewController()
+            self?.navigationController?.pushViewController(searchViewController, animated: true)
+        }).disposed(by: bag)
         
         moreButton.rx.tap.subscribe(onNext: { [weak self] in        self?.navigationController?.pushViewController(AppInfoViewController(), animated: true)
         }).disposed(by: bag)
@@ -92,22 +105,5 @@ class MainViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output
-        
-        vinylAnimationView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { _ in
-                input.scanAction.execute(())
-            })
-            .disposed(by: bag)
-        
-        
-        
-        //        searchButton.rx.tap
-        //            .subscribe(onNext: { [weak self] in
-        //            let searchViewController = SearchViewController()
-        //            self?.navigationController?.pushViewController(searchViewController, animated: true)
-        //        }).disposed(by: bag)
-        
-        searchButton.rx.action = input.searchAction
     }
 }

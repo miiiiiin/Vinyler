@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        SceneCoordinator.shared = sceneCoordinator
 //        
 //        let viewModel = AlbumViewModel(sceneCoordinator: SceneCoordinator.shared)
-//        sceneCoordinator.transition(to: Scene.albulijm(viewModel))
+//        sceneCoordinator.transition(to: Scene.album(viewModel))
         let sceneCoordinator = SceneCoordinator(window: window!)
         SceneCoordinator.shared = sceneCoordinator
         
