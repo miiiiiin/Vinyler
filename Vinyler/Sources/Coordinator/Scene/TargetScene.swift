@@ -62,3 +62,4 @@ extension Scene: TargetScene {
         }
     }
 }
+

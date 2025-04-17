@@ -9,14 +9,18 @@
 import Foundation
 import RxSwift
 import Action
+import UIKit
 
 protocol LoadingViewModelInput {
     var albumAction: Action<Release, Void> { get }
     var artistAction: Action<Artist, Void> { get }
+    var dismissAction: CocoaAction { get }
 }
 
 protocol LoadingViewModelOutput {
     var resourceUrl: Observable<String?> { get }
+    var barcode: Observable<String?> { get }
+    var artistResourceUrl: Observable<String?> { get }
 }
 
 protocol LoadingViewModelType {
@@ -35,7 +39,8 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         Action<Release, Void> { [unowned self] input in
             let viewModel = AlbumViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, release: input)
             
-            return self.sceneCoordinator.transition(to: Scene.album(viewModel))
+            let scene = Scene.album(viewModel)
+            return self.sceneCoordinator.transition(to: scene)
         }
     }()
     
@@ -45,7 +50,15 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         }
     }()
     
+    lazy var dismissAction: CocoaAction = {
+        CocoaAction { [unowned self] _ in
+            return self.sceneCoordinator.dismiss(animated: true).asObservable().map { _ in }
+        }
+    }()
+    
     var resourceUrl: Observable<String?>
+    var barcode: Observable<String?>
+    var artistResourceUrl: Observable<String?>
     
     // MARK: - Private -
     
@@ -56,6 +69,7 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         self.resourceUrl = .just(resourceUrl)
-        
+        self.barcode = .just(barcode)
+        self.artistResourceUrl = .just(artistResourceUrl)
     }
 }
