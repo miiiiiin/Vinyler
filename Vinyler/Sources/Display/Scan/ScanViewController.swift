@@ -12,7 +12,11 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class ScanViewController: UIViewController {
+class ScanViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: ScanViewModelType!
     
     private let back = UIButton.back
     private let session = AVCaptureSession()
@@ -59,10 +63,12 @@ class ScanViewController: UIViewController {
         }
         .observeOn(MainScheduler.instance)
         .subscribe(onNext: { [weak self] barcode in
-            let loadingVC = LoadingViewController(barcode: barcode)
-            let nav = NavigationController(rootViewController: loadingVC)
-            nav.transitioningDelegate = self
-            self?.present(nav, animated: true)
+//            let loadingVC = LoadingViewController(barcode: barcode)
+//            let nav = NavigationController(rootViewController: loadingVC)
+//            nav.transitioningDelegate = self
+//            self?.present(nav, animated: true)
+            self?.viewModel.input.loadingAction.execute(barcode)
+            
         }).disposed(by: self.disposeBag)
     }
     
@@ -132,6 +138,11 @@ class ScanViewController: UIViewController {
         targetView.layer.shadowOffset = CGSize(width: 1, height: 1)
         targetView.layer.shadowOpacity = 0.9
         targetView.layer.shadowRadius = 3
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
     }
 }
 

@@ -18,7 +18,7 @@ enum Scene {
     case login(LoginViewModel)
     case main(MainViewModel)
     case loading(LoadingViewModel)
-    
+    case scan(ScanViewModel)
 }
 
 extension Scene: TargetScene {
@@ -48,6 +48,11 @@ extension Scene: TargetScene {
             var vc = LoadingViewController()
             vc.bind(to: viewModel)
             return .present(vc)
+            
+        case let .scan(viewModel):
+            var vc = ScanViewController()
+            vc.bind(to: viewModel)
+            return .push(vc)
         }
     }
 }
