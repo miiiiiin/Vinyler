@@ -18,6 +18,7 @@ enum Scene {
     case login(LoginViewModel)
     case main(MainViewModel)
     case loading(LoadingViewModel)
+    
 }
 
 extension Scene: TargetScene {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3811FA152DB142370028FEC9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA142DB142370028FEC9 /* SearchViewModel.swift */; };
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
 		3876F78B2D92DD8F000B29C5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */; };
@@ -118,6 +119,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3811FA142DB142370028FEC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				387926402D80775500841CAF /* Common */,
 				3876F7942D92F069000B29C5 /* AlbumViewModel.swift */,
 				38DC2D812D9E81310023F6F3 /* LoadingViewModel.swift */,
+				3811FA142DB142370028FEC9 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				3876F78F2D92DE15000B29C5 /* LoginRequest.swift in Sources */,
 				3876F7932D92DF57000B29C5 /* LoginViewController.swift in Sources */,
+				3811FA152DB142370028FEC9 /* SearchViewModel.swift in Sources */,
 				813E838522E46E260057F0E6 /* Format.swift in Sources */,
 				813E834522E441430057F0E6 /* AppDelegate.swift in Sources */,
 				38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */,

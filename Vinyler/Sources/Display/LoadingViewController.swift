@@ -160,7 +160,7 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         
         output.resourceUrl
 //            .map { discogs.fetchRelease($0)}
-            .map { handleObservable(observable: discogs.fetchRelease($0))}
+            .map { self.handleObservable(observable: discogs.fetchRelease($0))}
 //            .handleObservable(observable: fetchRelease)
             .subscribe(onNext: { [weak self] release in
 //            let albumViewController = AlbumViewController(release: release)
