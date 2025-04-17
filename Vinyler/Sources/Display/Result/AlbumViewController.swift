@@ -313,9 +313,9 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .drive(albumImageView.rx.image)
             .disposed(by: disposeBag)
         
-        closeButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.dismiss(animated: true)
-        }).disposed(by: disposeBag)
+        closeButton.rx.tap
+            .bind(to: input.dismissAction.inputs)
+            .disposed(by: disposeBag)
         
 //        moreButton.rx.tap
 //            .map { [ActionSheetOption.artistDetails, .tracklist] }

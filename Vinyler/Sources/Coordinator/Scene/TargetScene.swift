@@ -33,7 +33,7 @@ extension Scene: TargetScene {
         case let .album(viewModel):
             var vc = AlbumViewController()
             vc.bind(to: viewModel)
-            return .root(vc)
+            return .present(vc)
 
         case let .login(viewModel):
             var vc = LoginViewController()
@@ -62,4 +62,3 @@ extension Scene: TargetScene {
         }
     }
 }
-

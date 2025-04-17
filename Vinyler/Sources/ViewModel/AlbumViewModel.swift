@@ -14,6 +14,7 @@ import Toaster
 
 protocol AlbumViewModelInput {
     var likeAction: Action<Release, Void> { get }
+    var dismissAction: CocoaAction { get }
 }
 
 protocol AlbumViewModelOutput {
@@ -52,6 +53,12 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                         
                     }
                 }
+        }
+    }()
+    
+    lazy var dismissAction: CocoaAction = {
+        CocoaAction { [unowned self] _ in
+            return self.sceneCoordinator.dismissAll(animated: true).asObservable().map { _ in }
         }
     }()
     

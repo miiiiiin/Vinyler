@@ -52,43 +52,6 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         }
     }
     
-    
-    //    init(resourceUrl: String) {
-    //          super.init(nibName: nil, bundle: nil)
-    //
-    //          let discogs = DiscogsAPI()
-    //
-    //        let fetchRelease = discogs.fetchRelease(resourceUrl)
-    //
-    //          handleObservable(observable: fetchRelease).subscribe(onNext: { [weak self] release in
-    //              let albumViewController = AlbumViewController(release: release)
-    //              self?.navigationController?.popViewController(animated: false)
-    //              self?.navigationController?.pushViewController(albumViewController, animated: true)
-    //          }).disposed(by: disposeBag)
-    //      }
-    
-//    
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
-//    
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//    }
-    
-//    private func handleObservable<T>(observable: Observable<T>) -> Observable<T> {
-//        return rx.viewDidAppear
-//            .flatMapLatest {
-//                observable
-//                    .timeout(.seconds(10), scheduler: MainScheduler.instance)
-//                    .do(onError: { print("Timeout/Error: \($0)") })
-//                    .retry(when: self.errorHandler)
-//            }
-//            .observe(on: MainScheduler.instance)
-//    }
-
-    
     private func handleObservable<T>(observable: Observable<T>) -> Observable<T> {
         
         return rx.viewDidAppear.flatMap { observable.timeout(.seconds(10), scheduler: MainScheduler.instance)
@@ -168,8 +131,6 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
-        debugPrint("bindviewmodel")
-        
         let discogs = DiscogsAPI()
        
         output.resourceUrl
@@ -178,8 +139,6 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
                 self.handleObservable(observable: discogs.fetchRelease(path))
             }
             .subscribe(onNext: { [weak self] release in
-                debugPrint("🔥 check loading...")
-                input.dismissAction.execute(())
                 input.albumAction.execute(release)
             })
             .disposed(by: disposeBag)
@@ -191,11 +150,11 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
                 self.handleObservable(observable: discogs.fetchRelease(path))
             }
             .subscribe(onNext: { [unowned self] release in
-//                input.backAction.execute(())
                 input.albumAction.execute(release)
             })
             .disposed(by: disposeBag)
         
+        // FIXME
         output.artistResourceUrl
             .compactMap { $0 }
             .flatMapLatest { path in
@@ -203,33 +162,6 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
             }
             .bind(to: input.albumAction.inputs)
             .disposed(by: disposeBag)
-        
-        
-        
-        //        output.resourceUrl
-        //            .map { discogs.fetchRelease($0)}
-        //            .map { self.handleObservable(observable: discogs.fetchRelease($0))}
-        //            .handleObservable(observable: fetchRelease)
-        //            .subscribe(onNext: { [weak self] release in
-        //                let d = release
-        //
-        //                input.albumAction.execute(Observable.just(release))
-        //            let albumViewController = AlbumViewController(release: release)
-        //            self?.navigationController?.popViewController(animated: false)
-        //            self?.navigationController?.pushViewController(albumViewController, animated: true)
-        //            })
-        //            .disposed(by: disposeBag)
-        
-        
-        
-        
-        
-        //          let discogs = DiscogsAPI()
-        //
-        //        let fetchRelease = discogs.fetchRelease(resourceUrl)
-        //
-        //
-        
     }
     
     //    init(artistResourceUrl: String) {
@@ -254,7 +186,6 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        debugPrint("viewdidload")
         activityIndicatorView.image = #imageLiteral(resourceName: "loader2")
         activityIndicatorView.tintColor = style.Colors.tint
         cancelButton.rx.tap.subscribe(onNext: { [weak self] in
