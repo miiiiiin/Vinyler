@@ -14,11 +14,12 @@ protocol TargetScene {
 
 enum Scene {
     case signUp(SignUpViewModel)
-
-//    case album(AlbumViewModel)
-
+    case album(AlbumViewModel)
     case login(LoginViewModel)
     case main(MainViewModel)
+    case loading(LoadingViewModel)
+    case scan(ScanViewModel)
+    case search(SearchViewModel)
 }
 
 extension Scene: TargetScene {
@@ -29,11 +30,10 @@ extension Scene: TargetScene {
             vc.bind(to: viewModel)
             return .root(vc)
             
-
-//        case let .album(viewModel):
-//            var vc = AlbumViewController(release: <#Release#>)
-//            vc.bind(to: viewModel)
-//            return .root(vc)
+        case let .album(viewModel):
+            var vc = AlbumViewController()
+            vc.bind(to: viewModel)
+            return .present(vc)
 
         case let .login(viewModel):
             var vc = LoginViewController()
@@ -45,6 +45,20 @@ extension Scene: TargetScene {
             vc.bind(to: viewModel)
             return .push(vc)
 
+        case let .loading(viewModel):
+            var vc = LoadingViewController()
+            vc.bind(to: viewModel)
+            return .present(vc)
+            
+        case let .scan(viewModel):
+            var vc = ScanViewController()
+            vc.bind(to: viewModel)
+            return .push(vc)
+            
+        case let .search(viewModel):
+            var vc = SearchViewController()
+            vc.bind(to: viewModel)
+            return .push(vc)
         }
     }
 }

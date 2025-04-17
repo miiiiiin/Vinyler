@@ -36,95 +36,80 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     private var releaseInfo: Release!
     private let disposeBag = DisposeBag()
     
-    init(release: Release) {
-        super.init(nibName: nil, bundle: nil)
-        releaseInfo = release
-        titleLabel.text = release.title
-        artistLabel.text = release.artistsSort.uppercased()
-        
-        if let releaseDate = release.releasedFormatted {
-            dateLabel.text = String(format: .releasedOn, releaseDate)
-        }
-        
-        if let video = release.videos {
-            let videoString = String(format: .watchOnYoutube)
-            disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
-        } else {
-            disclosureButton.isHidden = true
-            let noInfoString = String(format: .noInfoVideo)
-            disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
-        }
-        
-        descriptionTitleLabel.text = .description
-        
-        if let notes = release.notes {
-            descriptionLabel.set(bodyText: notes)
-        }
-        
-        vinylImageView.image = #imageLiteral(resourceName: "vinyl")
-        vinylImageView.isHidden = true
-        
-        albumImageView.image = #imageLiteral(resourceName: "placeholder")
-        albumImageView.contentMode = .scaleAspectFill
-        
-        playerImageView.image = #imageLiteral(resourceName: "icons8-play-button-48")
-        
-        let imageDriver: Driver<UIImage?>
-        
-        let primaryImage = release.images.filter { $0.type == .primary }.first
-        let anyImage = release.images.first
-        let image = primaryImage ?? anyImage
-        if let imageUrlString = image?.resourceUrl,
-           let imageUrl = URL(string: imageUrlString) {
-            let request = URLRequest(url: imageUrl)
-            imageDriver = URLSession.shared.rx.data(request: request).map(UIImage.init).asDriver(onErrorJustReturn: nil)
-        } else {
-            imageDriver = Driver.just(nil)
-        }
-        
-        imageDriver.do(onNext: { [weak self] _ in
-            self?.vinylImageView.isHidden = false
-            
-        }).filter { $0 != nil }
-            .drive(albumImageView.rx.image)
-            .disposed(by: disposeBag)
-        
-        closeButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.dismiss(animated: true)
-        }).disposed(by: disposeBag)
-        
-        moreButton.rx.tap
-            .map { [ActionSheetOption.artistDetails, .tracklist] }
-            .flatMap(presentCustomActionSheet)
-            .subscribe(onNext: { [weak self] option in
-                switch option {
-                    
-                case .artistDetails:
-                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
-                    self?.navigationController?.pushViewController(loadingVC, animated: true)
-                case .tracklist:
-                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
-                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
-                }
-            }).disposed(by: disposeBag)
-        
-        let formatDescription = release.formats.reduce([]) { result, format -> [String] in
-            var array = result
-            array.append(contentsOf: format.descriptions)
-            return array
-        }
-        
-        Observable.just([FormatsSection(items: formatDescription)]).bind(to: formatsCollectionView.rx.sections).disposed(by: disposeBag)
-        
-        disclosureButton.rx.tap.subscribe(onNext: {
-            if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
-                UIApplication.shared.open(url, options: [:])
-            }
-            
-        }).disposed(by: disposeBag)
-        
-        vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi / 2)
-    }
+    //    init(release: Release) {
+    //        super.init(nibName: nil, bundle: nil)
+    //        releaseInfo = release
+    //        titleLabel.text = release.title
+    //        artistLabel.text = release.artistsSort.uppercased()
+    //
+    //        if let releaseDate = release.releasedFormatted {
+    //            dateLabel.text = String(format: .releasedOn, releaseDate)
+    //        }
+    //
+    //        if let video = release.videos {
+    //            let videoString = String(format: .watchOnYoutube)
+    //            disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
+    //        } else {
+    //            disclosureButton.isHidden = true
+    //            let noInfoString = String(format: .noInfoVideo)
+    //            disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
+    //        }
+    //
+    //        descriptionTitleLabel.text = .description
+    //
+    //        if let notes = release.notes {
+    //            descriptionLabel.set(bodyText: notes)
+    //        }
+    //
+    //
+    //        let imageDriver: Driver<UIImage?>
+    //
+    //        let primaryImage = release.images.filter { $0.type == .primary }.first
+    //        let anyImage = release.images.first
+    //        let image = primaryImage ?? anyImage
+    //        if let imageUrlString = image?.resourceUrl,
+    //           let imageUrl = URL(string: imageUrlString) {
+    //            let request = URLRequest(url: imageUrl)
+    //            imageDriver = URLSession.shared.rx.data(request: request).map(UIImage.init).asDriver(onErrorJustReturn: nil)
+    //        } else {
+    //            imageDriver = Driver.just(nil)
+    //        }
+    //
+    //        imageDriver.do(onNext: { [weak self] _ in
+    //            self?.vinylImageView.isHidden = false
+    //
+    //        }).filter { $0 != nil }
+    //            .drive(albumImageView.rx.image)
+    //            .disposed(by: disposeBag)
+    //
+    //        closeButton.rx.tap.subscribe(onNext: { [weak self] in
+    //            self?.navigationController?.dismiss(animated: true)
+    //        }).disposed(by: disposeBag)
+    //
+    //        moreButton.rx.tap
+    //            .map { [ActionSheetOption.artistDetails, .tracklist] }
+    //            .flatMap(presentCustomActionSheet)
+    //            .subscribe(onNext: { [weak self] option in
+    //                switch option {
+    //
+    //                case .artistDetails:
+    //                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
+    //                    self?.navigationController?.pushViewController(loadingVC, animated: true)
+    //                case .tracklist:
+    //                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
+    //                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
+    //                }
+    //            }).disposed(by: disposeBag)
+    //
+    //        let formatDescription = release.formats.reduce([]) { result, format -> [String] in
+    //            var array = result
+    //            array.append(contentsOf: format.descriptions)
+    //            return array
+    //        }
+    //
+    //        Observable.just([FormatsSection(items: formatDescription)]).bind(to: formatsCollectionView.rx.sections).disposed(by: disposeBag)
+    //
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -136,6 +121,10 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
                 SKStoreReviewController.requestReview()
             }
         }
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -161,9 +150,12 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         self.setTextColors(labels: [artistLabel, titleLabel, descriptionTitleLabel, descriptionLabel])
         
+        descriptionTitleLabel.text = .description
+        
         let albumWithVinyl = UIView(forAutoLayout: ())
         
         [vinylImageView, albumImageView].forEach(albumWithVinyl.addSubview)
+        
         
         let adSize = GADAdSize(size: CGSize(width: UIScreen.main.bounds.width, height: 44), flags: 0)
         bannerView = GADBannerView(adSize: adSize)
@@ -190,6 +182,17 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, likeButton, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
         
         contentView.pinToSuperview()
+        
+        vinylImageView.image = #imageLiteral(resourceName: "vinyl")
+        vinylImageView.isHidden = true
+        
+        albumImageView.image = #imageLiteral(resourceName: "placeholder")
+        albumImageView.contentMode = .scaleAspectFill
+        
+        playerImageView.image = #imageLiteral(resourceName: "icons8-play-button-48")
+        
+        let noInfoString = String(format: .noInfoVideo)
+        disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
         
         NSLayoutConstraint.activate([
             contentView.widthAnchor.constraint(equalTo: root.widthAnchor),
@@ -242,12 +245,24 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             make.trailing.equalTo(disclosureButton.snp.trailing)
         }
         
+        
+        vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi / 2)
+        
         self.view = root
     }
     
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output
+        
+        disclosureButton.rx.tap
+            .withLatestFrom(output.releaseInfo)
+            .subscribe(onNext: { [weak self] release in
+                if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
+                    UIApplication.shared.open(url, options: [:])
+                }
+            })
+            .disposed(by: disposeBag)
         
         likeButton.rx.tap
             .observe(on: MainScheduler.instance)
@@ -256,6 +271,82 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .bind(to: input.likeAction.inputs)
             .disposed(by: disposeBag)
         
+        output.releaseInfo
+            .map{ String(format: .releasedOn, $0.releasedFormatted ?? "") }
+            .observe(on: MainScheduler.instance)
+            .bind(to: dateLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .map{ $0.artistsSort.uppercased() }
+            .observe(on: MainScheduler.instance)
+            .bind(to: titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .map{ $0.title }
+            .observe(on: MainScheduler.instance)
+            .bind(to: artistLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .map { $0.videos }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] str in
+                if let video = str {
+                    let videoString = String(format: .watchOnYoutube)
+                    self?.disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
+                    
+                } else {
+                    self?.disclosureButton.isHidden = true
+                    let noInfoString = String(format: .noInfoVideo)
+                    self?.disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .observe(on: MainScheduler.instance)
+            .map{ $0.notes }
+            .unwrap()
+            .subscribe(onNext: { [weak self] notes in
+                self?.descriptionLabel.set(bodyText: notes)
+            })
+            .disposed(by: disposeBag)
+        
+        output.albumImage
+            .drive(albumImageView.rx.image)
+            .disposed(by: disposeBag)
+        
+        closeButton.rx.tap
+            .bind(to: input.dismissAction.inputs)
+            .disposed(by: disposeBag)
+        
+        //        moreButton.rx.tap
+        //            .map { [ActionSheetOption.artistDetails, .tracklist] }
+        //            .flatMap(presentCustomActionSheet)
+        //            .subscribe(onNext: { [weak self] option in
+        //                switch option {
+        //
+        //                case .artistDetails:
+        //                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
+        //                    self?.navigationController?.pushViewController(loadingVC, animated: true)
+        //                case .tracklist:
+        //                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
+        //                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
+        //                }
+        //            }).disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .observe(on: MainScheduler.instance)
+            .map { $0.formats.reduce([]) { result, format -> [String] in
+                var array = result
+                array.append(contentsOf: format.descriptions)
+                return array
+            }}
+            .map {[FormatsSection(items: $0)]}
+            .bind(to: formatsCollectionView.rx.sections)
+            .disposed(by: disposeBag)
     }
 }
 
