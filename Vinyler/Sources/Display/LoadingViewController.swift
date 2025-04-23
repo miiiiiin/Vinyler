@@ -132,13 +132,13 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         let output = viewModel.output
         
         let discogs = DiscogsAPI()
-       
+        
         output.resourceUrl
             .compactMap { $0 }
             .flatMapLatest { path in
                 self.handleObservable(observable: discogs.fetchRelease(path))
             }
-            .subscribe(onNext: { [weak self] release in
+            .subscribe(onNext: { release in
                 input.albumAction.execute(release)
             })
             .disposed(by: disposeBag)
@@ -154,14 +154,24 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
             })
             .disposed(by: disposeBag)
         
-        // FIXME
         output.artistResourceUrl
+            .observe(on: MainScheduler.instance)
             .compactMap { $0 }
             .flatMapLatest { path in
-                self.handleObservable(observable: discogs.fetchRelease(path))
+                self.handleObservable(observable: discogs.fetchArtist(path: path))
             }
-            .bind(to: input.albumAction.inputs)
+            .subscribe(onNext: { [weak self] artist in
+                input.artistAction.execute(artist)
+                guard let self = self,
+                      let index = self.navigationController?.viewControllers.firstIndex(of: self) else { return }
+                
+                self.navigationController?.viewControllers.remove(at: index)
+            })
             .disposed(by: disposeBag)
+        
+        cancelButton.rx.tap.subscribe(onNext: { _ in
+            input.dismissAction.execute(())
+        }).disposed(by: disposeBag)
     }
     
     //    init(artistResourceUrl: String) {
@@ -188,9 +198,6 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         super.viewDidLoad()
         activityIndicatorView.image = #imageLiteral(resourceName: "loader2")
         activityIndicatorView.tintColor = style.Colors.tint
-        cancelButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.dismiss(animated: true)
-        }).disposed(by: disposeBag)
     }
     
     override func loadView() {

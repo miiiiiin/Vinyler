@@ -11,7 +11,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ArtistViewController: UIViewController {
+class ArtistViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: ArtistViewModelType!
     
     private let backButton = UIButton.back
     private let artistTypeLabel = UILabel.subheader
@@ -23,59 +27,49 @@ class ArtistViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    init(artist: Artist) {
-        super.init(nibName: nil, bundle: nil)
-        artistTypeLabel.text = artist.type.uppercased()
-        artistNameLabel.text = artist.name
-       
-        let memebersArray = artist.members?.filter { $0.active == true }.map { $0.name }
-        if let members = memebersArray {
-            let membersString = String.members + " "// + members.joined(separator: ", ")
-            membersLabel.set(bodyText: membersString, boldPart: .members)
-        }
+//    init(artist: Artist) {
+//        super.init(nibName: nil, bundle: nil)
+//        let memebersArray = artist.members?.filter { $0.active == true }.map { $0.name }
+//        if let members = memebersArray {
+//            let membersString = String.members + " "// + members.joined(separator: ", ")
+//            membersLabel.set(bodyText: membersString, boldPart: .members)
+//        }
+//        
+//        descriptionLabel.set(bodyText: artist.profilePlaintext)
         
-        descriptionLabel.set(bodyText: artist.profilePlaintext)
-        
-        artistImageView.image = #imageLiteral(resourceName: "placeholder")
-        artistImageView.contentMode = .scaleAspectFill
-        
-        let imageDriver: Driver<UIImage?>
-        let primaryImage = artist.images.filter { $0.type == .primary }.first
-        let anyImage = artist.images.first
-        
-        let image = primaryImage ?? anyImage
-        
-        if let imageResourceUrlString = image?.resourceUrl,
-            let imageUrl = URL(string: imageResourceUrlString) {
-            
-            let request = URLRequest(url: imageUrl)
-            imageDriver = URLSession.shared.rx.data(request: request).map(UIImage.init)
-            .asDriver(onErrorJustReturn: nil)
-            
-        } else {
-            imageDriver = Driver.just(nil)
-        }
-        
-        imageDriver.do(onNext: { [weak self] image in
-            guard let imageView = self?.artistImageView, let image = image else { return }
-            
-            if let ratio = self?.artistImageViewRatio {
-                imageView.removeConstraint(ratio)
-            }
-            
-            self?.artistImageViewRatio = self?.artistImageView.constraintKeepRatio(of: image)
-            
-        }).drive(artistImageView.rx.image).disposed(by: disposeBag)
-        
-        backButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }).disposed(by: disposeBag)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+//        
+//        let imageDriver: Driver<UIImage?>
+//        let primaryImage = artist.images.filter { $0.type == .primary }.first
+//        let anyImage = artist.images.first
+//        
+//        let image = primaryImage ?? anyImage
+//        
+//        if let imageResourceUrlString = image?.resourceUrl,
+//            let imageUrl = URL(string: imageResourceUrlString) {
+//            
+//            let request = URLRequest(url: imageUrl)
+//            imageDriver = URLSession.shared.rx.data(request: request).map(UIImage.init)
+//            .asDriver(onErrorJustReturn: nil)
+//            
+//        } else {
+//            imageDriver = Driver.just(nil)
+//        }
+////
+//        imageDriver.do(onNext: { [weak self] image in
+//            guard let imageView = self?.artistImageView, let image = image else { return }
+//            
+//            if let ratio = self?.artistImageViewRatio {
+//                imageView.removeConstraint(ratio)
+//            }
+//            
+//            self?.artistImageViewRatio = self?.artistImageView.constraintKeepRatio(of: image)
+//            
+//        }).drive(artistImageView.rx.image).disposed(by: disposeBag)
+//        
+//        backButton.rx.tap.subscribe(onNext: { [weak self] in
+//            self?.navigationController?.popViewController(animated: true)
+//        }).disposed(by: disposeBag)
+//    }
     private func setTextColors(labels: [UILabel]) {
         labels.forEach { label in
             label.textColor = style.Colors.tint
@@ -95,6 +89,9 @@ class ArtistViewController: UIViewController {
         self.setTextColors(labels: [artistTypeLabel, artistNameLabel, membersLabel, descriptionLabel])
         
         [backButton, artistTypeLabel, artistNameLabel, artistImageView, membersLabel, descriptionLabel].forEach(contentView.addSubview)
+        
+        artistImageView.image = #imageLiteral(resourceName: "placeholder")
+        artistImageView.contentMode = .scaleAspectFill
         
         contentView.pinToSuperview()
         
@@ -124,5 +121,55 @@ class ArtistViewController: UIViewController {
         
         membersLabel.numberOfLines = 0
         descriptionLabel.numberOfLines = 0
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        output.artistInfo
+            .observe(on: MainScheduler.instance)
+            .map { $0.type.uppercased() }
+            .bind(to: artistTypeLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.artistInfo
+            .observe(on: MainScheduler.instance)
+            .map { $0.name }
+            .bind(to: artistNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.members
+            .observe(on: MainScheduler.instance)
+            .map { members in
+                members.filter { $0.active == true }.map { $0.name }
+            }
+            .subscribe(onNext: { [unowned self] members in
+                let membersString = String.members + " "
+                self.membersLabel.set(bodyText: membersString, boldPart: .members)
+            })
+            .disposed(by: disposeBag)
+        
+        output.profile
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] str in
+                descriptionLabel.set(bodyText: str)
+            })
+            .disposed(by: disposeBag)
+        
+        output.image
+            .do(onNext: { [weak self] image in
+                guard let imageView = self?.artistImageView, let image = image else { return }
+                if let ratio = self?.artistImageViewRatio {
+                    imageView.removeConstraint(ratio)
+                }
+                self?.artistImageViewRatio = self?.artistImageView.constraintKeepRatio(of: image)
+            })
+            .drive(artistImageView.rx.image)
+            .disposed(by: disposeBag)
+        
+        backButton.rx.tap
+            .bind(to: input.dismissAction.inputs)
+            .disposed(by: disposeBag)
     }
 }
