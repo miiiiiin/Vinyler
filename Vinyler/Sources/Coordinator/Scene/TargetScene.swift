@@ -20,6 +20,7 @@ enum Scene {
     case loading(LoadingViewModel)
     case scan(ScanViewModel)
     case search(SearchViewModel)
+    case artist(ArtistViewModel)
 }
 
 extension Scene: TargetScene {
@@ -57,6 +58,11 @@ extension Scene: TargetScene {
             
         case let .search(viewModel):
             var vc = SearchViewController()
+            vc.bind(to: viewModel)
+            return .push(vc)
+            
+        case let .artist(viewModel):
+            var vc = ArtistViewController()
             vc.bind(to: viewModel)
             return .push(vc)
         }

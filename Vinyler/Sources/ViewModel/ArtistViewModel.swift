@@ -43,7 +43,7 @@ class ArtistViewModel: ArtistViewModelInput, ArtistViewModelOutput, ArtistViewMo
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, release: Release) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, artistInfo: Artist) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
     

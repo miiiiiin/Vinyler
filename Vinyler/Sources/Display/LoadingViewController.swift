@@ -156,11 +156,14 @@ class LoadingViewController: UIViewController, ViewModelBindableType {
         
         // FIXME
         output.artistResourceUrl
+            .observe(on: MainScheduler.instance)
             .compactMap { $0 }
             .flatMapLatest { path in
-                self.handleObservable(observable: discogs.fetchRelease(path))
+                self.handleObservable(observable: discogs.fetchArtist(path: path))
             }
-            .bind(to: input.albumAction.inputs)
+            .subscribe(onNext: { [unowned self] artist in
+                input.artistAction.execute(artist)
+            })
             .disposed(by: disposeBag)
     }
     

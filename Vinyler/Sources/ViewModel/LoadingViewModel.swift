@@ -46,7 +46,9 @@ class LoadingViewModel: LoadingViewModelInput, LoadingViewModelOutput, LoadingVi
     
     lazy var artistAction: Action<Artist, Void> = {
         Action<Artist, Void> { [unowned self] input in
-            return .just(())
+            let viewModel = ArtistViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, artistInfo: input)
+            let scene = Scene.artist(viewModel)
+            return self.sceneCoordinator.transition(to: scene)
         }
     }()
     
