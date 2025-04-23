@@ -64,7 +64,7 @@ extension Scene: TargetScene {
         case let .artist(viewModel):
             var vc = ArtistViewController()
             vc.bind(to: viewModel)
-            return .push(vc)
+            return .present(vc)
         }
     }
 }

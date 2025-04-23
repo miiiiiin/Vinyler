@@ -14,6 +14,7 @@ import Toaster
 
 protocol AlbumViewModelInput {
     var likeAction: Action<Release, Void> { get }
+    var loadingAction: Action<String, Void> { get }
     var dismissAction: CocoaAction { get }
 }
 
@@ -53,6 +54,13 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                         
                     }
                 }
+        }
+    }()
+    
+    lazy var loadingAction: Action<String, Void> = {
+        Action<String, Void> { [unowned self] input in
+            let viewModel = LoadingViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, barcode: nil, resourceUrl: nil, artistResourceUrl: input)
+            return self.sceneCoordinator.transition(to: Scene.loading(viewModel))
         }
     }()
     

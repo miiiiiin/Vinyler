@@ -321,21 +321,43 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         closeButton.rx.tap
             .bind(to: input.dismissAction.inputs)
             .disposed(by: disposeBag)
+
+        moreButton.rx.tap
+            .map { [ActionSheetOption.artistDetails, .tracklist] }
+            .flatMapLatest { [weak self] options -> Observable<(ActionSheetOption, Release)> in
+                guard let self = self else { return .empty() }
+                return self.presentCustomActionSheet(with: options)
+                    .withLatestFrom(output.releaseInfo) { selectedOption, releaseInfo in
+                        (selectedOption, releaseInfo)
+                    }
+            }
+            .subscribe(onNext: { [weak self] (option, release) in
+                switch option {
+                case .artistDetails:
+                    input.loadingAction.execute(release.mainArtistUrl)
+                case .tracklist:
+//                    let tracklistVC = TracklistViewController(release: release)
+//                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
+
         
-        //        moreButton.rx.tap
-        //            .map { [ActionSheetOption.artistDetails, .tracklist] }
-        //            .flatMap(presentCustomActionSheet)
-        //            .subscribe(onNext: { [weak self] option in
-        //                switch option {
+        //                moreButton.rx.tap
+        //                    .map { [ActionSheetOption.artistDetails, .tracklist] }
+        //                    .flatMap(presentCustomActionSheet)
+        //                    .subscribe(onNext: { [weak self] option in
+        //                        switch option {
         //
-        //                case .artistDetails:
-        //                    let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
-        //                    self?.navigationController?.pushViewController(loadingVC, animated: true)
-        //                case .tracklist:
-        //                    let tracklistVC = TracklistViewController(release: release, image: imageDriver)
-        //                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
-        //                }
-        //            }).disposed(by: disposeBag)
+        //                        case .artistDetails:
+        //                            let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
+        //                            self?.navigationController?.pushViewController(loadingVC, animated: true)
+        //                        case .tracklist:
+        //                            let tracklistVC = TracklistViewController(release: release, image: imageDriver)
+        //                            self?.navigationController?.pushViewController(tracklistVC, animated: true)
+        //                        }
+        //                    }).disposed(by: disposeBag)
         
         output.releaseInfo
             .observe(on: MainScheduler.instance)

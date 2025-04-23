@@ -27,8 +27,8 @@ class ArtistViewController: UIViewController, ViewModelBindableType {
     
     private let disposeBag = DisposeBag()
     
-    init(artist: Artist) {
-        super.init(nibName: nil, bundle: nil)
+//    init(artist: Artist) {
+//        super.init(nibName: nil, bundle: nil)
 //        let memebersArray = artist.members?.filter { $0.active == true }.map { $0.name }
 //        if let members = memebersArray {
 //            let membersString = String.members + " "// + members.joined(separator: ", ")
@@ -69,12 +69,7 @@ class ArtistViewController: UIViewController, ViewModelBindableType {
 //        backButton.rx.tap.subscribe(onNext: { [weak self] in
 //            self?.navigationController?.popViewController(animated: true)
 //        }).disposed(by: disposeBag)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+//    }
     private func setTextColors(labels: [UILabel]) {
         labels.forEach { label in
             label.textColor = style.Colors.tint
@@ -146,8 +141,9 @@ class ArtistViewController: UIViewController, ViewModelBindableType {
         
         output.members
             .observe(on: MainScheduler.instance)
-            .map { $0.filter { $0.active == true }}
-            .map { $0.name }
+            .map { members in
+                members.filter { $0.active == true }.map { $0.name }
+            }
             .subscribe(onNext: { [unowned self] members in
                 let membersString = String.members + " "
                 self.membersLabel.set(bodyText: membersString, boldPart: .members)

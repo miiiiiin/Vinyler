@@ -19,6 +19,7 @@ protocol ArtistViewModelInput {
 protocol ArtistViewModelOutput {
     var artistInfo: Observable<Artist> { get }
     var members: Observable<[ArtistDetail]> { get }
+    var images: Observable<[Image]> { get }
     var profile: Observable<String> { get }
     var image: Driver<UIImage?> { get }
 }
@@ -37,12 +38,13 @@ class ArtistViewModel: ArtistViewModelInput, ArtistViewModelOutput, ArtistViewMo
     
     lazy var dismissAction: CocoaAction = {
         CocoaAction { [unowned self] _ in
-            return self.sceneCoordinator.dismiss(animated: true).asObservable().map { _ in }
+            return self.sceneCoordinator.dismissAll(animated: true).asObservable().map { _ in }
         }
     }()
     
     var artistInfo: Observable<Artist>
     var members: Observable<[ArtistDetail]>
+    var images: Observable<[Image]>
     var profile: Observable<String>
     var image: Driver<UIImage?> = Driver.just(nil)
     
@@ -55,12 +57,13 @@ class ArtistViewModel: ArtistViewModelInput, ArtistViewModelOutput, ArtistViewMo
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         self.artistInfo = .just(artistInfo)
-        self.members = .just(artistInfo.members)
+        self.members = .just(artistInfo.members ?? [])
         self.profile = .just(artistInfo.profilePlaintext)
-        self.setImage(images: artistInfo.images)
+        self.images = .just(artistInfo.images)
+        self.setImage()
     }
     
-    private func setImage(images: [Image]) {
+    private func setImage() {
         self.image = self.images
             .asDriver(onErrorDriveWith: .empty())
             .map { images -> URL? in
