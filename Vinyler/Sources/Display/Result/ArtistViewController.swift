@@ -11,7 +11,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ArtistViewController: UIViewController {
+class ArtistViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: ArtistViewModelType!
     
     private let backButton = UIButton.back
     private let artistTypeLabel = UILabel.subheader
@@ -124,5 +128,10 @@ class ArtistViewController: UIViewController {
         
         membersLabel.numberOfLines = 0
         descriptionLabel.numberOfLines = 0
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
     }
 }
