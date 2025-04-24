@@ -336,28 +336,10 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
                 case .artistDetails:
                     input.loadingAction.execute(release.mainArtistUrl)
                 case .tracklist:
-//                    let tracklistVC = TracklistViewController(release: release)
-//                    self?.navigationController?.pushViewController(tracklistVC, animated: true)
-                    return
+                    input.tracklistAction.execute(release)
                 }
             })
             .disposed(by: disposeBag)
-
-        
-        //                moreButton.rx.tap
-        //                    .map { [ActionSheetOption.artistDetails, .tracklist] }
-        //                    .flatMap(presentCustomActionSheet)
-        //                    .subscribe(onNext: { [weak self] option in
-        //                        switch option {
-        //
-        //                        case .artistDetails:
-        //                            let loadingVC = LoadingViewController(artistResourceUrl: release.mainArtistUrl)
-        //                            self?.navigationController?.pushViewController(loadingVC, animated: true)
-        //                        case .tracklist:
-        //                            let tracklistVC = TracklistViewController(release: release, image: imageDriver)
-        //                            self?.navigationController?.pushViewController(tracklistVC, animated: true)
-        //                        }
-        //                    }).disposed(by: disposeBag)
         
         output.releaseInfo
             .observe(on: MainScheduler.instance)

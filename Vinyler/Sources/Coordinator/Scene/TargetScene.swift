@@ -21,6 +21,7 @@ enum Scene {
     case scan(ScanViewModel)
     case search(SearchViewModel)
     case artist(ArtistViewModel)
+    case tracklist(TrackListViewModel)
 }
 
 extension Scene: TargetScene {
@@ -63,6 +64,11 @@ extension Scene: TargetScene {
             
         case let .artist(viewModel):
             var vc = ArtistViewController()
+            vc.bind(to: viewModel)
+            return .present(vc)
+            
+        case let .tracklist(viewModel):
+            var vc = TracklistViewController()
             vc.bind(to: viewModel)
             return .present(vc)
         }
