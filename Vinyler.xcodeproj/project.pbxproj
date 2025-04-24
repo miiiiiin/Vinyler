@@ -35,6 +35,9 @@
 		38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6612D87273900411B8B /* SceneCoordinator.swift */; };
 		38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */; };
 		38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */; };
+		38D4EBBE2DBA84410028F11C /* LikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */; };
+		38D4EBC02DBA84840028F11C /* LikedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */; };
+		38D4EBC42DBA86880028F11C /* LikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBC32DBA86880028F11C /* LikeCell.swift */; };
 		38DB0B832D97FE9800E73893 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DB0B822D97FE9800E73893 /* AuthManager.swift */; };
 		38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */; };
 		38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */; };
@@ -153,6 +156,9 @@
 		38ADA6612D87273900411B8B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+ObservableType.swift"; sourceTree = "<group>"; };
 		38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
+		38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewController.swift; sourceTree = "<group>"; };
+		38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewModel.swift; sourceTree = "<group>"; };
+		38D4EBC32DBA86880028F11C /* LikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCell.swift; sourceTree = "<group>"; };
 		38DB0B822D97FE9800E73893 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		38DBC2EF2D7F2DB600E444A1 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		38DBC2F12D7F2DCD00E444A1 /* TestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequest.swift; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 				387926412D80776700841CAF /* SignUpViewController.swift */,
 				3876F7922D92DF57000B29C5 /* LoginViewController.swift */,
 				3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */,
+				38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -300,6 +307,7 @@
 				3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */,
 				387E38CA2D96E18B003C1920 /* MainViewModel.swift */,
 				3850AEA62DBA0AF70052BFF1 /* MyPageViewModel.swift */,
+				38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -679,6 +687,7 @@
 				FA09D5382396B966006F37BD /* FormatCell.swift */,
 				FA050CF7239BFAA70067D32C /* SearchCell.swift */,
 				3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */,
+				38D4EBC32DBA86880028F11C /* LikeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1010,6 +1019,7 @@
 				813E837722E45CEC0057F0E6 /* Results.swift in Sources */,
 				813E837522E450D30057F0E6 /* DiscogsAPI.swift in Sources */,
 				38DBC2F62D7F313D00E444A1 /* Extensions+String.swift in Sources */,
+				38D4EBBE2DBA84410028F11C /* LikedListViewController.swift in Sources */,
 				813E838322E46D2D0057F0E6 /* Image.swift in Sources */,
 				FAD03CD8232D61CC0067E2D9 /* Extension+UIImageView.swift in Sources */,
 				813E837B22E4676F0057F0E6 /* UILabel+Style.swift in Sources */,
@@ -1033,6 +1043,7 @@
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
 				3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */,
 				387E38CB2D96E18B003C1920 /* MainViewModel.swift in Sources */,
+				38D4EBC42DBA86880028F11C /* LikeCell.swift in Sources */,
 				38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
 				7DEDB63123AB1633007287B8 /* AnimationView+Style.swift in Sources */,
@@ -1041,6 +1052,7 @@
 				38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
+				38D4EBC02DBA84840028F11C /* LikedListViewModel.swift in Sources */,
 				38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */,
 				387926502D80792400841CAF /* TargetScene.swift in Sources */,
 				38DC17682D9D61B00026811D /* LikeRequest.swift in Sources */,
