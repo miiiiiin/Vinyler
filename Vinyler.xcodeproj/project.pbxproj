@@ -10,6 +10,10 @@
 		38076B532DB8DF2C0032C439 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */; };
 		3811FA152DB142370028FEC9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA142DB142370028FEC9 /* SearchViewModel.swift */; };
 		3811FA172DB144810028FEC9 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA162DB144810028FEC9 /* ScanViewModel.swift */; };
+		3850AEA72DBA0AF70052BFF1 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEA62DBA0AF70052BFF1 /* MyPageViewModel.swift */; };
+		3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */; };
+		3850AEAB2DBA1E110052BFF1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAA2DBA1E110052BFF1 /* Menu.swift */; };
+		3850AEAD2DBA1E510052BFF1 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */; };
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
 		3876F78B2D92DD8F000B29C5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */; };
@@ -124,6 +128,10 @@
 		38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
 		3811FA142DB142370028FEC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3811FA162DB144810028FEC9 /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
+		3850AEA62DBA0AF70052BFF1 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		3850AEAA2DBA1E110052BFF1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -280,6 +288,7 @@
 			children = (
 				387926412D80776700841CAF /* SignUpViewController.swift */,
 				3876F7922D92DF57000B29C5 /* LoginViewController.swift */,
+				3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -290,6 +299,7 @@
 				387926432D8077BE00841CAF /* SignUpViewModel.swift */,
 				3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */,
 				387E38CA2D96E18B003C1920 /* MainViewModel.swift */,
+				3850AEA62DBA0AF70052BFF1 /* MyPageViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -467,6 +477,7 @@
 				813E838422E46E260057F0E6 /* Format.swift */,
 				FAD03CD3232D0D5B0067E2D9 /* Artist.swift */,
 				FAD03CD5232D0E460067E2D9 /* ArtistDetail.swift */,
+				3850AEAA2DBA1E110052BFF1 /* Menu.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -667,6 +678,7 @@
 				FA6C3B18232D8B55000E1C87 /* TrackCell.swift */,
 				FA09D5382396B966006F37BD /* FormatCell.swift */,
 				FA050CF7239BFAA70067D32C /* SearchCell.swift */,
+				3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -944,6 +956,7 @@
 				813E837222E449310057F0E6 /* UIColor+Style.swift in Sources */,
 				38DBC2FA2D7F36D600E444A1 /* APIEndPoint.swift in Sources */,
 				FAD03CCB232CFBA50067E2D9 /* CustomActionSheetHeader.swift in Sources */,
+				3850AEAD2DBA1E510052BFF1 /* MenuCell.swift in Sources */,
 				38DBC2FF2D7F381A00E444A1 /* NetworkError.swift in Sources */,
 				387926542D80799200841CAF /* ViewModelBindableType.swift in Sources */,
 				FAD03CC4232CF9C30067E2D9 /* ActionSheetOption.swift in Sources */,
@@ -952,6 +965,7 @@
 				38DC2D822D9E81310023F6F3 /* LoadingViewModel.swift in Sources */,
 				817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */,
 				3811FA172DB144810028FEC9 /* ScanViewModel.swift in Sources */,
+				3850AEAB2DBA1E110052BFF1 /* Menu.swift in Sources */,
 				38DC2D802D9E7E500023F6F3 /* VinylLikeResponse.swift in Sources */,
 				38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */,
 				FAD03CC6232CFA880067E2D9 /* CustomActionSheetViewController.swift in Sources */,
@@ -969,6 +983,7 @@
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
 				817B262E23151881003DF85D /* UIViewController+Rx.swift in Sources */,
+				3850AEA72DBA0AF70052BFF1 /* MyPageViewModel.swift in Sources */,
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				3876F78F2D92DE15000B29C5 /* LoginRequest.swift in Sources */,
 				3876F7932D92DF57000B29C5 /* LoginViewController.swift in Sources */,
@@ -1016,6 +1031,7 @@
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				38FB99F82D9025D700993111 /* SignUpRequest.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
+				3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */,
 				387E38CB2D96E18B003C1920 /* MainViewModel.swift in Sources */,
 				38DBC2F22D7F2DCD00E444A1 /* TestRequest.swift in Sources */,
 				813E838122E46C550057F0E6 /* Videos.swift in Sources */,
