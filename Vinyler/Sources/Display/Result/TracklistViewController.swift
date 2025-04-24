@@ -9,12 +9,17 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Action
 
-class TracklistViewController: UIViewController {
+class TracklistViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: TrackListViewModelType!
     
     let backgroundImageView = UIImageView(forAutoLayout: ())
     let visualView = UIVisualEffectView(forAutoLayout: ())
-    let backButton = UIButton.back
+    var backButton = UIButton.back
     let titleLabel = UILabel.header
     let artistLabel = UILabel.subheader
     let tracklistLabel = UILabel.header2
@@ -22,27 +27,6 @@ class TracklistViewController: UIViewController {
     let tableView = UITableView(forAutoLayout: ())
     
     private let disposeBag = DisposeBag()
-    
-    init(release: Release, image: Driver<UIImage?>) {
-        super.init(nibName: nil, bundle: nil)
-        
-        Observable.just(release.tracklist).bind(to: tableView.rx.items).disposed(by: disposeBag)
-        
-        image.drive(backgroundImageView.rx.image).disposed(by: disposeBag)
-        
-        backButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-            
-        }).disposed(by: disposeBag)
-        
-        titleLabel.text = release.title
-        artistLabel.text = release.artistsSort.uppercased()
-        tracklistLabel.text = .tracklist
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +42,8 @@ class TracklistViewController: UIViewController {
     
     override func loadView() {
         let root = UIView.background
+        
+        tracklistLabel.text = .tracklist
         
         [backgroundImageView, visualView, tableView].forEach(root.addSubview)
         backgroundImageView.pinToSuperview()
@@ -108,6 +94,30 @@ class TracklistViewController: UIViewController {
         visualView.effect = UIBlurEffect(style: .extraLight)
         
         self.view = root
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        output.trackList
+            .bind(to: tableView.rx.items)
+            .disposed(by: disposeBag)
+        
+        output.image
+            .drive(backgroundImageView.rx.image)
+            .disposed(by: disposeBag)
+        
+        backButton.rx.action = input.dismissAction
+        
+        output.title
+            .bind(to: titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.artist
+            .bind(to: artistLabel.rx.text)
+            .disposed(by: disposeBag)
+        
     }
 }
 
