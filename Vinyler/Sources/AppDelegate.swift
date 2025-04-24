@@ -38,8 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sceneCoordinator = SceneCoordinator(window: window!)
         SceneCoordinator.shared = sceneCoordinator
         
-        let viewModel = LoginViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: CommonUseCaseImpl(repository: CommonService(network: VNNetworking())))
-        sceneCoordinator.transition(to: Scene.login(viewModel))
+//        let viewModel = LoginViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: CommonUseCaseImpl(repository: CommonService(network: VNNetworking())))
+//        sceneCoordinator.transition(to: Scene.login(viewModel))
+        
+        let viewModel = MyPageViewModel(sceneCoordinator: SceneCoordinator.shared)
+        sceneCoordinator.transition(to: Scene.myPage(viewModel))
 
         return true
     }

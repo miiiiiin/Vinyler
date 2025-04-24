@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-struct Menu: Codable {
-    let icon: UIImage
+struct Menu {
+    let icon: UIImage?
     let title: String
 }

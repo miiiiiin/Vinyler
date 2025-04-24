@@ -11,7 +11,7 @@ import SnapKit
 
 class MenuCell: UITableViewCell {
     
-    let imageView = UIImageView.menu
+    let imgView = UIImageView.menu
     let titleLabel = UILabel.body
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,16 +28,16 @@ class MenuCell: UITableViewCell {
     
     private func setUp() {
         titleLabel.textColor = style.Colors.tint
-        [imageView, titleLabel].forEach(addSubview)
+        [imgView, titleLabel].forEach(addSubview)
         
-        imageView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide.topAnchor).offset(33)
+        imgView.snp.makeConstraints { make in
+            make.centerY.equalTo(contentView.snp.centerY)
             make.leading.equalToSuperview().offset(33)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(contentView.snp.centerY)
-            make.leading.equalTo(imageView.snp.trailing).offset(15)
+            make.leading.equalTo(imgView.snp.trailing).offset(15)
             make.trailing.equalToSuperview()
         }
         

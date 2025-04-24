@@ -17,6 +17,7 @@ protocol MyPageViewModelInput {
 }
 
 protocol MyPageViewModelOutput {
+    var menuItems: Observable<[Menu]> { get }
 }
 
 protocol MyPageViewModelType {
@@ -37,13 +38,20 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
         }
     }()
     
+    var menuItems: Observable<[Menu]>
+    
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let useCase: VinylUseCase
+//    private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase) {
+    // FIXME
+    init(sceneCoordinator: SceneCoordinatorType/*, useCase: VinylUseCase*/) {
         self.sceneCoordinator = sceneCoordinator
-        self.useCase = useCase
+//        self.useCase = useCase
+        
+        menuItems = .just([
+            Menu(icon: .emptyHeart, title: .menuLiked)
+        ])
     }
 }

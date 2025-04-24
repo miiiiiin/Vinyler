@@ -52,7 +52,11 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
         tableView.rowHeight = 70
-        tableView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+        } else {
+            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        }
         
         self.view = root
         
@@ -61,21 +65,24 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output
+        
+        output.menuItems
+            .bind(to: tableView.rx.items)
+            .disposed(by: disposeBag)
     }
 }
 
 extension Reactive where Base: UITableView {
     func items(_ items: Observable<[Menu]>) -> Disposable {
-        let cellId = "trackCell"
+        let cellId = "menuCell"
         
-        base.register(TrackCell.self, forCellReuseIdentifier: cellId)
+        base.register(MenuCell.self, forCellReuseIdentifier: cellId)
         
-        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, track, cell in
+        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, item, cell in
             
-            if let cell = cell as? TrackCell {
-                cell.positionLabel.text = track.position
-                cell.titleLabel.text = track.title
-                cell.durationLabel.text = track.duration
+            if let cell = cell as? MenuCell {
+                cell.titleLabel.text = item.title
+                cell.imgView.image = item.icon
             }
         }
     }
