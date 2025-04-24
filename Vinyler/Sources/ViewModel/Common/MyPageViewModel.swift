@@ -43,12 +43,11 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-//    private let useCase: VinylUseCase
+    private let useCase: CommonUseCase
     
-    // FIXME
-    init(sceneCoordinator: SceneCoordinatorType/*, useCase: VinylUseCase*/) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: CommonUseCase) {
         self.sceneCoordinator = sceneCoordinator
-//        self.useCase = useCase
+        self.useCase = useCase
         
         menuItems = .just([
             Menu(icon: .emptyHeart, title: .menuLiked)
