@@ -31,7 +31,7 @@ class TracklistViewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView?.layoutIfNeeded()
     }
     
     private func setTextColors(labels: [UILabel]) {
@@ -44,6 +44,7 @@ class TracklistViewController: UIViewController, ViewModelBindableType {
         let root = UIView.background
         
         tracklistLabel.text = .tracklist
+        separator.backgroundColor = .clear
         
         [backgroundImageView, visualView, tableView].forEach(root.addSubview)
         backgroundImageView.pinToSuperview()
@@ -66,13 +67,13 @@ class TracklistViewController: UIViewController, ViewModelBindableType {
             titleLabel.topAnchor.constraint(equalTo: artistLabel.bottomAnchor, constant: 15),
             titleLabel.leadingAnchor.constraint(equalTo: artistLabel.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: artistLabel.trailingAnchor),
-            tracklistLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
+            tracklistLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
             tracklistLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             separator.topAnchor.constraint(equalTo: tracklistLabel.bottomAnchor, constant: 15),
             separator.leadingAnchor.constraint(equalTo: tracklistLabel.leadingAnchor),
             separator.trailingAnchor.constraint(equalTo: header.trailingAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
-            separator.bottomAnchor.constraint(equalTo: header.bottomAnchor)
+            separator.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -15)
         ])
         
         tableView.tableHeaderView = header
