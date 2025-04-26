@@ -47,7 +47,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
     
     lazy var myPageAction: CocoaAction = {
         CocoaAction { [unowned self] _ in
-            let viewModel = MyPageViewModel(sceneCoordinator: self.sceneCoordinator, usecase: self.useCase)
+            let viewModel = MyPageViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase)
             return self.sceneCoordinator.transition(to: Scene.myPage(viewModel))
         }
     }()

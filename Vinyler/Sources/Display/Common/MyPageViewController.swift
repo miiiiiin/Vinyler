@@ -69,6 +69,11 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
         output.menuItems
             .bind(to: tableView.rx.items)
             .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Menu.self)
+            .map { $0.id }
+            .bind(to: input.nextAction.inputs)
+            .disposed(by: disposeBag)
     }
 }
 

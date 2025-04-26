@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 struct Menu {
+    let id: Int
     let icon: UIImage?
     let title: String
 }

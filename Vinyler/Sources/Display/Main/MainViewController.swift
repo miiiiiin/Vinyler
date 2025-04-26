@@ -19,7 +19,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: MainViewModelType!
     
-    let myPageButton = UIButton.more
+    var myPageButton = UIButton.more
     let scanLabel = UILabel.header
     var searchButton = UIButton.search
     let animationView = LottieAnimationView.animationView

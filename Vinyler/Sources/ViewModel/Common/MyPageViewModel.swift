@@ -14,6 +14,7 @@ import Toaster
 
 protocol MyPageViewModelInput {
     var backAction: CocoaAction { get }
+    var nextAction: Action<Int, Void> { get }
 }
 
 protocol MyPageViewModelOutput {
@@ -38,6 +39,18 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
         }
     }()
     
+    lazy var nextAction: Action<Int, Void> = {
+        Action<Int, Void> { [unowned self] id in
+            switch id {
+            case 0: break
+//                let viewModel = LikedListViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, likedList: self.)
+            default:
+                return .just(())
+            }
+            return .just(())
+        }
+    }()
+    
     var menuItems: Observable<[Menu]>
     
     // MARK: - Private -
@@ -50,7 +63,7 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
         self.useCase = useCase
         
         menuItems = .just([
-            Menu(icon: .emptyHeart, title: .menuLiked)
+            Menu(id: 1, icon: .emptyHeart, title: .menuLiked)
         ])
     }
 }

@@ -44,12 +44,12 @@ class LikedListViewModel: LikedListViewModelInput, LikedListViewModelOutput, Lik
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-//    private let useCase: VinylUseCase
+    private let useCase: CommonUseCase
     
     // FIXME
-    init(sceneCoordinator: SceneCoordinatorType/*, useCase: VinylUseCase*/, likedList: [Release]) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: CommonUseCase, likedList: [Release]) {
         self.sceneCoordinator = sceneCoordinator
-//        self.useCase = useCase
+        self.useCase = useCase
         self.likedAlbums = .just(likedList)
         
     }
