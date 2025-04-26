@@ -23,6 +23,7 @@ enum Scene {
     case artist(ArtistViewModel)
     case myPage(MyPageViewModel)
     case likedList(LikedListViewModel)
+    case tracklist(TrackListViewModel)
 }
 
 extension Scene: TargetScene {
@@ -77,6 +78,10 @@ extension Scene: TargetScene {
             var vc = LikedListViewController()
             vc.bind(to: viewModel)
             return .push(vc)
+        case let .tracklist(viewModel):
+            var vc = TracklistViewController()
+            vc.bind(to: viewModel)
+            return .present(vc)
         }
     }
 }

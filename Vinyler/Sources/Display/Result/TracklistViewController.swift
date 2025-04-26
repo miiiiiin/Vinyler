@@ -9,12 +9,17 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Action
 
-class TracklistViewController: UIViewController {
+class TracklistViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: TrackListViewModelType!
     
     let backgroundImageView = UIImageView(forAutoLayout: ())
     let visualView = UIVisualEffectView(forAutoLayout: ())
-    let backButton = UIButton.back
+    var backButton = UIButton.back
     let titleLabel = UILabel.header
     let artistLabel = UILabel.subheader
     let tracklistLabel = UILabel.header2
@@ -22,27 +27,6 @@ class TracklistViewController: UIViewController {
     let tableView = UITableView(forAutoLayout: ())
     
     private let disposeBag = DisposeBag()
-    
-    init(release: Release, image: Driver<UIImage?>) {
-        super.init(nibName: nil, bundle: nil)
-        
-        Observable.just(release.tracklist).bind(to: tableView.rx.items).disposed(by: disposeBag)
-        
-        image.drive(backgroundImageView.rx.image).disposed(by: disposeBag)
-        
-        backButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-            
-        }).disposed(by: disposeBag)
-        
-        titleLabel.text = release.title
-        artistLabel.text = release.artistsSort.uppercased()
-        tracklistLabel.text = .tracklist
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +42,9 @@ class TracklistViewController: UIViewController {
     
     override func loadView() {
         let root = UIView.background
+        
+        tracklistLabel.text = .tracklist
+        separator.backgroundColor = .clear
         
         [backgroundImageView, visualView, tableView].forEach(root.addSubview)
         backgroundImageView.pinToSuperview()
@@ -80,13 +67,13 @@ class TracklistViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: artistLabel.bottomAnchor, constant: 15),
             titleLabel.leadingAnchor.constraint(equalTo: artistLabel.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: artistLabel.trailingAnchor),
-            tracklistLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 33),
+            tracklistLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
             tracklistLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             separator.topAnchor.constraint(equalTo: tracklistLabel.bottomAnchor, constant: 15),
             separator.leadingAnchor.constraint(equalTo: tracklistLabel.leadingAnchor),
             separator.trailingAnchor.constraint(equalTo: header.trailingAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
-            separator.bottomAnchor.constraint(equalTo: header.bottomAnchor)
+            separator.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -15)
         ])
         
         tableView.tableHeaderView = header
@@ -108,6 +95,30 @@ class TracklistViewController: UIViewController {
         visualView.effect = UIBlurEffect(style: .extraLight)
         
         self.view = root
+    }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        output.trackList
+            .bind(to: tableView.rx.items)
+            .disposed(by: disposeBag)
+        
+        output.image
+            .drive(backgroundImageView.rx.image)
+            .disposed(by: disposeBag)
+        
+        backButton.rx.action = input.dismissAction
+        
+        output.title
+            .bind(to: titleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.artist
+            .bind(to: artistLabel.rx.text)
+            .disposed(by: disposeBag)
+        
     }
 }
 

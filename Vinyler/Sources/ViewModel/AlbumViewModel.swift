@@ -16,6 +16,7 @@ protocol AlbumViewModelInput {
     var likeAction: Action<Release, Void> { get }
     var loadingAction: Action<String, Void> { get }
     var dismissAction: CocoaAction { get }
+    var tracklistAction: Action<Release, Void> { get }
 }
 
 protocol AlbumViewModelOutput {
@@ -30,6 +31,7 @@ protocol AlbumViewModelType {
 }
 
 class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelType {
+
     
     var input: AlbumViewModelInput { return self }
     var output: AlbumViewModelOutput { return self }
@@ -61,6 +63,13 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         Action<String, Void> { [unowned self] input in
             let viewModel = LoadingViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, barcode: nil, resourceUrl: nil, artistResourceUrl: input)
             return self.sceneCoordinator.transition(to: Scene.loading(viewModel))
+        }
+    }()
+    
+    lazy var tracklistAction: Action<Release, Void> = {
+        Action<Release, Void> { [unowned self] input in
+            let viewModel = TrackListViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, release: input, image: self.albumImage)
+            return self.sceneCoordinator.transition(to: Scene.tracklist(viewModel))
         }
     }()
     
