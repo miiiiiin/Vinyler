@@ -42,8 +42,20 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
     lazy var nextAction: Action<Int, Void> = {
         Action<Int, Void> { [unowned self] id in
             switch id {
-            case 0: break
-//                let viewModel = LikedListViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, likedList: self.)
+            case 0:
+                return self.useCase.getLikedList(request: 2)
+                    .flatMap { result -> Observable<Void> in
+                        switch result {
+                        case let .success(response):
+                            let viewModel = LikedListViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, likedList: response)
+                            return self.sceneCoordinator.transition(to: Scene.likedList(viewModel))
+                        case let .failure(error):
+                            let errorResponse = error.errorDescription
+                            Toast(text: errorResponse).show()
+                            return .empty()
+                        }
+                    }
+                
             default:
                 return .just(())
             }
@@ -56,9 +68,9 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let useCase: CommonUseCase
+    private let useCase: UserUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: CommonUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: UserUseCase) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         
