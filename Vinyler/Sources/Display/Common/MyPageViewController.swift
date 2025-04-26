@@ -16,34 +16,53 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
     // MARK: - ViewModel
     
     var viewModel: MyPageViewModelType!
-    
+    var backButton = UIButton.back
     let tableView = UITableView(forAutoLayout: ())
     let titleLabel = UILabel.header
     
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.tableHeaderView?.layoutIfNeeded()
     }
     
     override func loadView() {
         let root = UIView()
+        let contentView = UIView(forAutoLayout: ())
+        if #available(iOS 13.0, *) {
+            root.backgroundColor = .systemBackground
+        } else {
+            root.backgroundColor = .white
+        }
         
-        [tableView].forEach(root.addSubview(_:))
+        [contentView].forEach(root.addSubview(_:))
+        [tableView].forEach(contentView.addSubview(_:))
         
+        contentView.pinToSuperview()
         tableView.pinToSuperview()
         
-        let header = UIView(forAutoLayout: ())
+        titleLabel.text = "Liked"
         
-        [titleLabel].forEach(header.addSubview)
+        let header = UIView(forAutoLayout: ())
+        header.backgroundColor = .red
+
+        [backButton, titleLabel].forEach(header.addSubview)
         
         header.snp.makeConstraints { make in
             make.width.equalTo(root.frame.width)
         }
         
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(header.safeAreaLayoutGuide.snp.top).offset(33)
+            make.leading.equalToSuperview().offset(24)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(header.snp.top).offset(35)
-            make.leading.equalTo(view.snp.leading).offset(33)
-            make.trailing.equalTo(view.snp.trailing)
+            make.top.equalTo(backButton.snp.bottom).offset(33)
+            make.leading.equalToSuperview().offset(33)
+            make.trailing.equalToSuperview()
         }
         
         tableView.tableHeaderView = header
@@ -52,6 +71,9 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
         tableView.rowHeight = 70
+        tableView.delegate = nil
+        tableView.dataSource = nil
+        
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
         } else {
@@ -59,7 +81,6 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
         }
         
         self.view = root
-        
     }
     
     func bindViewModel() {
@@ -74,6 +95,8 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
             .map { $0.id }
             .bind(to: input.nextAction.inputs)
             .disposed(by: disposeBag)
+        
+        backButton.rx.action = input.backAction
     }
 }
 

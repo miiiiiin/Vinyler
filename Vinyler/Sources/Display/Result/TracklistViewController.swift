@@ -47,7 +47,7 @@ class TracklistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView?.layoutIfNeeded()
     }
     
     private func setTextColors(labels: [UILabel]) {

@@ -12,7 +12,7 @@ import SnapKit
 class MenuCell: UITableViewCell {
     
     let imgView = UIImageView.menu
-    let titleLabel = UILabel.body
+    let titleLabel = UILabel.header
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,6 +33,7 @@ class MenuCell: UITableViewCell {
         imgView.snp.makeConstraints { make in
             make.centerY.equalTo(contentView.snp.centerY)
             make.leading.equalToSuperview().offset(33)
+            make.width.height.equalTo(33)
         }
         
         titleLabel.snp.makeConstraints { make in
