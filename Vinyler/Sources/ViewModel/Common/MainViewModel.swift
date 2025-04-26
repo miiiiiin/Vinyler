@@ -13,6 +13,7 @@ import Action
 protocol MainViewModelInput {
     var scanAction: CocoaAction { get }
     var searchAction: CocoaAction { get }
+    var myPageAction: CocoaAction { get }
 }
 
 protocol MainViewModelOutput {
@@ -41,6 +42,13 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
         CocoaAction { [unowned self] _ in
             let viewModel = SearchViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.vinylUseCase)
             return self.sceneCoordinator.transition(to: Scene.search(viewModel))
+        }
+    }()
+    
+    lazy var myPageAction: CocoaAction = {
+        CocoaAction { [unowned self] _ in
+            let viewModel = MyPageViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase)
+            return self.sceneCoordinator.transition(to: Scene.myPage(viewModel))
         }
     }()
     

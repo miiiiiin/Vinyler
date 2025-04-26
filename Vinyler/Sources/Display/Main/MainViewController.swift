@@ -19,7 +19,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: MainViewModelType!
     
-    let moreButton = UIButton.more
+    var myPageButton = UIButton.more
     let scanLabel = UILabel.header
     var searchButton = UIButton.search
     let animationView = LottieAnimationView.animationView
@@ -47,8 +47,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
     
     private func setUp() {
         
-        moreButton.rx.tap.subscribe(onNext: { [weak self] in        self?.navigationController?.pushViewController(AppInfoViewController(), animated: true)
-        }).disposed(by: bag)
     }
     
     private func showAnim() {
@@ -62,9 +60,9 @@ class MainViewController: UIViewController, ViewModelBindableType {
         let root = UIView.background
         root.backgroundColor = .coldDarkBlue
         
-        moreButton.tintColor = .white
+        myPageButton.tintColor = .white
         
-        [moreButton, scanLabel, searchButton, animationView, vinylAnimationView].forEach(root.addSubview)
+        [myPageButton, scanLabel, searchButton, animationView, vinylAnimationView].forEach(root.addSubview)
         
         scanLabel.textAlignment = .center
         scanLabel.set(headerText: .scan)
@@ -72,8 +70,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
         let scanCenter = scanLabel.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -50)
         scanCenter.priority = .defaultLow
         NSLayoutConstraint.activate([
-            moreButton.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor, constant: 33),
-            moreButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
+            myPageButton.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor, constant: 33),
+            myPageButton.leadingAnchor.constraint(equalTo: root.leadingAnchor, constant: 44),
             animationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
             animationView.centerXAnchor.constraint(equalTo: root.centerXAnchor),
             vinylAnimationView.centerYAnchor.constraint(equalTo: root.centerYAnchor, constant: -33),
@@ -100,13 +98,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
             })
             .disposed(by: bag)
         
-        
-        
-        //        searchButton.rx.tap
-        //            .subscribe(onNext: { [weak self] in
-        //            let searchViewController = SearchViewController()
-        //            self?.navigationController?.pushViewController(searchViewController, animated: true)
-        //        }).disposed(by: bag)
+        myPageButton.rx.action = input.myPageAction
         
         searchButton.rx.action = input.searchAction
     }

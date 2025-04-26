@@ -21,6 +21,8 @@ enum Scene {
     case scan(ScanViewModel)
     case search(SearchViewModel)
     case artist(ArtistViewModel)
+    case myPage(MyPageViewModel)
+    case likedList(LikedListViewModel)
     case tracklist(TrackListViewModel)
 }
 
@@ -67,6 +69,15 @@ extension Scene: TargetScene {
             vc.bind(to: viewModel)
             return .present(vc)
             
+        case let .myPage(viewModel):
+            var vc = MyPageViewController()
+            vc.bind(to: viewModel)
+            return .push(vc)
+            
+        case let .likedList(viewModel):
+            var vc = LikedListViewController()
+            vc.bind(to: viewModel)
+            return .push(vc)
         case let .tracklist(viewModel):
             var vc = TracklistViewController()
             vc.bind(to: viewModel)

@@ -99,7 +99,6 @@ class SearchViewController: UITableViewController, ViewModelBindableType {
         
         backBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.inputField.resignFirstResponder()
-//            self?.navigationController?.popViewController(animated: true)
             input.backAction.execute(())
         }).disposed(by: disposeBag)
     }

@@ -48,4 +48,5 @@ extension String {
     static let members = NSLocalizedString("Members:", comment: "")
     static let signUp = NSLocalizedString("Sign Up", comment: "")
     static let login = NSLocalizedString("Login", comment: "")
+    static let menuLiked = NSLocalizedString("Liked", comment: "")
 }

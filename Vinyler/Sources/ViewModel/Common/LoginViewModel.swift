@@ -49,9 +49,6 @@ class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, LoginViewModelT
                 .flatMap { result -> Observable<Void> in
                     switch result {
                     case let .success(response):
-                        
-                        debugPrint("login succ: \(response.grantType)")
-                        
                         let viewModel = MainViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase)
                         return self.sceneCoordinator.transition(to: Scene.main(viewModel))
                         
