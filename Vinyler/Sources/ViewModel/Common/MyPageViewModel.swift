@@ -42,7 +42,7 @@ class MyPageViewModel: MyPageViewModelInput, MyPageViewModelOutput, MyPageViewMo
     lazy var nextAction: Action<Int, Void> = {
         Action<Int, Void> { [unowned self] id in
             switch id {
-            case 0:
+            case 1:
                 return self.useCase.getLikedList(request: 2)
                     .flatMap { result -> Observable<Void> in
                         switch result {

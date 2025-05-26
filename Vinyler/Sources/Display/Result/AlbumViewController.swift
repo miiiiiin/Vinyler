@@ -179,7 +179,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         closeButton.tintColor = style.Colors.tint
         
-        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, likeButton, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
+        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, likeButton, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
         
         contentView.pinToSuperview()
         
@@ -243,6 +243,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         likeButton.snp.makeConstraints { make in
             make.centerY.equalTo(dateLabel.snp.centerY)
             make.trailing.equalTo(disclosureButton.snp.trailing)
+            
         }
         
         
@@ -266,9 +267,20 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         likeButton.rx.tap
             .observe(on: MainScheduler.instance)
-            .withLatestFrom(Observable.just(releaseInfo))
-            .unwrap()
-            .bind(to: input.likeAction.inputs)
+            .withLatestFrom(output.releaseInfo)
+            .flatMapLatest { release -> Observable<Bool> in
+                return input.likeAction.execute(release)
+            }
+            .bind(to: output.isLike)
+            .disposed(by: disposeBag)
+        
+        output.isLike
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isLiked in
+                debugPrint("like action: \(isLiked)")
+                let image: UIImage = isLiked ? .fullHeart! : .emptyHeart!
+                self?.likeButton.setImage(image, for: .normal)
+            })
             .disposed(by: disposeBag)
         
         output.releaseInfo
@@ -321,7 +333,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         closeButton.rx.tap
             .bind(to: input.dismissAction.inputs)
             .disposed(by: disposeBag)
-
+        
         moreButton.rx.tap
             .map { [ActionSheetOption.artistDetails, .tracklist] }
             .flatMapLatest { [weak self] options -> Observable<(ActionSheetOption, Release)> in

@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UserUseCase {
-    func getLikedList(request: Int) -> Observable<Result<[Release], Vinyler.NetworkError>>
+    func getLikedList(request: Int) -> Observable<Result<[VinylerRelease], Vinyler.NetworkError>>
 }
 
 class UserUseCaseImpl: UserUseCase {
@@ -21,7 +21,7 @@ class UserUseCaseImpl: UserUseCase {
         self.repository = repository
     }
     
-    func getLikedList(request: Int) -> Observable<Result<[Release], Vinyler.NetworkError>> {
+    func getLikedList(request: Int) -> Observable<Result<[VinylerRelease], Vinyler.NetworkError>> {
         return repository.getLikedList(request: request)
     }
     

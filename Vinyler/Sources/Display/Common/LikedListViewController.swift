@@ -17,12 +17,11 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
     
     var viewModel: LikedListViewModelType!
     
-    let backButton = UIButton.back
+    var backButton = UIButton.back
     let titleLabel = UILabel.header
     let tableView = UITableView(forAutoLayout: ())
     
     private let disposeBag = DisposeBag()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +31,11 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
     
     override func loadView() {
         let root = UIView.background
+        let contentView = UIView(forAutoLayout: ())
+        [contentView].forEach(root.addSubview(_:))
+        [tableView].forEach(contentView.addSubview(_:))
         
-        [tableView].forEach(root.addSubview)
+        contentView.pinToSuperview()
         tableView.pinToSuperview()
         
         let header = UIView(forAutoLayout: ())
@@ -42,6 +44,7 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
         
         header.snp.makeConstraints { make in
             make.width.equalTo(root.frame.width)
+            make.height.equalTo(70)
         }
         
         backButton.snp.makeConstraints { make in
@@ -51,8 +54,8 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(33)
-            make.leading.equalTo(view.snp.leading).offset(33)
-            make.trailing.equalTo(view.snp.trailing)
+//            make.leading.equalTo(contentView.snp.leading).offset(33)
+//            make.trailing.equalTo(contentView.snp.trailing)
         }
         
         tableView.tableHeaderView = header
@@ -68,7 +71,6 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
         }
         
         self.view = root
-        
     }
     
     func bindViewModel() {
@@ -79,12 +81,13 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
             .bind(to: tableView.rx.items)
             .disposed(by: disposeBag)
         
+        backButton.rx.action = input.backAction
     }
 }
 
 
 extension Reactive where Base: UITableView {
-    func items(_ items: Observable<[Release]>) -> Disposable {
+    func items(_ items: Observable<[VinylerRelease]>) -> Disposable {
         let cellId = "likeCell"
         
         base.register(LikeCell.self, forCellReuseIdentifier: cellId)
@@ -92,9 +95,9 @@ extension Reactive where Base: UITableView {
         return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, item, cell in
             
             if let cell = cell as? LikeCell {
-                cell.titleLabel.text = item.title
+//                cell.titleLabel.text = item.title
 //                cell.albumImageView.image = item.
-                cell.artistLabel.text = item.artistsSort.uppercased()
+//                cell.artistLabel.text = item.artistsSort.uppercased()
             }
         }
     }

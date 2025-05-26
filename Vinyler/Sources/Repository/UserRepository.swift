@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol UserRepository {
-    func getLikedList(request: Int) -> Observable<Result<[Release], Vinyler.NetworkError>>
+    func getLikedList(request: Int) -> Observable<Result<[VinylerRelease], Vinyler.NetworkError>>
 }

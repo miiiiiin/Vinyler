@@ -49,6 +49,10 @@ class LoginViewModel: LoginViewModelInput, LoginViewModelOutput, LoginViewModelT
                 .flatMap { result -> Observable<Void> in
                     switch result {
                     case let .success(response):
+                        
+                        AuthManager.shared.accessToken = response.accessToken
+                        AuthManager.shared.refreshToken = response.refreshToken
+                    
                         let viewModel = MainViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase)
                         return self.sceneCoordinator.transition(to: Scene.main(viewModel))
                         

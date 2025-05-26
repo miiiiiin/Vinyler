@@ -22,15 +22,16 @@ class UserService: UserRepository {
         self.disposeBag = DisposeBag()
     }
     
-    func getLikedList(request: Int) -> Observable<Result<[Release], Vinyler.NetworkError>> {
+    func getLikedList(request: Int) -> Observable<Result<[VinylerRelease], Vinyler.NetworkError>> {
         return network.request(target: MultiTarget(APIEndPoint.getLikedList(request: request)))
-            .flatMap { result -> Single<Result<[Release], Vinyler.NetworkError>> in
+            .flatMap { result -> Single<Result<[VinylerRelease], Vinyler.NetworkError>> in
                 switch result {
                 case .success(let response):
-                    if let data = try? response.map([Release].self) {
+                    do {
+                        let data = try response.map([VinylerRelease].self)
                         return .just(.success(data))
-                    } else {
-                        let error = Vinyler.NetworkError.serverError(statusCode: response.statusCode, message: "JSON 디코딩 실패")
+                    } catch {
+                        let error = Vinyler.NetworkError.serverError(statusCode: response.statusCode, message: "JSON 디코딩 실패: \(error.localizedDescription)")
                         return .just(.failure(error))
                     }
                 case .failure(let error):

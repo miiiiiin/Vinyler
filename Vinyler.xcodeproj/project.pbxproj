@@ -35,6 +35,7 @@
 		38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6612D87273900411B8B /* SceneCoordinator.swift */; };
 		38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */; };
 		38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */; };
+		38BE25312DBE5BF700622B09 /* VinylerRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE25302DBE5BF700622B09 /* VinylerRelease.swift */; };
 		38CDB5B72DB9F38A00D5EAD2 /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */; };
 		38D4EBBE2DBA84410028F11C /* LikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */; };
 		38D4EBC02DBA84840028F11C /* LikedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */; };
@@ -160,6 +161,7 @@
 		38ADA6612D87273900411B8B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+ObservableType.swift"; sourceTree = "<group>"; };
 		38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
+		38BE25302DBE5BF700622B09 /* VinylerRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylerRelease.swift; sourceTree = "<group>"; };
 		38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewController.swift; sourceTree = "<group>"; };
 		38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewModel.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				FAD03CD3232D0D5B0067E2D9 /* Artist.swift */,
 				FAD03CD5232D0E460067E2D9 /* ArtistDetail.swift */,
 				3850AEAA2DBA1E110052BFF1 /* Menu.swift */,
+				38BE25302DBE5BF700622B09 /* VinylerRelease.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1004,6 +1007,7 @@
 				817B25DA230970CB003DF85D /* PreviewView.swift in Sources */,
 				813E837D22E468420057F0E6 /* Release.swift in Sources */,
 				817B262E23151881003DF85D /* UIViewController+Rx.swift in Sources */,
+				38BE25312DBE5BF700622B09 /* VinylerRelease.swift in Sources */,
 				3850AEA72DBA0AF70052BFF1 /* MyPageViewModel.swift in Sources */,
 				FAD03CCD232CFE310067E2D9 /* CustomActionSheetCell.swift in Sources */,
 				3876F78F2D92DE15000B29C5 /* LoginRequest.swift in Sources */,

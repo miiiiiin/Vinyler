@@ -69,7 +69,7 @@ class ArtistViewModel: ArtistViewModelInput, ArtistViewModelOutput, ArtistViewMo
             .map { images -> URL? in
                 let primaryImage = images.first(where: { $0.type == .primary} )
                 let anyImage = images.first
-                return URL(string: (primaryImage ?? anyImage)?.resourceUrl ?? "")
+                return URL(string: (primaryImage ?? anyImage)?.uri ?? "")
             }
             .flatMapLatest { imageUrl -> Driver<UIImage?> in
                 guard let url = imageUrl else {

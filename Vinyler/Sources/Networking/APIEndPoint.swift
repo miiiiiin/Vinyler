@@ -66,8 +66,10 @@ extension APIEndPoint: TargetType {
             return self.requestTask(request)
         case .login(let request):
             return self.requestTask(request)
-        case .getLike(let request), .getLikedList(let request):
+        case .getLike(let request):
             return self.requestTask(request)
+        case .getLikedList(let request):
+            return .requestPlain
         }
     }
     
@@ -96,8 +98,7 @@ extension APIEndPoint: TargetType {
             if let token = AuthManager.shared.accessToken {
                 return [
                     "Authorization": "Bearer \(token)",
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    "Content-Type": "application/json"
                 ]
             } else {
                 return nil

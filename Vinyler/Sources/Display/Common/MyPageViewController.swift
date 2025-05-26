@@ -16,6 +16,7 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
     // MARK: - ViewModel
     
     var viewModel: MyPageViewModelType!
+    
     var backButton = UIButton.back
     let tableView = UITableView(forAutoLayout: ())
     
