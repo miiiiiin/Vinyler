@@ -14,6 +14,7 @@ import Toaster
 
 protocol AlbumViewModelInput {
     var likeAction: Action<Release, Bool> { get }
+    var getLikeStatusAction: Action<Int, Bool> { get }
     var loadingAction: Action<String, Void> { get }
     var dismissAction: CocoaAction { get }
     var tracklistAction: Action<Release, Void> { get }
@@ -31,7 +32,7 @@ protocol AlbumViewModelType {
 }
 
 class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelType {
-
+    
     
     var input: AlbumViewModelInput { return self }
     var output: AlbumViewModelOutput { return self }
@@ -42,13 +43,10 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         Action<Release, Bool> { [unowned self] input in
             
             let request = LikeRequest.transform(release: input)
-            return self.useCase.execute(request: request)
+            return self.useCase.toggleLike(request: request)
                 .flatMap { result -> Observable<Bool> in
                     switch result {
                     case let .success(response):
-                        
-                        debugPrint("like action result: \(response)")
-//                        let isLiked = response.isLiking == 1 ? true : false
                         return .just(response.isLiking)
                         
                     case let .failure(error):
@@ -58,6 +56,25 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                         
                     }
                 }
+        }
+    }()
+    
+    lazy var getLikeStatusAction: Action<Int, Bool> = {
+        Action<Int, Bool> { [unowned self] input in
+            return self.useCase.getLikeStatus(request: input)
+                .flatMap { result -> Observable<Bool> in
+                    switch result {
+                    case let .success(response):
+                        return .just(response.isLiking)
+                        
+                    case let .failure(error):
+                        let errorResponse = error.errorDescription
+                        Toast(text: errorResponse).show()
+                        return .empty()
+                        
+                    }
+                }
+            
         }
     }()
     

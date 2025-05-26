@@ -277,10 +277,17 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         output.isLike
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] isLiked in
-                debugPrint("like action: \(isLiked)")
                 let image: UIImage = isLiked ? .fullHeart! : .emptyHeart!
                 self?.likeButton.setImage(image, for: .normal)
             })
+            .disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .map { $0.id }
+            .flatMapLatest { discogsId -> Observable<Bool> in
+                return input.getLikeStatusAction.execute(discogsId)
+            }
+            .bind(to: output.isLike)
             .disposed(by: disposeBag)
         
         output.releaseInfo
@@ -308,14 +315,11 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
                 if let video = str {
                     let videoString = String(format: .watchOnYoutube)
                     self?.disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
-                    
                 } else {
                     self?.disclosureButton.isHidden = true
                     let noInfoString = String(format: .noInfoVideo)
                     self?.disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
-                }
-            })
-            .disposed(by: disposeBag)
+                }}).disposed(by: disposeBag)
         
         output.releaseInfo
             .observe(on: MainScheduler.instance)
@@ -323,8 +327,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .unwrap()
             .subscribe(onNext: { [weak self] notes in
                 self?.descriptionLabel.set(bodyText: notes)
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         output.albumImage
             .drive(albumImageView.rx.image)
@@ -343,7 +346,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
                         (selectedOption, releaseInfo)
                     }
             }
-            .subscribe(onNext: { [weak self] (option, release) in
+            .subscribe(onNext: { (option, release) in
                 switch option {
                 case .artistDetails:
                     input.loadingAction.execute(release.mainArtistUrl)
