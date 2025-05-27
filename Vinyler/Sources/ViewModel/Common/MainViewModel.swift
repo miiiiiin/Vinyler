@@ -45,9 +45,10 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
         }
     }()
     
+    // FIXME (사용자 정보 필요: userid)
     lazy var myPageAction: CocoaAction = {
         CocoaAction { [unowned self] _ in
-            let viewModel = MyPageViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase)
+            let viewModel = MyPageViewModel(sceneCoordinator: self.sceneCoordinator, useCase: UserUseCaseImpl(repository: UserService(network: VNNetworking())))
             return self.sceneCoordinator.transition(to: Scene.myPage(viewModel))
         }
     }()

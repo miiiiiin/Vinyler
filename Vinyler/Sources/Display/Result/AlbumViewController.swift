@@ -179,7 +179,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         closeButton.tintColor = style.Colors.tint
         
-        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, formatsCollectionView, likeButton, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
+        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, likeButton, formatsCollectionView, disclosureButton, playerImageView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
         
         contentView.pinToSuperview()
         
@@ -243,6 +243,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         likeButton.snp.makeConstraints { make in
             make.centerY.equalTo(dateLabel.snp.centerY)
             make.trailing.equalTo(disclosureButton.snp.trailing)
+            
         }
         
         
@@ -266,9 +267,27 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         likeButton.rx.tap
             .observe(on: MainScheduler.instance)
-            .withLatestFrom(Observable.just(releaseInfo))
-            .unwrap()
-            .bind(to: input.likeAction.inputs)
+            .withLatestFrom(output.releaseInfo)
+            .flatMapLatest { release -> Observable<Bool> in
+                return input.likeAction.execute(release)
+            }
+            .bind(to: output.isLike)
+            .disposed(by: disposeBag)
+        
+        output.isLike
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isLiked in
+                let image: UIImage = isLiked ? .fullHeart! : .emptyHeart!
+                self?.likeButton.setImage(image, for: .normal)
+            })
+            .disposed(by: disposeBag)
+        
+        output.releaseInfo
+            .map { $0.id }
+            .flatMapLatest { discogsId -> Observable<Bool> in
+                return input.getLikeStatusAction.execute(discogsId)
+            }
+            .bind(to: output.isLike)
             .disposed(by: disposeBag)
         
         output.releaseInfo
@@ -296,14 +315,11 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
                 if let video = str {
                     let videoString = String(format: .watchOnYoutube)
                     self?.disclosureButton.titleLbl.set(bodyText: videoString, boldPart: videoString, oneLine: true)
-                    
                 } else {
                     self?.disclosureButton.isHidden = true
                     let noInfoString = String(format: .noInfoVideo)
                     self?.disclosureButton.titleLbl.set(bodyText: noInfoString, boldPart: noInfoString, oneLine: true)
-                }
-            })
-            .disposed(by: disposeBag)
+                }}).disposed(by: disposeBag)
         
         output.releaseInfo
             .observe(on: MainScheduler.instance)
@@ -311,8 +327,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .unwrap()
             .subscribe(onNext: { [weak self] notes in
                 self?.descriptionLabel.set(bodyText: notes)
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         output.albumImage
             .drive(albumImageView.rx.image)
@@ -321,7 +336,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         closeButton.rx.tap
             .bind(to: input.dismissAction.inputs)
             .disposed(by: disposeBag)
-
+        
         moreButton.rx.tap
             .map { [ActionSheetOption.artistDetails, .tracklist] }
             .flatMapLatest { [weak self] options -> Observable<(ActionSheetOption, Release)> in
@@ -331,7 +346,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
                         (selectedOption, releaseInfo)
                     }
             }
-            .subscribe(onNext: { [weak self] (option, release) in
+            .subscribe(onNext: { (option, release) in
                 switch option {
                 case .artistDetails:
                     input.loadingAction.execute(release.mainArtistUrl)

@@ -17,4 +17,9 @@ class AuthManager {
         get { UserDefaults.standard.string(forKey: "accessToken") }
         set { UserDefaults.standard.setValue(newValue, forKey: "accessToken") }
     }
+    
+    var refreshToken: String? {
+        get { UserDefaults.standard.string(forKey: "refreshToken") }
+        set { UserDefaults.standard.setValue(newValue, forKey: "refreshToken") }
+    }
 }

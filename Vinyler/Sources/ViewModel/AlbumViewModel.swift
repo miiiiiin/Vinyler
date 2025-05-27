@@ -13,7 +13,8 @@ import Action
 import Toaster
 
 protocol AlbumViewModelInput {
-    var likeAction: Action<Release, Void> { get }
+    var likeAction: Action<Release, Bool> { get }
+    var getLikeStatusAction: Action<Int, Bool> { get }
     var loadingAction: Action<String, Void> { get }
     var dismissAction: CocoaAction { get }
     var tracklistAction: Action<Release, Void> { get }
@@ -21,7 +22,7 @@ protocol AlbumViewModelInput {
 
 protocol AlbumViewModelOutput {
     var releaseInfo: Observable<Release> { get }
-    var isLike: Observable<Bool> { get }
+    var isLike: PublishRelay<Bool> { get }
     var albumImage: Driver<UIImage?> { get }
 }
 
@@ -31,23 +32,22 @@ protocol AlbumViewModelType {
 }
 
 class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelType {
-
+    
     
     var input: AlbumViewModelInput { return self }
     var output: AlbumViewModelOutput { return self }
     
     // MARK: - Input -
     
-    lazy var likeAction: Action<Release, Void> = {
-        Action<Release, Void> { [unowned self] input in
+    lazy var likeAction: Action<Release, Bool> = {
+        Action<Release, Bool> { [unowned self] input in
             
-            let request = LikeRequest(albumInfo: input)
-            
-            return self.useCase.execute(request: request)
-                .flatMap { result -> Observable<Void> in
+            let request = LikeRequest.transform(release: input)
+            return self.useCase.toggleLike(request: request)
+                .flatMap { result -> Observable<Bool> in
                     switch result {
                     case let .success(response):
-                        return .empty()
+                        return .just(response.isLiking)
                         
                     case let .failure(error):
                         let errorResponse = error.errorDescription
@@ -56,6 +56,25 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                         
                     }
                 }
+        }
+    }()
+    
+    lazy var getLikeStatusAction: Action<Int, Bool> = {
+        Action<Int, Bool> { [unowned self] input in
+            return self.useCase.getLikeStatus(request: input)
+                .flatMap { result -> Observable<Bool> in
+                    switch result {
+                    case let .success(response):
+                        return .just(response.isLiking)
+                        
+                    case let .failure(error):
+                        let errorResponse = error.errorDescription
+                        Toast(text: errorResponse).show()
+                        return .empty()
+                        
+                    }
+                }
+            
         }
     }()
     
@@ -81,7 +100,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
     
     
     var releaseInfo: Observable<Release>
-    var isLike: Observable<Bool> = .just(false)
+    var isLike = PublishRelay<Bool>()
     var albumImage: Driver<UIImage?> = Driver.just(nil)
     
     
@@ -94,7 +113,6 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         self.releaseInfo = Observable.just(release)
-        
         self.setAlbumImage()
     }
     
@@ -104,7 +122,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
             .map { release -> URL? in
                 let primaryImage = release.images.first(where: { $0.type == .primary })
                 let anyImage = release.images.first
-                return URL(string: (primaryImage ?? anyImage)?.resourceUrl ?? "")
+                return URL(string: (primaryImage ?? anyImage)?.uri ?? "")
             }
             .flatMapLatest { imageURL -> Driver<UIImage?> in
                 guard let url = imageURL else {

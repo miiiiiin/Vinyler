@@ -9,7 +9,7 @@
 import Foundation
 
 struct ArtistDetail: Codable {
-    let resourceUrl: String
+    let resourceUrl: String?
     let name: String
     let active: Bool?
 }

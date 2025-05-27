@@ -40,8 +40,8 @@ class VinylService: VinylRepository {
             .asObservable()
     }
     
-    func getLike(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
-        return network.request(target: MultiTarget(APIEndPoint.getLike(request: request)))
+    func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
+        return network.request(target: MultiTarget(APIEndPoint.getLikeStatus(request: request)))
             .flatMap { result -> Single<Result<VinylLikeResponse, Vinyler.NetworkError>> in
                 switch result {
                 case .success(let response):

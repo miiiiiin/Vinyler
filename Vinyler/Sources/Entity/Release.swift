@@ -24,6 +24,6 @@ struct Release: Codable {
     let artists: [ArtistDetail]
 
     var mainArtistUrl: String {
-        return artists.first.map { $0.resourceUrl } ?? ""
+        return artists.first.map { $0.resourceUrl ?? "" } ?? ""
     }
 }

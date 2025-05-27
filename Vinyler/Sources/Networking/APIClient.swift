@@ -24,11 +24,14 @@ final class APIClient<Target: TargetType>: MoyaProvider<Target> {
     
     func request(target: Target) -> Single<Result<Response, Vinyler.NetworkError>> {
         
-        let requestString = "\(target.method.rawValue), \(target.path), \(target.task)"
+        let requestString = "\(target.headers), \(target.method.rawValue), \(target.baseURL)\(target.path), \(target.task)"
         
         return self.rx.request(target)
             .filterSuccessfulStatusCodes()
             .map { response -> Result<Response, Vinyler.NetworkError> in
+                
+                debugPrint("response check: \(response)")
+                
                 if (200..<300).contains(response.statusCode) {
                     debugPrint("[SUCCESS]: \(requestString), \(response.statusCode)")
                     return .success(response)

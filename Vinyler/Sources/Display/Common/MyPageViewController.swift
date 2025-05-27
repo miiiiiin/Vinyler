@@ -16,9 +16,9 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
     // MARK: - ViewModel
     
     var viewModel: MyPageViewModelType!
+    
     var backButton = UIButton.back
     let tableView = UITableView(forAutoLayout: ())
-    let titleLabel = UILabel.header
     
     private let disposeBag = DisposeBag()
     
@@ -29,7 +29,7 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
     }
     
     override func loadView() {
-        let root = UIView()
+        let root = UIView.background
         let contentView = UIView(forAutoLayout: ())
         if #available(iOS 13.0, *) {
             root.backgroundColor = .systemBackground
@@ -43,26 +43,18 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
         contentView.pinToSuperview()
         tableView.pinToSuperview()
         
-        titleLabel.text = "Liked"
-        
         let header = UIView(forAutoLayout: ())
-        header.backgroundColor = .red
 
-        [backButton, titleLabel].forEach(header.addSubview)
+        [backButton].forEach(header.addSubview)
         
         header.snp.makeConstraints { make in
             make.width.equalTo(root.frame.width)
+            make.height.equalTo(70)
         }
         
         backButton.snp.makeConstraints { make in
             make.top.equalTo(header.safeAreaLayoutGuide.snp.top).offset(33)
             make.leading.equalToSuperview().offset(24)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(backButton.snp.bottom).offset(33)
-            make.leading.equalToSuperview().offset(33)
-            make.trailing.equalToSuperview()
         }
         
         tableView.tableHeaderView = header
@@ -71,8 +63,6 @@ class MyPageViewController: UIViewController, ViewModelBindableType {
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
         tableView.rowHeight = 70
-        tableView.delegate = nil
-        tableView.dataSource = nil
         
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
