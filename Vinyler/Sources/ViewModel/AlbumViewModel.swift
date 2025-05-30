@@ -68,9 +68,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                         return .just(response.isLiking)
                         
                     case let .failure(error):
-                        let errorResponse = error.errorDescription
-                        Toast(text: errorResponse).show()
-                        return .empty()
+                        return .just(false)
                         
                     }
                 }

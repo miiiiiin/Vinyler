@@ -52,7 +52,6 @@ class TracklistViewController: UIViewController, ViewModelBindableType {
         tableView.pinToSuperview()
         
         let header = UIView(forAutoLayout: ())
-        header.backgroundColor = .red
         
         self.setTextColors(labels: [titleLabel, artistLabel, tracklistLabel])
         
