@@ -18,9 +18,7 @@ class SearchCell: UITableViewCell {
     private var disposeBag = DisposeBag()
     
     func update(with searchResult: ResultItem) {
-        disposeBag = DisposeBag()
-//        albumImageView.image =
-        
+        disposeBag = DisposeBag()        
         let imageDriver: Driver<UIImage?>
         if let imgUrl = URL(string: searchResult.thumb) {
             

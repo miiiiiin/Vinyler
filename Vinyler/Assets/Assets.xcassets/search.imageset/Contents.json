@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "placeholder-cd-640x640.jpg",
+      "filename" : "29.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "placeholder-cd-640x640 1.jpg",
+      "filename" : "40.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "placeholder-cd-640x640 2.jpg",
+      "filename" : "60.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

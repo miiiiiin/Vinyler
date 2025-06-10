@@ -20,6 +20,7 @@ extension String {
     static let noResultsTitle = NSLocalizedString("No Results", comment: "")
     static let noResultsMessage = NSLocalizedString("Sorry, we couldn't find it.", comment: "")
     static let searchPlaceholder = NSLocalizedString("Search by code or title", comment: "")
+    static let searchLikedPlaceholder = NSLocalizedString("Search", comment: "")
     static let introduce = NSLocalizedString("Introduce", comment: "")
     static let inspiredFrom = NSLocalizedString("Ivan Blagajic's Vinyl", comment: "")
     static let introduceDetail = NSLocalizedString("Vinyler is an app for searching vinyl with barcode scanning. It's inspired by %@. and I inform you that this doesn't collect any user information. also it doesn't made for any profits.", comment: "")
@@ -49,4 +50,5 @@ extension String {
     static let signUp = NSLocalizedString("Sign Up", comment: "")
     static let login = NSLocalizedString("Login", comment: "")
     static let menuLiked = NSLocalizedString("Liked", comment: "")
+    static let likedListTitle = NSLocalizedString("좋아요 표시한 음반", comment: "")
 }

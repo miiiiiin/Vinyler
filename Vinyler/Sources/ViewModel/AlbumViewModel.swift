@@ -41,7 +41,6 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
     
     lazy var likeAction: Action<Release, Bool> = {
         Action<Release, Bool> { [unowned self] input in
-            
             let request = LikeRequest.transform(release: input)
             return self.useCase.toggleLike(request: request)
                 .flatMap { result -> Observable<Bool> in
@@ -68,9 +67,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                         return .just(response.isLiking)
                         
                     case let .failure(error):
-                        let errorResponse = error.errorDescription
-                        Toast(text: errorResponse).show()
-                        return .empty()
+                        return .just(false)
                         
                     }
                 }

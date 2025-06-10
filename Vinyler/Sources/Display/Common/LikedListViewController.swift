@@ -19,33 +19,58 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
     
     var backButton = UIButton.back
     let titleLabel = UILabel.header
-    let tableView = UITableView(forAutoLayout: ())
+    let searchIconView = UIImageView(forAutoLayout: ())
+
+    lazy var tableView = UITableView(forAutoLayout: ())
+    private let searchFieldContainer = UIView.background
+    private let inputField = UITextField.empty
     
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.tableHeaderView?.layoutIfNeeded()
+        setUpLayout()
     }
     
-    override func loadView() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //        tableView.tableHeaderView?.layoutIfNeeded()
+    }
+    
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
+    func setUpLayout() {
         let root = UIView.background
-        let contentView = UIView(forAutoLayout: ())
-        [contentView].forEach(root.addSubview(_:))
-        [tableView].forEach(contentView.addSubview(_:))
         
-        contentView.pinToSuperview()
+        self.setTextColors(labels: [titleLabel])
+        
+        [tableView].forEach(root.addSubview)
+        tableView.register(LikeCell.self, forCellReuseIdentifier: "LikeCell")
+        
+        titleLabel.text = .likedListTitle
+        
         tableView.pinToSuperview()
-        
         let header = UIView(forAutoLayout: ())
         
-        [backButton, titleLabel].forEach(header.addSubview)
+        [backButton, titleLabel, searchFieldContainer].forEach(header.addSubview)
+        
+        [inputField, searchIconView].forEach(searchFieldContainer.addSubview)
+        
+        searchFieldContainer.layer.cornerRadius = 10
+        searchFieldContainer.layer.borderWidth = 1
+        searchFieldContainer.layer.borderColor = UIColor.lightGray.cgColor
         
         header.snp.makeConstraints { make in
             make.width.equalTo(root.frame.width)
-            make.height.equalTo(70)
+            make.height.equalTo(220)
         }
+        
+        header.layoutIfNeeded()
+        header.frame.size.height = 220
         
         backButton.snp.makeConstraints { make in
             make.top.equalTo(header.safeAreaLayoutGuide.snp.top).offset(33)
@@ -54,16 +79,39 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(backButton.snp.bottom).offset(33)
-//            make.leading.equalTo(contentView.snp.leading).offset(33)
-//            make.trailing.equalTo(contentView.snp.trailing)
+            make.leading.equalToSuperview().offset(24)
         }
         
+        searchFieldContainer.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(33)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(40)
+        }
+        
+        inputField.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-11)
+            make.centerY.equalToSuperview()
+        }
+        
+        searchIconView.snp.makeConstraints { make in
+            make.trailing.equalTo(inputField.snp.trailing)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(20)
+        }
+        
+        searchIconView.image = #imageLiteral(resourceName: "search")
         tableView.tableHeaderView = header
         tableView.layoutMargins = .zero
         tableView.separatorInset = .zero
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
-        tableView.rowHeight = 70
+        tableView.rowHeight = 120
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+        tableView.delegate = nil
+        tableView.dataSource = nil
+        inputField.placeholder = .searchLikedPlaceholder
+        
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
         } else {
@@ -78,6 +126,7 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
         let output = viewModel.output
         
         output.likedAlbums
+            .observe(on: MainScheduler.instance)
             .bind(to: tableView.rx.items)
             .disposed(by: disposeBag)
         
@@ -88,16 +137,14 @@ class LikedListViewController: UIViewController, ViewModelBindableType {
 
 extension Reactive where Base: UITableView {
     func items(_ items: Observable<[VinylerRelease]>) -> Disposable {
-        let cellId = "likeCell"
-        
+        let cellId = "LikeCell"
+
         base.register(LikeCell.self, forCellReuseIdentifier: cellId)
-        
+
         return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, item, cell in
-            
+
             if let cell = cell as? LikeCell {
-//                cell.titleLabel.text = item.title
-//                cell.albumImageView.image = item.
-//                cell.artistLabel.text = item.artistsSort.uppercased()
+                cell.update(with: item)
             }
         }
     }
