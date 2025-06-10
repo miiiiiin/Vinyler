@@ -14,7 +14,7 @@ class ReviewView: UIView {
     
     var contentView = UIView.background
     var ratingView: CosmosView!
-    let titleLabel = UILabel.header2
+    let titleLabel = UILabel.subheader
     
     override init(frame: CGRect) {
         super.init(frame: frame)
