@@ -49,6 +49,19 @@ extension UITextField {
         tf.addSubview(line)
         return tf
     }()
+    
+    static var empty: UITextField = {
+        let textField = CustomTextfield(forAutoLayout: ())
+        textField.clearButtonMode = .whileEditing
+        textField.borderStyle = .none
+        textField.font = UIFont.body
+        textField.textColor = style.Colors.tint
+        textField.tintColor = .lightGray
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.returnKeyType = .search
+        return textField
+    }()
 }
 
 class CustomTextfield: UITextField {

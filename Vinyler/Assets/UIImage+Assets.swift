@@ -23,4 +23,5 @@ extension UIImage {
     static let more = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
     static let fullHeart = UIImage(named: "fullheart")?.withRenderingMode(.alwaysTemplate)
     static let emptyHeart = UIImage(named: "emptyheart")?.withRenderingMode(.alwaysTemplate)
+    static let search = UIImage(named: "search")?.withRenderingMode(.alwaysTemplate)
 }

@@ -46,7 +46,6 @@ class LikedListViewModel: LikedListViewModelInput, LikedListViewModelOutput, Lik
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: UserUseCase
     
-    // FIXME
     init(sceneCoordinator: SceneCoordinatorType, useCase: UserUseCase, likedList: [VinylerRelease]) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
