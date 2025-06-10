@@ -15,6 +15,7 @@
 		3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */; };
 		3850AEAB2DBA1E110052BFF1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAA2DBA1E110052BFF1 /* Menu.swift */; };
 		3850AEAD2DBA1E510052BFF1 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */; };
+		386197D42DF86DA40088173A /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386197D32DF86DA40088173A /* ReviewCell.swift */; };
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
 		3876F78B2D92DD8F000B29C5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */; };
@@ -145,6 +146,7 @@
 		3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		3850AEAA2DBA1E110052BFF1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		386197D32DF86DA40088173A /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 				FA050CF7239BFAA70067D32C /* SearchCell.swift */,
 				3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */,
 				38D4EBC32DBA86880028F11C /* LikeCell.swift */,
+				386197D32DF86DA40088173A /* ReviewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				387926462D8077D700841CAF /* CommonUseCase.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				38E297BD2DBD37910038C505 /* UserService.swift in Sources */,
+				386197D42DF86DA40088173A /* ReviewCell.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
 				FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */,

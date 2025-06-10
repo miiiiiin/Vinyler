@@ -34,6 +34,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     
     private let reviewStackView = UIStackView(forAutoLayout: ())
     private let reviewView = UIView.review
+    lazy var tableView = UITableView(forAutoLayout: ())
     private var bannerView: GADBannerView!
     private var likeButton = UIButton.like
     private var releaseInfo: Release!
@@ -170,6 +171,8 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         bannerView.load(GADRequest())
         bannerView.delegate = self
         
+        setUpTableView()
+        
         NSLayoutConstraint.activate([
             albumImageView.leadingAnchor.constraint(equalTo: albumWithVinyl.leadingAnchor),
             albumImageView.topAnchor.constraint(equalTo: albumWithVinyl.topAnchor),
@@ -228,31 +231,24 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             descriptionLabel.leadingAnchor.constraint(equalTo: descriptionTitleLabel.leadingAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: descriptionTitleLabel.bottomAnchor, constant: 22),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -33),
-            //            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -44),
             
-            //            bannerView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-            //            bannerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            //            bannerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            //            bannerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            bannerView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
+            bannerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            bannerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            bannerView.heightAnchor.constraint(equalToConstant: 30)
         ])
         
-        [reviewView].forEach(reviewStackView.addArrangedSubview)
+        [reviewView, tableView].forEach(reviewStackView.addArrangedSubview)
         
         reviewStackView.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
+            make.top.equalTo(bannerView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()
         }
         
         reviewView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(105)
-        }
-        
-        bannerView.snp.makeConstraints { make in
-            make.top.equalTo(reviewStackView.snp.bottom)
-                .offset(10)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(contentView.snp.bottom)
         }
         
         likeButton.snp.makeConstraints { make in
@@ -263,6 +259,18 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         vinylImageView.transform = CGAffineTransform(translationX: -44, y: 0).rotated(by: -CGFloat.pi / 2)
         
         self.view = root
+    }
+    
+    func setUpTableView() {
+        tableView.register(ReviewCell.self, forCellReuseIdentifier: "ReviewCell")
+        tableView.layoutMargins = .zero
+        tableView.separatorInset = .zero
+        tableView.separatorColor = .veryLightPink
+        tableView.separatorStyle = .singleLine
+        tableView.rowHeight = 120
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
+        tableView.delegate = nil
+        tableView.dataSource = nil
     }
     
     func bindViewModel() {
@@ -392,3 +400,18 @@ extension AlbumViewController: GADBannerViewDelegate {
         }
     }
 }
+
+//extension Reactive where Base: UITableView {
+//    func items(_ items: Observable<[VinylerRelease]>) -> Disposable {
+//        let cellId = "ReviewCell"
+//
+//        base.register(ReviewCell.self, forCellReuseIdentifier: cellId)
+//
+//        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, item, cell in
+//
+//            if let cell = cell as? ReviewCell {
+//                cell.update(with: item)
+//            }
+//        }
+//    }
+//}
