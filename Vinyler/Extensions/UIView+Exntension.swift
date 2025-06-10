@@ -57,4 +57,9 @@ extension UIView {
         view.backgroundColor = .lightGray
         return view
     }
+    
+    static var review: ReviewView {
+        let view = ReviewView(forAutoLayout: ())
+        return view
+    }
 }
