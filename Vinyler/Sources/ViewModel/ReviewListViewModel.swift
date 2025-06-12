@@ -41,7 +41,7 @@ class ReviewListViewModel: ReviewListViewModelInput, ReviewListViewModelOutput, 
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, release: Release, image: Driver<UIImage?>) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
     }

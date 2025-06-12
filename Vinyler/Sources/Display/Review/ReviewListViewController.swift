@@ -18,7 +18,7 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
     var viewModel: ReviewListViewModelType!
     
     private let tableView = UITableView(forAutoLayout: ())
-    private let closeButton = UIButton.close
+    private var closeButton = UIButton.close
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -69,20 +69,4 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         closeButton.rx.action = input.dismissAction
     }
     
-}
-
-
-extension Reactive where Base: UITableView {
-    func items(_ items: Observable<[TrackList]>) -> Disposable {
-        let cellId = "ReviewCell"
-        
-        base.register(ReviewCell.self, forCellReuseIdentifier: cellId)
-        
-        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, track, cell in
-            
-            if let cell = cell as? ReviewCell {
-                // todo
-            }
-        }
-    }
 }
