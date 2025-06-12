@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A35C6520698B69C0C0FA1D1 /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231E94EE65C965FDC9D225DE /* Pods_Vinyler.framework */; };
 		38076B532DB8DF2C0032C439 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */; };
 		3811FA152DB142370028FEC9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA142DB142370028FEC9 /* SearchViewModel.swift */; };
 		3811FA172DB144810028FEC9 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA162DB144810028FEC9 /* ScanViewModel.swift */; };
@@ -14,6 +15,7 @@
 		3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */; };
 		3850AEAB2DBA1E110052BFF1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAA2DBA1E110052BFF1 /* Menu.swift */; };
 		3850AEAD2DBA1E510052BFF1 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */; };
+		386197D42DF86DA40088173A /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386197D32DF86DA40088173A /* ReviewCell.swift */; };
 		387035212698B6A60049777F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387035202698B6A60049777F /* HomeViewController.swift */; };
 		387035302698BA880049777F /* HoltwoodOneSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */; };
 		3876F78B2D92DD8F000B29C5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */; };
@@ -37,6 +39,7 @@
 		38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */; };
 		38BE25312DBE5BF700622B09 /* VinylerRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE25302DBE5BF700622B09 /* VinylerRelease.swift */; };
 		38CDB5B72DB9F38A00D5EAD2 /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */; };
+		38CF4C382DF80EFC00EDE3A9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF4C372DF80EFC00EDE3A9 /* ReviewView.swift */; };
 		38D4EBBE2DBA84410028F11C /* LikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */; };
 		38D4EBC02DBA84840028F11C /* LikedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */; };
 		38D4EBC42DBA86880028F11C /* LikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBC32DBA86880028F11C /* LikeCell.swift */; };
@@ -58,7 +61,7 @@
 		38E297BB2DBD373B0038C505 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E297BA2DBD373B0038C505 /* UserRepository.swift */; };
 		38E297BD2DBD37910038C505 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E297BC2DBD37910038C505 /* UserService.swift */; };
 		38FB99F82D9025D700993111 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB99F72D9025D700993111 /* SignUpRequest.swift */; };
-		64B8FA85E82F1095B4AFC54E /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9DC0DBAC559C2DF568322BB /* Pods_Vinyler_VinylerTests.framework */; };
+		5753D83AE30CAB86E825B19E /* Pods_Vinyler_VinylerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C2B420B7F0818BA4802C18 /* Pods_Vinyler_VinylerTests.framework */; };
 		7D18847926EEFFF100AE8815 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D18847826EEFFF100AE8815 /* Constants.swift */; };
 		7D6BFAA326F4208900BAF902 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7D6BFAA226F4208900BAF902 /* Prod.xcconfig */; };
 		7DE9D78923F27F9B007A9CC3 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE9D78823F27F9B007A9CC3 /* loading.json */; };
@@ -97,7 +100,6 @@
 		817B26322315379C003DF85D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817B26312315379B003DF85D /* Assets.xcassets */; };
 		817B263423153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */; };
 		81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F46D7B231A7263002CAC44 /* FormatsCollectionView.swift */; };
-		9FB85F0DDD9C4DECAA7F6717 /* Pods_Vinyler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3D77A4A8D68D9F3DFCBAFB /* Pods_Vinyler.framework */; };
 		FA050CF8239BFAA70067D32C /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA050CF7239BFAA70067D32C /* SearchCell.swift */; };
 		FA09D5392396B966006F37BD /* FormatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D5382396B966006F37BD /* FormatCell.swift */; };
 		FA09D53B2396BFE8006F37BD /* DisclosureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */; };
@@ -133,6 +135,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D325D819B644E5183B9E965 /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
+		1FA5FAE4965595FBC4B7B9A1 /* Pods-Vinyler-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		231E94EE65C965FDC9D225DE /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34C2B420B7F0818BA4802C18 /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
 		3811FA142DB142370028FEC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3811FA162DB144810028FEC9 /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 		3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		3850AEAA2DBA1E110052BFF1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		386197D32DF86DA40088173A /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		387035202698B6A60049777F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3870352F2698BA880049777F /* HoltwoodOneSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HoltwoodOneSC-Regular.otf"; sourceTree = "<group>"; };
 		3876F78A2D92DD8F000B29C5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +170,7 @@
 		38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		38BE25302DBE5BF700622B09 /* VinylerRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylerRelease.swift; sourceTree = "<group>"; };
 		38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
+		38CF4C372DF80EFC00EDE3A9 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewController.swift; sourceTree = "<group>"; };
 		38D4EBBF2DBA84840028F11C /* LikedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewModel.swift; sourceTree = "<group>"; };
 		38D4EBC32DBA86880028F11C /* LikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCell.swift; sourceTree = "<group>"; };
@@ -184,8 +192,7 @@
 		38E297BA2DBD373B0038C505 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		38E297BC2DBD37910038C505 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		38FB99F72D9025D700993111 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
-		6B8975BEA48B065D6048A9AA /* Pods-Vinyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.debug.xcconfig"; sourceTree = "<group>"; };
-		6FA2B50F7D2E7019CA505CC3 /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
+		452A1F7E64D181461B38967D /* Pods-Vinyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler.release.xcconfig"; path = "Target Support Files/Pods-Vinyler/Pods-Vinyler.release.xcconfig"; sourceTree = "<group>"; };
 		7D18847826EEFFF100AE8815 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7D6BFAA226F4208900BAF902 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		7DB537E923C8161F00BAA6C5 /* IntroductionViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewcontroller.swift; sourceTree = "<group>"; };
@@ -229,10 +236,7 @@
 		817B26312315379B003DF85D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817B263323153FC7003DF85D /* UITapGestureRecognizer+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+UILabel.swift"; sourceTree = "<group>"; };
 		81F46D7B231A7263002CAC44 /* FormatsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatsCollectionView.swift; sourceTree = "<group>"; };
-		97C3508E5ACE6D32970A723B /* Pods-Vinyler-VinylerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.debug.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9C3D77A4A8D68D9F3DFCBAFB /* Pods_Vinyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9DC0DBAC559C2DF568322BB /* Pods_Vinyler_VinylerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vinyler_VinylerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC8DDB39439408C8EF67D6CE /* Pods-Vinyler-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
+		BDA55F981269D61C40E7CBCF /* Pods-Vinyler-VinylerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vinyler-VinylerTests.release.xcconfig"; path = "Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA050CF7239BFAA70067D32C /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		FA09D5382396B966006F37BD /* FormatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatCell.swift; sourceTree = "<group>"; };
 		FA09D53A2396BFE8006F37BD /* DisclosureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureButton.swift; sourceTree = "<group>"; };
@@ -262,7 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FB85F0DDD9C4DECAA7F6717 /* Pods_Vinyler.framework in Frameworks */,
+				1A35C6520698B69C0C0FA1D1 /* Pods_Vinyler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,22 +274,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B8FA85E82F1095B4AFC54E /* Pods_Vinyler_VinylerTests.framework in Frameworks */,
+				5753D83AE30CAB86E825B19E /* Pods_Vinyler_VinylerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BC6735BB995B19E46DC7165 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9C3D77A4A8D68D9F3DFCBAFB /* Pods_Vinyler.framework */,
-				A9DC0DBAC559C2DF568322BB /* Pods_Vinyler_VinylerTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3879263D2D80770B00841CAF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,7 +451,7 @@
 				813E834222E441430057F0E6 /* Products */,
 				CD87E881C4C1DBBAFD0975B8 /* Pods */,
 				7D4872BF23E1190F000D6D49 /* Recovered References */,
-				1BC6735BB995B19E46DC7165 /* Frameworks */,
+				CEB739514C1D101BF0EF6445 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -652,6 +647,7 @@
 				FAD03CC8232CFAE60067E2D9 /* DynamicTableView.swift */,
 				FA5BC2E523DC16FC000CFD9D /* CustomTextView.swift */,
 				38ADA65F2D86F1DA00411B8B /* CustomTextFieldView.swift */,
+				38CF4C372DF80EFC00EDE3A9 /* ReviewView.swift */,
 			);
 			name = Views;
 			path = ../Views;
@@ -679,12 +675,21 @@
 		CD87E881C4C1DBBAFD0975B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6B8975BEA48B065D6048A9AA /* Pods-Vinyler.debug.xcconfig */,
-				6FA2B50F7D2E7019CA505CC3 /* Pods-Vinyler.release.xcconfig */,
-				97C3508E5ACE6D32970A723B /* Pods-Vinyler-VinylerTests.debug.xcconfig */,
-				BC8DDB39439408C8EF67D6CE /* Pods-Vinyler-VinylerTests.release.xcconfig */,
+				1D325D819B644E5183B9E965 /* Pods-Vinyler.debug.xcconfig */,
+				452A1F7E64D181461B38967D /* Pods-Vinyler.release.xcconfig */,
+				1FA5FAE4965595FBC4B7B9A1 /* Pods-Vinyler-VinylerTests.debug.xcconfig */,
+				BDA55F981269D61C40E7CBCF /* Pods-Vinyler-VinylerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CEB739514C1D101BF0EF6445 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				231E94EE65C965FDC9D225DE /* Pods_Vinyler.framework */,
+				34C2B420B7F0818BA4802C18 /* Pods_Vinyler_VinylerTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FA09D53C239BF1C6006F37BD /* Search */ = {
@@ -703,6 +708,7 @@
 				FA050CF7239BFAA70067D32C /* SearchCell.swift */,
 				3850AEAC2DBA1E510052BFF1 /* MenuCell.swift */,
 				38D4EBC32DBA86880028F11C /* LikeCell.swift */,
+				386197D32DF86DA40088173A /* ReviewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -737,13 +743,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 813E835E22E441450057F0E6 /* Build configuration list for PBXNativeTarget "Vinyler" */;
 			buildPhases = (
-				2007D07A4B9C97ED870B5DE9 /* [CP] Check Pods Manifest.lock */,
+				22170B60FE890F84070C75FC /* [CP] Check Pods Manifest.lock */,
 				813E833D22E441430057F0E6 /* Sources */,
 				813E833E22E441430057F0E6 /* Frameworks */,
 				813E833F22E441430057F0E6 /* Resources */,
 				FAA41DE7232514E4008BA317 /* ShellScript */,
-				3C2C9CCE4A5593D4C33AD55C /* [CP] Embed Pods Frameworks */,
-				70B4794CBEBC22A0754D40DE /* [CP] Copy Pods Resources */,
+				3BF494A8362CE5F4DFF824E0 /* [CP] Embed Pods Frameworks */,
+				55E5D6AD3EB2CE96B03032D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -758,12 +764,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 813E836122E441450057F0E6 /* Build configuration list for PBXNativeTarget "VinylerTests" */;
 			buildPhases = (
-				FE3F1597F064DC7B68201301 /* [CP] Check Pods Manifest.lock */,
+				66938EFA91105E7A46474773 /* [CP] Check Pods Manifest.lock */,
 				813E835122E441450057F0E6 /* Sources */,
 				813E835222E441450057F0E6 /* Frameworks */,
 				813E835322E441450057F0E6 /* Resources */,
-				F509F965333FD4BE729628FE /* [CP] Embed Pods Frameworks */,
-				9BDD96632F787D3F576A4BA7 /* [CP] Copy Pods Resources */,
+				34E42F9B4FE0F76FEA4475E2 /* [CP] Embed Pods Frameworks */,
+				107EF72F08D1AB511925EC62 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -838,7 +844,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2007D07A4B9C97ED870B5DE9 /* [CP] Check Pods Manifest.lock */ = {
+		107EF72F08D1AB511925EC62 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22170B60FE890F84070C75FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -860,58 +883,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3C2C9CCE4A5593D4C33AD55C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70B4794CBEBC22A0754D40DE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9BDD96632F787D3F576A4BA7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F509F965333FD4BE729628FE /* [CP] Embed Pods Frameworks */ = {
+		34E42F9B4FE0F76FEA4475E2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -928,24 +900,41 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler-VinylerTests/Pods-Vinyler-VinylerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FAA41DE7232514E4008BA317 /* ShellScript */ = {
+		3BF494A8362CE5F4DFF824E0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		FE3F1597F064DC7B68201301 /* [CP] Check Pods Manifest.lock */ = {
+		55E5D6AD3EB2CE96B03032D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vinyler/Pods-Vinyler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66938EFA91105E7A46474773 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -966,6 +955,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FAA41DE7232514E4008BA317 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1050,6 +1056,7 @@
 				387926462D8077D700841CAF /* CommonUseCase.swift in Sources */,
 				813E837F22E46BAA0057F0E6 /* TrackList.swift in Sources */,
 				38E297BD2DBD37910038C505 /* UserService.swift in Sources */,
+				386197D42DF86DA40088173A /* ReviewCell.swift in Sources */,
 				817B263023152389003DF85D /* ObservableType+Void.swift in Sources */,
 				FAD03CD6232D0E460067E2D9 /* ArtistDetail.swift in Sources */,
 				FA09D53E239BF1D3006F37BD /* SearchViewController.swift in Sources */,
@@ -1059,6 +1066,7 @@
 				FA177E9724028ABB00AF1BF6 /* DefaultStyle.swift in Sources */,
 				817B25D8230966E8003DF85D /* RxAVCaptureMetadataOutputObjectsDelegate.swift in Sources */,
 				38FB99F82D9025D700993111 /* SignUpRequest.swift in Sources */,
+				38CF4C382DF80EFC00EDE3A9 /* ReviewView.swift in Sources */,
 				814B06AD2305849A0062906D /* NavigationController.swift in Sources */,
 				3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */,
 				387E38CB2D96E18B003C1920 /* MainViewModel.swift in Sources */,
@@ -1229,7 +1237,7 @@
 		};
 		813E835F22E441450057F0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B8975BEA48B065D6048A9AA /* Pods-Vinyler.debug.xcconfig */;
+			baseConfigurationReference = 1D325D819B644E5183B9E965 /* Pods-Vinyler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1250,7 +1258,7 @@
 		};
 		813E836022E441450057F0E6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FA2B50F7D2E7019CA505CC3 /* Pods-Vinyler.release.xcconfig */;
+			baseConfigurationReference = 452A1F7E64D181461B38967D /* Pods-Vinyler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1271,7 +1279,7 @@
 		};
 		813E836222E441450057F0E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97C3508E5ACE6D32970A723B /* Pods-Vinyler-VinylerTests.debug.xcconfig */;
+			baseConfigurationReference = 1FA5FAE4965595FBC4B7B9A1 /* Pods-Vinyler-VinylerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1293,7 +1301,7 @@
 		};
 		813E836322E441450057F0E6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC8DDB39439408C8EF67D6CE /* Pods-Vinyler-VinylerTests.release.xcconfig */;
+			baseConfigurationReference = BDA55F981269D61C40E7CBCF /* Pods-Vinyler-VinylerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

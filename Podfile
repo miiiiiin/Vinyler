@@ -19,7 +19,8 @@ target 'Vinyler' do
     pod 'SnapKit'
     pod 'Toaster', '~> 2.3.0'
     pod 'MKProgress', '~> 1.1.0'
-    
+   	pod 'Cosmos', '~> 23.0'
+
     target 'VinylerTests' do
         # Pods for testing
     end
