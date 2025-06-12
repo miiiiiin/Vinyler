@@ -15,6 +15,7 @@ class ReviewView: UIView {
     var contentView = UIView.background
     var ratingView: CosmosView!
     let titleLabel = UILabel.subheader
+    let separator = UIView.separator
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +30,7 @@ class ReviewView: UIView {
     private func setUpLayout() {
         ratingView = CosmosView()
         addSubview(contentView)
-        [ratingView, titleLabel].forEach(contentView.addSubview)
+        [ratingView, titleLabel, separator].forEach(contentView.addSubview)
         
         ratingView.rating = 0
         ratingView.settings.updateOnTouch = true
@@ -41,6 +42,7 @@ class ReviewView: UIView {
         ratingView.settings.emptyColor = .veryLightPink
         
         titleLabel.text = .reviewGuide
+        separator.backgroundColor = .veryLightPink
         
         contentView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
@@ -56,6 +58,12 @@ class ReviewView: UIView {
             make.top.equalTo(ratingView.snp.bottom).offset(14)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(17)
+        }
+        
+        separator.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-1)
+            make.leading.equalToSuperview().offset(33)
+            make.trailing.equalToSuperview().offset(-33)
         }
     }
 }

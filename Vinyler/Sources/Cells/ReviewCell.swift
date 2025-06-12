@@ -11,7 +11,7 @@ import UIKit
 import Cosmos
 
 class ReviewCell: UITableViewCell {
-    let imageView = UIImageView(forAutoLayout: ())
+    let imgView = UIImageView(forAutoLayout: ())
     let stackView = UIStackView(forAutoLayout: ())
     let nicknameLabel = UILabel.subheader
     let reviewLabel = UILabel.body
@@ -35,8 +35,8 @@ class ReviewCell: UITableViewCell {
     
     private func setUp() {
         ratingView = CosmosView()
-        imageView.image = .reviewPlaceholder
-        [imageView, stackView].forEach(addSubview)
+        imgView.image = UIImage.reviewPlaceholder
+        [imgView, stackView].forEach(addSubview)
         [nicknameLabel, ratingView, reviewLabel].forEach(stackView.addArrangedSubview)
         
         stackView.axis = .horizontal
