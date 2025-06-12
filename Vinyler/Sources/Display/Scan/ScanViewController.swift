@@ -12,7 +12,11 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-class ScanViewController: UIViewController {
+class ScanViewController: UIViewController, ViewModelBindableType {
+    
+    // MARK: - ViewModel
+    
+    var viewModel: ScanViewModelType!
     
     private let back = UIButton.back
     private let session = AVCaptureSession()
@@ -24,7 +28,6 @@ class ScanViewController: UIViewController {
         super.viewDidLoad()
         
         self.setUpSession()
-        self.setUpEvent()
     }
     
     private func setUpSession() {
@@ -50,26 +53,22 @@ class ScanViewController: UIViewController {
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             self?.session.stopRunning()
         })
-            .flatMap { barcode -> Observable<String> in
-                if let barcodeString = barcode?.stringValue {
-                    return Observable.just(barcodeString)
-                } else {
-                    return Observable.error(RequestError.noResults)
-                }
+        .flatMap { barcode -> Observable<String> in
+            if let barcodeString = barcode?.stringValue {
+                return Observable.just(barcodeString)
+            } else {
+                return Observable.error(RequestError.noResults)
+            }
         }
         .observeOn(MainScheduler.instance)
         .subscribe(onNext: { [weak self] barcode in
-            let loadingVC = LoadingViewController(barcode: barcode)
-            let nav = NavigationController(rootViewController: loadingVC)
-            nav.transitioningDelegate = self
-            self?.present(nav, animated: true)
+            //            let loadingVC = LoadingViewController(barcode: barcode)
+            //            let nav = NavigationController(rootViewController: loadingVC)
+            //            nav.transitioningDelegate = self
+            //            self?.present(nav, animated: true)
+            self?.viewModel.input.loadingAction.execute(barcode)
+            
         }).disposed(by: self.disposeBag)
-    }
-    
-    private func setUpEvent() {
-        back.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,15 +132,24 @@ class ScanViewController: UIViewController {
         targetView.layer.shadowOpacity = 0.9
         targetView.layer.shadowRadius = 3
     }
+    
+    func bindViewModel() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        back.rx.tap
+            .bind(to: input.backAction.inputs)
+            .disposed(by: disposeBag)
+    }
 }
 
 extension ScanViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if let presentingNC = presenting as? UINavigationController,
-            presentingNC.topViewController?.isKind(of: ScanViewController.self) ?? false,
-            let presentedNC = presented as? UINavigationController,
-            presentedNC.viewControllers.first?.isKind(of: LoadingViewController.self) ?? false {
+           presentingNC.topViewController?.isKind(of: ScanViewController.self) ?? false,
+           let presentedNC = presented as? UINavigationController,
+           presentedNC.viewControllers.first?.isKind(of: LoadingViewController.self) ?? false {
             return PresentLoadingAnimationController()
         }
         return nil

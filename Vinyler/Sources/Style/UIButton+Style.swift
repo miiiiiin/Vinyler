@@ -23,10 +23,34 @@ extension UIButton {
         button.layer.shadowOpacity = 0.8
         return button
     }
+    
+    static var done: UIButton {
+        let button = UIButton(forAutoLayout: ())
+        button.backgroundColor = .inactive
+        button.setTitle(.signUp, for: .normal)
+        button.titleLabel?.textColor = .white
+        button.layer.cornerRadius = 20
+        button.titleLabel?.font = .header
+        button.layer.shadowRadius = 8/2
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2).cgColor
+        button.layer.cornerRadius = 10
+        button.layer.shadowOpacity = 0.8
+        return button
+    }
 
     static var close: UIButton {
         let button = UIButton(forAutoLayout: ())
         button.setImage(.close, for: .normal)
+        button.tintColor = style.Colors.tint
+        button.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+        return button
+    }
+    
+    static var like: UIButton {
+        let button = UIButton(forAutoLayout: ())
+        button.setImage(.emptyHeart, for: .normal)
         button.tintColor = style.Colors.tint
         button.widthAnchor.constraint(equalToConstant: 44).isActive = true
         button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true

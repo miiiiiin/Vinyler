@@ -20,7 +20,7 @@ class DiscogsAPI {
     private let baseURL = "https://api.discogs.com"
     let disposeBag = DisposeBag()
 
-    func search(query: String) -> Observable<[Result]> {
+    func search(query: String) -> Observable<[ResultItem]> {
 
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
              return Observable.error(RequestError.invalidUrl)

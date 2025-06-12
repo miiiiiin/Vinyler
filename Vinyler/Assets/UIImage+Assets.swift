@@ -21,4 +21,8 @@ extension UIImage {
     static let artist = UIImage(named: "artist")?.withRenderingMode(.alwaysTemplate)
     static let list = UIImage(named: "list")?.withRenderingMode(.alwaysTemplate)
     static let more = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
+    static let fullHeart = UIImage(named: "fullheart")?.withRenderingMode(.alwaysTemplate)
+    static let emptyHeart = UIImage(named: "emptyheart")?.withRenderingMode(.alwaysTemplate)
+    static let search = UIImage(named: "search")?.withRenderingMode(.alwaysTemplate)
+    static let reviewPlaceholder = UIImage(named: "review_placeholder")?.withRenderingMode(.alwaysTemplate)
 }

@@ -32,6 +32,11 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>scanning for barcode</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HoltwoodOneSC-Regular.otf</string>

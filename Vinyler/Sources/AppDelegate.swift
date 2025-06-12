@@ -19,12 +19,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
 
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
+
         let rootViewController = MainViewController()
-//        let rootViewController = HomeViewController()
+//        let rootViewController = SignUpViewController()
         let nav = NavigationController(rootViewController: rootViewController)
         window?.rootViewController = nav
+        
+//        window?.rootViewController = UINavigationController()
         window?.makeKeyAndVisible()
+        
+
+        
+//        let sceneCoordinator = SceneCoordinator(window: window!)
+//        SceneCoordinator.shared = sceneCoordinator
+//        
+//        let viewModel = AlbumViewModel(sceneCoordinator: SceneCoordinator.shared)
+//        sceneCoordinator.transition(to: Scene.albulijm(viewModel))
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        SceneCoordinator.shared = sceneCoordinator
+        
+        let viewModel = LoginViewModel(sceneCoordinator: SceneCoordinator.shared, useCase: CommonUseCaseImpl(repository: CommonService(network: VNNetworking())))
+        sceneCoordinator.transition(to: Scene.login(viewModel))
 
         return true
     }

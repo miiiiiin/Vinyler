@@ -17,4 +17,12 @@ extension UIImageView {
         ratio.isActive = true
         return ratio
     }
+    
+    static var menu: UIImageView {
+        let imgView = UIImageView(forAutoLayout: ())
+        imgView.tintColor = style.Colors.tint
+        imgView.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        imgView.heightAnchor.constraint(equalTo: imgView.widthAnchor).isActive = true
+        return imgView
+    }
 }
