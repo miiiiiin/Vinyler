@@ -42,7 +42,7 @@ class ReviewView: UIView {
         ratingView.settings.emptyColor = .veryLightPink
         
         titleLabel.text = .reviewGuide
-        separator.backgroundColor = .veryLightPink
+        titleLabel.textColor = style.Colors.tint
         
         contentView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
@@ -62,8 +62,8 @@ class ReviewView: UIView {
         
         separator.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-1)
-            make.leading.equalToSuperview().offset(33)
-            make.trailing.equalToSuperview().offset(-33)
+            make.leading.equalToSuperview().offset(44)
+            make.trailing.equalToSuperview().offset(-44)
         }
     }
 }

@@ -35,6 +35,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     private let reviewStackView = UIStackView(forAutoLayout: ())
     private let reviewView = UIView.review
     lazy var tableView = UITableView(forAutoLayout: ())
+    private let moreReviewButton = UIButton.done
     private var bannerView: GADBannerView!
     private var likeButton = UIButton.like
     private var releaseInfo: Release!
@@ -177,7 +178,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             vinylImageView.widthAnchor.constraint(equalTo: albumImageView.widthAnchor)
         ])
         
-        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, likeButton, formatsCollectionView, disclosureButton, playerImageView, reviewStackView, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
+        [closeButton, moreButton, artistLabel, titleLabel, albumWithVinyl, dateLabel, likeButton, formatsCollectionView, disclosureButton, playerImageView, reviewStackView, moreReviewButton, descriptionTitleLabel, descriptionLabel, bannerView].forEach(contentView.addSubview)
         
         [reviewView, tableView].forEach(reviewStackView.addArrangedSubview)
         
@@ -235,7 +236,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         }
         
         descriptionTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(reviewStackView.snp.bottom).offset(10)
+            make.top.equalTo(moreReviewButton.snp.bottom).offset(33)
             make.leading.equalTo(disclosureButton.snp.leading)
         }
         
@@ -275,6 +276,13 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
         }
+        
+        moreReviewButton.snp.makeConstraints { make in
+            make.top.equalTo(reviewStackView.snp.bottom)
+            make.centerX.equalTo(contentView.snp.centerX)
+            make.height.equalTo(50)
+            make.width.equalTo(150)
+        }
     }
     
     func setUpLayout() {
@@ -284,6 +292,8 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         descriptionTitleLabel.text = .description
         closeButton.tintColor = style.Colors.tint
+        moreReviewButton.setTitle(.moreReview, for: .normal)
+        moreReviewButton.backgroundColor = .veryLightPink
         
         vinylImageView.image = #imageLiteral(resourceName: "vinyl")
         vinylImageView.isHidden = true
