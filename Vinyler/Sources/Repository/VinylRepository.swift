@@ -14,4 +14,5 @@ protocol VinylRepository {
     
     func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
+    func getReviews(request: Int) -> Observable<Result<[Review], Vinyler.NetworkError>>
 }

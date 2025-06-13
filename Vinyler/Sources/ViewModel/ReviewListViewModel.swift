@@ -16,6 +16,7 @@ protocol ReviewListViewModelInput {
 }
 
 protocol ReviewListViewModelOutput {
+    var reviews: Observable<[Review]> { get }
 }
 
 protocol ReviewListViewModelType {
@@ -36,14 +37,17 @@ class ReviewListViewModel: ReviewListViewModelInput, ReviewListViewModelOutput, 
         }
     }()
     
+    var reviews: Observable<[Review]>
+    
     // MARK: - Private -
     
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, reviews: [Review]) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
+        self.reviews = Observable.just(reviews)
     }
 }
 

@@ -58,4 +58,22 @@ class VinylService: VinylRepository {
             .asObservable()
     }
     
+    func getReviews(request: Int) -> Observable<Result<[Review], Vinyler.NetworkError>> {
+        return network.request(target: MultiTarget(APIEndPoint.getReviewsByVinyl(request: request)))
+            .flatMap { result -> Single<Result<[Review], Vinyler.NetworkError>> in
+                switch result {
+                case .success(let response):
+                    if let data = try? response.map([Review].self) {
+                        return .just(.success(data))
+                    } else {
+                        let error = Vinyler.NetworkError.serverError(statusCode: response.statusCode, message: "JSON 디코딩 실패")
+                        return .just(.failure(error))
+                    }
+                case .failure(let error):
+                    return .just(.failure(error))
+                }
+            }
+            .asObservable()
+    }
+    
 }

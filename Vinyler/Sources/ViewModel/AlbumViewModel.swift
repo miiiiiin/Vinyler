@@ -18,6 +18,7 @@ protocol AlbumViewModelInput {
     var loadingAction: Action<String, Void> { get }
     var dismissAction: CocoaAction { get }
     var tracklistAction: Action<Release, Void> { get }
+    var moreReviewAction: Action<Int, Void> { get }
 }
 
 protocol AlbumViewModelOutput {
@@ -89,17 +90,34 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         }
     }()
     
+    
+    lazy var moreReviewAction: Action<Int, Void> = {
+        Action<Int, Void> { [unowned self] input in
+            return self.useCase.getReviews(request: Int(input))
+                .flatMap { result -> Observable<Void> in
+                    switch result {
+                    case let .success(response):
+                        let viewModel = ReviewListViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, reviews: response)
+                        return self.sceneCoordinator.transition(to: Scene.reviewList(viewModel))
+                        
+                    case let .failure(error):
+                        let errorResponse = error.errorDescription
+                        Toast(text: errorResponse).show()
+                        return .empty()
+                    }
+                }
+        }
+    }()
+    
     lazy var dismissAction: CocoaAction = {
         CocoaAction { [unowned self] _ in
             return self.sceneCoordinator.dismissAll(animated: true).asObservable().map { _ in }
         }
     }()
     
-    
     var releaseInfo: Observable<Release>
     var isLike = PublishRelay<Bool>()
     var albumImage: Driver<UIImage?> = Driver.just(nil)
-    
     
     // MARK: - Private -
     

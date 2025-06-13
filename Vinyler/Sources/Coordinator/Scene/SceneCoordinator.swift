@@ -87,6 +87,15 @@ class SceneCoordinator: NSObject, SceneCoordinatorType {
             currentViewController = SceneCoordinator.actualViewController(for: viewController)
             currentViewController.navigationController?.navigationBar.isHidden = true
             
+        case let .overPresent(viewController):
+            viewController.modalPresentationStyle = .overCurrentContext
+            
+            currentViewController.present(viewController, animated: true) {
+                subject.onCompleted()
+            }
+            currentViewController = SceneCoordinator.actualViewController(for: viewController)
+            currentViewController.navigationController?.navigationBar.isHidden = true
+            
         case let .alert(viewController):
             currentViewController.present(viewController, animated: true) {
                 subject.onCompleted()
@@ -142,6 +151,8 @@ class SceneCoordinator: NSObject, SceneCoordinatorType {
             case .alert(_):
                 break
             case .tabBar(_):
+                break
+            case .overPresent:
                 break
             }
             

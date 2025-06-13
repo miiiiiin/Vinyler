@@ -333,23 +333,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
-        disclosureButton.rx.tap
-            .withLatestFrom(output.releaseInfo)
-            .subscribe(onNext: { [weak self] release in
-                if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
-                    UIApplication.shared.open(url, options: [:])
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        likeButton.rx.tap
-            .observe(on: MainScheduler.instance)
-            .withLatestFrom(output.releaseInfo)
-            .flatMapLatest { release -> Observable<Bool> in
-                return input.likeAction.execute(release)
-            }
-            .bind(to: output.isLike)
-            .disposed(by: disposeBag)
+        bindActions()
         
         output.isLike
             .observe(on: MainScheduler.instance)
@@ -442,6 +426,36 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             }}
             .map {[FormatsSection(items: $0)]}
             .bind(to: formatsCollectionView.rx.sections)
+            .disposed(by: disposeBag)
+    }
+    
+    func bindActions() {
+        let input = viewModel.input
+        let output = viewModel.output
+        
+        disclosureButton.rx.tap
+            .withLatestFrom(output.releaseInfo)
+            .subscribe(onNext: { [weak self] release in
+                if let url = URL(string: "\(release.videos?.first?.uri ?? "")") {
+                    UIApplication.shared.open(url, options: [:])
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        likeButton.rx.tap
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(output.releaseInfo)
+            .flatMapLatest { release -> Observable<Bool> in
+                return input.likeAction.execute(release)
+            }
+            .bind(to: output.isLike)
+            .disposed(by: disposeBag)
+        
+        moreReviewButton.rx.tap
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(output.releaseInfo)
+            .map { $0.id }
+            .bind(to: input.moreReviewAction.inputs)
             .disposed(by: disposeBag)
     }
 }

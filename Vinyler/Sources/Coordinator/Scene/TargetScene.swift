@@ -88,7 +88,7 @@ extension Scene: TargetScene {
         case let .reviewList(viewModel):
             var vc = ReviewListViewController()
             vc.bind(to: viewModel)
-            return .present(vc)
+            return .overPresent(vc)
         }
     }
 }

@@ -23,6 +23,11 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     private func setTextColors(labels: [UILabel]) {
@@ -31,8 +36,9 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         }
     }
 
-    override func loadView() {
+    func setUpLayout() {
         let root = UIView.background
+        self.modalPresentationStyle = .fullScreen
         if #available(iOS 13.0, *) {
             root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
             tableView.backgroundColor = .systemBackground
@@ -41,8 +47,7 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
             tableView.backgroundColor = .white
         }
         
-        [tableView].forEach(root.addSubview)
-        tableView.pinToSuperview()
+        [closeButton, tableView].forEach(root.addSubview)
         
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
      
@@ -55,8 +60,13 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         tableView.rowHeight = 70
         
         closeButton.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.topMargin).offset(33)
+            make.top.equalTo(root.snp.topMargin).offset(33)
             make.leading.equalToSuperview().offset(33)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(closeButton.snp.bottom).offset(33)
+            make.leading.trailing.bottom.equalToSuperview()
         }
         
         self.view = root
