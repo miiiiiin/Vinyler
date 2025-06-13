@@ -16,6 +16,7 @@ public enum APIEndPoint {
     case login(request: LoginRequest)
     case getLikeStatus(request: Int)
     case getLikedList(request: Int)
+    case getReviewsByVinyl(request: Int)
 }
 
 extension APIEndPoint: TargetType {
@@ -33,6 +34,9 @@ extension APIEndPoint: TargetType {
             return URL(string: Constants.API.baseURL + "/api/v1/vinyls")!
         case .getLikedList:
             return URL(string: Constants.API.baseURL + "/api/v1/user")!
+            
+        case .getReviewsByVinyl:
+            return URL(string: Constants.API.baseURL + "/api/v1/reviews/discogs")!
         }
     }
     
@@ -44,6 +48,7 @@ extension APIEndPoint: TargetType {
         case .login: return "/login"
         case .getLikeStatus(let request): return "/\(request)"
         case .getLikedList(let request): return "/\(request)/liked"
+        case .getReviewsByVinyl(let request): return "/\(request)"
         }
     }
     
@@ -52,7 +57,7 @@ extension APIEndPoint: TargetType {
         case .test: .post
         case .like: .post
         case .register, .login: .post
-        case .getLikeStatus, .getLikedList: .get
+        case .getLikeStatus, .getLikedList, .getReviewsByVinyl: .get
         }
     }
     
@@ -70,6 +75,8 @@ extension APIEndPoint: TargetType {
             return self.requestTask(request)
         case .getLikedList(let request):
             return .requestPlain
+        case .getReviewsByVinyl(let request):
+            return self.requestTask(request)
         }
     }
     

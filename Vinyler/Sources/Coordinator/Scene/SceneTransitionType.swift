@@ -14,4 +14,5 @@ enum SceneTransitionType {
     case present(UIViewController)
     case alert(UIViewController)
     case tabBar(UITabBarController)
+    case overPresent(UIViewController)
 }

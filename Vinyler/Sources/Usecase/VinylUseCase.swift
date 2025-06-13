@@ -13,6 +13,8 @@ protocol VinylUseCase {
     func toggleLike(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
     func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
+    
+    func getReviews(request: Int) -> Observable<Result<[Review], Vinyler.NetworkError>>
 }
 
 class VinylUseCaseImpl: VinylUseCase {
@@ -20,7 +22,7 @@ class VinylUseCaseImpl: VinylUseCase {
     private let repository: VinylRepository
     
     init(repository: VinylRepository) {
-            self.repository = repository
+        self.repository = repository
     }
    
     func toggleLike(request: LikeRequest) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
@@ -29,5 +31,9 @@ class VinylUseCaseImpl: VinylUseCase {
     
     func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>> {
         return repository.getLikeStatus(request: request)
+    }
+    
+    func getReviews(request: Int) -> Observable<Result<[Review], Vinyler.NetworkError>> {
+        return repository.getReviews(request: request)
     }
 }

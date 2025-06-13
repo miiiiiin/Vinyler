@@ -40,6 +40,7 @@
 		38BE25312DBE5BF700622B09 /* VinylerRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE25302DBE5BF700622B09 /* VinylerRelease.swift */; };
 		38C2DF872DFABB1D00E310C0 /* ReviewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2DF862DFABB1D00E310C0 /* ReviewListViewController.swift */; };
 		38C2DF892DFABB4D00E310C0 /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2DF882DFABB4C00E310C0 /* ReviewListViewModel.swift */; };
+		38C2DF8B2DFAC9E100E310C0 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2DF8A2DFAC9E100E310C0 /* Review.swift */; };
 		38CDB5B72DB9F38A00D5EAD2 /* TrackListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */; };
 		38CF4C382DF80EFC00EDE3A9 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CF4C372DF80EFC00EDE3A9 /* ReviewView.swift */; };
 		38D4EBBE2DBA84410028F11C /* LikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */; };
@@ -173,6 +174,7 @@
 		38BE25302DBE5BF700622B09 /* VinylerRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylerRelease.swift; sourceTree = "<group>"; };
 		38C2DF862DFABB1D00E310C0 /* ReviewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewController.swift; sourceTree = "<group>"; };
 		38C2DF882DFABB4C00E310C0 /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
+		38C2DF8A2DFAC9E100E310C0 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewModel.swift; sourceTree = "<group>"; };
 		38CF4C372DF80EFC00EDE3A9 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		38D4EBBD2DBA84410028F11C /* LikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedListViewController.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				FAD03CD5232D0E460067E2D9 /* ArtistDetail.swift */,
 				3850AEAA2DBA1E110052BFF1 /* Menu.swift */,
 				38BE25302DBE5BF700622B09 /* VinylerRelease.swift */,
+				38C2DF8A2DFAC9E100E310C0 /* Review.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				817B25DF230978EE003DF85D /* PresentLoadingAnimationController.swift in Sources */,
 				38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */,
 				FA6C3B19232D8B55000E1C87 /* TrackCell.swift in Sources */,
+				38C2DF8B2DFAC9E100E310C0 /* Review.swift in Sources */,
 				813E837922E467090057F0E6 /* UIFont+Style.swift in Sources */,
 				38D4EBC02DBA84840028F11C /* LikedListViewModel.swift in Sources */,
 				38DBC2F02D7F2DB600E444A1 /* TestResponse.swift in Sources */,
