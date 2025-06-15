@@ -69,6 +69,7 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
             make.leading.trailing.bottom.equalToSuperview()
         }
         
+        
         self.view = root
     }
     
@@ -76,7 +77,27 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
+        output.reviews
+            .bind(to: tableView.rx.items)
+            .disposed(by: disposeBag)
+            
+        
         closeButton.rx.action = input.dismissAction
     }
-    
+}
+
+
+extension Reactive where Base: UITableView {
+    func items(_ items: Observable<[Review]>) -> Disposable {
+        let cellId = "ReviewCell"
+        
+        base.register(ReviewCell.self, forCellReuseIdentifier: cellId)
+        
+        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, review, cell in
+            
+            if let cell = cell as? ReviewCell {
+                cell.update(with: review)
+            }
+        }
+    }
 }

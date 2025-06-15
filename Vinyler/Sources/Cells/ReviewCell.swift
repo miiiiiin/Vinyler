@@ -33,6 +33,12 @@ class ReviewCell: UITableViewCell {
         }
     }
     
+    func update(with result: Review) {
+        ratingView.rating = Double(result.rating)
+        reviewLabel.text = result.content
+        nicknameLabel.text = "User #\(result.id)"
+    }
+    
     private func setUp() {
         ratingView = CosmosView()
         imgView.image = UIImage.reviewPlaceholder
