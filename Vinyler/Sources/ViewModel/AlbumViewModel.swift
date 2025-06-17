@@ -25,6 +25,7 @@ protocol AlbumViewModelOutput {
     var releaseInfo: Observable<Release> { get }
     var isLike: PublishRelay<Bool> { get }
     var albumImage: Driver<UIImage?> { get }
+    var reviews: Observable<[Review]> { get }
 }
 
 protocol AlbumViewModelType {
@@ -118,6 +119,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
     var releaseInfo: Observable<Release>
     var isLike = PublishRelay<Bool>()
     var albumImage: Driver<UIImage?> = Driver.just(nil)
+    var reviews: Observable<[Review]> = .just([])
     
     // MARK: - Private -
     
@@ -129,6 +131,8 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         self.useCase = useCase
         self.releaseInfo = Observable.just(release)
         self.setAlbumImage()
+        
+        self.reviews = getReviewsPreview(input: release.id)
     }
     
     private func setAlbumImage() {
@@ -147,6 +151,21 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                 return URLSession.shared.rx.data(request: request)
                     .map(UIImage.init)
                     .asDriver(onErrorJustReturn: nil)
+            }
+    }
+    
+    private func getReviewsPreview(input: Int) -> Observable<[Review]> {
+        return self.useCase.getReviews(request: Int(input))
+            .flatMap { result -> Observable<[Review]> in
+                switch result {
+                case let .success(response):
+                    return .just(response);
+                    
+                case let .failure(error):
+                    let errorResponse = error.errorDescription
+                    Toast(text: errorResponse).show()
+                    return .empty()
+                }
             }
     }
 }

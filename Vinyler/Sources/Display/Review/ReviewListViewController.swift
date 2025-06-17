@@ -40,10 +40,10 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         let root = UIView.background
         self.modalPresentationStyle = .fullScreen
         if #available(iOS 13.0, *) {
-            root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+//            root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
             tableView.backgroundColor = .systemBackground
         } else {
-            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+//            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
             tableView.backgroundColor = .white
         }
         
@@ -57,7 +57,7 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         tableView.separatorInset = .zero
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
-        tableView.rowHeight = 70
+        tableView.rowHeight = 100
         
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(root.snp.topMargin).offset(33)
@@ -69,6 +69,7 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
             make.leading.trailing.bottom.equalToSuperview()
         }
         
+        
         self.view = root
     }
     
@@ -76,7 +77,27 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
+        output.reviews
+            .bind(to: tableView.rx.items)
+            .disposed(by: disposeBag)
+            
+        
         closeButton.rx.action = input.dismissAction
     }
-    
+}
+
+
+extension Reactive where Base: UITableView {
+    func items(_ items: Observable<[Review]>) -> Disposable {
+        let cellId = "ReviewCell"
+        
+        base.register(ReviewCell.self, forCellReuseIdentifier: cellId)
+        
+        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, review, cell in
+            
+            if let cell = cell as? ReviewCell {
+                cell.update(with: review)
+            }
+        }
+    }
 }

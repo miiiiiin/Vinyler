@@ -33,16 +33,35 @@ class ReviewCell: UITableViewCell {
         }
     }
     
+    func update(with result: Review) {
+        ratingView.rating = Double(result.rating)
+        reviewLabel.text = result.content
+        nicknameLabel.text = "User #\(result.id)"
+    }
+    
     private func setUp() {
         ratingView = CosmosView()
         imgView.image = UIImage.reviewPlaceholder
         [imgView, stackView].forEach(addSubview)
         [nicknameLabel, ratingView, reviewLabel].forEach(stackView.addArrangedSubview)
         
-        stackView.axis = .horizontal
+        imgView.clipsToBounds = true
+        stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 6
         
         self.setTextColors(labels: [nicknameLabel, reviewLabel])
+        
+        imgView.snp.makeConstraints { make in
+            make.top.equalTo(18.5)
+            make.leading.equalToSuperview().offset(24)
+            make.width.height.equalTo(55)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(15.5)
+            make.leading.equalTo(imgView.snp.trailing).offset(24)
+            make.trailing.equalToSuperview()
+        }
     }
 }

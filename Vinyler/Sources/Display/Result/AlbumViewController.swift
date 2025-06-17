@@ -35,6 +35,7 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     private let reviewStackView = UIStackView(forAutoLayout: ())
     private let reviewView = UIView.review
     lazy var tableView = UITableView(forAutoLayout: ())
+    private var tableViewHeightConstraint: NSLayoutConstraint!
     private let moreReviewButton = UIButton.done
     private var bannerView: GADBannerView!
     private var likeButton = UIButton.like
@@ -140,6 +141,12 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         labels.forEach { label in
             label.textColor = style.Colors.tint
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.layoutIfNeeded()
+        tableViewHeightConstraint.constant = tableView.contentSize.height
     }
     
     override func loadView() {
@@ -275,10 +282,12 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
+            tableViewHeightConstraint = make.height.equalTo(0).constraint.layoutConstraints.first!
+            make.bottom.equalTo(reviewStackView.snp.bottom)
         }
         
         moreReviewButton.snp.makeConstraints { make in
-            make.top.equalTo(reviewStackView.snp.bottom)
+            make.top.equalTo(reviewStackView.snp.bottom).offset(10)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.equalTo(50)
             make.width.equalTo(150)
@@ -288,11 +297,14 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     func setUpLayout() {
         reviewStackView.alignment = .fill
         reviewStackView.axis = .vertical
+        reviewStackView.distribution = .fill
+        reviewStackView.translatesAutoresizingMaskIntoConstraints = false
         self.setTextColors(labels: [artistLabel, titleLabel, descriptionTitleLabel, descriptionLabel])
         
         descriptionTitleLabel.text = .description
         closeButton.tintColor = style.Colors.tint
         moreReviewButton.setTitle(.moreReview, for: .normal)
+        moreReviewButton.titleLabel?.font = .subheader
         moreReviewButton.backgroundColor = .veryLightPink
         
         vinylImageView.image = #imageLiteral(resourceName: "vinyl")
@@ -323,12 +335,21 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
         tableView.separatorInset = .zero
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
-        tableView.rowHeight = 120
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         tableView.delegate = nil
         tableView.dataSource = nil
+        tableView.isExclusiveTouch = false
+        tableView.isScrollEnabled = false
+        tableView.rowHeight = 100
+        tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 0)
     }
     
+    func updateTableViewHeight() {
+        // tableView의 레이아웃을 강제로 갱신
+        tableView.layoutIfNeeded()
+        tableViewHeightConstraint.constant = tableView.contentSize.height
+    }
+
     func bindViewModel() {
         let input = viewModel.input
         let output = viewModel.output
@@ -427,6 +448,23 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .map {[FormatsSection(items: $0)]}
             .bind(to: formatsCollectionView.rx.sections)
             .disposed(by: disposeBag)
+        
+        output.reviews
+            .observe(on: MainScheduler.instance)
+            .bind(to: tableView.rx.items)
+            .disposed(by: disposeBag)
+        
+        output.reviews
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    self?.tableView.performBatchUpdates(nil) { _ in
+                        self?.updateTableViewHeight()
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindActions() {
@@ -470,18 +508,3 @@ extension AlbumViewController: GADBannerViewDelegate {
         }
     }
 }
-
-//extension Reactive where Base: UITableView {
-//    func items(_ items: Observable<[VinylerRelease]>) -> Disposable {
-//        let cellId = "ReviewCell"
-//
-//        base.register(ReviewCell.self, forCellReuseIdentifier: cellId)
-//
-//        return items.bind(to: base.rx.items(cellIdentifier: cellId)) { _, item, cell in
-//
-//            if let cell = cell as? ReviewCell {
-//                cell.update(with: item)
-//            }
-//        }
-//    }
-//}
