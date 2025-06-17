@@ -40,10 +40,10 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         let root = UIView.background
         self.modalPresentationStyle = .fullScreen
         if #available(iOS 13.0, *) {
-            root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
+//            root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
             tableView.backgroundColor = .systemBackground
         } else {
-            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+//            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
             tableView.backgroundColor = .white
         }
         
@@ -57,7 +57,7 @@ class ReviewListViewController: UIViewController, ViewModelBindableType {
         tableView.separatorInset = .zero
         tableView.separatorColor = .veryLightPink
         tableView.separatorStyle = .singleLine
-        tableView.rowHeight = 70
+        tableView.rowHeight = 100
         
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(root.snp.topMargin).offset(33)
