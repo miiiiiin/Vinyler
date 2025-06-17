@@ -55,7 +55,6 @@ extension UILabel {
         let label = UILabel(forAutoLayout: ())
         label.font = .header
         label.textColor = .gray
-
         label.numberOfLines = 0
         return label
     }
