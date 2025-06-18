@@ -24,6 +24,21 @@ extension UITextView {
         return textView
     }
     
+    static var writeBody: UITextView {
+        let textView = UITextView(forAutoLayout: ())
+        textView.font = .body
+        textView.textColor = style.Colors.tint
+        textView.isScrollEnabled = false
+        textView.isEditable = true
+        textView.isSelectable = true
+        textView.textContainerInset = .init(top: 24, left: 24, bottom: -24, right: -24)
+        textView.textContainer.lineFragmentPadding = 0
+        textView.layer.cornerRadius = 10
+        textView.layer.borderColor = UIColor.veryLightPink.cgColor
+        textView.layer.borderWidth = 1
+        return textView
+    }
+    
     static var header: UITextView {
         let textView = UITextView(forAutoLayout: ())
         textView.font = .header

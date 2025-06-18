@@ -13,6 +13,7 @@ import UIKit
 import SnapKit
 import GoogleMobileAds
 
+// swiftlint:disable type_body_length
 class AlbumViewController: UIViewController, ViewModelBindableType {
     
     // MARK: - ViewModel
@@ -31,7 +32,6 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     private let playerImageView = UIImageView(forAutoLayout: ())
     private let descriptionTitleLabel = UILabel.header2
     private let descriptionLabel = UILabel.body
-    
     private let reviewStackView = UIStackView(forAutoLayout: ())
     private let reviewView = UIView.review
     lazy var tableView = UITableView(forAutoLayout: ())
@@ -41,7 +41,6 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
     private var likeButton = UIButton.like
     private var releaseInfo: Release!
     private let disposeBag = DisposeBag()
-    
     //    init(release: Release) {
     //        super.init(nibName: nil, bundle: nil)
     //        releaseInfo = release
@@ -494,6 +493,18 @@ class AlbumViewController: UIViewController, ViewModelBindableType {
             .withLatestFrom(output.releaseInfo)
             .map { $0.id }
             .bind(to: input.moreReviewAction.inputs)
+            .disposed(by: disposeBag)
+    
+        reviewView.ratingView.didFinishTouchingCosmos = { value in
+            input.ratingValue.accept(Int(value))
+        }
+        
+        input.ratingValue
+            .observe(on: MainScheduler.instance)
+            .skip(1)
+            .distinctUntilChanged()
+            .withLatestFrom(output.releaseInfo)
+            .bind(to: input.createReviewAction.inputs)
             .disposed(by: disposeBag)
     }
 }

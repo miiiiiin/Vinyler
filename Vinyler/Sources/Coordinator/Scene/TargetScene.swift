@@ -25,6 +25,7 @@ enum Scene {
     case likedList(LikedListViewModel)
     case tracklist(TrackListViewModel)
     case reviewList(ReviewListViewModel)
+    case review(ReviewViewModel)
 }
 
 extension Scene: TargetScene {
@@ -89,6 +90,11 @@ extension Scene: TargetScene {
             var vc = ReviewListViewController()
             vc.bind(to: viewModel)
             return .overPresent(vc)
+            
+        case let .review(viewModel):
+            var vc = ReviewController()
+            vc.bind(to: viewModel)
+            return .present(vc)
         }
     }
 }
