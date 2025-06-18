@@ -11,6 +11,8 @@
 		38076B532DB8DF2C0032C439 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */; };
 		3811FA152DB142370028FEC9 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA142DB142370028FEC9 /* SearchViewModel.swift */; };
 		3811FA172DB144810028FEC9 /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811FA162DB144810028FEC9 /* ScanViewModel.swift */; };
+		384866072E02C9070000F04D /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384866062E02C9070000F04D /* ReviewController.swift */; };
+		384866092E02C9320000F04D /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384866082E02C9320000F04D /* ReviewViewModel.swift */; };
 		3850AEA72DBA0AF70052BFF1 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEA62DBA0AF70052BFF1 /* MyPageViewModel.swift */; };
 		3850AEA92DBA0B490052BFF1 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */; };
 		3850AEAB2DBA1E110052BFF1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AEAA2DBA1E110052BFF1 /* Menu.swift */; };
@@ -145,6 +147,8 @@
 		38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
 		3811FA142DB142370028FEC9 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3811FA162DB144810028FEC9 /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
+		384866062E02C9070000F04D /* ReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
+		384866082E02C9320000F04D /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		3850AEA62DBA0AF70052BFF1 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		3850AEA82DBA0B490052BFF1 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		3850AEAA2DBA1E110052BFF1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				38076B522DB8DF2C0032C439 /* ArtistViewModel.swift */,
 				38CDB5B62DB9F38A00D5EAD2 /* TrackListViewModel.swift */,
 				38C2DF882DFABB4C00E310C0 /* ReviewListViewModel.swift */,
+				384866082E02C9320000F04D /* ReviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				38C2DF862DFABB1D00E310C0 /* ReviewListViewController.swift */,
+				384866062E02C9070000F04D /* ReviewController.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -1022,6 +1028,7 @@
 				387926442D8077BE00841CAF /* SignUpViewModel.swift in Sources */,
 				817B262C2315166B003DF85D /* AlbumViewController.swift in Sources */,
 				FA5BC2E623DC16FC000CFD9D /* CustomTextView.swift in Sources */,
+				384866072E02C9070000F04D /* ReviewController.swift in Sources */,
 				38C2DF892DFABB4D00E310C0 /* ReviewListViewModel.swift in Sources */,
 				38DC17662D9D61630026811D /* VinylUseCase.swift in Sources */,
 				FAD03CD4232D0D5B0067E2D9 /* Artist.swift in Sources */,
@@ -1070,6 +1077,7 @@
 				81F46D7C231A7263002CAC44 /* FormatsCollectionView.swift in Sources */,
 				814B06A323040D3A0062906D /* String+Assets.swift in Sources */,
 				387E38CF2D96E431003C1920 /* LoginResponse.swift in Sources */,
+				384866092E02C9320000F04D /* ReviewViewModel.swift in Sources */,
 				3879265E2D807F0900841CAF /* UserSignUpLoginRepository.swift in Sources */,
 				FA5BC2E423DC15C2000CFD9D /* AppInfoViewController.swift in Sources */,
 				387926462D8077D700841CAF /* CommonUseCase.swift in Sources */,
