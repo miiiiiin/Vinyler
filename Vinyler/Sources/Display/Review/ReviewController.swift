@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Cosmos
+import RxSwift
 
 class ReviewController: UIViewController, ViewModelBindableType {
     
@@ -30,19 +31,28 @@ class ReviewController: UIViewController, ViewModelBindableType {
         setUpLayout()
     }
     
+    private func setTextColors(labels: [UILabel]) {
+        labels.forEach { label in
+            label.textColor = style.Colors.tint
+        }
+    }
+    
     func setUpLayout() {
         let root = UIScrollView(frame: UIScreen.main.bounds)
         let contentView = UIView(forAutoLayout: ())
         [contentView, doneButton].forEach(root.addSubview)
         contentView.pinToSuperview()
         self.modalPresentationStyle = .fullScreen
-        if #available(iOS 13.0, *) {
-            //            root.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.8)
-        } else {
-            //            root.backgroundColor = UIColor.white.withAlphaComponent(0.8)
-        }
+     
+        ratingView = CosmosView()
         
         [closeButton, titleLabel, artistLabel, albumImageView, ratingView, reviewTextView].forEach(contentView.addSubview)
+        
+        self.setTextColors(labels: [titleLabel, artistLabel])
+        
+        contentView.snp.makeConstraints { make in
+            make.width.equalTo(root.snp.width)
+        }
         
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.topMargin).offset(33)
@@ -89,6 +99,8 @@ class ReviewController: UIViewController, ViewModelBindableType {
             make.height.equalTo(50)
             make.bottom.equalTo(contentView.snp.bottom).offset(-30)
         }
+        
+        self.view = root
     }
     
     func bindViewModel() {

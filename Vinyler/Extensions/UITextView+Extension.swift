@@ -27,12 +27,15 @@ extension UITextView {
     static var writeBody: UITextView {
         let textView = UITextView(forAutoLayout: ())
         textView.font = .body
-        textView.textColor = .black
+        textView.textColor = style.Colors.tint
         textView.isScrollEnabled = false
         textView.isEditable = true
         textView.isSelectable = true
         textView.textContainerInset = .init(top: 24, left: 24, bottom: -24, right: -24)
         textView.textContainer.lineFragmentPadding = 0
+        textView.layer.cornerRadius = 10
+        textView.layer.borderColor = .veryLightPink
+        textView.layer.borderWidth = 1
         return textView
     }
     

@@ -19,6 +19,8 @@ protocol AlbumViewModelInput {
     var dismissAction: CocoaAction { get }
     var tracklistAction: Action<Release, Void> { get }
     var moreReviewAction: Action<Int, Void> { get }
+    var createReviewAction: Action<Release, Void> { get }
+    var ratingValue: BehaviorRelay<Int> { get }
 }
 
 protocol AlbumViewModelOutput {
@@ -91,6 +93,13 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
         }
     }()
     
+    lazy var createReviewAction: Action<Release, Void> = {
+        Action<Release, Void> { [unowned self] input in
+            let viewModel = ReviewViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, rating: ratingValue.value, release: input)
+            return self.sceneCoordinator.transition(to: Scene.review(viewModel))
+        }
+    }()
+    
     
     lazy var moreReviewAction: Action<Int, Void> = {
         Action<Int, Void> { [unowned self] input in
@@ -115,6 +124,8 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
             return self.sceneCoordinator.dismissAll(animated: true).asObservable().map { _ in }
         }
     }()
+    
+    var ratingValue: BehaviorRelay<Int> = .init(value: 0)
     
     var releaseInfo: Observable<Release>
     var isLike = PublishRelay<Bool>()
