@@ -34,7 +34,7 @@ extension UITextView {
         textView.textContainerInset = .init(top: 24, left: 24, bottom: -24, right: -24)
         textView.textContainer.lineFragmentPadding = 0
         textView.layer.cornerRadius = 10
-        textView.layer.borderColor = .veryLightPink
+        textView.layer.borderColor = UIColor.veryLightPink.cgColor
         textView.layer.borderWidth = 1
         return textView
     }

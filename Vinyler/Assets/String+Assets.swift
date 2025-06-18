@@ -53,4 +53,5 @@ extension String {
     static let likedListTitle = NSLocalizedString("좋아요 표시한 음반", comment: "")
     static let reviewGuide = NSLocalizedString("음반 리뷰를 남겨주세요!", comment: "")
     static let moreReview = NSLocalizedString("리뷰 더보기", comment: "")
+    static let done = NSLocalizedString("완료", comment: "")
 }
