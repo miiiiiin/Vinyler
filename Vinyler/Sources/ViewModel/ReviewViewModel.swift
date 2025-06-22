@@ -54,7 +54,7 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
                 .flatMap { result -> Observable<Void> in
                     switch result {
                     case let .success(response):
-                        return self.sceneCoordinator.dismiss(animated: true).asObservable().map { _ in }
+                        return self.sceneCoordinator.dismissAll(animated: true).asObservable().map { _ in }
                         
                     case let .failure(error):
                         let errorResponse = error.errorDescription

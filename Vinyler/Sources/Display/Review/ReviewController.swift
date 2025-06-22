@@ -18,7 +18,6 @@ class ReviewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ReviewViewModelType!
     
-    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +37,11 @@ class ReviewController: UIViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpLayout()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        doneButton.isHidden = true
     }
     
     private func setTextColors(labels: [UILabel]) {
@@ -66,6 +70,8 @@ class ReviewController: UIViewController, ViewModelBindableType {
         doneButton.backgroundColor = .coldDarkBlue
         
         ratingView = CosmosView()
+        ratingView.settings.starSize = 30
+        ratingView.settings.starMargin = 5
         
         let containerView = UIView()
         [containerView, closeButton].forEach(contentView.addSubview)
@@ -115,13 +121,13 @@ class ReviewController: UIViewController, ViewModelBindableType {
         }
         
         ratingView.snp.makeConstraints { make in
-            make.top.equalTo(albumImageView.snp.bottom).offset(15)
+            make.top.equalTo(albumImageView.snp.bottom).offset(22)
             make.height.equalTo(50)
             make.centerX.equalToSuperview()
         }
         
         reviewTextView.snp.makeConstraints { make in
-            make.top.equalTo(ratingView.snp.bottom).offset(33)
+            make.top.equalTo(ratingView.snp.bottom).offset(22)
             make.width.equalTo(300)
             make.height.equalTo(200)
             make.centerX.equalToSuperview()
