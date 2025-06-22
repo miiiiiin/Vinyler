@@ -95,7 +95,7 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
     
     lazy var createReviewAction: Action<Release, Void> = {
         Action<Release, Void> { [unowned self] input in
-            let viewModel = ReviewViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, rating: ratingValue.value, release: input)
+            let viewModel = ReviewViewModel(sceneCoordinator: self.sceneCoordinator, useCase: self.useCase, rating: ratingValue.value, release: input, image: self.albumImage)
             return self.sceneCoordinator.transition(to: Scene.review(viewModel))
         }
     }()

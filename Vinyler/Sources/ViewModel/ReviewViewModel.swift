@@ -23,6 +23,7 @@ protocol ReviewViewModelInput {
 protocol ReviewViewModelOutput {
     var rating: Observable<Int> { get }
     var releaseInfo: Observable<Release> { get }
+    var albumImage: Driver<UIImage?> { get }
 }
 
 protocol ReviewViewModelType {
@@ -71,7 +72,7 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
     var releaseInfo: Observable<Release>
     var ratingValue: BehaviorRelay<Int> = .init(value: 0)
     
-    
+    var albumImage: Driver<UIImage?> = .just(nil)
     var reviewInput: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
     
     // MARK: - Private -
@@ -79,11 +80,12 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
     private let sceneCoordinator: SceneCoordinatorType
     private let useCase: VinylUseCase
     
-    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, rating: Int, release: Release) {
+    init(sceneCoordinator: SceneCoordinatorType, useCase: VinylUseCase, rating: Int, release: Release, image: Driver<UIImage?>) {
         self.sceneCoordinator = sceneCoordinator
         self.useCase = useCase
         self.rating = .just(rating)
         self.releaseInfo = .just(release)
+        self.albumImage = image
     }
 }
 

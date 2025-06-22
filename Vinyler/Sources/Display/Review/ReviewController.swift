@@ -132,7 +132,7 @@ class ReviewController: UIViewController, ViewModelBindableType {
         output.rating
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] value in
-                self.ratingView.rating = value
+                self?.ratingView.rating = Double(value)
             })
             .disposed(by: disposeBag)
         
@@ -152,11 +152,12 @@ class ReviewController: UIViewController, ViewModelBindableType {
             input.ratingValue.accept(Int(value))
         }
         
+        output.albumImage
+            .drive(albumImageView.rx.image)
+            .disposed(by: disposeBag)
+            
         reviewTextView.rx.textChanged
             .observe(on: MainScheduler.instance)
-//            .map { [weak reviewTextView] in
-//                return reviewTextView?.text ?? ""
-//            }
             .bind(to: input.reviewInput)
             .disposed(by: disposeBag)
         
@@ -166,6 +167,12 @@ class ReviewController: UIViewController, ViewModelBindableType {
             .map { $0.id }
             .bind(to: input.reviewAction.inputs)
             .disposed(by: disposeBag)
+        
+        closeButton.rx.tap
+            .observe(on: MainScheduler.instance)
+            .bind(to: input.dismissAction.inputs)
+            .disposed(by: disposeBag)
+        
     }
 }
 
