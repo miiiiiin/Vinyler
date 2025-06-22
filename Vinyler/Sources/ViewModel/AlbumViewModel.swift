@@ -37,7 +37,6 @@ protocol AlbumViewModelType {
 
 class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelType {
     
-    
     var input: AlbumViewModelInput { return self }
     var output: AlbumViewModelOutput { return self }
     
@@ -99,7 +98,6 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
             return self.sceneCoordinator.transition(to: Scene.review(viewModel))
         }
     }()
-    
     
     lazy var moreReviewAction: Action<Int, Void> = {
         Action<Int, Void> { [unowned self] input in
@@ -173,8 +171,6 @@ class AlbumViewModel: AlbumViewModelInput, AlbumViewModelOutput, AlbumViewModelT
                     return .just(response);
                     
                 case let .failure(error):
-                    let errorResponse = error.errorDescription
-                    Toast(text: errorResponse).show()
                     return .empty()
                 }
             }

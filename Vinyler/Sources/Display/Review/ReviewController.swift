@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Cosmos
 import RxSwift
+import SnapKit
 
 class ReviewController: UIViewController, ViewModelBindableType {
     
@@ -17,6 +18,13 @@ class ReviewController: UIViewController, ViewModelBindableType {
     
     var viewModel: ReviewViewModelType!
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private var doneButtonBottomConstraint: Constraint?
     private let closeButton = UIButton.close
     private let titleLabel = UILabel.header
     private let artistLabel = UILabel.subheader
@@ -31,6 +39,11 @@ class ReviewController: UIViewController, ViewModelBindableType {
         setUpLayout()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        doneButton.isHidden = true
+    }
+    
     private func setTextColors(labels: [UILabel]) {
         labels.forEach { label in
             label.textColor = style.Colors.tint
@@ -39,11 +52,13 @@ class ReviewController: UIViewController, ViewModelBindableType {
     }
     
     func setUpLayout() {
-        let root = UIScrollView(frame: UIScreen.main.bounds)
+        let root = UIView()
         let contentView = UIView(forAutoLayout: ())
-        root.addSubview(contentView)
-        root.alwaysBounceVertical = true
-        root.keyboardDismissMode = .interactive
+        root.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        root.addSubview(doneButton)
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .interactive
         self.modalPresentationStyle = .fullScreen
         if #available(iOS 13.0, *) {
             root.backgroundColor = .systemBackground
@@ -55,21 +70,29 @@ class ReviewController: UIViewController, ViewModelBindableType {
         doneButton.backgroundColor = .coldDarkBlue
         
         ratingView = CosmosView()
+        ratingView.settings.starSize = 30
+        ratingView.settings.starMargin = 5
         
         let containerView = UIView()
         [containerView, closeButton].forEach(contentView.addSubview)
         
-        [titleLabel, artistLabel, albumImageView, ratingView, reviewTextView, doneButton].forEach(containerView.addSubview)
+        [titleLabel, artistLabel, albumImageView, ratingView, reviewTextView].forEach(containerView.addSubview)
         
         self.setTextColors(labels: [titleLabel, artistLabel])
         
+        scrollView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
         contentView.snp.makeConstraints { make in
-            make.edges.equalTo(root.contentLayoutGuide)
-            make.width.equalTo(root.frameLayoutGuide)
+            make.edges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+            make.bottom.equalTo(containerView.snp.bottom)
         }
         
         containerView.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView.snp.centerY)
+            make.top.equalTo(closeButton.snp.bottom).offset(33)
+            make.leading.trailing.equalTo(contentView)
             make.leading.trailing.equalTo(contentView)
         }
         
@@ -85,44 +108,83 @@ class ReviewController: UIViewController, ViewModelBindableType {
         }
         
         artistLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(24)
+            make.top.equalTo(titleLabel.snp.bottom).offset(11)
             make.centerX.equalTo(contentView.snp.centerX)
             make.leading.trailing.equalToSuperview()
         }
         
         albumImageView.snp.makeConstraints { make in
-            make.top.equalTo(artistLabel.snp.bottom).offset(44)
-            //            make.leading.equalToSuperview().offset(44)
-            //            make.trailing.equalToSuperview().offset(-44)
+            make.top.equalTo(artistLabel.snp.bottom).offset(33)
             make.width.equalTo(300)
             make.centerX.equalToSuperview()
             make.height.equalTo(albumImageView.snp.width)
         }
         
         ratingView.snp.makeConstraints { make in
-            make.top.equalTo(albumImageView.snp.bottom).offset(33)
-            make.width.equalTo(210)
-            make.height.equalTo(38)
+            make.top.equalTo(albumImageView.snp.bottom).offset(22)
+            make.height.equalTo(50)
             make.centerX.equalToSuperview()
         }
         
         reviewTextView.snp.makeConstraints { make in
-            make.top.equalTo(ratingView.snp.bottom).offset(33)
+            make.top.equalTo(ratingView.snp.bottom).offset(22)
             make.width.equalTo(300)
             make.height.equalTo(200)
             make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20)
         }
         
-        doneButton.snp.makeConstraints { make in
-            make.leading.equalTo(reviewTextView.snp.leading)
-            make.trailing.equalTo(reviewTextView.snp.trailing)
-            make.height.equalTo(50)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(reviewTextView.snp.bottom).offset(30)
-            make.bottom.equalToSuperview()
+        if #available(iOS 15.0, *) {
+            doneButton.snp.makeConstraints { make in
+                make.leading.equalTo(reviewTextView.snp.leading)
+                make.trailing.equalTo(reviewTextView.snp.trailing)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(root.keyboardLayoutGuide.snp.top).offset(-12)
+            }
+        } else {
+            doneButton.snp.makeConstraints { make in
+                make.leading.equalTo(reviewTextView.snp.leading)
+                make.trailing.equalTo(reviewTextView.snp.trailing)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                doneButtonBottomConstraint = make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).constraint
+            }
         }
+        
+        setupKeyboardHandlingForDoneButton()
         
         self.view = root
+    }
+    
+    private func setupKeyboardHandlingForDoneButton() {
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .compactMap { $0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] keyboardFrame in
+                guard let self = self else { return }
+                let keyboardHeight = keyboardFrame.height
+                
+                self.doneButtonBottomConstraint?.update(offset: -keyboardHeight - 12)
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.scrollView.contentInset.bottom = keyboardHeight + 100
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.doneButtonBottomConstraint?.update(offset: 0)
+                UIView.animate(withDuration: 0.3) {
+                    self.scrollView.contentInset.bottom = 0
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindViewModel() {
@@ -152,10 +214,14 @@ class ReviewController: UIViewController, ViewModelBindableType {
             input.ratingValue.accept(Int(value))
         }
         
+        output.rating
+            .bind(to: input.ratingValue)
+            .disposed(by: disposeBag)
+        
         output.albumImage
             .drive(albumImageView.rx.image)
             .disposed(by: disposeBag)
-            
+        
         reviewTextView.rx.textChanged
             .observe(on: MainScheduler.instance)
             .bind(to: input.reviewInput)

@@ -9,7 +9,7 @@
 import Foundation
 
 public struct ReviewRequest: Encodable {
-    let discogsId: Int64
+    let discogsId: Int
     let rating: Int
     let content: String?
 }
