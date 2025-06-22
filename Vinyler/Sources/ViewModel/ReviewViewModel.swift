@@ -49,7 +49,7 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
             
             let content = try? self.reviewInput.value()
             
-            let request = ReviewRequest(discogsId: Int64(input), rating: ratingValue.value, content: content)
+            let request = ReviewRequest(discogsId: input, rating: ratingValue.value, content: content)
             
             return self.useCase.createReview(request: request)
                 .flatMap { result -> Observable<Void> in

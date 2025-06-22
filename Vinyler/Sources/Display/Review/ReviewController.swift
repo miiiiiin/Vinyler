@@ -37,6 +37,22 @@ class ReviewController: UIViewController, ViewModelBindableType {
             label.textAlignment = .center
         }
     }
+    private func setupKeyboardHandling(scrollView: UIScrollView) {
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .compactMap { $0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect }
+            .subscribe(onNext: { [weak self] keyboardFrame in
+                guard let self = self else { return }
+                let keyboardHeight = keyboardFrame.height
+                scrollView.contentInset.bottom = keyboardHeight + 100
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .subscribe(onNext: { [weak self] _ in
+                scrollView.contentInset.bottom = 0
+            })
+            .disposed(by: disposeBag)
+    }
     
     func setUpLayout() {
         let root = UIScrollView(frame: UIScreen.main.bounds)
@@ -55,6 +71,7 @@ class ReviewController: UIViewController, ViewModelBindableType {
         doneButton.backgroundColor = .coldDarkBlue
         
         ratingView = CosmosView()
+        setupKeyboardHandling(scrollView: root)
         
         let containerView = UIView()
         [containerView, closeButton].forEach(contentView.addSubview)
@@ -66,10 +83,13 @@ class ReviewController: UIViewController, ViewModelBindableType {
         contentView.snp.makeConstraints { make in
             make.edges.equalTo(root.contentLayoutGuide)
             make.width.equalTo(root.frameLayoutGuide)
+            make.bottom.equalTo(containerView.snp.bottom)
         }
         
         containerView.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView.snp.centerY)
+            //            make.centerY.equalTo(contentView.snp.centerY)
+            make.top.equalTo(closeButton.snp.bottom).offset(33)
+            make.leading.trailing.equalTo(contentView)
             make.leading.trailing.equalTo(contentView)
         }
         
@@ -101,8 +121,7 @@ class ReviewController: UIViewController, ViewModelBindableType {
         
         ratingView.snp.makeConstraints { make in
             make.top.equalTo(albumImageView.snp.bottom).offset(33)
-            make.width.equalTo(210)
-            make.height.equalTo(38)
+            make.height.equalTo(45)
             make.centerX.equalToSuperview()
         }
         
@@ -121,6 +140,19 @@ class ReviewController: UIViewController, ViewModelBindableType {
             make.top.equalTo(reviewTextView.snp.bottom).offset(30)
             make.bottom.equalToSuperview()
         }
+//        
+//        doneButton.snp.makeConstraints { make in
+//            make.leading.equalTo(reviewTextView.snp.leading)
+//            make.trailing.equalTo(reviewTextView.snp.trailing)
+//            make.height.equalTo(50)
+//            make.centerX.equalToSuperview()
+//            if #available(iOS 15.0, *) {
+//                make.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-10)
+//            } else {
+//                make.bottom.equalToSuperview().inset(30)
+//            }
+//        }
+
         
         self.view = root
     }
@@ -152,10 +184,14 @@ class ReviewController: UIViewController, ViewModelBindableType {
             input.ratingValue.accept(Int(value))
         }
         
+        output.rating
+            .bind(to: input.ratingValue)
+            .disposed(by: disposeBag)
+        
         output.albumImage
             .drive(albumImageView.rx.image)
             .disposed(by: disposeBag)
-            
+        
         reviewTextView.rx.textChanged
             .observe(on: MainScheduler.instance)
             .bind(to: input.reviewInput)
