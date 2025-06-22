@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Cosmos
 import RxSwift
+import SnapKit
 
 class ReviewController: UIViewController, ViewModelBindableType {
     
@@ -24,6 +25,7 @@ class ReviewController: UIViewController, ViewModelBindableType {
         return scrollView
     }()
     
+    private var doneButtonBottomConstraint: Constraint?
     private let closeButton = UIButton.close
     private let titleLabel = UILabel.header
     private let artistLabel = UILabel.subheader
@@ -45,25 +47,7 @@ class ReviewController: UIViewController, ViewModelBindableType {
         }
     }
     
-    private func setupKeyboardHandling(scrollView: UIScrollView) {
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-            .compactMap { $0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect }
-            .subscribe(onNext: { [weak self] keyboardFrame in
-                guard let self = self else { return }
-                let keyboardHeight = keyboardFrame.height
-                scrollView.contentInset.bottom = keyboardHeight + 100
-            })
-            .disposed(by: disposeBag)
-        
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-            .subscribe(onNext: { [weak self] _ in
-                scrollView.contentInset.bottom = 0
-            })
-            .disposed(by: disposeBag)
-    }
-    
     func setUpLayout() {
-        //        let root = UIScrollView(frame: UIScreen.main.bounds)
         let root = UIView()
         let contentView = UIView(forAutoLayout: ())
         root.addSubview(scrollView)
@@ -82,7 +66,6 @@ class ReviewController: UIViewController, ViewModelBindableType {
         doneButton.backgroundColor = .coldDarkBlue
         
         ratingView = CosmosView()
-        setupKeyboardHandling(scrollView: scrollView)
         
         let containerView = UIView()
         [containerView, closeButton].forEach(contentView.addSubview)
@@ -100,8 +83,6 @@ class ReviewController: UIViewController, ViewModelBindableType {
             make.width.equalTo(scrollView.frameLayoutGuide)
             make.bottom.equalTo(containerView.snp.bottom)
         }
-        
-        
         
         containerView.snp.makeConstraints { make in
             make.top.equalTo(closeButton.snp.bottom).offset(33)
@@ -121,23 +102,21 @@ class ReviewController: UIViewController, ViewModelBindableType {
         }
         
         artistLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(24)
+            make.top.equalTo(titleLabel.snp.bottom).offset(11)
             make.centerX.equalTo(contentView.snp.centerX)
             make.leading.trailing.equalToSuperview()
         }
         
         albumImageView.snp.makeConstraints { make in
-            make.top.equalTo(artistLabel.snp.bottom).offset(44)
-            //            make.leading.equalToSuperview().offset(44)
-            //            make.trailing.equalToSuperview().offset(-44)
+            make.top.equalTo(artistLabel.snp.bottom).offset(33)
             make.width.equalTo(300)
             make.centerX.equalToSuperview()
             make.height.equalTo(albumImageView.snp.width)
         }
         
         ratingView.snp.makeConstraints { make in
-            make.top.equalTo(albumImageView.snp.bottom).offset(33)
-            make.height.equalTo(45)
+            make.top.equalTo(albumImageView.snp.bottom).offset(15)
+            make.height.equalTo(50)
             make.centerX.equalToSuperview()
         }
         
@@ -149,36 +128,57 @@ class ReviewController: UIViewController, ViewModelBindableType {
             make.bottom.equalToSuperview().offset(-20)
         }
         
-        //        doneButton.snp.makeConstraints { make in
-        //            make.leading.equalTo(reviewTextView.snp.leading)
-        //            make.trailing.equalTo(reviewTextView.snp.trailing)
-        //            make.height.equalTo(50)
-        //            make.centerX.equalToSuperview()
-        //            make.bottom.equalTo(root.safeAreaLayoutGuide.snp.bottom).offset(-24)
-        //        }
-        //
-        doneButton.snp.makeConstraints { make in
-            make.leading.equalTo(reviewTextView.snp.leading)
-            make.trailing.equalTo(reviewTextView.snp.trailing)
-            make.height.equalTo(50)
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(root.safeAreaLayoutGuide.snp.bottom).offset(-12)
+        if #available(iOS 15.0, *) {
+            doneButton.snp.makeConstraints { make in
+                make.leading.equalTo(reviewTextView.snp.leading)
+                make.trailing.equalTo(reviewTextView.snp.trailing)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                make.bottom.equalTo(root.keyboardLayoutGuide.snp.top).offset(-12)
+            }
+        } else {
+            doneButton.snp.makeConstraints { make in
+                make.leading.equalTo(reviewTextView.snp.leading)
+                make.trailing.equalTo(reviewTextView.snp.trailing)
+                make.height.equalTo(50)
+                make.centerX.equalToSuperview()
+                doneButtonBottomConstraint = make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).constraint
+            }
         }
-        //
-        //        doneButton.snp.makeConstraints { make in
-        //            make.leading.equalTo(reviewTextView.snp.leading)
-        //            make.trailing.equalTo(reviewTextView.snp.trailing)
-        //            make.height.equalTo(50)
-        //            make.centerX.equalToSuperview()
-        //            if #available(iOS 15.0, *) {
-        //                make.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-10)
-        //            } else {
-        //                make.bottom.equalToSuperview().inset(30)
-        //            }
-        //        }
         
+        setupKeyboardHandlingForDoneButton()
         
         self.view = root
+    }
+    
+    private func setupKeyboardHandlingForDoneButton() {
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .compactMap { $0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] keyboardFrame in
+                guard let self = self else { return }
+                let keyboardHeight = keyboardFrame.height
+                
+                self.doneButtonBottomConstraint?.update(offset: -keyboardHeight - 12)
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.scrollView.contentInset.bottom = keyboardHeight + 100
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.doneButtonBottomConstraint?.update(offset: 0)
+                UIView.animate(withDuration: 0.3) {
+                    self.scrollView.contentInset.bottom = 0
+                    self.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindViewModel() {

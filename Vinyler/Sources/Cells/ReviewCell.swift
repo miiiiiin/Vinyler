@@ -41,7 +41,7 @@ class ReviewCell: UITableViewCell {
     
     private func setUp() {
         ratingView = CosmosView()
-        imgView.image = UIImage.reviewPlaceholder
+        imgView.image = #imageLiteral(resourceName: "review_placeholder")
         [imgView, stackView].forEach(addSubview)
         [nicknameLabel, ratingView, reviewLabel].forEach(stackView.addArrangedSubview)
         
