@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ReviewRequest: Codable {
+public struct ReviewRequest: Encodable {
     let discogsId: Int64
     let rating: Int
     let content: String?

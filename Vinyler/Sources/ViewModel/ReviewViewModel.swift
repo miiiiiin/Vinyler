@@ -11,9 +11,13 @@ import Foundation
 import RxCocoa
 import RxSwift
 import Action
+import Toaster
 
 protocol ReviewViewModelInput {
     var dismissAction: CocoaAction { get }
+    var reviewAction: Action<Int, Void> { get }
+    var reviewInput: BehaviorSubject<String> { get }
+    var ratingValue: BehaviorRelay<Int> { get }
 }
 
 protocol ReviewViewModelOutput {
@@ -39,9 +43,36 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
         }
     }()
     
+    lazy var reviewAction: Action<Int, Void> = {
+        Action<Int, Void> { [unowned self] input in
+            
+            let content = try? self.reviewInput.value()
+            
+            let request = ReviewRequest(discogsId: Int64(input), rating: ratingValue.value, content: content)
+            
+            return self.useCase.createReview(request: request)
+                .flatMap { result -> Observable<Void> in
+                    switch result {
+                    case let .success(response):
+                        debugPrint("review res: \(response)")
+                        return .just(response)
+                        
+                    case let .failure(error):
+                        let errorResponse = error.errorDescription
+                        Toast(text: errorResponse).show()
+                        return .empty()
+                    }
+                }
+        }
+    }()
+    
     
     var rating: Observable<Int> = .just(0)
     var releaseInfo: Observable<Release>
+    var ratingValue: BehaviorRelay<Int> = .init(value: 0)
+    
+    
+    var reviewInput: BehaviorSubject<String> = BehaviorSubject<String>(value: "")
     
     // MARK: - Private -
     
