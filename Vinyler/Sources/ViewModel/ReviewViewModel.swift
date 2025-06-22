@@ -6,7 +6,6 @@
 //  Copyright © 2025 songkyung min. All rights reserved.
 //
 
-
 import Foundation
 import RxCocoa
 import RxSwift
@@ -55,8 +54,7 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
                 .flatMap { result -> Observable<Void> in
                     switch result {
                     case let .success(response):
-                        debugPrint("review res: \(response)")
-                        return .just(response)
+                        return self.sceneCoordinator.dismiss(animated: true).asObservable().map { _ in }
                         
                     case let .failure(error):
                         let errorResponse = error.errorDescription
@@ -66,7 +64,6 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
                 }
         }
     }()
-    
     
     var rating: Observable<Int> = .just(0)
     var releaseInfo: Observable<Release>
@@ -88,5 +85,3 @@ class ReviewViewModel: ReviewViewModelInput, ReviewViewModelOutput, ReviewViewMo
         self.albumImage = image
     }
 }
-
-

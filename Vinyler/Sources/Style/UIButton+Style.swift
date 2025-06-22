@@ -32,10 +32,10 @@ extension UIButton {
         button.layer.cornerRadius = 20
         button.titleLabel?.font = .header
         button.layer.shadowRadius = 8/2
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
         button.layer.shadowColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.2).cgColor
         button.layer.cornerRadius = 10
-        button.layer.shadowOpacity = 0.8
+        button.layer.shadowOpacity = 0.7
         return button
     }
 
