@@ -17,6 +17,7 @@ public enum APIEndPoint {
     case getLikeStatus(request: Int)
     case getLikedList(request: Int)
     case getReviewsByVinyl(request: Int)
+    case createReview(request: ReviewRequest)
 }
 
 extension APIEndPoint: TargetType {
@@ -34,9 +35,10 @@ extension APIEndPoint: TargetType {
             return URL(string: Constants.API.baseURL + "/api/v1/vinyls")!
         case .getLikedList:
             return URL(string: Constants.API.baseURL + "/api/v1/user")!
-            
         case .getReviewsByVinyl:
             return URL(string: Constants.API.baseURL + "/api/v1/reviews/discogs")!
+        case .createReview:
+            return URL(string: Constants.API.baseURL + "/api/v1/reviews/create")!
         }
     }
     
@@ -49,6 +51,7 @@ extension APIEndPoint: TargetType {
         case .getLikeStatus(let request): return "/\(request)"
         case .getLikedList(let request): return "/\(request)/liked"
         case .getReviewsByVinyl(let request): return "/\(request)"
+        case .createReview(let request): return ""
         }
     }
     
@@ -58,6 +61,7 @@ extension APIEndPoint: TargetType {
         case .like: .post
         case .register, .login: .post
         case .getLikeStatus, .getLikedList, .getReviewsByVinyl: .get
+        case .createReview: .post
         }
     }
     
@@ -76,6 +80,8 @@ extension APIEndPoint: TargetType {
         case .getLikedList(let request):
             return .requestPlain
         case .getReviewsByVinyl(let request):
+            return self.requestTask(request)
+        case .createReview(let request):
             return self.requestTask(request)
         }
     }
