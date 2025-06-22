@@ -76,4 +76,17 @@ class VinylService: VinylRepository {
             .asObservable()
     }
     
+    func createReview(request: ReviewRequest) -> Observable<Result<Void, Vinyler.NetworkError>> {
+        return network.request(target:MultiTarget(APIEndPoint.createReview(request: request)))
+            .flatMap { result -> Single<Result<Void, Vinyler.NetworkError>> in
+                switch result {
+                case .success(let response):
+                    return .just(.success(()))
+                case .failure(let error):
+                    return .just(.failure(error))
+                }
+            }
+            .asObservable()
+    }
+    
 }

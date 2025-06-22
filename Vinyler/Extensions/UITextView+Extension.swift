@@ -31,6 +31,7 @@ extension UITextView {
         textView.isScrollEnabled = false
         textView.isEditable = true
         textView.isSelectable = true
+        textView.isUserInteractionEnabled = true
         textView.textContainerInset = .init(top: 24, left: 24, bottom: -24, right: -24)
         textView.textContainer.lineFragmentPadding = 0
         textView.layer.cornerRadius = 10

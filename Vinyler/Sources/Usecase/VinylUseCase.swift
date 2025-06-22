@@ -15,6 +15,8 @@ protocol VinylUseCase {
     func getLikeStatus(request: Int) -> Observable<Result<VinylLikeResponse, Vinyler.NetworkError>>
     
     func getReviews(request: Int) -> Observable<Result<[Review], Vinyler.NetworkError>>
+
+    func createReview(request: ReviewRequest) -> Observable<Result<Void, Vinyler.NetworkError>>
 }
 
 class VinylUseCaseImpl: VinylUseCase {
@@ -35,5 +37,9 @@ class VinylUseCaseImpl: VinylUseCase {
     
     func getReviews(request: Int) -> Observable<Result<[Review], Vinyler.NetworkError>> {
         return repository.getReviews(request: request)
+    }
+    
+    func createReview(request: ReviewRequest) -> Observable<Result<Void, Vinyler.NetworkError>> {
+        return repository.createReview(request: request)
     }
 }

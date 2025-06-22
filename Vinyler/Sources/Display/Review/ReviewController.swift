@@ -129,6 +129,13 @@ class ReviewController: UIViewController, ViewModelBindableType {
         let input = viewModel.input
         let output = viewModel.output
         
+        output.rating
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] value in
+                self?.ratingView.rating = Double(value)
+            })
+            .disposed(by: disposeBag)
+        
         output.releaseInfo
             .observe(on: MainScheduler.instance)
             .map { $0.title }
@@ -141,5 +148,37 @@ class ReviewController: UIViewController, ViewModelBindableType {
             .bind(to: artistLabel.rx.text)
             .disposed(by: disposeBag)
         
+        ratingView.didFinishTouchingCosmos = { value in
+            input.ratingValue.accept(Int(value))
+        }
+        
+        output.albumImage
+            .drive(albumImageView.rx.image)
+            .disposed(by: disposeBag)
+            
+        reviewTextView.rx.textChanged
+            .observe(on: MainScheduler.instance)
+            .bind(to: input.reviewInput)
+            .disposed(by: disposeBag)
+        
+        doneButton.rx.tap
+            .observe(on: MainScheduler.instance)
+            .withLatestFrom(output.releaseInfo)
+            .map { $0.id }
+            .bind(to: input.reviewAction.inputs)
+            .disposed(by: disposeBag)
+        
+        closeButton.rx.tap
+            .observe(on: MainScheduler.instance)
+            .bind(to: input.dismissAction.inputs)
+            .disposed(by: disposeBag)
+        
+    }
+}
+
+extension Reactive where Base: UITextView {
+    var textChanged: Observable<String> {
+        self.didChange
+            .map { [weak base] in base?.text ?? "" }
     }
 }

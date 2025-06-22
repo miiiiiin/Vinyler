@@ -39,6 +39,7 @@
 		38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6612D87273900411B8B /* SceneCoordinator.swift */; };
 		38ADA6642D87278800411B8B /* Extensions+ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */; };
 		38ADA6662D87288200411B8B /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */; };
+		38B11E422E08272A0079A347 /* ReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B11E412E08272A0079A347 /* ReviewRequest.swift */; };
 		38BE25312DBE5BF700622B09 /* VinylerRelease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE25302DBE5BF700622B09 /* VinylerRelease.swift */; };
 		38C2DF872DFABB1D00E310C0 /* ReviewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2DF862DFABB1D00E310C0 /* ReviewListViewController.swift */; };
 		38C2DF892DFABB4D00E310C0 /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C2DF882DFABB4C00E310C0 /* ReviewListViewModel.swift */; };
@@ -175,6 +176,7 @@
 		38ADA6612D87273900411B8B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		38ADA6632D87278800411B8B /* Extensions+ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+ObservableType.swift"; sourceTree = "<group>"; };
 		38ADA6652D87288200411B8B /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
+		38B11E412E08272A0079A347 /* ReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequest.swift; sourceTree = "<group>"; };
 		38BE25302DBE5BF700622B09 /* VinylerRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinylerRelease.swift; sourceTree = "<group>"; };
 		38C2DF862DFABB1D00E310C0 /* ReviewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewController.swift; sourceTree = "<group>"; };
 		38C2DF882DFABB4C00E310C0 /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				38FB99F72D9025D700993111 /* SignUpRequest.swift */,
 				38DC17672D9D61B00026811D /* LikeRequest.swift */,
 				3876F78E2D92DE15000B29C5 /* LoginRequest.swift */,
+				38B11E412E08272A0079A347 /* ReviewRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				38ADA6622D87273900411B8B /* SceneCoordinator.swift in Sources */,
 				387035212698B6A60049777F /* HomeViewController.swift in Sources */,
 				387926522D80793F00841CAF /* SceneTransitionType.swift in Sources */,
+				38B11E422E08272A0079A347 /* ReviewRequest.swift in Sources */,
 				38DBC2F82D7F33F600E444A1 /* APIClient.swift in Sources */,
 				817B25E12309791D003DF85D /* LoadingViewController.swift in Sources */,
 				3879264D2D80790700841CAF /* SceneCoordinatorType.swift in Sources */,
